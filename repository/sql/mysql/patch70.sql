@@ -1,0 +1,4 @@
+create table t_ext_id_editable_parts (c_editable_part_id bigint not null, c_regex_defn varchar(255), c_substring_name varchar(255) not null, primary key (c_editable_part_id, c_substring_name)) type=InnoDB;
+create table t_ext_id_substr_validation (c_validation_id bigint not null, c_regex_validator varchar(255), c_substring_name varchar(255) not null, primary key (c_validation_id, c_substring_name)) type=InnoDB;
+alter table t_ext_id_editable_parts add index FK583578C0AC791997 (c_editable_part_id), add constraint FK583578C0AC791997 foreign key (c_editable_part_id) references t_datasets (c_id);
+alter table t_ext_id_substr_validation add index FKF30AB82C7B9CC2F4 (c_validation_id), add constraint FKF30AB82C7B9CC2F4 foreign key (c_validation_id) references t_datasets (c_id);

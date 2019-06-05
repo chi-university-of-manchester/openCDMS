@@ -1,0 +1,30 @@
+
+# /
+/build
+/dist
+/doc
+/bin
+
+# /etc/
+/etc/applicationContext.xml
+/etc/context.xml
+
+# /etc/wsdl/
+/etc/wsdl/postcodetransformer.wsdl
+/etc/wsdl/sha1transformer.wsdl
+/etc/wsdl/datetransformer.wsdl
+/etc/wsdl/externaltransformer.wsdl
+
+# /gen/
+/gen/server-config.wsdd
+/gen/org
+
+# /src/
+/src/applicationCtx.xml
+/src/hibernate.cfg.xml
+
+# /src/org/psygrid/transformers/impl/postcode/
+/src/org/psygrid/transformers/impl/postcode/Persistent.hbm.xml
+
+# /test/
+/test/applicationContext.xml

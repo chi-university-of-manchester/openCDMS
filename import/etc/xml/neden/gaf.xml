@@ -1,0 +1,98 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="7">
+        <description>Global Assessment of Functioning Scale (GAF) Record</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="6" column="2"/>
+            	<mapping source="6" column="3"/>
+            	<mapping source="6" column="4"/>
+            </emptydoc>
+            <interviewer source="6" column="4"/>
+            <interviewdate source="6" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Total</description>
+                        <mapping source="6" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Symptoms</description>
+                        <mapping source="6" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Disability</description>
+                        <mapping source="6" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="6" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="38" column="2"/>
+            	<mapping source="38" column="3"/>
+            	<mapping source="38" column="4"/>
+            </emptydoc>
+            <interviewer source="38" column="4"/>
+            <interviewdate source="38" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Total</description>
+                        <mapping source="38" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Symptoms</description>
+                        <mapping source="38" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Disability</description>
+                        <mapping source="38" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="38" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="policyauthority"
+	targetNamespace="http://www.psygrid.org/xml/security/policy-authority/service"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.psygrid.org/xml/security/policy-authority/service"
+	xmlns:porttype="http://www.psygrid.org/xml/security/policy-authority/service"
+	xmlns:intf="http://www.psygrid.org/xml/security/policy-authroity/service"
+	xmlns:types="http://www.psygrid.org/xml/security/policy-authority/service/types"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
+		schemaLocation="xmldsig-core-schema.xsd" />
+	<types>		<xsd:schema
+			targetNamespace="http://www.psygrid.org/xml/security/policy-authority/service/types"
+			elementFormDefault="qualified" attributeFormDefault="qualified"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+			xmlns:pg="http://www.psygrid.org/xml/security/core/types"
+			xmlns="http://www.w3.org/2001/XMLSchema"
+			xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion">			<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
+				schemaLocation="xmldsig-core-schema.xsd" />			<xsd:import
+				namespace="http://www.psygrid.org/xml/security/core/types"
+				schemaLocation="security-core-schema.xsd" />
+			<xsd:element name="InputFault" type="xsd:string" />			<xsd:element name="ProcessingFault" type="xsd:string" />			<xsd:element name="NotAuthorisedFault" type="xsd:string" />
+
+			<complexType name="VoidType">
+				<sequence />
+			</complexType>
+		    <xsd:element name="updateConfigurationResponse" type="xsd:boolean" />
+			<xsd:element name="updateConfiguration">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="configuration" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="retrieveConfiguration">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="refresh" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="retrieveConfigurationResponse"
+				type="xsd:string" />
+				
+			<xsd:element name="getPolicyByProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="policy" type="pg:PolicyType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getPolicyByProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Policy" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getAllPolicies" type="types:VoidType"/>
+
+			<xsd:element name="GetAllPoliciesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="policy" type="pg:PolicyType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getAllPoliciesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetAllPoliciesResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>	
+			
+			<xsd:element name="TestPrivilegesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="allowed" type="pg:AllowedType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="testPrivilegesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:TestPrivilegesResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="testPrivileges">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RequestList" type="pg:ProjectActionType" minOccurs="1" maxOccurs="unbounded"/>
+						<xsd:element name="Assertion" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>	
+							
+			<xsd:element name="makePolicyDecisionResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="decision" type="xsd:boolean" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="makePolicyDecision">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="Project" type="pg:ProjectType" />						<xsd:element name="Target" type="pg:TargetType" />
+						<xsd:element name="Action" type="pg:ActionType" />						<xsd:element name="Assertion" type="xsd:string" />
+					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+			
+		    <xsd:element name="getVersionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="version" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+				
+			<xsd:element name="getVersion" type="types:VoidType"/>
+	
+						<xsd:element name="addPolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							minOccurs="1" maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="addPolicyResponse" type="xsd:boolean" />			<xsd:element name="DeletePolicyRequest">				<xsd:complexType>					<xsd:sequence>					<xsd:element name="PolicyID" type="pg:PolicyType"
+						maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deletePolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="types:DeletePolicyRequest" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deletePolicyResponse" type="xsd:boolean" />			<xsd:element name="addStatementToPolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="addStatementToPolicyResponse"
+				type="xsd:boolean" />
+							<xsd:element name="addArgumentToRuleToStatementToPolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="addArgumentToRuleToStatementToPolicyResponse"
+				type="xsd:boolean" />
+							<xsd:element name="deleteStatementFromPolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deleteStatementFromPolicyResponse"
+				type="xsd:boolean" />
+							<xsd:element name="deleteArgumentFromRuleFromStatementFromPolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deleteArgumentFromRuleFromStatementFromPolicyResponse"
+				type="xsd:boolean" />
+							<xsd:element name="updatePolicy">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:Policy"
+							minOccurs="1" maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="updatePolicyResponse" type="xsd:boolean" />		</xsd:schema>	</types>	<wsdl:message name="NotAuthorisedFaultMessage">		<part name="FaultDiagnostic" element="types:NotAuthorisedFault" />	</wsdl:message>	<wsdl:message name="InputFaultMessage">		<part name="FaultDiagnostic" element="types:InputFault" />	</wsdl:message>	<wsdl:message name="ProcessingFaultMessage">		<part name="FaultDiagnostic" element="types:ProcessingFault" />	</wsdl:message>	<wsdl:message name="makePolicyDecisionInput">		<wsdl:part name="input"
+			element="types:makePolicyDecision" />	</wsdl:message>	<wsdl:message name="makePolicyDecisionOutput">		<wsdl:part name="output"
+			element="types:makePolicyDecisionResponse" />	</wsdl:message>
+
+	<wsdl:message name="testPrivilegesInput">
+		<wsdl:part name="input"
+			element="types:testPrivileges" />
+	</wsdl:message>
+	<wsdl:message name="testPrivilegesOutput">
+		<wsdl:part name="output"
+			element="types:testPrivilegesResponse" />
+	</wsdl:message>
+				<wsdl:message name="addPolicyInput">		<wsdl:part name="input" element="types:addPolicy" />	</wsdl:message>	<wsdl:message name="addPolicyOutput">		<wsdl:part name="output" element="types:addPolicyResponse" />	</wsdl:message>	<wsdl:message name="deletePolicyInput">		<wsdl:part name="input" element="types:deletePolicy" />	</wsdl:message>	<wsdl:message name="deletePolicyOutput">		<wsdl:part name="output" element="types:deletePolicyResponse" />	</wsdl:message>	<wsdl:message name="addStatementToPolicyInput">		<wsdl:part name="input" element="types:addStatementToPolicy" />	</wsdl:message>	<wsdl:message name="addStatementToPolicyOutput">		<wsdl:part name="output" element="types:addStatementToPolicyResponse" />	</wsdl:message>	<wsdl:message name="addArgumentToRuleToStatementToPolicyInput">		<wsdl:part name="input" element="types:addArgumentToRuleToStatementToPolicy" />	</wsdl:message>	<wsdl:message name="addArgumentToRuleToStatementToPolicyOutput">		<wsdl:part name="output"
+			element="types:addArgumentToRuleToStatementToPolicyResponse" />	</wsdl:message>	<wsdl:message name="deleteStatementFromPolicyInput">		<wsdl:part name="input" element="types:deleteStatementFromPolicy" />	</wsdl:message>	<wsdl:message name="deleteStatementFromPolicyOutput">		<wsdl:part name="output"
+			element="types:deleteStatementFromPolicyResponse" />	</wsdl:message>	<wsdl:message name="deleteArgumentFromRuleFromStatementFromPolicyInput">		<wsdl:part name="input"
+			element="types:deleteArgumentFromRuleFromStatementFromPolicy" />	</wsdl:message>	<wsdl:message name="deleteArgumentFromRuleFromStatementFromPolicyOutput">		<wsdl:part name="output"
+			element="types:deleteArgumentFromRuleFromStatementFromPolicyResponse" />	</wsdl:message>	<wsdl:message name="updatePolicyInput">		<wsdl:part name="input" element="types:updatePolicy" />	</wsdl:message>
+	<wsdl:message name="updatePolicyOutput">
+		<wsdl:part name="output" element="types:updatePolicyResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateConfigurationInput">		<wsdl:part name="input"
+			element="types:updateConfiguration" />	</wsdl:message>
+	<wsdl:message name="updateConfigurationOutput">
+		<wsdl:part name="output" element="types:updateConfigurationResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="retrieveConfigurationInput">		<wsdl:part name="input"
+			element="types:retrieveConfiguration" />	</wsdl:message>	<wsdl:message name="retrieveConfigurationOutput">		<wsdl:part name="output"
+			element="types:retrieveConfigurationResponse" />	</wsdl:message>
+
+	<wsdl:message name="getPolicyByProjectInput">
+		<wsdl:part name="input"
+			element="types:getPolicyByProject" />
+	</wsdl:message>
+	<wsdl:message name="getPolicyByProjectOutput">
+		<wsdl:part name="output"
+			element="types:getPolicyByProjectResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getAllPoliciesInput">
+		<wsdl:part name="input"
+			element="types:getAllPolicies" />
+	</wsdl:message>
+	<wsdl:message name="getAllPoliciesOutput">
+		<wsdl:part name="output"
+			element="types:getAllPoliciesResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="getVersionInput">
+			<wsdl:part name="input" element="types:getVersion" />
+	</wsdl:message>
+	<wsdl:message name="getVersionOutput">
+		<wsdl:part name="output" element="types:getVersionResponse" />
+	</wsdl:message>
+		
+	<wsdl:portType name="PolicyAuthorityManagementPortType">
+			<wsdl:operation name="getVersion">
+			<wsdl:input message="tns:getVersionInput" />
+			<wsdl:output message="tns:getVersionOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="retrieveConfiguration">
+			<wsdl:input message="tns:retrieveConfigurationInput" />
+			<wsdl:output message="tns:retrieveConfigurationOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="updateConfiguration">
+			<wsdl:input message="tns:updateConfigurationInput" />
+			<wsdl:output message="tns:updateConfigurationOutput" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation> 		<wsdl:operation name="addPolicy">			<wsdl:input message="tns:addPolicyInput" />			<wsdl:output message="tns:addPolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation> 		<wsdl:operation name="deletePolicy">			<wsdl:input message="tns:deletePolicyInput" />			<wsdl:output message="tns:deletePolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="addStatementToPolicy">			<wsdl:input message="tns:addStatementToPolicyInput" />			<wsdl:output message="tns:addStatementToPolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation><!-- 		<wsdl:operation name="addArgumentToRuleToStatementToPolicy">			<wsdl:input message="tns:addArgumentToRuleToStatementToPolicyInput" />			<wsdl:output message="tns:addArgumentToRuleToStatementToPolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		<wsdl:operation name="deleteArgumentFromRuleFromStatementFromPolicy">			<wsdl:input message="tns:deleteArgumentFromRuleFromStatementFromPolicyInput" />			<wsdl:output message="tns:deleteArgumentFromRuleFromStatementFromPolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		-->		<wsdl:operation name="deleteStatementFromPolicy">			<wsdl:input message="tns:deleteStatementFromPolicyInput" />			<wsdl:output message="tns:deleteStatementFromPolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+<!-- 				<wsdl:operation name="updatePolicy">			<wsdl:input message="tns:updatePolicyInput" />			<wsdl:output message="tns:updatePolicyOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+-->		
+				<wsdl:operation name="getPolicyByProject">
+			<wsdl:input message="tns:getPolicyByProjectInput" />
+			<wsdl:output message="tns:getPolicyByProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getAllPolicies">
+			<wsdl:input message="tns:getAllPoliciesInput" />
+			<wsdl:output message="tns:getAllPoliciesOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>	</wsdl:portType>	<wsdl:portType name="PolicyAuthorityQueryPortType">		<wsdl:operation name="makePolicyDecision">			<wsdl:input message="tns:makePolicyDecisionInput" />			<wsdl:output
+				message="tns:makePolicyDecisionOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="testPrivileges">
+			<wsdl:input message="tns:testPrivilegesInput" />
+			<wsdl:output
+				message="tns:testPrivilegesOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>	<binding name="PolicyAuthorityPortTypeManagementSOAPBinding"
+		type="tns:PolicyAuthorityManagementPortType">		<documentation>			SOAP Binding for the PolicyAuthorityManagementPortType		</documentation>		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />  	<operation name="addPolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/addPolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="deletePolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/deletePolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="addStatementToPolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/addActionToPolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<!-- 		<operation name="addArgumentToRuleToStatementToPolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/addRoleToActionToPolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		-->		<operation name="deleteStatementFromPolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/deleteActionFromPolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation><!-- 
+		<operation name="deleteArgumentFromRuleFromStatementFromPolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/deleteRoleFromActionFromPolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+-->		<!--  
+		<operation name="updatePolicy">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/updatePolicy" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+-->
+		<operation name="getPolicyByProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/getPolicy" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+ 
+		<operation name="getAllPolicies">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/getAllPolicies" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="updateConfiguration">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/updateConfiguration" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+		</operation>
+		<wsdl:operation name="retrieveConfiguration">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/retrieveConfiguration" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+        <wsdl:operation name="getVersion"><soap:operation soapAction="http://www.psygrid.org/xml/security/policy-authority/service/getVersion"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    </binding>
+	<binding name="PolicyAuthorityPortTypeQuerySOAPBinding"
+		type="tns:PolicyAuthorityQueryPortType">		<documentation>			SOAP Binding for the PolicyAuthorityQueryPortType		</documentation>		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />		<operation name="makePolicyDecision">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/makePolicyDecision" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>		<operation name="testPrivileges">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/policy-authority/service/testPrivileges" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+	</binding>	<service name="PolicyAuthorityService"> 		<port name="PolicyAuthorityPortTypeManagementSOAPPort"
+			binding="tns:PolicyAuthorityPortTypeManagementSOAPBinding">			<soap:address location="@admin@" />		</port>
+			<port name="PolicyAuthorityPortTypeQuerySOAPPort"
+			binding="tns:PolicyAuthorityPortTypeQuerySOAPBinding">			<soap:address location="@query@" />		</port>
+	</service>
+</wsdl:definitions>

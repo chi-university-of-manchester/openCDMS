@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+        
+	<appender name="TomcatAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/tomcat.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+
+	<appender name="TomcatErrorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/tomcat_error.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+	        <param name="LevelToMatch" value="error" />
+	        <param name="AcceptOnMatch" value="true"/>
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+  	</appender>
+
+	<appender name="AuditAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/audit.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+
+	<appender name="MailAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/mail.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+
+	<appender name="ExportAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/export.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+  	
+	<appender name="SmtpAppender" class="org.apache.log4j.net.SMTPAppender">
+        <param name="BufferSize" value="512" />
+        <param name="SMTPHost" value="172.16.8.103" />
+        <param name="From" value="support@psygrid.org" />
+        <param name="To" value="support@psygrid.org" />
+        <param name="Subject" value="PSYGRID: Application error" />
+        <layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+	<appender name="AsyncSmtpAppender" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="SmtpAppender"/>
+	</appender>
+
+	<logger name="Audit" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="AuditAppender"/>
+	</logger>
+
+	<logger name="Mail" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="MailAppender"/>
+	</logger>
+
+	<logger name="Export" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="ExportAppender"/>
+	</logger>
+
+	<!-- This overcomes the proxy narrow log of hibernate -->
+	<logger name="org.hibernate.engine.StatefulPersistenceContext.ProxyWarnLog">
+		<level value="error" />
+	</logger> 
+   
+  	<root>
+    	<priority value ="info" />
+    	<appender-ref ref="TomcatAppender"/>
+    	<appender-ref ref="TomcatErrorAppender"/>
+    	<appender-ref ref="AsyncSmtpAppender"/>
+  	</root>
+
+</log4j:configuration>

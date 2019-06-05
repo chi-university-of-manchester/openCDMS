@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/psygrid-common/lib/excludes/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="/psygrid-common/lib/spring.jar" sourcepath="/psygrid-common/lib/source/spring-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="/psygrid-common/lib/acegi-security-1.0.3.jar" sourcepath="/psygrid-common/lib/source/acegi-security-1.0.3-src.zip"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/security"/>
+	<classpathentry exported="true" kind="lib" path="/psygrid-common/lib/opensaml-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/psygrid-common/lib/axis.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/repository"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/electronic-screening-log"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/psygrid-common"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

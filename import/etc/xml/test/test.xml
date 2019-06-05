@@ -1,0 +1,84 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<import project="NED">
+	<sources>
+		<csvsource>
+			<id>0</id>
+			<primary>true</primary>
+			<identifiercolumn>0</identifiercolumn>
+			<identifierclass>org.psygrid.dataimport.identifier.NedenParser</identifierclass>
+			<filename>Consent.csv</filename>
+			<headerrows>6</headerrows>
+		</csvsource>
+		<csvsource>
+			<id>1</id>
+			<primary>false</primary>
+			<identifiercolumn>0</identifiercolumn>
+			<filename>Baseline_Global_Assessment_of_Functioning.csv</filename>
+			<headerrows>6</headerrows>
+		</csvsource>
+	</sources>
+    <consentformgroups>
+        <consentformgroup index="0">
+            <description>Main client consent</description>
+            <primaryconsentform index="0">
+                <description>Has the client (aged over 16 years) agreed to take part in the study?</description>
+                <mapping source="0" column="5"/>
+            </primaryconsentform>
+            <primaryconsentform index="1">
+                <description>Has the client (aged 16 years or under) agreed to take part in the study?</description>
+                <constant value="0"/>
+                <associatedconsentform index="0">
+                    <description>Has the client's legal guardian agreed to the client taking part in the study?</description>
+                    <constant value="0"/>
+                </associatedconsentform>
+            </primaryconsentform>
+        </consentformgroup>
+    </consentformgroups>
+	<schedulestartdate>
+		<format>dd/MM/yyyy</format>
+		<mapping source="0" column="3"/>
+	</schedulestartdate>
+	<skiprows>
+		<row>26</row>
+		<row>27</row>
+		<row>28</row>
+		<row>29</row>
+		<row>30</row>
+		<row>31</row>
+		<row>32</row>
+		<row>33</row>
+		<row>34</row>
+		<row>35</row>
+		<row>36</row>
+		<row>37</row>
+		<row>38</row>
+		<row>39</row>
+		<row>40</row>
+		<row>41</row>
+		<row>42</row>
+		<row>43</row>
+		<row>44</row>
+		<row>45</row>
+	</skiprows>
+    <documents>
+		<document>gaf.xml</document>
+	</documents>
+</import>

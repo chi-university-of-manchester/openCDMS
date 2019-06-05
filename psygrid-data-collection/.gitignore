@@ -1,0 +1,13 @@
+
+# /
+/build
+/bin
+/dist
+/gen
+/.properties.xml
+
+# /src/
+/src/client.properties
+
+# /src/org/psygrid/collection/entry/
+/src/org/psygrid/collection/entry/logging.properties

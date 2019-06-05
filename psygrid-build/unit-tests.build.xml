@@ -1,0 +1,37 @@
+<project name="unit-tests" default="unit-tests">
+	
+  <description>
+    Runs unit tests on all subprojects.
+  </description>
+
+  <import file="build.xml"/>
+  
+  <property name="unit-tests.haltonfailure" value="false"/>
+
+  <target name="unit-tests" description="Runs units test for all sub-projects">
+	<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="unit-tests" />
+    <ant antfile="${common.dir}/build.xml" dir="${common.dir}" target="unit-tests"/>
+  	<!--
+        <ant antfile="${psygrid-doc.dir}/build.xml" dir="${psygrid-doc.dir}" target="all"/>
+		<ant antfile="${security.dir}/build.xml" dir="${security.dir}" target="all"/>
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part1" />
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part2" />
+		<ant antfile="${transformers.dir}/build.xml" dir="${transformers.dir}" target="all" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part1" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part2" />
+		<ant antfile="${esl.dir}/build.xml" dir="${esl.dir}" target="all" />
+		<ant antfile="${cocoa.dir}/build.xml" dir="${cocoa.dir}" target="all-notests" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part1" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part2" />
+		<ant antfile="${pgweb.dir}/build.xml" dir="${pgweb.dir}" target="all" />
+		<ant antfile="${securitymanager.dir}/build.xml" dir="${securitymanager.dir}" target="all" />
+		<ant antfile="${import.dir}/build.xml" dir="${import.dir}" target="all" />
+		<ant antfile="${datasetdesigner.dir}/build.xml" dir="${datasetdesigner.dir}" target="all" />
+		<ant antfile="${opencdmsweb.dir}/build.xml" dir="${opencdmsweb.dir}" target="all" />
+	-->
+	</target>
+	
+</project>
+
+
+

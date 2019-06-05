@@ -1,0 +1,30 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<Context path="/policy-authority" docBase="policy-authority"
+	debug="1" reloadable="true" crossContext="true">
+	<Logger className="org.apache.catalina.logger.FileLogger"
+		prefix="localhost_PA_log." suffix=".txt" timestamp="true" />
+	<Resource name="jdbc/policy-authority" auth="Container"
+		scope="Shareable" type="javax.sql.DataSource" maxActive="100"
+		maxIdle="30" maxWait="10000" username="tomcat" password="t0mc5t"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost/pa_db?autoReconnect=true"
+		removeAbandoned="true" removeAbandonedTimeout="300"
+		logAbandoned="true" />
+</Context>

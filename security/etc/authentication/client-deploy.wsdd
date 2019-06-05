@@ -1,0 +1,17 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <transport name="http" pivot="java:org.apache.axis.transport.http.HTTPSender"/>
+  <globalConfiguration >
+   <requestFlow >
+ <!--   <handler type="java:org.apache.ws.axis.security.WSDoAllSender" >
+     <parameter name="action" value="UsernameToken"/>
+     <parameter name="user" value="wss4j"/>
+     <parameter name="passwordCallbackClass" value="org.psygrid.security.attributeauthority.test.ClientPWCallback"/>
+     <parameter name="passwordType" value="PasswordDigest"/>
+     </handler>-->
+<!--     <handler type="java:org.apache.ws.axis.security.WSDoAllSender" >
+         <parameter name="action" value="Timestamp SAMLTokenUnsigned"/>
+         <parameter name="samlPropFile" value="saml.properties"/>
+    </handler>-->
+   </requestFlow >
+  </globalConfiguration >
+</deployment>

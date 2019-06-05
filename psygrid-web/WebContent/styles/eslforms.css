@@ -1,0 +1,130 @@
+/*
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#horizontalForm
+{
+	display: inline;	
+}
+
+#horizontalForm fieldset
+{
+	display: block;
+	margin: 0 0 1em 0;
+	padding: 0 1em 1em 1em;
+}
+
+#horizontalForm fieldset.buttons
+{
+	display: block;
+	margin: 0 0 1em 0;
+	padding: 0 1em 1em 1em;
+	border: none;
+}
+
+#horizontalForm label
+{
+	float: left;
+	display: block;
+	margin: 0 1em 0 0;
+	font-weight: normal;
+}
+
+#horizontalForm input
+{
+	display: block;
+	width: 14em;
+}
+
+#horizontalForm input.short
+{
+	display: block;
+	width: 5em;
+}
+
+#horizontalForm input.medium
+{
+	display: block;
+	width: 8em;
+}
+
+#horizontalForm input.submit
+{
+	float: left;
+	display: block;
+	width: 10em;
+	margin-right: 10px;
+}
+
+#horizontalForm select
+{
+	display: block;
+}
+
+#horizontalForm textarea
+{
+	display: block;
+}
+
+#title
+{
+	display: block;
+	width: 5em;
+	clear: both;
+	align: center;
+	background-color: white !important;
+}
+
+form.selectproject {
+	padding-top: 10px;
+}
+
+form.selectproject select {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+form.selectproject input {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+form.bystudycode input {
+	margin-left: 10px;
+}
+
+form.bystudycode input.submit {
+	width: 6em;
+}
+
+fieldset.invisible {
+	border: none;
+}
+
+form input, form textarea, form select {
+	/* display: inline; inline display must not be set or will hide submit buttons in IE 5x mac */
+	width:auto;      /* set width of form elements to auto-size, otherwise watch for wrap on resize */
+	border: 1px solid gray;
+	color: Black;
+	padding: 1px;
+	background: White url(/psygrid/images/input_background.gif) repeat-x;
+}
+

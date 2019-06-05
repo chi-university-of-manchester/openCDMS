@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+    
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!-- This config file defines the ESL services -->
+
+	<!-- 
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/ESL"/>
+    </bean>
+    -->
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    					  destroy-method="close">
+    	<property name="driverClassName"><value>@driver@</value></property>
+        <property name="url"><value>@db_url@@db_schema@</value></property>
+        <property name="username"><value>@username@</value></property>
+        <property name="password"><value>@password@</value></property>
+        <property name="initialSize"><value>5</value></property>
+        <property name="maxActive"><value>20</value></property>
+        <property name="maxIdle"><value>10</value></property>
+        <property name="maxWait"><value>10000</value></property>
+		<property name="testOnBorrow"><value>true</value></property>
+		<property name="validationQuery"><value>SELECT 1</value></property>
+    </bean>
+    
+
+  	<bean id="entityInterceptor" class="org.psygrid.esl.dao.hibernate.EntityInterceptor">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
+	
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/org/psygrid/esl/model/hibernate/Persistent.hbm.xml</value>
+				<value>classpath:/org/psygrid/common/email/QueuedEmail.hbm.xml</value>
+                <value>classpath:/org/psygrid/common/email/Email.hbm.xml</value>
+			</list>
+		</property>
+        <property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">@dialect@</prop>
+        	</props>
+        </property>
+        <property name="entityInterceptor">
+        	<ref local="entityInterceptor"/>
+        </property>
+    </bean>
+    
+	<bean id="eslDAO" class="org.psygrid.esl.dao.hibernate.EslDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+ 		<property name="emailUtil"   ref="emailUtil"/>
+		<property name="emailFromAddress" value="@systemAddress@"/>
+		<property name="emailToAddress" value="@systemAddress@"/>
+		<!-- Provide the names of the Roles who are to be emailed about changes
+			to Subjects -->
+		<property name="rolesToEmail">
+			<list>
+                <value>TreatmentAdministrator</value>
+                <value>ClinicalResearchOfficer</value>
+                <value>ClinicalResearchManager</value>
+            </list>
+        </property>
+	</bean>
+
+   <bean id="randomiser"
+    	class="org.psygrid.esl.randomise.RemoteRandomiser" >
+    	<property name="dao" ref="eslDAO" />
+		<property name="toAddress"   value="@systemAddress@"/>
+		<property name="fromAddress" value="@systemAddress@"/>
+		<property name="emailUtil"   ref="emailUtil"/>
+    	<!-- <property name="url" value="https://atisha.smb.man.ac.uk/randomization/services/randomization" />-->    	
+   	</bean>
+
+	<bean id="accessController" class="@accessController@" />
+	
+	<bean id="eslAuditLogger" class="org.psygrid.logging.AuditLogger">
+		<constructor-arg value="org.psygrid.esl.services.EslServiceImpl"></constructor-arg>
+	</bean>
+
+	<bean id="eslServiceImpl" class="org.psygrid.esl.services.EslServiceImpl" >
+		<property name="dao" ref="eslDAO"/>
+		<property name="randomiser" ref="randomiser"/>
+		<property name="accessControl" ref="accessController"/>
+		<property name="logHelper" ref="eslAuditLogger"></property>
+		<property name="aaqc" ref="aaqcWrapper"></property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	     <property name="sessionFactory">
+             <ref local="sessionFactory"/>
+         </property>
+    </bean>
+
+    <bean id="serviceInterceptor" class="org.psygrid.esl.services.ServiceInterceptor"/>
+
+	<bean id="eslService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="eslServiceImpl"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="serviceInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<!-- 
+	      			Rollback on all exceptions thrown from a service.
+	      			We should really declare the required checked exceptions explicitly.
+	      		 -->
+	      		<prop key="*">PROPAGATION_REQUIRED, -java.lang.Exception</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+	<bean id="factory" class="org.psygrid.esl.model.hibernate.HibernateFactory" />
+
+	 <bean id="emailUtil" class="org.psygrid.esl.util.EmailUtil">
+	 	<property name="aaqc" ref="aaqcWrapper" /> 
+	 </bean>
+
+ 	 <bean id="aaqcWrapper" class="org.psygrid.esl.util.AAQCWrapper">
+		<property name="properties">
+			<value>aaclient.properties</value>
+		</property>
+	</bean> 
+
+	<bean id="mailSender" class="org.psygrid.common.email.PsyGridMailSenderImpl">
+		<property name="host"><value>@mailServer@</value></property>
+	</bean>
+		
+	<!-- Setup the remote SMS sending service -->
+	<bean id="smsHTTPSettings" class="org.psygrid.common.sms.SMSSettings">
+		<property name="serviceURL" value="@smsURL@"/> 
+		<property name="serviceUsername" value="@smsUsername@"/>
+		<property name="servicePassword" value="@smsPassword@"/>
+		
+		<!-- This only needs to be set if connecting via a proxy -->
+		<property name="proxy" value="@proxy@"/>
+		<property name="proxyPort" value="@proxyPort@"/>
+		<!-- The auth type to use (empty or one of WINDOWS, BASIC, DIGEST) -->
+		<property name="proxyAuthType" value="@proxyAuthType@"/>
+		<property name="proxyWindowsDomain" value="@proxyWindowsDomain@"/>
+		<property name="proxyRealm" value="@proxyRealm@"/>
+		<property name="proxyUsername" value="@proxyUsername@"/>
+		<property name="proxyPassword" value="@proxyPassword@"/>
+	</bean>
+	
+	<bean id="smsSender" class="org.psygrid.common.sms.PsyGridSMSSenderImpl">
+		<property name="settings" ref="smsHTTPSettings" />
+	</bean>
+			
+</beans>

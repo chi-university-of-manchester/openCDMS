@@ -1,0 +1,20 @@
+
+# /
+/.settings
+/classes
+/generated
+/build
+/dist
+/revision.txt
+/test.properties
+/*.jks
+
+# /src/
+/src/aa
+/src/pa
+
+# /src/org/psygrid/security/attributeauthority/model/hibernate/
+/src/org/psygrid/security/attributeauthority/model/hibernate/Persistent.hbm.xml
+
+# /src/org/psygrid/security/policyauthority/model/hibernate/
+/src/org/psygrid/security/policyauthority/model/hibernate/Persistent.hbm.xml

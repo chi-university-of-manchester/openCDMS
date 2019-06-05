@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="importdoc">
+        <xs:complexType>
+	        <xs:sequence>
+	            <xs:element name="document" type="documenttype" minOccurs="1" maxOccurs="unbounded"/>
+	        </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+            
+    <xs:complexType name="documenttype">
+        <xs:sequence>
+        	<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="occurrence" type="occurrencetype" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="occurrencetype">
+        <xs:sequence>
+        	<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        	<xs:element name="emptydoc" type="emptytype" minOccurs="0" maxOccurs="1"/>
+        	<xs:element name="interviewer" type="mappingtype" minOccurs="0" maxOccurs="1"/>
+        	<xs:element name="interviewdate" type="mappingtype" minOccurs="0" maxOccurs="1"/>
+        	<xs:element name="section" type="sectiontype" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="emptytype">
+    	<xs:sequence>
+        	<xs:element name="mapping" type="mappingtype" minOccurs="1" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="sectiontype">
+    	<xs:sequence>
+        	<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    		<xs:element name="sectionoccurrence" type="sectionoccurrencetype" minOccurs="1" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    	<xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="sectionoccurrencetype">
+    	<xs:sequence>
+        	<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        	<xs:element name="instances" type="instancestype" minOccurs="0" maxOccurs="1"/>
+           	<xs:element name="basicentry" type="basicentrytype" minOccurs="0" maxOccurs="unbounded"/>
+           	<xs:element name="compositeentry" type="compositeentrytype" minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    	<xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    	<xs:attribute name="multipleRuntime" type="xs:boolean" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="instancestype">
+    	<xs:sequence>
+    		<xs:element name="instance" type="instancetype" minOccurs="1" maxOccurs="unbounded"/>
+   		</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="instancetype">
+    	<xs:sequence>
+    		<xs:element name="emptyinst" type="emptytype" minOccurs="0" maxOccurs="1"/>
+   		</xs:sequence>
+   		<xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="entrytype">
+    	<xs:sequence>
+        	<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>    	
+        <xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="basicentrytype">
+        <xs:complexContent>
+            <xs:extension base="entrytype">
+            	<xs:sequence>
+            		<xs:element name="translations" type="translationstype" minOccurs="0" maxOccurs="1"/>
+            		<xs:element name="formats" type="formatstype" minOccurs="0" maxOccurs="1"/>
+            		<xs:element name="unit" type="unittype" minOccurs="0" maxOccurs="unbounded"/>
+		        	<xs:element name="mapping" type="mappingtype" minOccurs="0" maxOccurs="unbounded"/>
+		        	<xs:element name="composite_dependent" type="compositedependenttype" minOccurs="0" maxOccurs="1"/>
+		        	<xs:element name="constant" type="constanttype" minOccurs="0" maxOccurs="unbounded"/>
+	        	</xs:sequence>
+	        </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="compositedependenttype">
+    	<xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+     <xs:complexType name="constanttype">
+    	<xs:attribute name="value" type="xs:string" use="required"/>
+    	<xs:attribute name="standardCode" type="xs:boolean" use="required"/>
+    	<xs:attribute name="occurrence" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    
+    <xs:complexType name="compositeentrytype">
+        <xs:complexContent>
+            <xs:extension base="entrytype">
+                <xs:sequence>
+                    <xs:element name="basicentry" type="basicentrytype" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="formatstype">
+    	<xs:sequence>
+    		<xs:element name="format" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="unittype">
+    	<xs:sequence>
+    		<xs:element name="input" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    	<xs:attribute name="index" type="xs:nonNegativeInteger" use="required"/>
+    	<xs:attribute name="abbreviation" type="xs:string" use="optional"/>
+    	<xs:attribute name="default" type="xs:boolean" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="translationstype">
+    	<xs:sequence>
+    		<xs:element name="translation" type="translationtype" minOccurs="1" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="translationtype">
+    	<xs:sequence>
+    		<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    		<xs:element name="input" type="inputtype" minOccurs="1" maxOccurs="unbounded"/>
+    		<xs:element name="output" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    	</xs:sequence>
+    	<xs:attribute name="standardCode" type="xs:boolean" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="inputtype">
+    	<xs:simpleContent>
+    		<xs:extension base="xs:string">
+    			<xs:attribute name="special" type="xs:boolean" use="required"/>
+    		</xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="mappingtype">
+    	<xs:sequence>
+    		<xs:element name="translations" type="translationstype" minOccurs="0" maxOccurs="1"/>
+    		<xs:element name="otherText" type="mappingtype" minOccurs="0" maxOccurs="1"/>
+    		<xs:element name="formats" type="formatstype" minOccurs="0" maxOccurs="1"/>
+   		</xs:sequence>
+        <xs:attribute name="source" type="xs:integer" use="required"/>
+        <xs:attribute name="default" type="xs:string"/>
+        <xs:attribute name="column" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="occurrence" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    
+</xs:schema>

@@ -1,0 +1,1074 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="12">
+        <description>Adverse Outcomes Detailed Questionnaire (Self-Harm)</description>
+        <occurrence index="0">
+            <description>Client, Most serious, Baseline</description>
+            <emptydoc>
+            	<mapping source="14" column="2"/>
+            	<mapping source="14" column="3"/>
+            	<mapping source="14" column="4"/>
+           	</emptydoc>
+            <interviewer source="14" column="4"/>
+            <interviewdate source="14" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>When did you harm yourself?</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 09/09/1899, 06/06/1866 to standard code 960. Data not known</description>
+                        		<input special="false">09/09/1899</input>
+                        		<input special="false">06/06/1866</input>
+                        		<output>0</output>
+                        	</translation>
+                        </translations>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="14" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>How did you harm yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Knife/razor</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Pills/drugs/alcohol</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Hanging</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Suffocation </description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Jump from high place</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Throw self in front of vehicle / in vehicle</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Starvation</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Fire/burning</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Drowning</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Gun</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. Other (please specify)</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Knife/razor and pills/ drugs/alcohol</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 13. Knife/razor and other</description>
+                                <input special="false">13</input>
+                                <output>12</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 14. Pills/drugs/alcohol and other</description>
+                                <input special="false">14</input>
+                                <output>13</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 15. Other multiple (please specify)</description>
+                                <input special="false">15</input>
+                                <output>14</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 97 to standard code Refused to answer</description>
+                                <input special="false">97</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 98 to standard code Not applicable</description>
+                                <input special="false">98</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 99 to standard code Data not known</description>
+                                <input special="false">99</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Degree of self-harm thought</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minor injury</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Major injury</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Injury (degree not clear)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Death</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Alteration/manipulation of environment as aim of self-harm</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Primary aim</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Unclear or secondary aim</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Degree of premeditation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None; impulsive</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Self harm contemplated for three hours or less prior to attempt</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Self harm contemplated for more than three hours prior to attempt</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Acts in anticipation of death</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Thought about</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Made definite plans or completed arrangements</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Active preparation for attempt</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minimal to moderate</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Extensive</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="11"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Self-harm note</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absence of note</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Note thought about</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Note written, but torn up</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Presence of note</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="12"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Precautions against discovery/intervention</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No precautions</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Precautions</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="13"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Isolation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Somebody present</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Somebody nearby or in visual or vocal contact</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No one nearby or in visual or vocal contact</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="14"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Probability of intervention by others</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Intervention was probable</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Intervention was not likely</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Intervention was highly unlikely</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="15"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Self intervention</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="16"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>If you harmed yourself, did you go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="14" column="17"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>Client, Closest to contact, Baseline</description>
+            <emptydoc>
+            	<mapping source="15" column="2"/>
+            	<mapping source="15" column="3"/>
+            	<mapping source="15" column="4"/>
+           	</emptydoc>
+            <interviewer source="15" column="4"/>
+            <interviewdate source="15" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>When did you harm yourself?</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 09/09/1899, 06/06/1866 to standard code 960. Data not known</description>
+                        		<input special="false">09/09/1899</input>
+                        		<input special="false">06/06/1866</input>
+                        		<output>0</output>
+                        	</translation>
+                        </translations>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="15" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>How did you harm yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Knife/razor</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Pills/drugs/alcohol</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Hanging</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Suffocation </description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Jump from high place</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Throw self in front of vehicle / in vehicle</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Starvation</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Fire/burning</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Drowning</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Gun</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. Other (please specify)</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Knife/razor and pills/ drugs/alcohol</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 13. Knife/razor and other</description>
+                                <input special="false">13</input>
+                                <output>12</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 14. Pills/drugs/alcohol and other</description>
+                                <input special="false">14</input>
+                                <output>13</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 15. Other multiple (please specify)</description>
+                                <input special="false">15</input>
+                                <output>14</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 97 to standard code Refused to answer</description>
+                                <input special="false">97</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 98 to standard code Not applicable</description>
+                                <input special="false">98</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 99 to standard code Data not known</description>
+                                <input special="false">99</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Degree of self-harm thought</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minor injury</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Major injury</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Injury (degree not clear)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Death</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Alteration/manipulation of environment as aim of self-harm</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Primary aim</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Unclear or secondary aim</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Degree of premeditation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None; impulsive</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Self harm contemplated for three hours or less prior to attempt</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Self harm contemplated for more than three hours prior to attempt</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Acts in anticipation of death</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Thought about</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Made definite plans or completed arrangements</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Active preparation for attempt</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minimal to moderate</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Extensive</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="11"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Self-harm note</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absence of note</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Note thought about</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Note written, but torn up</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Presence of note</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="12"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Precautions against discovery/intervention</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No precautions</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Precautions</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="13"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Isolation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Somebody present</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Somebody nearby or in visual or vocal contact</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No one nearby or in visual or vocal contact</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="14"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Probability of intervention by others</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Intervention was probable</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Intervention was not likely</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Intervention was highly unlikely</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="15"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Self intervention</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="16"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>If you harmed yourself, did you go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to standard code Refused to answer</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to standard code Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to standard code Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="15" column="17"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

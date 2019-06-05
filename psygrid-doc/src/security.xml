@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<chapter id="securityman">
+  <title>openCDMS Control</title>
+
+  <para>openCDMS Control allows Clinical Project Managers to manage user
+  accounts for all openCDMS applcations. Through a series of wizard style
+  interfaces, Clinical Project Managers can add, modify and delete user
+  accounts. It is also possible to view the current status of users, studies,
+  centres and roles and to change a user’s password.</para>
+
+  <section id="securityroles">
+    <title>Definition of Roles</title>
+
+    <para>To use openCMDS Control, it is important to understand the roles
+    that may be assigned to users. The following roles can be assigned to
+    users of the openCDMS system:</para>
+
+    <table>
+      <title>Role definitions</title>
+
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Role</entry>
+
+            <entry>Permissions</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>SystemAdministrator</entry>
+
+            <entry>Complete access to everything</entry>
+          </row>
+
+          <row>
+            <entry>ClinicalResearchOfficer</entry>
+
+            <entry>Data entry account</entry>
+          </row>
+
+          <row>
+            <entry>ChiefInvestigator</entry>
+
+            <entry>Receives whole study status reports, can read
+            data</entry>
+          </row>
+
+          <row>
+            <entry>DataAnalyst</entry>
+
+            <entry>Can read but not write data</entry>
+          </row>
+
+          <row>
+            <entry>TreatmentAdministrator</entry>
+
+            <entry>Can read data and access randomization results</entry>
+          </row>
+
+          <row>
+            <entry>ClinicalResearchManager</entry>
+
+            <entry>Can read and write data; can review and approve documents;
+            receives all reports</entry>
+          </row>
+
+          <row>
+            <entry>ProjectManager</entry>
+
+            <entry>Can manage studies (eg. Security settings)</entry>
+          </row>
+
+          <row>
+            <entry>ScientificResearchOfficer</entry>
+
+            <entry>Not used</entry>
+          </row>
+
+          <row>
+            <entry>RecruitmentManager</entry>
+
+            <entry>Receives Recruitment Progress Reports</entry>
+          </row>
+
+          <row>
+            <entry>Principal Investigator</entry>
+
+            <entry>Can read data (usually restricted by centre); receives
+            study status reports</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section id="securityview">
+    <title>Viewing the current status of studies, users and roles</title>
+
+    <para>When openCDMS Control is launched, you will be presented with a main
+    window which contains details of the studies, users, centres and roles
+    that you have access to. If you double-click on the displayed studies, the
+    users will be displayed. If you double-click on the users, the users’
+    roles and centres will be displayed. If you do not see anything in this
+    window, then you do not have permission to view the current status of
+    studies.</para>
+
+    <figure>
+      <title>List of users</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridSMUserGuide_html_4c4b5de4.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+
+  <section id="securityadduser">
+    <title>Add User</title>
+
+    <para>Clicking the Add User button produces a wizard style interface for
+    creating a new user in openCDMS. The initial page of the wizard asks for a
+    first name, last name and email address for the user to be entered. A
+    first name, last name and email address must be entered to proceed to the
+    next page of the wizard and to successfully create a user account. The
+    next page of the wizard allows the user to assign studies to the user.
+    Studies may be assigned by selecting the study in the left hand column and
+    clicking on the right arrow between the two lists. Multiple studies may
+    be selected by holding down the SHIFT key while selecting studies.
+    Studies may be removed from the list of assigned studies by clicking on
+    the left arrow sign between the two lists. When the users’ studies have
+    been chosen, click ‘next’ to select the centres. Before selecting which
+    centres to assign to the user, you must select a study. The study may be
+    selected using the drop-down box at the top of the page. Centres may be
+    selected and deselected in the same ways as studies (described above).
+    When you are satisfied with the centres, the next page allows roles to be
+    chosen for the user. First select a study and then select the roles for
+    the user in the study. When you are satisfied with your choice, click
+    ‘Next’. A summary of the selections you have made will now be presented.
+    If you are satisfied with your selections, click ‘Finish’ and the user
+    will be created. If you are not satisfied with your selections, you may go
+    back and make a new selection using the ‘Back’ buttons. On successful
+    completion, a new user will be created and the default password will be
+    assigned to their user account. If you are unsure what the default
+    password is, please contact openCDMS Support. At any time, you can click
+    ‘Cancel’ to exit the Add User Wizard.</para>
+  </section>
+
+  <section id="securitymodifyuser">
+    <title>Modify User</title>
+
+    <para>Clicking the Modify User button produces a wizard style interface
+    for modifying a user account in openCDMS. The initial page of the wizard
+    asks for the first name and last name of the user for which you want to
+    edit. If you enter a first name and last name for which a user account
+    does not exist, you will not be allowed to proceed further. If multiple
+    matches are found for the names you entered, you will be asked to choose
+    the correct name from a list. It is possible to enter, either the first
+    name and the last name of the user, or to enter the user id. If a user
+    account is found for the details that you have entered, you may proceed to
+    make selections for the studies, centres and roles that a user is assigned
+    to. Study, centre and role assignments are made in the same way as for
+    add user (see above). You will then be asked to verify or change the
+    user’s email address. Finally, the last page of the wizard will present
+    you with a summary of the user account. If you are satisfied with the
+    changes, click ‘Finish’ and your changes will be made. If you are not
+    satisfied with the assignments, click ‘Back’ to return to the selection
+    screens and edit your selections. At any time, you can click ‘Cancel’ to
+    exit the Modify User wizard.</para>
+  </section>
+
+  <section id="securitydeleteuser">
+    <title>Delete User</title>
+
+    <para>Clicking the Delete User button produces a wizard style interface
+    for deleting a user account from a openCDMS study. In the initial page of
+    the wizard, you must provide a first name and last name for the user you
+    wish to delete. If no user account exists for the first name and last name
+    which you have entered you will not be permitted to proceed. It is
+    possible to enter either the first name and last name of the user or to
+    enter the user id. If a user account is found, you may choose which
+    studies you wish to delete the user. If multiple matches are found to the
+    names you entered, you will be presented with a list from which you must
+    choose the user you mean. Studies may be chosen by selecting the study
+    names from the list and using the right and left arrow buttons (as in add
+    user and modify user).</para>
+  </section>
+
+  <section id="securitychangepassword">
+    <title>Change Password</title>
+
+    <para>Clicking the Change Password button produces a wizard style
+    interface for changing a user’s password within the openCDMS system. As in
+    the other wizard’s, you may look for a user in the initial screen by
+    typing in either their first and last name or their openCDMS username.
+    Clicking next, you will be asked to enter a new password for this user.
+    The password must be at least six characters, and an indication of how
+    secure the password is will be given (for tips on choosing a secure
+    password see <xref linkend="securepassword" />). You must confirm the
+    password by retyping it in the ‘Confirm new password’ field. Clicking
+    ‘Finish’ will cause the password to be changed. If a problem is
+    encountered, you will be notified. NB: A user's password should only be
+    changed if they have no outstanding local data in openCDMS. Changing a
+    password when a user has local data uncommitted to the database will
+    result in data loss.</para>
+  </section>
+
+  <section id="securityrightclick">
+    <title>Right-Click Menu</title>
+
+    <para>From the main window, it is possible to access contextual menus for
+    adding/modifying/deleting users and, centres and roles and for changing a
+    user’s password with a right click menu option .</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>If you right-click on a study, you will have the option to Add
+        User. Selecting this will produce the Add User wizard with the user’s
+        first name and last name filled in for you.</para>
+      </listitem>
+
+      <listitem>
+        <para>Right-clicking on a user will produce the option to Modify User
+        or Delete User or Change Password. Selecting one of these options will
+        produce the appropriate wizard with the users’s first name and last
+        name filled in.</para>
+      </listitem>
+
+      <listitem>
+        <para>Right-clicking on a role will produce the option to Remove the
+        role. Selecting this will immediately remove the role in the selected
+        study from the user. A notification will appear to inform you that
+        this action has been carried out.</para>
+      </listitem>
+
+      <listitem>
+        <para>Right-clicking on a centre will produce the option to Remove the
+        centre. Selecting this will immediately remove the centre in the
+        selected study from the user. A notification will appear to inform you
+        that this action has been carried out.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="securityfilemenu">
+    <title>File Menu</title>
+
+    <para>The file menu is a very basic menu that simply allows the user to
+    exit the application.</para>
+  </section>
+
+  <section id="securitytoolsmenu">
+    <title>Tools Menu</title>
+
+    <para>The tools menu contains options to displaying the current status of
+    centres, users and roles. It also possible to produce the wizard
+    interfaces here for adding, deleting and modifying user accounts.</para>
+  </section>
+
+  <section id="securityhelpmenu">
+    <title>Help Menu</title>
+
+    <para>The help menu contains one menu item enabling the user to show the
+    About Dialog for the application. The About Dialog contains versioning
+    information for openCDMS Control and details about how to contact openCDMS
+    Support.</para>
+  </section>
+
+  <section id="securitytoolbar">
+    <title>Toolbar</title>
+
+    <para>It is possible to drag the toolbar to another location in the main
+    window – it may be positioned either north, east or west in the main
+    window. It is also possible to dock it outside the main window and use it
+    as a standalone toolbar.</para>
+
+    <figure>
+      <title>Control toolbar</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridSMUserGuide_html_353295cf.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+</chapter>

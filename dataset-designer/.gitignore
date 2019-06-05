@@ -1,0 +1,21 @@
+
+# /
+/dist
+/${doc.dir}
+/bin
+
+# /build/
+build/signed
+build/src
+build/classes
+build/psygrid-dataset-designer.jnlp
+
+# /src/
+/src/client.properties
+
+# /src/org/psygrid/datasetdesigner/
+/src/org/psygrid/datasetdesigner/logging.properties
+/src/org/psygrid/datasetdesigner/brcgroups.xml
+
+# /src/org/psygrid/datasetdesigner/properties/
+/src/org/psygrid/datasetdesigner/properties/services.properties

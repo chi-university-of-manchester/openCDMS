@@ -1,0 +1,1106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<chapter id="psygridweb">
+  <title>openCDMS Web</title>
+
+  <para>This chapter describes how to use the openCDMS Web Interface, which
+  allows access to parts of the openCDMS system via a web browser.</para>
+
+  <section id="webaccessing">
+    <title>Accessing openCDMS Web</title>
+
+    <para>The openCDMS Web application can be accessed using a web browser -
+    the URL you need to enter depends upon which system you are using:</para>
+
+    <table>
+      <title>openCDMS Web URLs</title>
+
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>System</entry>
+
+            <entry>openCDMS Web URL</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>NHS live system</entry>
+
+            <entry>https://smtp.psygrid.nhs.uk/psygrid</entry>
+          </row>
+
+          <row>
+            <entry>Public internet system</entry>
+
+            <entry>https://mhrn.psygrid.org/psygrid</entry>
+          </row>
+
+          <row>
+            <entry>Test system</entry>
+
+            <entry>http://psygrid.smb.man.ac.uk/psygrid</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <para>Enter your openCDMS username and password that you would normally use
+    to log into Collect and click the 'Login' button. If you don’t have a
+    username and password please contact <link linkend="support">openCDMS
+    Support</link>.</para>
+
+    <figure>
+      <title>openCDMS web login page</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridWebUserGuide_html_m5fbea230.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+
+  <section id="webdataexport">
+    <title>Data Export</title>
+
+    <para>Data entered into a study held by openCDMS can be exported to a zip
+    file containing data and metadata files. This can then be used by tools such as 
+    a spreadsheet or statistical package for examination and analysis.</para>
+
+    <para>Exports are requested by using openCDMS Web. All export requests are
+    processed overnight and an email is sent out when the export is ready for
+    download.</para>
+
+    <figure>
+      <title>Data Export main screen</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridWebUserGuide_html_Export1.png" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <section id="webdataexportrequest">
+      <title>Requesting an export</title>
+
+      <para>To request an export, select the relevant project:</para>
+
+      <figure>
+        <title>Data Export - Request export (1)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export2.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Select the centres and sites to be included</para>
+
+      <figure>
+        <title>Data Export - Request export (2)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export3.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Select the export format</para>
+
+      <figure>
+        <title>Data Export - Request export (3)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export4.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <para>Select the documents to be exported</para>
+
+      <figure>
+        <title>Data Export - Request export (5)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export5.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+<para>Finally, select any additional parameters, such as the document statuses to be included in the export.</para>
+<para></para>
+
+      <figure>
+        <title>Data Export - Request export (6)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export6.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>You will receive a confirmation screen to show that a data export
+      request has been successful.</para>
+
+      <figure>
+        <title>Data Export - Request export (7)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export7.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webdataexportviewing">
+      <title>Viewing requests and downloading exports</title>
+
+      <para>You can view the status of an export at any time, by selecting the
+      link on the main data export page. This page shows a complete history of
+      all export requests that you have made. Any requests still pending can
+      be cancelled if desired.</para>
+
+      <figure>
+        <title>Data Export - view export requests</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_Export8.png" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Requests that have been completed will have a link to download the
+      data as a zip file. Presently, completed exports are not removed from
+      the server so can be downloaded at any point and as many times as
+      required.</para>
+      <para>MD5 and SHA1 hashes are available to check the validity of the export
+      once it has been downloaded.</para>
+    </section>
+  </section>
+
+  <section id="webreporting">
+    <title>Reporting</title>
+
+    <para>The reports section allows you to generate three different types of
+    reports in real time. The report types are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Individual Record Reports - These reports display the answers to
+        a particular document for one participant.</para>
+      </listitem>
+
+      <listitem>
+        <para>Trends Reports - Trends reports summarise replies across
+        multiple participants for a particular document.</para>
+      </listitem>
+
+      <listitem>
+        <para>Management Reports - Provides information about the overall
+        project. Can aid project management by providing auditing and
+        monitoring information. The reports available include recruitment,
+        record status and UKCRN reports.</para>
+      </listitem>
+    </itemizedlist>
+
+    <figure>
+      <title>Reports main screen</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridWebUserGuide_html_m15795683.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Reports can be generated in several different formats, these
+    are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>PDF – Portable document format. This will produce a graphical
+        display of the report data and can be viewed using a program such as
+        Adobe viewer.</para>
+      </listitem>
+
+      <listitem>
+        <para>XLS – MS Excel format; a spreadsheet showing the raw
+        data.</para>
+      </listitem>
+
+      <listitem>
+        <para>CSV – Comma separated values; a plain text file, showing the raw
+        data. Can be imported into statistical programs, including spreadsheet
+        programs like MS Excel.</para>
+      </listitem>
+    </itemizedlist>
+
+    <section id="webreportingrecord">
+      <title>Individual Record Reports</title>
+
+      <para>Record reports display the replies to a document for a particular
+      participant in a tabular or graphical format. These reports are also
+      available in Collect, in PDF format, under the ‘Generate Report’ option in
+      the Database menu.</para>
+
+      <para>Select ‘Individual Record’ from the Reports submenu on the
+      left-hand side of the screen. You will then be taken through a
+      wizard-like form to generate the report.</para>
+
+      <para>To start, select the project and click ‘continue’.</para>
+
+      <figure>
+        <title>Record report (1)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_73fd7253.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Then select the name of the report to be generated, these
+      correspond with documents in the study.</para>
+
+      <figure>
+        <title>Record report (2)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m55cf021d.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Next, select the participant identifier for the participant whose data you wish
+      to view.</para>
+
+      <figure>
+        <title>Record report (3)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m7863ce04.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Select the format of the report. If you want to view the raw data
+      in a spreadsheet program then select XLS or CSV format. Otherwise,
+      select PDF for a graphical view.</para>
+
+      <figure>
+        <title>Record report (4)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_18c1cc3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Finally, review the options you’ve chosen and click on ‘Generate
+      Report’. If you want to change any selection at any point, simply click
+      on the ‘back’ button. When the report is complete a dialog box will
+      prompt you to open the document in an appropriate program or save it to
+      disk.</para>
+
+      <figure>
+        <title>Record report (5)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m7986ffb4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webreportingtrends">
+      <title>View Trends</title>
+
+      <para>Trends reports are used to display trends in the data from a
+      particular document across many participants. The data can be summarised as
+      an average (with a choice of mean or median) or displaying the minimum
+      or maximum values.</para>
+
+      <para>After clicking on the ‘Show Trends’ option in the reports submenu,
+      select a study:</para>
+
+      <figure>
+        <title>Trends report (1)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m6b868ab8.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Then select a report:</para>
+
+      <figure>
+        <title>Trends report (2)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m30bf130.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>The remaining form options required for generating a report are
+      shown in the screenshots below.</para>
+
+      <para>First, select the centres and sites that should be included in the
+      report. Then the start and end dates, which allow you to choose the time
+      period covered by the report (the dates are based on when the participant’s
+      details were first saved to the database).</para>
+
+      <figure>
+        <title>Trends report (3)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_72b4344e.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <figure>
+        <title>Trends report (4)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_7551c33.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>The summary type allows you to specify how the data is summarised
+      and can include the options: mean, median, low, high. The option to show
+      totals will display the number of participants included in the report for
+      each month. Then select the format the report is displayed in.</para>
+
+      <figure>
+        <title>Trends report (5)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_66ec963c.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <figure>
+        <title>Trends report (6)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m3486401a.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Finally, click ‘continue’. You will be given the opportunity to
+      review your choices before clicking on ‘Generate Report’. The report may
+      take a few minutes to be created depending on the number of centres and
+      participants included; when it’s done a dialog box will then prompt you to
+      open the document in an appropriate program or save it to disk.</para>
+
+      <figure>
+        <title>Trends report (7)</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_2c2d855e.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>An example report, in PDF format, showing trends in the duration
+      of untreated psychosis at baseline:</para>
+
+      <figure>
+        <title>Example trends report</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m3fb96ced.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webreportingmanagement">
+      <title>Project Management</title>
+
+      <section id="webreportingmgmtgenerating">
+        <title>Generating a report</title>
+
+        <para>Management reports allow you to monitor the progress of a
+        study and view data for auditing. From the reports submenu select
+        ‘Project Management’. You will then be prompted to select a
+        project:</para>
+
+        <figure>
+          <title>Management Report (1)</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridWebUserGuide_html_171cc036.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Then select a report:</para>
+
+        <figure>
+          <title>Management Report (2)</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridWebUserGuide_html_m2b88a44d.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The form wizard will then take you through the options required
+        for the report selected. These options are similar to the ones
+        required to generate record or trends reports, as shown in the
+        previous sections. Finally, you will be prompted to select a format
+        for the report (with a choice of PDF, XLS or CSV) and then asked to
+        review your selections before the report is generated.</para>
+      </section>
+
+      <section id="webreportingmgmtukcrn">
+        <title>UKCRN Reports</title>
+
+        <para>The openCDMS Web application can be used to create reports
+        suitable for submission to the UKCRN, in accordance with the UKCRN’s
+        standard accrual data format. These reports are required periodically
+        by the UKCRN for any project included in the UKCRN portfolio.</para>
+
+        <para>To generate a UKCRN report, follow the steps listed in the
+        previous section to generate a management report and select the report
+        named ‘UKCRN report’ for the appropriate project. You will be prompted
+        to enter the start and end dates for the report, which are normally
+        specified by the UKCRN and the format, which must be CSV, as required
+        by the UKCRN.</para>
+      </section>
+
+      <section id="webreportingmgmtother">
+        <title>Other Management Reports</title>
+
+        <para>This section outlines the purposes of other management reports
+        commonly used in projects. Please note that not all reports are
+        available for all projects.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="italics">Recruitment Progress
+            Report</emphasis>. This report shows the recruitment numbers per
+            month, for the specified centres in a project. An optional target
+            can be entered for each month to be displayed alongside the
+            recruitment figure. The recruitment number for any given month is
+            based on the date that a participant’s details were first committed to
+            the database.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">CI, PI and CPM Reports</emphasis>.
+            These reports display the number of participants entered into a study
+            and the number of participants currently in each particular participant status
+            (such as referred, consented, baseline completed, etc), often
+            broken down by centre.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Record Status Report</emphasis>.
+            The record status report shows the overall status of each participant
+            in the selected centres and the progress of their record through each study
+            stage, i.e it states whether a study stage has been completed,
+            started but not complete or not started. It is best viewed in XLS
+            or CSV format.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Document Status Report</emphasis>.
+            The document status report shows the current status of all
+            documents for each participant in the selected centres. It is best
+            viewed in XLS or CSV format.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Document Collection Date
+            Report</emphasis>. This report displays the date certain documents
+            were collected for the participants in the selected centres and includes
+            the date of first contact with the participant. The documents included
+            in this report are the ones for which the date of collection is
+            explicitly specified and so the date used is the date the data was
+            collected (which may differ from the date it was entered onto the
+            system). It is best viewed in XLS or CSV format.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Missing Codes Usage
+            Report</emphasis>. This report is useful for monitoring the usage
+            of missing codes as part of a data quality audit. It shows the
+            occurrences of missing codes in documents, and further breaks
+            this down by question and participant. This can be useful to ensure
+            certain documents or questions are not simply being skipped; the
+            participant view allows you to see what participants are affected and who
+            was responsible for data entry. This report is best viewed in XLS
+            format.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Basic Statistics Report</emphasis>.
+            This report displays statistics on certain entries on the selected
+            document across all participants in the chosen centres. It can display
+            the mean, mode, median, minimum or maximum values for each of the
+            entries specified.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="italics">Receiving Treatment
+            Report</emphasis>. This report is specific to trials using the
+            openCDMS randomisation application and shows a list of participants,
+            their NHS numbers and randomisation details, grouped by treatment
+            type. This can show the project as a whole or broken down by
+            centre. This report is best viewed in XLS format.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+  </section>
+
+  <section id="webesl">
+    <title>Participant Register</title>
+
+    <para>The Participant Register allows the user to perform the
+    following tasks:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>To find an identifier for a participant using some of their personal
+        details.</para>
+      </listitem>
+
+      <listitem>
+        <para>To find the personal details for a participant given their participant
+        identifier.</para>
+      </listitem>
+
+      <listitem>
+        <para>To update the personal details for a participant.</para>
+      </listitem>
+
+      <listitem>
+        <para>To find a treatment arm for a participant using some of their
+        personal details.</para>
+      </listitem>
+
+      <listitem>
+        <para>To find a treatment arm for a participant using their participant
+        identifier.</para>
+      </listitem>
+
+      <listitem>
+        <para>To retrieve a list of all participants and their assigned randomised
+        treatment arms (emergency break-in)</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>The tasks available to users will depend on their role within the
+    system e.g. a clinical research officer will not be able to retrieve a
+    list of all participants and their assigned treatment arms.</para>
+
+    <section id="webeslselectproject">
+      <title>Selecting a Study and Centre</title>
+
+      <para>Before you can begin submitting queries to the Participant
+      Register, you must choose a study and centre. Select a study and
+      centre from the drop-down box and click 'Activate'.</para>
+
+      <figure>
+        <title>Participant Register - Select study and centre</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_603c4f61.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>After activating a study and centre, the user bar (underneath the
+      page heading) will indicate your username, study, centre and roles
+      within the currently selected study.</para>
+    </section>
+
+    <section id="webeslnumberbydetails">
+      <title>Participant Identifier by Details</title>
+
+      <para>If you know some personal details about a participant and wish to find
+      their participant identifier, choose the 'Participant Identifier by details' link on the
+      navigation bar at the left-hand side of the screen. Fill in as many
+      details as you can about the participant and click the ‘Search’ button at the
+      bottom of the screen. If a match is found with the details you entered,
+      the participant identifier of this participant will be returned. If no match is found,
+      you will be informed and may run another search.</para>
+
+      <figure>
+        <title>Participant Register - Find study number</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_4c7fb951.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webesldetailsbynumber">
+      <title>Details by Participant Identifier</title>
+
+      <para>If you wish to find the personal details of a participant and know
+      their participant identifier, choose the ‘Details by participant identifier’ link on the
+      navigation bar. Enter the participant identifier in the box provided and choose
+      ‘Search’.</para>
+
+      <figure>
+        <title>Participant Register - Find personal details</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m38d15455.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>If your search is successful, the results of your search will be
+      displayed as shown in the screenshot below.</para>
+
+      <figure>
+        <title>Participant Register - Details and Participant Identifier</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_1a7814b4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>If your search does not find a unique match with the participant identifier
+      you entered, you will be able to run another search.</para>
+    </section>
+
+    <section id="webesldetailsupdating">
+      <title>Updating the Personal Details for a Participant</title>
+
+      <para>Both methods detailed above to search for a participant can be used for
+      editing their details, simply click on the ‘Edit’ button instead of
+      ‘Search’.</para>
+
+      <para>If a match is found with the participant identifier or details that you
+      entered, you will be taken to the ‘Update personal details’ form, where
+      you can make changes and submit them using the “Update details” button.
+      Note: the maximum number of characters that may be entered to the ‘Risk
+      Issues’ textbox is 4096.</para>
+
+      <figure>
+        <title>Participant Register - Update personal details</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m32101b5c.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webesltreatmentbynumber">
+      <title>Treatment Arm by Participant Identifier</title>
+
+      <para>If you know the participant identifier of a participant and wish to find the
+      randomised treatment arm to which they have been assigned, click the
+      'Treatment arm by number' link on the navigation bar on the left-hand
+      side of the screen. This will present a screen in which you can enter
+      the participant identifier of the participant.</para>
+
+      <figure>
+        <title>Participant Register - Find treatment arm by participant identifier</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m2e28a402.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Enter the participant identifier and click the 'Search' button. This will
+      then return the result of your search. If no matching study number was
+      found a message will be displayed and you will be able to enter an
+      alternative participant identifier to check.</para>
+
+      <figure>
+        <title>Participant Register - Treatment arm</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_6d61d281.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webesltreatmentbydetails">
+      <title>Treatment arm by details</title>
+
+      <para>If you know some personal details about a participant and wish to find
+      the randomised treatment arm to which they have been assigned, click the
+      'Treatment arm by details" link on the navigation bar on the left-hand
+      side of the screen. Fill in as many details as you know about the participant
+      and click the 'Find treatment arm' button (either at the top or bottom
+      of the screen).</para>
+
+      <figure>
+        <title>Participant Register - Find treatment arm by details</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m1d29f70d.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>A search will be run to match the details you entered with a
+      participant and the result will be returned. The participant identifier and treatment
+      arm will be displayed in the same way as for Treatment Arm By Participant
+      Identifier. If a unique match is not found, you will be informed and you may
+      enter new details to run another search.</para>
+    </section>
+
+    <section id="webeslemergencybreakin">
+      <title>Emergency Break-in</title>
+
+      <para>The emergency break-in option allows you to see all the treatments
+      assigned to the participants in your project. A list of all participant identifiers and
+      treatments are displayed.</para>
+
+      <figure>
+        <title>Participant Register - Emergency break in</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_3f50074a.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="webesltreatmentstats">
+      <title>Treatment arm statistics</title>
+
+      <para>The treatment arm statistics display the real time allocation
+      statistics per strata.</para>
+
+      <figure>
+        <title>Participant Register - Allocation statistics</title>
+
+        <screenshot>
+          <screeninfo></screeninfo>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/PsyGridWebUserGuide_html_m25731938.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+  </section>
+
+  <section id="webchangepwd">
+    <title>Change Password</title>
+
+    <para>To change your password via the openCDMS Web Application, select the
+    ‘Change Password’ option from the menu on the left-hand side of the
+    screen. You will be asked to enter your current password and your new
+    password. Your new password must be entered twice. Passwords must be at
+    least six characters in length, and an indication of how secure the new
+    password is will be given (for tips on choosing a secure password see
+    <xref linkend="securepassword" />). When you have entered your current and
+    new passwords, click the ‘Change Password’ button to change your password.
+    You will be notified of the success or failure of this operation. If the
+    operation is successful, your password will now have changed for both the
+    openCDMS Web Application and for Collect.</para>
+
+    <figure>
+      <title>Change password screen</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridWebUserGuide_html_m41d1e6d1.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+
+  <section id="webloggingoff">
+    <title>Logging Off</title>
+
+    <para>When you are finished using the Participant Register Web
+    Application, you must click ‘Logout’ from the navigation bar on the
+    left-hand side of the screen and fully exit your web browser.</para>
+  </section>
+
+  <section id="webproblemreporting">
+    <title>Problem Reporting</title>
+
+    <para>Although the system has been through extensive testing, no system is
+    ever completely free of problems. Please report problems as you find them.
+    Types of problems that you should report are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>System crashes</para>
+      </listitem>
+
+      <listitem>
+        <para>Error messages</para>
+      </listitem>
+
+      <listitem>
+        <para>Inability to do something</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as it used to</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as you expect</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as you would like</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Please provide as much information as you can</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>What were you doing when it happened</para>
+      </listitem>
+
+      <listitem>
+        <para>Detail description of the steps that led up to the
+        problem</para>
+      </listitem>
+
+      <listitem>
+        <para>Is it repeatable, if so how?</para>
+      </listitem>
+
+      <listitem>
+        <para>What happened?</para>
+      </listitem>
+
+      <listitem>
+        <para>Details of error messages (if present)</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Bugs can be reported by contacting<link linkend="support">openCDMS
+    Support</link>.</para>
+
+    <para>When the system crashes, you will see an error message, which will
+    look something like this:</para>
+
+    <figure>
+      <title>Error screen</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridWebUserGuide_html_m3f0951a4.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Please email the error message in full to <link
+    linkend="support">openCDMS Support</link>.</para>
+  </section>
+</chapter>

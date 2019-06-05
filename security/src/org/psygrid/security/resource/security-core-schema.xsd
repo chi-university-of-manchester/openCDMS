@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:pg="http://www.psygrid.org/xml/security/core/types"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.psygrid.org/xml/security/core/types"
+	version="0.1" elementFormDefault="qualified">
+
+	<simpleType name='CodeType'>
+		<restriction base='string'>
+			<length value='12' />
+			<pattern value='\w{12}' />
+		</restriction>
+	</simpleType>
+
+	<xsd:complexType name="AttributeType">
+		<xsd:sequence>
+			<xsd:element ref="pg:Project" />
+			<xsd:element name="Group" type="pg:GroupType" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="Role" type="pg:RoleType" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProjectDescriptionType">
+		<xsd:sequence>
+			<xsd:element ref="pg:Project" />
+			<xsd:element name="Group" type="pg:GroupType" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="Role" type="pg:RoleType" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="PolicyDescriptionType">
+		<xsd:sequence>
+			<xsd:element name="Actions" type="pg:ActionType"
+				minOccurs="0" maxOccurs="unbounded" nillable="true" />
+			<xsd:element name="Targets" type="pg:TargetType"
+				minOccurs="0" maxOccurs="unbounded" nillable="true" />
+			<xsd:element name="Privileges" type="pg:PrivilegeType"
+				minOccurs="0" maxOccurs="unbounded" nillable="true" />
+			<xsd:element name="Authorities" type="pg:AuthorityType"
+				minOccurs="0" maxOccurs="unbounded" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PrivilegeType">
+		<xsd:choice>
+			<xsd:element name="Role" nillable="true" type="pg:RoleType" />
+			<xsd:element name="Group" nillable="true"
+				type="pg:GroupType" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="ArgumentType">
+		<xsd:sequence>
+			<xsd:element name="Privilege" nillable="true"
+				type="pg:PrivilegeType" />
+			<xsd:element name="Assertion" nillable="true"
+				type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UniqueIDType">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" nillable="true"
+				type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="OperatorType" final="restriction">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="And" />
+			<xsd:enumeration value="Or" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="CompositeRuleType">
+		<xsd:sequence>
+			<xsd:element name="Operator" type="pg:OperatorType" />
+			<xsd:element name="Children" type="pg:CompositeRuleType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="Privilege" type="pg:ArgumentType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType abstract="true" name="RuleType" />
+
+
+	<xsd:complexType name="UserPrivilegesType">
+		<xsd:sequence>
+			<xsd:element name="User" type="pg:UserType" />
+			<xsd:element ref="pg:Attribute" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="StatementType">
+		<xsd:sequence>
+			<xsd:element name="Target" type="pg:TargetType" />
+			<xsd:element name="Action" type="pg:ActionType" />
+			<xsd:element name="Rule" type="pg:CompositeRuleType" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PolicyType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+			<xsd:element name="Description" type="pg:PolicyDescriptionType"
+				nillable="true" />
+			<xsd:element name="Statement" type="pg:StatementType"
+				minOccurs="0" maxOccurs="unbounded" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ActionTargetType">
+		<xsd:sequence>
+			<xsd:element name="Action" type="pg:ActionType" />
+			<xsd:element name="Targets" type="pg:TargetType"
+				minOccurs="1" maxOccurs="unbounded" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProjectActionType">
+		<xsd:sequence>
+			<xsd:element name="Project" type="pg:ProjectType" />
+			<xsd:element name="Action" type="pg:ActionType"
+				minOccurs="1" maxOccurs="unbounded" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AllowedType">
+		<xsd:sequence>
+			<xsd:element name="Project" type="pg:ProjectType"
+				nillable="true" />
+			<xsd:element name="ActionTarget" type="pg:ActionTargetType"
+				minOccurs="1" maxOccurs="unbounded" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProjectActionTargetType">
+		<xsd:sequence>
+			<xsd:element name="Project" type="pg:ProjectType" />
+			<xsd:element name="Action" type="pg:ActionType" />
+			<xsd:element name="Target" type="pg:TargetType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ProjectType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+			<xsd:element name="AliasName" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="AliasId" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="virtual" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+		<xsd:complexType name="UserType">
+		<xsd:sequence>
+			<xsd:element name="FirstName" type="xsd:string" nillable="true" />
+			<xsd:element name="LastName" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="EmailAddress" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="UserId" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="DistinguishedName" type="xsd:string"
+				nillable="true" />
+			<xsd:element name="TemporaryPassword" type="xsd:string" nillable="true"/>
+			<xsd:element name="MobileNumber" type="xsd:string" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GroupType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+			<xsd:element name="Parent" type="xsd:string" minOccurs="0"
+				maxOccurs="1" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GroupAttributeType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="detail1" type="xsd:string" nillable="true" />
+			<xsd:element name="detail2" type="xsd:string" nillable="true" />
+			<xsd:element name="detail3" type="xsd:string" nillable="true" />
+			<xsd:element name="detail4" type="xsd:string" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SiteType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="Id" type="xsd:string" nillable="true" />
+			<xsd:element name="GeographicCode" type="xsd:string"
+				nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TargetType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RoleType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ActionType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+			<xsd:element name="idCode" type="pg:CodeType"
+				nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AuthorityType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" nillable="true" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="ProjectDescription"
+		type="pg:ProjectDescriptionType" />
+	<xsd:element name="Attribute" type="pg:AttributeType" />
+	<xsd:element name="UserPrivileges" type="pg:UserPrivilegesType" />
+	<xsd:element name="Role" type="pg:RoleType" />
+	<xsd:element name="Project" type="pg:ProjectType" />
+	<xsd:element name="CompositeRule" type="pg:CompositeRuleType" />
+	<xsd:element name="Group" type="pg:GroupType" />
+	<xsd:element name="GroupAttribute" type="pg:GroupAttributeType"/>
+	<xsd:element name="Site" type="pg:SiteType" />
+	<xsd:element name="Target" type="pg:TargetType" />
+	<xsd:element name="Statement" type="pg:StatementType" />
+	<xsd:element name="Policy" type="pg:PolicyType" />
+	<xsd:element name="Action" type="pg:ActionType" />
+	<xsd:element name="Rule" type="pg:RuleType" />
+	<xsd:element name="Operator" type="pg:OperatorType" />
+	<xsd:element name="Condition" type="pg:ArgumentType" />
+</schema>

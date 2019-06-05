@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<xsd:schema targetNamespace="http://www.psygrid.org/xml/security/secureservice/config" elementFormDefault="qualified"
+  xmlns="http://www.psygrid.org/xml/security/secureservice/config" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
+    schemaLocation="xmldsig-core-schema.xsd"/>
+  <xsd:element name="Config" type="ConfigType"/>
+  <xsd:complexType name="ConfigType">
+    <xsd:sequence>
+      <xsd:element name="Roles" type="RoleType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Issuers" type="IssuersType" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RoleType">
+    <xsd:sequence>
+      <xsd:element name="administrator" type="IDType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="proxy" type="IDType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="user" type="IDType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IDType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="1" ref="ds:KeyInfo"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IssuersType">
+    <xsd:sequence>
+      <xsd:element name="administration-authority" type="IDType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="proxy-authority" type="IDType" minOccurs="0" maxOccurs="unbounded"/>  
+      <xsd:element name="user-authority" type="IDType" minOccurs="0" maxOccurs="unbounded"/>         
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

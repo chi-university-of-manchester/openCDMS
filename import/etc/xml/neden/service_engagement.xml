@@ -1,0 +1,793 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="19">
+        <description>Service Engagment Scale</description>
+        <occurrence index="0">
+            <description>6 Months</description>
+            <emptydoc>
+            	<mapping source="40" column="2"/>
+            	<mapping source="40" column="3"/>
+            	<mapping source="40" column="4"/>
+            </emptydoc>
+            <interviewer source="40" column="4"/>
+            <interviewdate source="40" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="2">
+                        <description>The client makes it difficult to arrange appointments</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="5"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>When a visit is arranged, the client is available</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="6"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>The client avoids making appointments</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="7"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>If you offer advice, does the client resist it?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="8"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>The client takes an active part in the setting of goals or treatment plans</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="9"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>The client actively participates in managing his/her illness</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="10"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>The client seeks help when assistance is needed</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="11"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>The client finds it difficult to ask for help</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="12"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>The client seeks help to prevent a crisis</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code 970. Not applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="13"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>The client does not actively seek help</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="14"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>The client agrees to take the prescribed medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="15"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>The client is clear about what medications he/she is taking and why</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="16"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>The client refuses to co-operate with treatment</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="17"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>The client has difficulty in adhering to the prescribed medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="40" column="18"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="41" column="2"/>
+            	<mapping source="41" column="3"/>
+            	<mapping source="41" column="4"/>
+            </emptydoc>
+            <interviewer source="41" column="4"/>
+            <interviewdate source="41" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="2">
+                        <description>The client makes it difficult to arrange appointments</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="5"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>When a visit is arranged, the client is available</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="6"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>The client avoids making appointments</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="7"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>If you offer advice, does the client resist it?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="8"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>The client takes an active part in the setting of goals or treatment plans</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="9"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>The client actively participates in managing his/her illness</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="10"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>The client seeks help when assistance is needed</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="11"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>The client finds it difficult to ask for help</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="12"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>The client seeks help to prevent a crisis</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="13"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>The client does not actively seek help</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="14"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>The client agrees to take the prescribed medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="15"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>The client is clear about what medications he/she is taking and why</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="16"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>The client refuses to co-operate with treatment</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="17"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>The client has difficulty in adhering to the prescribed medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not at all or Rarely</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sometimes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Often</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Most of the time</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="41" column="18"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

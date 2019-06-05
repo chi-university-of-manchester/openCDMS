@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!--
+	**********************************************************************
+	*  Domain model persistence                                          *
+	**********************************************************************
+	-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    					  destroy-method="close">
+    	<property name="driverClassName"><value>com.mysql.jdbc.Driver</value></property>
+        <property name="url"><value>jdbc:mysql://localhost:3306/psygrid</value></property>
+        <property name="username"><value>opencdms</value></property>
+        <property name="password"><value>cherry</value></property>
+        <property name="initialSize"><value>5</value></property>
+        <property name="maxActive"><value>20</value></property>
+        <property name="maxIdle"><value>10</value></property>
+        <property name="maxWait"><value>10000</value></property>
+    </bean>
+
+    <bean id="entityInterceptor" class="org.psygrid.data.repository.dao.hibernate.EntityInterceptor"/>
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>org/psygrid/data/model/hibernate/Persistent.hbm.xml</value>
+                <value>org/psygrid/data/export/hibernate/ExportRequest.hbm.xml</value>
+             	<value>org/psygrid/data/export/hibernate/ExportDocument.hbm.xml</value>
+                <value>org/psygrid/data/export/hibernate/ExportSecurityActionMap.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Action.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Config.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Participant.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Sample.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/SampleRevision.hbm.xml</value>
+                <value>org/psygrid/data/importing/model/ImportRequest.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+            	<!-- NB: DB2 may not like this  <prop key="hibernate.use_sql_comments">true</prop> -->
+        	</props>
+        </property>
+        <property name="entityInterceptor">
+        	<ref local="entityInterceptor"/>
+        </property>
+    </bean>
+
+	<bean id="factory" class="org.psygrid.data.model.hibernate.HibernateFactory" />
+
+	<!--
+	**********************************************************************
+	*  Beans used by several services                                    *
+	**********************************************************************
+	-->
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	     <property name="sessionFactory">
+             <ref local="sessionFactory"/>
+         </property>
+    </bean>
+
+	<bean id="serviceInterceptor" class="org.psygrid.data.utils.service.ServiceInterceptor" />
+	
+	<!--  parent transaction proxy bean for all services -->
+	<bean id="txProxyTemplate"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager" ref="transactionManager"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="serviceInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	    		<prop key="generateIdentifiers">PROPAGATION_REQUIRED, ISOLATION_SERIALIZABLE</prop>
+	      		<prop key="getSampleConfig">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	      		<prop key="getNextSampleNumber">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<!-- 
+	      			Rollback on all exceptions thrown from a service.
+	      			We should really declare the required checked exceptions explicitly.
+	      		 -->
+	      		<prop key="*">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	    	</props>
+	  	</property>
+	</bean>
+
+	<bean id="accessController" class="org.psygrid.security.accesscontrol.AccessEnforcementFunction" />
+
+	<bean id="mailSender" class="org.psygrid.common.email.PsyGridMailSenderImpl">
+		<property name="host"><value>smtp.talktalk.net</value></property>
+	</bean>
+		
+	<!--
+	**********************************************************************
+	*  Sample Tracking                                                          *
+	**********************************************************************
+	-->
+
+    <bean id="sampleTrackingDAO" class="org.psygrid.data.sampletracking.server.model.SampleTrackingDAOHibernate">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="sampleTrackingServiceImpl" class="org.psygrid.data.sampletracking.server.SampleTrackingServiceImpl">
+		<property name="sampleTrackingDAO" ref="sampleTrackingDAO"/>
+    	<property name="eventHandler" ref="sampleTrackingEventHandler"/>
+	</bean>
+
+	<bean id="sampleTrackingEventHandler" class="org.psygrid.data.sampletracking.server.SampleTrackingEventHandler">
+		<property name="sampleTrackingDAO" ref="sampleTrackingDAO"/>
+    	<property name="mailSender" ref="mailSender" />
+    	<property name="sendMails" value="true"/>
+    	<property name="sysAdminEmail" value="virtual@opencdms.org"/>
+	</bean>
+
+	<bean id="sampleTrackingService" parent="txProxyTemplate">
+	  	<property name="target" ref="sampleTrackingServiceImpl"/>
+	</bean>
+
+        	
+</beans>

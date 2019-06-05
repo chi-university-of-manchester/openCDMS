@@ -1,0 +1,91 @@
+
+<project name="findbugs" default="findbugs">
+
+  <description>
+    Runs findbugs on system.
+    Build fails if findbug detects an error.
+    Invocation: ant -f findbugs.build.xml
+  </description>
+
+  <import file="build.xml" />
+	
+  <property name="findbugs.install.dir" location="${common.dir}/lib/excludes/findbugs" />
+
+  <property name="findbugs.filter.file" location="${findbugs.install.dir}/findbugs.exclude.xml" />
+
+  <property name="findbugs.output.dir" location="build/findbugs" />
+
+  <property name="findbugs.failOnError" value="true" />
+
+  <target name="findbugs.tool" depends="" description="Runs FindBugs over the byte code to check for problems - depend on 'unified' default target in build.xml">
+
+  	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpath="${findbugs.install.dir}/findbugs-ant.jar" />
+
+ 	<!-- Set up a path containing the classpath for FindBugs, then convert to a property. -->
+    <path id="findbugs.classpath">
+      <fileset dir="${findbugs.install.dir}">
+        <include name="*.jar" />
+      </fileset>
+    </path>
+    <pathconvert property="findbugs.classpath" refid="findbugs.classpath" />
+
+    <!-- Run FindBugs. -->
+    <mkdir dir="${findbugs.output.dir}" />
+
+    <findbugs jvmargs="-Xmx512m" classpath="${findbugs.classpath}" pluginList="" failOnError="${findbugs.failOnError}" warningsProperty="findbugs.warningsfound" output="xml:withMessages" outputFile="${findbugs.output.dir}/findbugs.xml">
+		<auxClasspath>
+			<fileset dir="${common.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${opencdmsweb.dir}/WebContent/WEB-INF/lib">
+				<include name="wicket*.jar" />
+			</fileset>
+			<fileset dir="${repository.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${security.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</auxClasspath>
+		<sourcePath path="${common.dir}/src" />
+		<sourcePath path="${security.dir}/src" />
+		<sourcePath path="${transformers.dir}/src" />
+		<sourcePath path="${repository.dir}/src" />
+		<sourcePath path="${cocoa.dir}/src" />
+		<sourcePath path="${esl.dir}/src" />
+		<sourcePath path="${randomization.dir}/src" />
+		<sourcePath path="${pgweb.dir}/src" />
+		<sourcePath path="${securitymanager.dir}/src" />
+		<sourcePath path="${elementlib.dir}/src" />
+		<sourcePath path="${datasetdesigner.dir}/src" />
+		<sourcePath path="${opencdmsweb.dir}/src" />
+		<sourcePath path="${import.dir}/src" />
+		<sourcePath path="${meds-dist.dir}/src" />
+		<class location="${common.dir}/build/classes" />
+		<class location="${security.dir}/build" />
+		<class location="${transformers.dir}/build" />
+		<class location="${repository.dir}/build/classes" />
+		<class location="${cocoa.dir}/build/classes" />
+		<class location="${esl.dir}/build/classes" />
+		<class location="${randomization.dir}/build" />
+		<class location="${pgweb.dir}/build" />
+		<class location="${securitymanager.dir}/build/classes" />
+		<class location="${elementlib.dir}/build" />
+		<class location="${datasetdesigner.dir}/build/classes" />
+		<class location="${opencdmsweb.dir}/build" />
+		<class location="${import.dir}/build" />
+		<class location="${meds-dist.dir}/build" />
+    </findbugs>
+
+  </target>
+
+  <target name="findbugs.report" description="Generate an HTML report on FindBugs.">
+    <xslt in="${findbugs.output.dir}/findbugs.xml" style="${findbugs.install.dir}/default.xsl" out="${findbugs.output.dir}/findbugs-default.html" />
+  </target>
+
+  <target name="findbugs" depends="findbugs.tool, findbugs.report" description="Runs the FindBugs tool and report." />
+
+</project>
+
+
+

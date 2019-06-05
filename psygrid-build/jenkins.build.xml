@@ -1,0 +1,34 @@
+
+<project name="jenkins" default="jenkins">
+
+	<description>
+		WARNING - THIS SCRIPT WILL DESTROY DATA
+		Called by a Jenkins Continuous Integration job. Does the following:
+		1) Builds everything
+		2) Runs Findbugs
+		3) Runs unit-tests
+		4) Runs integration-tests - this will deploy the apps and reset the localhost mysql and ldap databases
+		5) Runs system-tests - using Jubula to drive the GUI
+	</description>
+
+	<property name="findbugs.failOnError" value="true" />
+
+	<import file="build.xml" />
+	<import file="findbugs.build.xml" />
+	<import file="pmd.build.xml" />
+	<import file="cpd.build.xml" />
+	<import file="unit-tests.build.xml" />
+	<import file="integration-tests.build.xml" />
+	<import file="functional-tests.build.xml" />
+
+	<!--
+		 Temporarily removed the functional-tests target from the dependencies below - because of problems running Jubula in the Jenkins server
+		 You can run 'ant -f functional-tests.build.xml' to run them locally.
+	-->
+	<target name="jenkins" depends="clean,unified,findbugs,pmd,cpd,unit-tests,integration-tests" description="Continuous Integration build and test - WARNING: THIS WILL DESTROY DATA.">
+		<!-- One day...
+		<fail message="FindBugs reported warnings." if="findbugs.warningsfound" />
+		-->
+	</target>
+
+</project>

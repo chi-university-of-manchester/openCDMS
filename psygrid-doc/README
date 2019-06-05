@@ -1,0 +1,107 @@
+PsyGrid Documentation
+---------------------
+
+PsyGrid Documentation is now maintained in DocBook format - this is an xml 
+schema designed for software documentation. The benefit of using
+DocBook is that the documentation can be written once and then 
+transformed from this single source into a variety of different
+formats, suitable for different applications.
+
+
+Files
+-----
+
+The DocBook source files are held in the src folder. There is an xml file 
+for each chapter of the documentation, plus a main file which brings
+all of the chapters together:
+
+psygrid.xml = the main file, contains the introduction and support
+chapters and includes the files for the other chapters
+install.xml = installation chapter
+cocoa.xml = CoCoA chapter
+security.xml = Security Manager chapter
+dsd.xml = Dataset Designer chapter
+web.xml = PsyGrid Web chapter
+
+The images folder contains all screenshot and other image files.
+
+
+DocBook editor
+--------------
+
+It's just XML so you can use whatever editor you want, but I have been getting
+on pretty well with XMLmind's XML Editor (http://www.xmlmind.com/xmleditor/). The
+personal edition is a free download for non-commercial use.
+
+The good thing about XXE are that the DocBook schema is built in, so it will only
+allow you to insert valid tags. It also has a stylesheet built in so you can see
+a rendered view of your DocBook source.
+
+For editing I have generally been using the "View - no style sheet" option which gives
+a tree view of the XML document. Then to see how it's going to look I switch to 
+"View - DocBook". Anything over simple text editing I found hard to do in this view 
+as it is hard to select the correct part of the underlying XML. 
+
+
+DocBook Quick Start
+-------------------
+
+DocBook is a very rich schema but (rightly or wrongly) I've only used
+a small subset of the tags so far.
+
+Here are some useful web resources:
+
+http://www.sagehill.net/docbookxsl/
+http://wiki.docbook.org/topic/DocBookTutorials
+
+Some common scenarios:
+
+Sections - use the section tag; the first tag inside the section should be
+a title.
+
+General Text - will be in para tags i.e. paragraphs. In XXE if you are in a para
+and want to go to a new para just hit return and it will do it automatically.
+
+Lists - itemizedlist for bullet points and orderedlist for numbers. Each item 
+in a list is a listitem, listitems then contain para and other tags.
+
+Bold/Italics - wrap the relevant text in emphasis tags and set the role attribute
+to bold or italics (to do this in XXE select the text and then use "Convert [wrap]"
+to wrap it in emphasis tags)
+
+Figures - I've been using "Figure (screenshot)" in XXE which creates a figure
+containing all the other necessary tags. All you need to complete is the title
+and the fileref attribute of imagedata.
+
+Tables - you basically form these the same way as you would HTML tables
+
+References - to reference something (say a section or a figure) you need to complete 
+the id attribute of what you want to reference, then add an xref tag with the linkend
+attribute the same as this id.
+
+Web Links - use the ulink tag.
+
+Code - use programlisting
+
+
+Taking Screenshots
+------------------
+
+I've been scaling down screenshots to be no wider than 450px. Also, I had some problems
+with the PDF output doing weird things to some screenshots (zooming in on them massively).
+This turned out to be because the images had funny resolutions like 2.7 pixels/mm. Once
+I changed them to 72 or 96 pixels/in (used Gimp to do this, Image - Scale Image) all was 
+well. 
+
+Also, if you resize images to make them smaller it is worth sharpening them up a bit - I
+use Filters - Enhance - Sharpen with a Sharpness of 20.
+
+
+Transforming the DocBook source
+-------------------------------
+
+There are ant tasks to transform to the following formats:
+
+JavaHelp - this is the default task so just type "ant" or "ant docbook2javahelp"
+HTML - ant docbook2html
+PDF - ant docbook2pdf

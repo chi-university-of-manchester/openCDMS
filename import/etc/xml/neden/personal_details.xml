@@ -1,0 +1,1442 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>   
+<importdoc>
+    <document index="0">
+        <description>Personal Details Form</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="0" column="2"/>
+            	<mapping source="0" column="3"/>
+            	<mapping source="0" column="4"/>
+            </emptydoc>
+            <interviewer source="0" column="4"/>
+            <interviewdate source="0" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>Participant site-allocated ID</description>
+						<mapping source="0" column="0"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>Date of Birth</description>
+                        <constant standardCode="true" value="3"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Sex</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Male</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Female</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Ethnicity - ONS categorizations of ethnicity below</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. White - British</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. White - Irish</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. White - Other White Background</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Asian - Indian</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Asian - Pakistani</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Asian - Bangladeshi</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Asian - Other Asian Background</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Black - Caribbean</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Black - African</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Black - Other Black Background</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. Mixed - White and Black Caribbean</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Mixed - White and Black African</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 13. Mixed - White and Asian</description>
+                                <input special="false">13</input>
+                                <output>12</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 14. Mixed - Other Mixed Background</description>
+                                <input special="false">14</input>
+                                <output>13</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 15. Other Ethnic Groups - Chinese</description>
+                                <input special="false">15</input>
+                                <output>14</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 16. Other Ethnic Groups - Other Ethnic Group</description>
+                                <input special="false">16</input>
+                                <output>15</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Country of Birth</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code data not known</description>
+                                <input special="false">666</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code data not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Fluency in English</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Speaks no english</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Semi fluent</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Fluent - spoken and written</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Religious Cultural Tradition</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Christian</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Muslim</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Hindu</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Sikh</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="10">
+                            <otherText source="0" column="11"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Marital Status</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Married and cohabiting</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Married but separated</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Cohabiting &gt; 2 yrs</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Cohabiting &lt; 2 yrs</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Single</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Divorced</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Widowed</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="12"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Divorced or Widowed in the last 5 years</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="13"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Postcode area of residential address</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="14"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Living Status - At Baseline</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Alone</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. With parents/guardians</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. With partner</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Other (specify)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="15"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Housing Type</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Own home/parents home</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Rented</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Supported Accommodation</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Temp. Accomodation</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Long Stay Psychiatric Hospital</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Other (specify)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="16"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Does the client have children</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No children</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Children - no contact at all</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Children - not in regular contact (&lt;once per week)</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Children - in regular contact (at least once per week)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Children living with client</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="17"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>No of children &lt; 16 living with the client for &gt;50% of the time</description>
+                        <mapping source="0" column="18"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Educational Qualifications Attained</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No qualifications</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. GCSE/NVQ level 1 or 2</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A-level/GNVQ/BTEC/NVQ level 3</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Degree/HND/NVQ level 4 or above</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Special Needs Educational Qualifications</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="19"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>Employment Status - At Baseline</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Working (Paid)</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Working (Voluntary)</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Unemployed</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Home maker</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Student</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Sheltered employment</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Other (specify)</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="20"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>No of hours worked per week</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. On sick leave</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. &lt;16 hours</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. &gt;16 hours&lt;36 hours</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. 36 hours or more</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to standard code Not Applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="21"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>Client's Occupation</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to standard code Not Applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="22"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>Mother's Occupation</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666  to standard code Not Applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to standard code Not Applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="23"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Father's Occupation</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666  to standard code Not Applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to standard code Not Applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="24"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>Partner's Occupation</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 'n/a' to standard code Not Applicable</description>
+                                <input special="false">n/a</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 'N/A' to standard code Not Applicable</description>
+                                <input special="false">N/A</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666  to standard code Not Applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to standard code Not Applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="25"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Probable Diagnosis at Baseline</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unspecified Psychosis</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Schizophrenia</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Bi-Polar</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Scizo-Affective Disorder</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Drug Induced Psychosis</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Paranoid Psychosis</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="26"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>No of Episodes</description>
+                        <mapping source="0" column="27"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>No of Admissions</description>
+                        <mapping source="0" column="28"/>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Age at Onset</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="29"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>Age at First Admission</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="30"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>Nature of First Admission</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Voluntary</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Compulsory</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Voluntary then sectioned</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="31"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>Length of First Admission (in days)</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to standard code Data Not Known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="32"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>Nature of Last Admission</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Voluntary</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Compulsory</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Voluntary then sectioned</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="33"/>
+                    </basicentry>
+                    <basicentry index="29">
+                        <description>Date of Last Admission</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null, 09/09/2009, 09/09/1899, 06/06/1866, 06/06/1899, 18/06/1866 to Standard Code Data not known</description>
+                                <input special="false"></input>
+                                <input special="false">09/09/2009</input>
+                                <input special="false">09/09/1899</input>
+                                <input special="false">06/06/1866</input>
+                                <input special="false">06/06/1899</input>
+                                <input special="false">18/06/1866</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <formats>
+                            <format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="0" column="34"/>
+                    </basicentry>
+                    <basicentry index="30">
+                        <description>Length of Last Admission (in days)</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for null to Standard Code Data not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="35"/>
+                    </basicentry>
+                    <basicentry index="31">
+                        <description>Head injury in lifetime (time spent unconscious)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Unknown whether injury has occurred</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Very Mild (&lt;5 mins)</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Mild (5-60 mins)</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Moderate (1-24 hours)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Severe (1-7 days)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Very Severe (1-4 weeks)</description>
+                                <input special="false">5</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Extremely Severe (&gt; 4 weeks)</description>
+                                <input special="false">6</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Injury - Unknown Severity</description>
+                                <input special="false">7</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 N/A to Standard Code</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="36"/>
+                    </basicentry>
+                    <basicentry index="32">
+                        <description>Epilepsy</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes - No medication needed</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes - Fits controlled by medication</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Yes - Medication taken but fits not controlled</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Other</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code 970. Not applicable</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="37"/>
+                    </basicentry>
+                    <basicentry index="33">
+                        <description>Has the patient had previous antipsychotic medication?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for the composite dependent having rows</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for the composite dependent having zero rows</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <composite_dependent index="34"/>
+                    </basicentry>
+                    <basicentry index="35">
+                        <description>Past Drug Use</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for the composite dependent having rows</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for the composite dependent having zero rows</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <composite_dependent index="36"/>
+                    </basicentry>
+                    <basicentry index="37">
+                        <description>Other Information about Client</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Possible mild learning difficulty</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Possible moderate learning difficulty</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Possible autistic spectrum disorder</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <!-- see bug 529 -->
+                            <translation standardCode="true">
+                                <description>Translation for 4 to std code 999</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code N/A</description>
+                                <input special="false"></input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="115"/>
+                    </basicentry>
+                    <basicentry index="39">
+                        <description>Client</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="116"/>
+                    </basicentry>
+                    <basicentry index="40">
+                        <description>Family</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="117"/>
+                    </basicentry>
+                    <basicentry index="41">
+                        <description>Notes</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="118"/>
+                    </basicentry>
+                    <basicentry index="42">
+                        <description>Other</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="0" column="119"/>
+                    </basicentry>
+                    <compositeentry index="34">
+                        <description>Previous antipsychotic Medication</description>
+                        <basicentry index="0">
+                            <description>Medication</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translate 0, 999 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">999</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="0" column="38"/>
+                            <mapping source="0" column="41"/>
+                            <mapping source="0" column="44"/>
+                            <mapping source="0" column="47"/>
+                            <mapping source="0" column="50"/>
+                            <mapping source="0" column="53"/>
+                            <mapping source="0" column="56"/>
+                            <mapping source="0" column="59"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Dose</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translate 0, 999 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">999</input>
+                                    <output></output>
+                                </translation>
+                                <translation standardCode="true">
+                                    <description>Translate unknown to 960. Data not known</description>
+                                    <input special="false">unknown</input>
+                                    <output>0</output>
+                                </translation>
+                            </translations>
+                            <unit index="0" abbreviation="mg" default="true">
+                            	<input>mgs</input>
+                            	<input>mg</input>
+                            </unit>
+                            <unit index="1" abbreviation="ml" default="false">
+                            	<input>mls</input>
+                            	<input>ml</input>
+                            </unit>
+                            <mapping source="0" column="39"/>
+                            <mapping source="0" column="42"/>
+                            <mapping source="0" column="45"/>
+                            <mapping source="0" column="48"/>
+                            <mapping source="0" column="51"/>
+                            <mapping source="0" column="54"/>
+                            <mapping source="0" column="57"/>
+                            <mapping source="0" column="60"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Frequency</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translate 0, 999 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">999</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="0" column="40"/>
+                            <mapping source="0" column="43"/>
+                            <mapping source="0" column="46"/>
+                            <mapping source="0" column="49"/>
+                            <mapping source="0" column="52"/>
+                            <mapping source="0" column="55"/>
+                            <mapping source="0" column="58"/>
+                            <mapping source="0" column="61"/>
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="36">
+                        <basicentry index="0">
+                            <description>Drug</description>
+                            <mapping source="0" column="62">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of cannabis to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of cannabis to drug cannabis (option 0)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>0</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="65">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of amphetamines to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of amphetamines to drug amphetamine (option 1)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>1</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="68">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of ecstasy to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of ecstasy to drug ecstasy (option 2)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>2</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="71">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of LSD to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of LSD to drug LSD (option 3)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>3</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="74">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Hallucinogenic Mushrooms to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Hallucinogenic Mushrooms to drug Hallucinogenic Mushrooms (option 4)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>4</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="77">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of cocaine to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of cocaine to drug cocaine (option 5)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>5</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="80">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of heroin to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of heroin to drug heroin (option 6)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>6</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="83">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Amyl/Butyl Nitrates to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Amyl/Butyl Nitrates to drug Amyl/Butyl Nitrates (option 7)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>7</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="86">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of solvents to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of solvents to drug solvents (option 8)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>8</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="89">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Khat to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Khat to drug Khat (option 9)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>9</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="92">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Ketamine to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Ketamine to drug Ketamine (option 10)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>10</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="95">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of GHB to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of GHB to drug GHB (option 11)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>11</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="98">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Barbiturates to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Barbiturates to drug Barbiturates (option 12)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>12</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="101">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Over Counter Medication to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Over Counter Medication to drug Over Counter Medication (option 13)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>13</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="104">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Benzodiazepines to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Benzodiazepines to drug Benzodiazepines (option 14)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>14</output>
+                                    </translation>
+                                </translations>
+                            </mapping>
+                            <mapping source="0" column="108">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Other Drug 1 to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Other Drug 1 to drug Other (option 15)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>15</output>
+                                    </translation>
+                                </translations>
+                                <otherText source="0" column="107"/>
+                            </mapping>
+                            <mapping source="0" column="112">
+                                <translations>
+                                    <translation standardCode="false">
+                                        <description>Translate 0 (none) frequency of use of Other Drug 2 to NULL</description>
+                                        <input special="false">0</input>
+                                        <output></output>
+                                    </translation>
+                                    <translation standardCode="false">
+                                        <description>Translate all other frequency of use of Other Drug 2 to drug Other (option 15)</description>
+                                        <input special="false">1</input>
+                                        <input special="false">2</input>
+                                        <input special="false">3</input>
+                                        <input special="false">4</input>
+                                        <output>15</output>
+                                    </translation>
+                                </translations>
+                                <otherText source="0" column="111"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Previous Freq. of Use</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 0. None to NULL</description>
+                                    <input special="false">0</input>
+                                    <output></output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Not more than 3 times</description>
+                                    <input special="false">1</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Occasional user (less than weekly)</description>
+                                    <input special="false">2</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Regular user (1-3 times weekly)</description>
+                                    <input special="false">3</input>
+                                    <output>3</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 4. Frequent user (almost everyday)</description>
+                                    <input special="false">4</input>
+                                    <output>4</output>
+                                </translation>
+                            </translations>
+                            <mapping source="0" column="62"/>
+                            <mapping source="0" column="65"/>
+                            <mapping source="0" column="68"/>
+                            <mapping source="0" column="71"/>
+                            <mapping source="0" column="74"/>
+                            <mapping source="0" column="77"/>
+                            <mapping source="0" column="80"/>
+                            <mapping source="0" column="83"/>
+                            <mapping source="0" column="86"/>
+                            <mapping source="0" column="89"/>
+                            <mapping source="0" column="92"/>
+                            <mapping source="0" column="95"/>
+                            <mapping source="0" column="98"/>
+                            <mapping source="0" column="101"/>
+                            <mapping source="0" column="104"/>
+                            <mapping source="0" column="108"/>
+                            <mapping source="0" column="112"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Duration of Previous Use (From)</description>
+                            <translations>
+                            	<translation standardCode="false">
+                            		<description>Translate 09/09/1899 to null</description>
+                            		<input special="false">09/09/1899</input>
+                            		<output></output>
+                           		</translation>
+                           	</translations>
+                            <formats>
+                                <format>dd/MM/yyyy</format>
+                            </formats>
+                            <mapping source="0" column="63"/>
+                            <mapping source="0" column="66"/>
+                            <mapping source="0" column="69"/>
+                            <mapping source="0" column="72"/>
+                            <mapping source="0" column="75"/>
+                            <mapping source="0" column="78"/>
+                            <mapping source="0" column="81"/>
+                            <mapping source="0" column="84"/>
+                            <mapping source="0" column="87"/>
+                            <mapping source="0" column="90"/>
+                            <mapping source="0" column="93"/>
+                            <mapping source="0" column="96"/>
+                            <mapping source="0" column="99"/>
+                            <mapping source="0" column="102"/>
+                            <mapping source="0" column="105"/>
+                            <mapping source="0" column="109"/>
+                            <mapping source="0" column="113"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Duration of Previous Use (To)</description>
+                            <formats>
+                                <format>dd/MM/yyyy</format>
+                            </formats>
+                            <mapping source="0" column="64"/>
+                            <mapping source="0" column="67"/>
+                            <mapping source="0" column="70"/>
+                            <mapping source="0" column="73"/>
+                            <mapping source="0" column="76"/>
+                            <mapping source="0" column="79"/>
+                            <mapping source="0" column="82"/>
+                            <mapping source="0" column="85"/>
+                            <mapping source="0" column="88"/>
+                            <mapping source="0" column="91"/>
+                            <mapping source="0" column="94"/>
+                            <mapping source="0" column="97"/>
+                            <mapping source="0" column="100"/>
+                            <mapping source="0" column="103"/>
+                            <mapping source="0" column="106"/>
+                            <mapping source="0" column="110"/>
+                            <mapping source="0" column="114"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

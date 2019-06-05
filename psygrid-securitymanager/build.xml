@@ -1,0 +1,306 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="openCDMS Control" basedir="." default="all">
+
+	<description>openCDMS Control</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+	<!-- Set global properties for the build -->
+	<property file="build.properties"/>
+	<property name="build.dir" value="${basedir}/build/classes"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="doc.dir" value="${basedir}/doc/"/>
+	<property name="signed.jars.dir" value="${basedir}/build/signed" />
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib"/>
+	<property name="psgyrid.securitymanager.jar" value="PsyGridSecurityManager.jar"/>
+	<property name="psygrid.security.jar" value="psygrid-security_${security.version}.jar"/>
+	<property name="doc.dist.dir" value="../psygrid-doc/dist"/>
+	<property name="doc.jar" value="psygrid-doc_${doc.version}.jar"/>
+	<property name="doc.jh.lib.dir" value="../psygrid-doc/jh2.0/javahelp/lib"/>
+
+	<path id="compile.class.path">
+		<dirset dir="${build.dir}">
+			<include name="**/classes"/>
+		</dirset>
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.dist.dir}">
+			<include name="common-client_*.jar" />
+		</fileset>
+		<fileset dir="${security.dist.dir}" includes="${psygrid.security.jar}"/>
+		<fileset dir="${doc.jh.lib.dir}">
+			<include name="jh.jar"/>
+			<include name="jsearch.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${dist.dir}"/>
+			<fileset dir="build"/>
+		</delete>
+	</target>
+
+	<target name="compile" description="Compile java source files" >
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+
+	<target name="jar-security-manager" description="Make application jar">
+		<jar destfile="${dist.dir}/PsyGridSecurityManager.jar">
+		   <manifest>
+                <attribute name="Main-Class" value="org.psygrid.securitymanager.Application"/>
+            </manifest>
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${src.dir}">
+				<include name="*.jks"/>
+				<include name="*.properties"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="copy-props" description="Copy keystores and properties">
+		<copy todir="${build.dir}\org\psygrid\securitymanager\properties" overwrite="true">
+			<fileset dir="${src.dir}\org\psygrid\securitymanager\properties">
+				<include name="*.jks"/>
+				<include name="*.properties"/>
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}\org\psygrid\securitymanager\icons" overwrite="true">
+			<fileset dir="${src.dir}\org\psygrid\securitymanager\icons">
+				<include name="*.gif"/>
+				<include name="*.jpg"/>
+				<include name="*.png"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}\org\psygrid\securitymanager\security\keystores" overwrite="true">
+			<fileset dir="${src.dir}\org\psygrid\securitymanager\security\keystores">
+				<include name="*.jks"/>
+				<include name="*.properties"/>
+			</fileset>
+		</copy>
+				
+		<!-- These files are copied into the src tree by the installer perl script.
+		     But it makes sense to do it here - so we can build the thing using ant alone. -->
+	    <dirname property="outputs.security.dir" file="${keystore.location}"/>
+	   	<copy overwrite="true" file="${outputs.security.dir}/default.jks"
+			tofile="${build.dir}/org/psygrid/securitymanager/security/keystores/defaultKeystore.jks"/>
+		<copy overwrite="true" file="${outputs.security.dir}/default.jks"
+			tofile="${build.dir}/org/psygrid/securitymanager/security/keystores/keystore.jks"/>
+		<copy overwrite="true" file="${outputs.security.dir}/client_truststore.jks"
+			tofile="${build.dir}/org/psygrid/securitymanager/security/keystores/truststore.jks"/>
+	</target>				
+				
+				
+	<!-- Grab the shorthash code of the current git commit or 0000000 if unable to run git -->
+	<target name="git-revision">
+
+		<!-- The git command is different on unix-like and windows OSes  -->
+		<condition property="git.command" value="git.cmd" else="git">
+	   		<os family="windows" />
+	  	</condition>
+
+		<exec executable="${git.command}" outputproperty="git.shorthash" errorproperty="git.error">
+			<arg value="log"/>
+			<arg value="--pretty=format:%h"/>
+			<arg value="-n"/>
+			<arg value="1"/>
+	    </exec>
+
+		<!-- If there were errors grabbing the git shorthash set git.revision it to 0000000 -->
+		<condition property="git.revision" value="${git.shorthash}" else="0000000">
+			<length string="${git.error}" trim="yes" length="0" when="equal"/>
+		</condition>
+
+		<echo message="Git revision = ${git.revision}"/>
+
+	</target>
+
+	<target name="configure-props" depends="git-revision" >
+		<copy file="${etc.dir}\templates\ldap.properties" tofile="${src.dir}\org\psygrid\securitymanager\properties\ldap.properties" overwrite="true" />
+		<replace file="${src.dir}\org\psygrid\securitymanager\properties\ldap.properties" propertyFile="build.properties">
+			<replacefilter token="@ldapDirectoryURL@" value="${org.psygrid.security.authentication.ldapDirectoryURL}" />
+			<replacefilter token="@version@" value="${securitymanager.version}" />
+			<replacefilter token="@baseDN@" value="${org.psygrid.security.authentication.ldap.baseDN}" />
+			<replacefilter token="@userBaseDN@" value="${org.psygrid.security.authentication.ldap.userBaseDN}" />
+		</replace>
+
+		<copy file="${etc.dir}\templates\Strings.properties" tofile="${src.dir}\org\psygrid\securitymanager\properties\Strings.properties" overwrite="true" />
+			<replace file="${src.dir}\org\psygrid\securitymanager\properties\Strings.properties" propertyFile="build.properties">
+			<replacefilter token="@version@" value="${securitymanager.version}" />
+		</replace>
+
+		<property name="client.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/templates/client.properties"
+			  tofile="${src.dir}/client.properties"
+			  overwrite="true"/>
+			<replace file="${src.dir}/client.properties"
+					 propertyFile="build.properties">
+			<replacefilter
+						    token="@version@"
+						    value="${securitymanager.version}"/>
+			<replacefilter
+						    token="@revision@"
+						    value="${client.revision}"/>
+			<replacefilter
+				    token="@system@"
+				    value="${client.system}"/>
+			<replacefilter
+						    token="@system.shortname@"
+						    value="${system.shortname}"/>
+			</replace>
+
+		<copy file="${etc.dir}/templates/commons-logging.properties"
+			  tofile="${src.dir}/org/psygrid/securitymanager/properties/commons-logging.properties"
+			  overwrite="true"/>
+		<replace file="${src.dir}/org/psygrid/securitymanager/properties/commons-logging.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@system@"
+			    value="${client.system}"/>
+		</replace>
+
+		<copy file="${etc.dir}/templates/security.properties"
+			  tofile="${src.dir}/org/psygrid/securitymanager/properties/security.properties"
+			  overwrite="true"/>
+		<replace file="${src.dir}/org/psygrid/securitymanager/properties/security.properties">
+			<replacefilter	token="@auth_scheme@"
+				    value="${org.psygrid.security.authentication.use_mutual_auth}"/>
+			<replacefilter token="@client_truststore_password@"
+				    value="${org.psygrid.collection.entry.security.clientTruststorePassword}"/>
+			<replacefilter token="@client_keystore_password@"
+				    value="${org.psygrid.collection.entry.security.clientKeystorePassword}"/>
+			<replacefilter token="@client_keystore_alias@"
+				    value="${org.psygrid.collection.entry.security.clientKeystoreAlias}"/>
+		</replace>
+
+		<copy file="${etc.dir}/psygrid-securitymanager.jnlp"
+			  tofile="${build.dir}/psygrid-securitymanager.jnlp"
+			  overwrite="true"/>
+		<replace file="${build.dir}/psygrid-securitymanager.jnlp"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@security.version@"
+			    value="${security.version}"/>
+			<replacefilter
+			    token="@system.shortname@"
+			    value="${system.shortname}"/>
+			<replacefilter
+				token="@doc.version@"
+				value="${doc.version}"/>
+			<replacefilter
+				token="@common.version@"
+				value="${common.version}"/>
+		</replace>
+	</target>
+
+	<target name="signjars" depends="jar-security-manager">
+		<copy todir="${signed.jars.dir}">
+			<fileset dir="${common.lib.dir}" includes="axis.jar"/>
+			<fileset dir="${common.lib.dir}" includes="bcprov-jdk15-131.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-codec-1.3.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-discovery-0.2.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-httpclient-3.1-alpha1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-logging-1.1.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xercesImpl.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xml-apis.jar"/>
+			<fileset dir="${common.lib.dir}" includes="dom4j-1.6.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="jaxrpc.jar"/>
+			<fileset dir="${common.lib.dir}" includes="jta-1.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="log4j-1.2.14.jar"/>
+			<fileset dir="${common.lib.dir}" includes="mail.jar"/>
+			<fileset dir="${common.lib.dir}" includes="opensaml-1.0.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="saaj.jar"/>
+			<fileset dir="${common.lib.dir}" includes="spring.jar"/>
+			<fileset dir="${common.lib.dir}" includes="wsdl4j-1.5.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xalan-2.6.0.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xmlsec-1.2.1.jar"/>
+			<fileset dir="${common.lib.dir}/client" includes="*.jar"/>
+			<fileset dir="${dist.dir}" includes="*.jar"/>
+			<fileset dir="${security.dist.dir}" includes="${psygrid.security.jar}"/>
+			<fileset dir="${common.dist.dir}" includes="common-client_*.jar"/>
+			<fileset dir="${doc.dist.dir}" includes="${doc.jar}"/>
+			<fileset dir="${doc.jh.lib.dir}" includes="jh.jar jsearch.jar"/>
+		</copy>
+		<signjar keystore="${keystore.location}" alias="${keystore.alias}"
+				storepass="${keystore.pass}" >
+				<fileset dir="${signed.jars.dir}" includes="*.jar"/>
+	    </signjar>
+	</target>
+
+	<target name="war" depends="signjars">
+		<zip destfile="${dist.dir}/psygrid-securitymanager.war">
+			<zipfileset dir="${build.dir}" includes="psygrid-securitymanager.jnlp" prefix="app"/>
+			<zipfileset dir="../psygrid-common/etc/icons" includes="opencdms.gif" prefix="app"/>
+			<zipfileset dir="${signed.jars.dir}" includes="*.jar" prefix="app"/>
+			<zipfileset dir="${common.lib.dir}/client" includes="jnlp-servlet.jar" prefix="WEB-INF/lib"/>
+			<zipfileset dir="${etc.dir}" includes="index.html"/>
+			<zipfileset dir="${etc.dir}" includes="web.xml" prefix="WEB-INF"/>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="stand-alone" depends="signjars">
+		<zip destfile="${dist.dir}/control-standalone.zip">
+			<zipfileset dir="${signed.jars.dir}" includes="*.jar" prefix="control/lib"/>
+			<zipfileset dir="${etc.dir}" includes="launcher.bat" prefix="control"/>
+		</zip>
+	</target>
+
+	<target name="all" description="Clean, init, compile, copy lib, jar, war, stand-alone">
+		<antcall target="clean" />
+		<antcall target="init" />
+		<antcall target="compile"/>
+		<antcall target="configure-props"/>
+		<antcall target="copy-props"/>
+		<antcall target="jar-security-manager"/>
+		<antcall target="war"/>
+		<antcall target="stand-alone"/>
+	</target>
+
+</project>
+
+
+
+
+
+
+
+

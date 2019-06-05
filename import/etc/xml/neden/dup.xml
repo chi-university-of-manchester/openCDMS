@@ -1,0 +1,128 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="9">
+        <description>Duration of Untreated Psychosis</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="5" column="2"/>
+            	<mapping source="5" column="3"/>
+            	<mapping source="5" column="4"/>
+            </emptydoc>
+            <interviewer source="5" column="4"/>
+            <interviewdate source="5" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>Onset of non-specific symptoms</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>Onset of Psychosis</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>1st Decision to seek care</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>1st Referral received by mental health services</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Onset of criteria treatment (OCT)</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Referral date to EIS</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Taken on by EIS</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="5" column="11"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Duration of prodromal period</description>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Delay in help seeking</description>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Delay in help-seeking pathway</description>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Delay within mental health services</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Delay in reaching EIS (client's involvement with other agencies prior to referral to EIS)</description>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Duration of untreated psychosis</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Duration of untreated illness</description>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Was help sought in the prodromal phase?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="5" column="12"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

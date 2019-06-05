@@ -1,0 +1,157 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="11">
+        <description>Premorbid Adjustment Scale Scoring Summary</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="28" column="2"/>
+            	<mapping source="28" column="3"/>
+            	<mapping source="28" column="4"/>
+           	</emptydoc>
+            <interviewer source="28" column="4"/>
+            <interviewdate source="28" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Sociability and withdrawal</description>
+                        <mapping source="28" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Peer relationships</description>
+                        <mapping source="28" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Scholastic performance</description>
+                        <mapping source="28" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Adaption to school</description>
+                        <mapping source="28" column="8"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Sociability and withdrawal</description>
+                        <mapping source="28" column="9"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Peer relationships</description>
+                        <mapping source="28" column="10"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Scholastic performance</description>
+                        <mapping source="28" column="11"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Adaption to school</description>
+                        <mapping source="28" column="12"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Social sexual aspects of life</description>
+                        <mapping source="28" column="13"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Sociability and withdrawal</description>
+                        <mapping source="28" column="14"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Peer relationships</description>
+                        <mapping source="28" column="15"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Scholastic performance</description>
+                        <mapping source="28" column="16"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>Adaption to school</description>
+                        <mapping source="28" column="17"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>Social sexual aspects of life</description>
+                        <mapping source="28" column="18"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>Sociability and withdrawal</description>
+                        <mapping source="28" column="19"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Peer relationships</description>
+                        <mapping source="28" column="20"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>Social sexual aspects of life</description>
+                        <mapping source="28" column="21"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>Education</description>
+                        <mapping source="28" column="22"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>Employed/At School</description>
+                        <mapping source="28" column="23"/>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Change in Work/School Performance</description>
+                        <mapping source="28" column="24"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>Job Change/Interrupted School Attendance</description>
+                        <mapping source="28" column="25"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>Establishment of Independence</description>
+                        <mapping source="28" column="26"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>Highest Level of Functioning Achieved in Patient's Life</description>
+                        <mapping source="28" column="27"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>Social Personal Adjustment</description>
+                        <mapping source="28" column="28"/>
+                    </basicentry>
+                    <basicentry index="29">
+                        <description>Degree of Interest in Life</description>
+                        <mapping source="28" column="29"/>
+                    </basicentry>
+                    <basicentry index="30">
+                        <description>Energy Level</description>
+                        <mapping source="28" column="30"/>
+                    </basicentry>
+                    <basicentry index="31">
+                        <description>Additional Information</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate null to standard code 970 not applicable</description>
+                        		<input special="false"></input>
+                        		<output>1</output>
+                       		</translation>
+                        </translations>
+                        <mapping source="28" column="31"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

@@ -1,0 +1,513 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="PsyGrid Transformers" basedir="." default="all">
+
+	<description>PsyGrid Transformers Ant build file</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+	<property file="build.properties"/>
+
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="gen.dir" value="${basedir}/gen"/>
+	<property name="doc.dir" value="${basedir}/doc"/>
+	<property name="common.lib.dir" value="../psygrid-common/lib"/>
+
+
+	<path id="compile.class.path">
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+
+	<taskdef
+		name="axis-java2wsdl"
+		classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask">
+		<classpath refid="compile.class.path" />
+	</taskdef>
+
+	<taskdef
+		name="axis-wsdl2java"
+		classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask">
+		<classpath refid="compile.class.path" />
+	</taskdef>
+
+   	<taskdef
+		name="xdoclet"
+       	classname="org.xdoclet.ant.XDocletTask">
+       	<classpath refid="compile.class.path" />
+   	</taskdef>
+
+	<taskdef
+		name="hibernatetool"
+		classname="org.hibernate.tool.ant.HibernateToolTask">
+ 		<classpath refid="compile.class.path" />
+	</taskdef>
+
+	<target name="clean-eclipse" if="eclipse.running" description="Clean up for Eclipse">
+		<delete failonerror="false">
+			<fileset dir="${src.dir}"
+					 includes="**/*.cfg.xml **/*.hbm.xml"
+			/>
+		</delete>
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+	<target name="clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${doc.dir}"/>
+			<fileset dir="${gen.dir}/org"/>
+		</delete>
+		<delete file="${dist.dir}/transformers.war"/>
+		<delete file="${etc.dir}/applicationContext.xml"/>
+		<delete file="${etc.dir}/context.xml"/>
+		<delete file="${src.dir}/applicationCtx.xml"/>
+		<delete file="${test.dir}/applicationContext.xml"/>
+		<delete file="${etc.dir}/wsdl/sha1transformer.wsdl"/>
+		<delete file="${etc.dir}/wsdl/postcodetransformer.wsdl"/>
+		<delete file="${etc.dir}/wsdl/datetransformer.wsdl"/>
+		<delete file="${etc.dir}/wsdl/externaltransformer.wsdl"/>
+		<delete file="${gen.dir}/server-config.wsdd"/>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${gen.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/sql"/>
+	</target>
+
+	<target name="compile-all" depends="init" description="Compile the java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}"/>
+			<src path="${gen.dir}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+	<target name="compile-subset" depends="init" description="Compile the java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+   	<target name="xdoclet2" depends="compile-subset" description="Generate Hibernate mapping and config files using XDoclet2">
+
+	    <xdoclet>
+
+	        <!-- the files that will be parsed for Hibernate XDoclet tags. -->
+	        <fileset dir="${src.dir}/${postcode.hibernate.package}">
+	            <include name="*.java"/>
+	        </fileset>
+
+	        <!-- generate the Hibernate mapping files -->
+	        <component
+	            classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+	            destdir="${build.dir}"
+	            version="${hibernate.version}"
+	        />
+
+	    	<!-- generate the Hibernate configuration file -->
+	    	<component
+	    		classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin"
+	    	 	destdir="${build.dir}"
+	    		version="${hibernate.version}"
+	    		jdbcdriver="${database.driver}"
+	    		dialect="${database.dialect}"
+	    		jdbcurl="${database.url}${database.schema.postcode}"
+	    		jdbcusername="${database.user}"
+	    		jdbcpassword="${database.password}"
+	    	/>
+
+		</xdoclet>
+
+   	</target>
+
+	<target name="do-drop-schema" if="do.drop.schema" description="Drop the database schema">
+		<sql
+		    driver="${database.driver}"
+		    url="${database.url}${database.schema.postcode}"
+		    userid="${database.user}"
+		    password="${database.password}"
+			classpathref="compile.class.path"
+			src="${dist.dir}/sql/drop-${database.provider}.sql"/>
+	</target>
+
+	<target name="init-drop-schema" description="Initialisation before do-drop-schema">
+		<condition property="do.drop.schema">
+			<and>
+				<istrue value="${schema.export}"/>
+				<available file="${dist.dir}/sql/drop-${database.provider}.sql"/>
+			</and>
+		</condition>
+	</target>
+
+	<target name="drop-schema" depends="init-drop-schema, do-drop-schema"
+		 	description="Drop the database schema, if the property for exporting the schema is set to true" />
+
+	<target name="generateschema" depends="xdoclet2, eclipse-refresh" description="Generate database schema">
+
+		<!-- run the export to the database (if export=true) -->
+		<hibernatetool destdir="${build.dir}">
+			<classpath location="${build.dir}"/>
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="${schema.export}"
+					 drop="false"/>
+  		</hibernatetool>
+
+		<!-- generate the "drop" SQL script, containing drop statements only -->
+		<hibernatetool destdir="${build.dir}">
+			<classpath location="${build.dir}"/>
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="true"
+					 create="false"
+					 outputfilename="drop.sql"/>
+  		</hibernatetool>
+
+		<!-- generate the "create" SQL script, containing no drop statements -->
+		<hibernatetool destdir="${build.dir}">
+			<classpath location="${build.dir}"/>
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="false"
+					 create="true"
+					 outputfilename="create.sql"/>
+  		</hibernatetool>
+
+		<copy todir="${src.dir}">
+			<fileset dir="${build.dir}">
+				<include name="**/*.cfg.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${src.dir}/${postcode.hibernate.package}">
+			<fileset dir="${build.dir}/${postcode.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- copy the drop and create scripts to files with provider specific names -->
+		<copy file="${build.dir}/drop.sql" tofile="${dist.dir}/sql/drop-${database.provider}.sql"/>
+		<copy file="${build.dir}/create.sql" tofile="${dist.dir}/sql/create-${database.provider}.sql"/>
+
+	</target>
+
+	<target name="generate-context-xml">
+		<copy file="${etc.dir}/templates/context.xml"
+			  tofile="${etc.dir}/context.xml"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/context.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url.server}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.postcode}"/>
+			<replacefilter
+			    token="@opcritURL@"
+			    value="${opcrit.url}"/>
+		</replace>
+	</target>
+
+	<target name="generate-application-ctx-xml">
+		<copy file="${etc.dir}/templates/applicationCtx.xml"
+			  tofile="${build.dir}/applicationCtx.xml"
+			  overwrite="true"/>
+		<replace file="${build.dir}/applicationCtx.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.postcode}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+			<replacefilter
+			    token="@opcritURL@"
+			    value="${opcrit.url}"/>
+		</replace>
+		<copy file="${build.dir}/applicationCtx.xml" tofile="${src.dir}/applicationCtx.xml"/>
+		<copy file="${build.dir}/applicationCtx.xml" tofile="${test.dir}/applicationContext.xml"/>
+	</target>
+
+	<target name="generate-application-context-xml">
+		<copy file="${etc.dir}/templates/applicationContext.xml"
+			  tofile="${etc.dir}/applicationContext.xml"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/applicationContext.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url.server}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.postcode}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+			<replacefilter
+			    token="@opcritURL@"
+			    value="${opcrit.url}"/>
+		</replace>
+	</target>
+
+	<target name="generate-all-xml"
+			depends="generate-context-xml, generate-application-ctx-xml, generate-application-context-xml"/>
+
+	<target name="prepare-datasource"
+		   depends="drop-schema,
+					generateschema,
+					generate-all-xml" />
+
+	<target name="export-wsdl" depends="compile-subset" description="Generate WSDL">
+
+		<!-- sha1 transformer web-service -->
+		<axis-java2wsdl
+			classname="org.psygrid.transformers.Sha1Transformer"
+			style="rpc"
+			namespace="urn:transformers.psygrid.org"
+			location="${transformers.url}/transformers/services/sha1transformer"
+			output="${etc.dir}/wsdl/sha1transformer.wsdl"
+			classpath="${build.dir}"
+		/>
+
+		<!-- soa transformer web-service -->
+		<axis-java2wsdl
+			classname="org.psygrid.transformers.PostCodeTransformer"
+			style="rpc"
+			namespace="urn:transformers.psygrid.org"
+			location="${transformers.url}/transformers/services/postcodetransformer"
+			output="${etc.dir}/wsdl/postcodetransformer.wsdl"
+			classpath="${build.dir}"
+		/>
+
+		<!-- date transformer web-service -->
+		<axis-java2wsdl
+			classname="org.psygrid.transformers.DateTransformer"
+			style="rpc"
+			namespace="urn:transformers.psygrid.org"
+			location="${transformers.url}/transformers/services/datetransformer"
+			output="${etc.dir}/wsdl/datetransformer.wsdl"
+			classpath="${build.dir}"
+		/>
+
+		<!-- external service transformer web-service -->
+		<axis-java2wsdl
+			classname="org.psygrid.transformers.ExternalTransformer"
+			style="rpc"
+			namespace="urn:transformers.psygrid.org"
+			location="${transformers.url}/transformers/services/externaltransformer"
+			output="${etc.dir}/wsdl/externaltransformer.wsdl"
+			classpath="${build.dir}"
+		/>
+
+	</target>
+
+	<target name="eclipse-refresh" if="eclipse.running" description="Refresh eclipse workspace">
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+	<target name="export-java" depends="export-wsdl, eclipse-refresh" description="Generate java and wsdd from wsdl">
+		<!-- sha1 transformer web-service -->
+		<axis-wsdl2java
+			deployscope="Application"
+			output="${gen.dir}"
+			serverside="true"
+			skeletondeploy="false"
+			url="${etc.dir}/wsdl/sha1transformer.wsdl"
+			verbose="true"
+			debug="true"
+		/>
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/transformers/deploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/deploy-sha1transformer.wsdd"
+		/>
+		<move file="${gen.dir}/org/psygrid/transformers/undeploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/undeploy-sha1transformer.wsdd"
+		/>
+
+		<!-- SOA transformer web-service -->
+		<axis-wsdl2java
+			deployscope="Application"
+			output="${gen.dir}"
+			serverside="true"
+			skeletondeploy="false"
+			url="${etc.dir}/wsdl/postcodetransformer.wsdl"
+			verbose="true"
+			debug="true"
+		/>
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/transformers/deploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/deploy-postcodetransformer.wsdd"
+		/>
+		<move file="${gen.dir}/org/psygrid/transformers/undeploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/undeploy-postcodetransformer.wsdd"
+		/>
+
+		<!-- Date transformer web-service -->
+		<axis-wsdl2java
+			deployscope="Application"
+			output="${gen.dir}"
+			serverside="true"
+			skeletondeploy="false"
+			url="${etc.dir}/wsdl/datetransformer.wsdl"
+			verbose="true"
+			debug="true"
+		/>
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/transformers/deploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/deploy-datetransformer.wsdd"
+		/>
+		<move file="${gen.dir}/org/psygrid/transformers/undeploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/undeploy-datetransformer.wsdd"
+		/>
+
+		<!-- External service transformer web-service -->
+		<axis-wsdl2java
+			deployscope="Application"
+			output="${gen.dir}"
+			serverside="true"
+			skeletondeploy="false"
+			url="${etc.dir}/wsdl/externaltransformer.wsdl"
+			verbose="true"
+			debug="true"
+		/>
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/transformers/deploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/deploy-externaltransformer.wsdd"
+		/>
+		<move file="${gen.dir}/org/psygrid/transformers/undeploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/transformers/undeploy-externaltransformer.wsdd"
+		/>
+
+		<!-- delete the generated files that we already have versions of -->
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}">
+				<include name="**/Sha1Transformer.java"/>
+				<include name="**/PostCodeTransformer.java"/>
+				<include name="**/DateTransformer.java"/>
+				<include name="**/ExternalTransformer.java"/>
+				<include name="**/*SoapBindingImpl.java"/>
+				<include name="**/*Fault.java"/>
+			</fileset>
+		</delete>
+
+		<!-- generate server-config.wsdd -->
+		<java
+		  	classname="org.apache.axis.utils.Admin"
+		  	fork="true"
+		  	failonerror="true"
+		  	classpathref="compile.class.path"
+		  	dir="${gen.dir}">
+		   	<arg value="server" />
+		    <arg file="${gen.dir}/org/psygrid/transformers/deploy-sha1transformer.wsdd" />
+		    <arg file="${gen.dir}/org/psygrid/transformers/deploy-postcodetransformer.wsdd" />
+		    <arg file="${gen.dir}/org/psygrid/transformers/deploy-datetransformer.wsdd" />
+			<arg file="${gen.dir}/org/psygrid/transformers/deploy-externaltransformer.wsdd" />
+		</java>
+
+	</target>
+
+	<target name="build" depends="compile-all" description="Build jars etc">
+
+		<war
+			destfile="${dist.dir}/transformers.war"
+			webxml="${etc.dir}/web.xml">
+			<classes dir="${build.dir}">
+				<exclude name="**/*.sql"/>
+				<exclude name="**/applicationCtx.xml"/>
+			</classes>
+			<classes dir="${src.dir}">
+				<include name="**/*.xml"/>
+				<exclude name="applicationCtx.xml"/>
+			</classes>
+			<classes dir="${etc.dir}/wsdl">
+				<include name="*.wsdl"/>
+			</classes>
+			<classes dir="${etc.dir}/exe">
+				<include name="RiskFileCalc.exe"/>
+			</classes>
+			<webinf dir="${gen.dir}">
+				<include name="server-config.wsdd"/>
+			</webinf>
+			<webinf dir="${etc.dir}">
+				<include name="applicationContext.xml"/>
+			</webinf>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+
+	</target>
+
+	<target name="all" depends="clean, compile-subset, export-java, prepare-datasource, build"/>
+
+	<target name="deploy">
+		<copy file="${dist.dir}/transformers.war" todir="/opt/tomcat/webapps"/>
+	</target>
+
+</project>

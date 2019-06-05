@@ -1,0 +1,35 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <transport name="http" pivot="java:org.apache.axis.transport.http.HTTPSender"/>
+  <globalConfiguration >
+   <requestFlow >
+ <!--   <handler type="java:org.apache.ws.axis.security.WSDoAllSender" >
+     <parameter name="action" value="UsernameToken"/>
+     <parameter name="user" value="wss4j"/>
+     <parameter name="passwordCallbackClass" value="org.psygrid.security.attributeauthority.test.ClientPWCallback"/>
+     <parameter name="passwordType" value="PasswordDigest"/>
+     </handler>-->
+ <!--    <handler type="java:org.apache.ws.axis.security.WSDoAllSender" >
+         <parameter name="action" value="Timestamp SAMLTokenUnsigned"/>
+         <parameter name="samlPropFile" value="saml.properties"/>
+    </handler>-->
+   </requestFlow >
+  </globalConfiguration >
+</deployment>

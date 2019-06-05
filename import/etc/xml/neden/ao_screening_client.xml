@@ -1,0 +1,3006 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="21">
+        <description>Adverse Outcomes Screening Questionnaire (Client)</description>
+        <occurrence index="0">
+            <description>6 Months</description>
+            <emptydoc>
+            	<mapping source="42" column="2"/>
+            	<mapping source="42" column="3"/>
+            	<mapping source="42" column="4"/>
+            	<mapping source="43" column="2"/>
+            	<mapping source="43" column="3"/>
+            	<mapping source="43" column="4"/>
+            </emptydoc>
+            <interviewer source="42" column="4"/>
+            <interviewdate source="42" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="0">
+                        <description>In the last 6 months, have you thought of harming yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q2)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="42" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>If so, how often? (code most frequent category)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. At least once a day</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. At least once a week</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. At least once a month</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. At least once in the last six months</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (please specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="42" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>In the last 6 months, have you harmed yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q3)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="42" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>If so, how many times?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="42" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>If you harmed yourself, did you go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="42" column="24"/>
+                    </basicentry>
+                    <compositeentry index="4">
+                        <description>How did you harm yourself? (record all relevant categories)</description>
+                        <basicentry index="0">
+                            <mapping source="42" column="9">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Knife/Razor</description>
+                            			<input special="false">True</input>
+                            			<output>0</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="10">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Pills/drugs/alcohol</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="11">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Hanging</description>
+                            			<input special="false">True</input>
+                            			<output>2</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="12">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Suffocation</description>
+                            			<input special="false">True</input>
+                            			<output>3</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="13">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Jump from high place</description>
+                            			<input special="false">True</input>
+                            			<output>4</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="14">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Throw self in front of vehicle / in vehicle</description>
+                            			<input special="false">True</input>
+                            			<output>5</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="15">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Starvation</description>
+                            			<input special="false">True</input>
+                            			<output>6</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="16">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Fire/burning</description>
+                            			<input special="false">True</input>
+                            			<output>7</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="17">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Drowning</description>
+                            			<input special="false">True</input>
+                            			<output>8</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="18">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Gun</description>
+                            			<input special="false">True</input>
+                            			<output>9</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="19">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Other (please specify)</description>
+                            			<input special="false">True</input>
+                            			<output>10</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                                	<otherText source="42" column="23"/>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="20">
+                            	<translations>
+                            		<translation standardCode="true">
+                            			<description>Translate True to std code 980 Refused</description>
+                            			<input special="false">True</input>
+                            			<output>2</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="21">
+                            	<translations>
+                            		<translation standardCode="true">
+                            			<description>Translate True to std code 970 not applicable</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="42" column="22">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to std code 960 data not known</description>
+                            			<input special="false">True</input>
+                            			<output>0</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="6">
+                        <description>In the last 6 months, have you thought of physically harming others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q4)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="5"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>If so, how often? (code most frequent category)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. At least once a day</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. At least once a week</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. At least once a month</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. At least once in the last six months</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (please specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="6"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>In the last 6 months have you threatened others with violence?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q5)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="17"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>If so, how often?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="18"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>If so, how often with a weapon?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="29"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>In the last 6 months, have you physically harmed others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q6)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="38"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>If so, how often?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="39"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>Have you pushed or grabbed anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="50"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>Have you slapped, scratched or bitten anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="51"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Have you choked or strangled anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="52"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>Have you kicked anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="53"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Have you hit anyone with a fist or beaten up anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="54"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>Have you hit anyone with a blunt instrument or object?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="55"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>Have you used a knife or any sharp instrument?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="56"/>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Have you tried to physically force anyone to have sex against their will?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="57"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>Have you done anything else that might be considered violent? (include only violence to persons)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="58"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>If so, what?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Hit with car</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Arson/fire/burns</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Threw liquid at someone</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Maced someone (or other spray/gas)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Fired gun</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Other (please specify)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="59"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>Injury to victim (record most serious)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No injury</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Bruises, cuts</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Broken bones/teeth</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Unconscious, internal injuries</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Stab/gunshot</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Death</description>
+                                <input special="false">5</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Other</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="60"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>If the victim(s) was injured, did any go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="43" column="61"/>
+                    </basicentry>
+                    <compositeentry index="8">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="43" column="7">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="8">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="9">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="10">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="11">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="12">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="43" column="16"/>
+                        	</mapping>                            
+                        	<mapping source="43" column="13">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="14">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="15">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="11">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="43" column="19">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="20">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="21">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="22">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="23">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="24">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="43" column="28"/>
+                        	</mapping>                            
+                        	<mapping source="43" column="25">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="26">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="27">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="13">
+                        <description>What type of weapon? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="43" column="30">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Knife option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Knife option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="31">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Blunt Instrument option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Blunt Instrument option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="32">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Gun option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Gun option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="33">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="43" column="37"/>
+                        	</mapping>                            
+                        	<mapping source="43" column="34">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="35">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="36">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="16">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="43" column="40">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="41">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="42">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="43">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="44">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="45">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="43" column="49"/>
+                        	</mapping>                            
+                        	<mapping source="43" column="46">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="47">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="43" column="48">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="69" column="2"/>
+            	<mapping source="69" column="3"/>
+            	<mapping source="69" column="4"/>
+            	<mapping source="70" column="2"/>
+            	<mapping source="70" column="3"/>
+            	<mapping source="70" column="4"/>
+            </emptydoc>
+            <interviewer source="69" column="4"/>
+            <interviewdate source="69" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="0">
+                        <description>In the last 6 months, have you thought of harming yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q2)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="69" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>If so, how often? (code most frequent category)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. At least once a day</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. At least once a week</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. At least once a month</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. At least once in the last six months</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (please specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="69" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>In the last 6 months, have you harmed yourself?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q3)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="69" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>If so, how many times?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="69" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>If you harmed yourself, did you go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="69" column="24"/>
+                    </basicentry>
+                    <compositeentry index="4">
+                        <description>How did you harm yourself? (record all relevant categories)</description>
+                        <basicentry index="0">
+                            <mapping source="69" column="9">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Knife/Razor</description>
+                            			<input special="false">True</input>
+                            			<output>0</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="10">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Pills/drugs/alcohol</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="11">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Hanging</description>
+                            			<input special="false">True</input>
+                            			<output>2</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="12">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Suffocation</description>
+                            			<input special="false">True</input>
+                            			<output>3</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="13">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Jump from high place</description>
+                            			<input special="false">True</input>
+                            			<output>4</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="14">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Throw self in front of vehicle / in vehicle</description>
+                            			<input special="false">True</input>
+                            			<output>5</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="15">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Starvation</description>
+                            			<input special="false">True</input>
+                            			<output>6</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="16">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Fire/burning</description>
+                            			<input special="false">True</input>
+                            			<output>7</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="17">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Drowning</description>
+                            			<input special="false">True</input>
+                            			<output>8</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="18">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Gun</description>
+                            			<input special="false">True</input>
+                            			<output>9</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="19">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option Other (please specify)</description>
+                            			<input special="false">True</input>
+                            			<output>10</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                                	<otherText source="69" column="23"/>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="20">
+                            	<translations>
+                            		<translation standardCode="true">
+                            			<description>Translate True to std code 980 Refused</description>
+                            			<input special="false">True</input>
+                            			<output>2</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="21">
+                            	<translations>
+                            		<translation standardCode="true">
+                            			<description>Translate True to std code 970 not applicable</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="69" column="22">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to std code 960 data not known</description>
+                            			<input special="false">True</input>
+                            			<output>0</output>
+                                	</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                                	</translation>
+                            	</translations>
+                            </mapping>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="6">
+                        <description>In the last 6 months, have you thought of physically harming others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q4)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="5"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>If so, how often? (code most frequent category)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. At least once a day</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. At least once a week</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. At least once a month</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. At least once in the last six months</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (please specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="6"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>In the last 6 months have you threatened others with violence?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q5)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="17"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>If so, how often?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="18"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>If so, how often with a weapon?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="29"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>In the last 6 months, have you physically harmed others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No (skip to Q6)</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="38"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>If so, how often?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Once</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. 2 to 5 times</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. &gt; 5 times</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="39"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>Have you pushed or grabbed anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="50"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>Have you slapped, scratched or bitten anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="51"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Have you choked or strangled anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="52"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>Have you kicked anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="53"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Have you hit anyone with a fist or beaten up anyone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="54"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>Have you hit anyone with a blunt instrument or object?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="55"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>Have you used a knife or any sharp instrument?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="56"/>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Have you tried to physically force anyone to have sex against their will?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="57"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>Have you done anything else that might be considered violent? (include only violence to persons)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="58"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>If so, what?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Hit with car</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Arson/fire/burns</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Threw liquid at someone</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Maced someone (or other spray/gas)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Fired gun</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Other (please specify)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="59"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>Injury to victim (record most serious)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No injury</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Bruises, cuts</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Broken bones/teeth</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Unconscious, internal injuries</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Stab/gunshot</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Death</description>
+                                <input special="false">5</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Other</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="60"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>If the victim(s) was injured, did any go to general hospital?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 7 to std code 980 Refused</description>
+                                <input special="false">7</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 8 to std code 970 Not Applicable</description>
+                                <input special="false">8</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code 960 Data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="70" column="61"/>
+                    </basicentry>
+                    <compositeentry index="8">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="70" column="7">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="8">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="9">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="10">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="11">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="12">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="70" column="16"/>
+                        	</mapping>                            
+                        	<mapping source="70" column="13">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="14">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="15">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="11">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="70" column="19">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="20">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="21">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="22">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="23">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="24">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="70" column="28"/>
+                        	</mapping>                            
+                        	<mapping source="70" column="25">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="26">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="27">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="13">
+                        <description>What type of weapon? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="70" column="30">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Knife option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Knife option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="31">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Blunt Instrument option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Blunt Instrument option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="32">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Gun option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Gun option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="33">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="70" column="37"/>
+                        	</mapping>                            
+                        	<mapping source="70" column="34">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="35">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="36">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="16">
+                        <description>If so, who? (record all relevant categories)</description>
+                        <basicentry index="0">
+                        	<mapping source="70" column="40">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Family option present</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Family option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="41">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Friend option present</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Friend option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="42">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Health/care staff option present</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Health/care staff option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="43">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Police option present</description>
+                        				<input special="false">True</input>
+                        				<output>3</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Police option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="44">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Stranger option present</description>
+                        				<input special="false">True</input>
+                        				<output>4</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Stranger option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="45">
+                        		<translations>
+                        			<translation standardCode="false">
+                        				<description>Translate True to Other option present</description>
+                        				<input special="false">True</input>
+                        				<output>5</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Other option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        		<otherText source="70" column="49"/>
+                        	</mapping>                            
+                        	<mapping source="70" column="46">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Refused option present (std code 980)</description>
+                        				<input special="false">True</input>
+                        				<output>2</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Refused option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="47">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to NA option present (std code 970)</description>
+                        				<input special="false">True</input>
+                        				<output>1</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to NA option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        	<mapping source="70" column="48">
+                        		<translations>
+                        			<translation standardCode="true">
+                        				<description>Translate True to Don't Know option present (std code 960)</description>
+                        				<input special="false">True</input>
+                        				<output>0</output>
+                        			</translation>
+                        			<translation standardCode="false">
+                        				<description>Translate False to Don't Know option absent (null)</description>
+                        				<input special="false">False</input>
+                        				<output></output>
+                        			</translation>
+                        		</translations>
+                        	</mapping>                            
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

@@ -1,0 +1,29 @@
+
+# /
+/bin
+/build
+/dist
+/doc
+/gen
+
+# /etc/
+/etc/security
+/etc/applicationContext.xml
+/etc/randomization.properties
+
+# /etc/wsdl/
+/etc/wsdl/randomization.wsdl
+
+# /gen/
+/gen/org
+/gen/server-config.wsdd
+
+# /src/
+/src/hibernate.cfg.xml
+/src/applicationCtx.xml
+
+# /src/org/psygrid/randomization/model/hibernate/
+/src/org/psygrid/randomization/model/hibernate/Persistent.hbm.xml
+
+# /test/
+/test/applicationContext.xml

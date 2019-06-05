@@ -1,0 +1,2171 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="17">
+        <description>Client Sociodemographic and Service Receipt Inventory (CSSRI - EU)</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="8" column="2"/>
+            	<mapping source="8" column="3"/>
+            	<mapping source="8" column="4"/>
+            	<mapping source="9" column="2"/>
+            	<mapping source="9" column="3"/>
+            	<mapping source="9" column="4"/>
+            	<mapping source="10" column="2"/>
+            	<mapping source="10" column="3"/>
+            	<mapping source="10" column="4"/>
+            	<mapping source="11" column="2"/>
+            	<mapping source="11" column="3"/>
+            	<mapping source="11" column="4"/>
+            	<mapping source="12" column="2"/>
+            	<mapping source="12" column="3"/>
+            	<mapping source="12" column="4"/>
+            	<mapping source="13" column="2"/>
+            	<mapping source="13" column="3"/>
+            	<mapping source="13" column="4"/>
+            	<mapping source="73" column="2"/>
+            	<mapping source="73" column="3"/>
+            	<mapping source="73" column="4"/>
+           	</emptydoc>
+            <interviewer source="8" column="4"/>
+            <interviewdate source="8" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>Sex</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Female</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Male</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="8" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>Marital status</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Single/unmarried</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Married</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Separated</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Divorced</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Widow/widower</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Cohabiting - not married</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                        </translations>
+                        <mapping source="8" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>What is your ethnic group</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. White - British</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. White - Irish</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. White - Other White Background</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Asian - Indian</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Asian - Pakistani</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Asian - Bangladeshi</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Asian - Other Asian Background</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Black - Caribbean</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Black - African</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Black - Other Black Background</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. Mixed - White and Black Caribbean</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Mixed - White and Black African</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 13. Mixed - White and Asian</description>
+                                <input special="false">13</input>
+                                <output>12</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 14. Mixed - Other Mixed Background</description>
+                                <input special="false">14</input>
+                                <output>13</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 15. Other Ethnic Groups - Chinese</description>
+                                <input special="false">15</input>
+                                <output>14</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 16. Other Ethnic Groups - Other Ethnic Group</description>
+                                <input special="false">16</input>
+                                <output>15</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for anything else to std code 999</description>
+                                <input special="true">*</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="8" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Country of birth</description>
+                        <mapping source="8" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Mother tongue</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. English language</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Other language (but having good knowledge of English language)</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Other language (and having poor or no knowledge of English language)</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="8" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Number of years schooling in general education</description>
+                        <mapping source="8" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Highest completed level of education</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Primary education or less</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Secondary education</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Tertiary/further education</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Other general education</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="8" column="11"/>
+                    </basicentry>
+                    <compositeentry index="8">
+                        <basicentry index="0">
+                            <description>Education/Training</description>
+                            <mapping source="8" column="12">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 1. Specific vocational training (&lt; 1 year)</description>
+                            			<input special="false">True</input>
+                            			<output>0</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="13">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 2. Specific vocational training (&gt; 1 year)</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="14">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 3. Tertiary level qualification/diploma</description>
+                            			<input special="false">True</input>
+                            			<output>2</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="15">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 4. University degree (undergraduate)</description>
+                            			<input special="false">True</input>
+                            			<output>3</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="16">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 5. University higher degree (postgraduate)</description>
+                            			<input special="false">True</input>
+                            			<output>4</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="17">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate True to option 6. Other vocational training</description>
+                            			<input special="false">True</input>
+                            			<output>5</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                            <mapping source="8" column="18">
+                            	<translations>
+                            		<translation standardCode="true">
+                            			<description>Translate True to standard code N/A</description>
+                            			<input special="false">True</input>
+                            			<output>1</output>
+                           			</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate False to null</description>
+                            			<input special="false">False</input>
+                            			<output></output>
+                           			</translation>
+                           		</translations>
+                            </mapping>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="9">
+                        <description>What is your usual/normal living situation now?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Living alone (+/- children)</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Living with husband/wife (+/- children)</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Living together as a couple</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Living with parents</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Living with other relatives</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Living with others</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 9 to std code data not known</description>
+                                <input special="false">9</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="9" column="6"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Kind of accomodation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Domestic / family - Owner occupied flat or house</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Domestic / family - Privately rented flat or house</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Domestic / family - Rented from local authority/municipality or housing association/co-operative</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Community (non-hospital) - Overnight facility, 24-hour staffed</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Community (non-hospital) - Overnight facility, staffed (not 24-hour)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Community (non-hospital) - Overnight facility, unstaffed at all times</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Hospital - Acute psychiatric ward</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Hospital - Rehabilitation psychiatric ward</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Hospital - Long-stay psychiatric ward</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Hospital - General medical ward</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. Homeless / roofless</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Other</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                        </translations>
+                        <mapping source="9" column="7">
+                        	<otherText source="9" column="8"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>How many adults live there? (over the age of 18, including the patient)</description>
+                        <mapping source="9" column="9"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>And how many children? (under the age of 18)</description>
+                        <mapping source="9" column="10"/>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>Have you lived anywhere else in the last 3 months</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">2</input>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="9" column="11"/>
+                    </basicentry>
+                    <compositeentry index="16">
+                        <description>If yes: please complete the table.</description>
+                        <basicentry index="0">
+                            <description>Accomodation type</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Domestic / family - Owner occupied flat or house</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Domestic / family - Privately rented flat or house</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Domestic / family - Rented from local authority/municipality or housing association/co-operative</description>
+                                    <input special="false">3</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 4. Community (non-hospital) - Overnight facility, 24-hour staffed</description>
+                                    <input special="false">4</input>
+                                    <output>3</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 5. Community (non-hospital) - Overnight facility, staffed (not 24-hour)</description>
+                                    <input special="false">5</input>
+                                    <output>4</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 6. Community (non-hospital) - Overnight facility, unstaffed at all times</description>
+                                    <input special="false">6</input>
+                                    <output>5</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 7. Hospital - Acute psychiatric ward</description>
+                                    <input special="false">7</input>
+                                    <output>6</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 8. Hospital - Rehabilitation psychiatric ward</description>
+                                    <input special="false">8</input>
+                                    <output>7</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 9. Hospital - Long-stay psychiatric ward</description>
+                                    <input special="false">9</input>
+                                    <output>8</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 10. Hospital - General medical ward</description>
+                                    <input special="false">10</input>
+                                    <output>9</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 11. Homeless / roofless</description>
+                                    <input special="false">11</input>
+                                    <output>10</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 12. Other</description>
+                                    <input special="false">12</input>
+                                    <output>11</output>
+                                </translation>
+                            </translations>
+	                        <mapping source="9" column="12"/>
+	                        <mapping source="9" column="14"/>
+	                        <mapping source="9" column="16"/>
+	                        <mapping source="9" column="18"/>
+	                        <mapping source="9" column="20"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Number of days in the last 3 months</description>
+	                        <mapping source="9" column="13"/>
+	                        <mapping source="9" column="15"/>
+	                        <mapping source="9" column="17"/>
+	                        <mapping source="9" column="19"/>
+	                        <mapping source="9" column="21"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="2">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="18">
+                        <description>If employed: state occupation</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Manager/administrator</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Professional (eg health, teaching, legal)</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Associate professional (eg technical, nursing)</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Clerical worker /secretary</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Skilled labourer (eg building, electrical etc.)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Services/sales (eg retail)   </description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Factory worker</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Other</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="12">
+                        	<otherText source="10" column="13"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>How many days have you been absent from work owing to illness within the last 3 months?</description>
+                        <mapping source="10" column="14"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>If unemployed: Number of weeks unemployed within the last 3 months</description>
+                        <mapping source="10" column="15"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Do you receive any state benefits?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="20"/>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Income support (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="21"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>Jobseeker's allowance (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="22"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>Disability living allowance</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="23"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>Statutory sick pay (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="24"/>
+                    </basicentry>
+                    <basicentry index="30">
+                        <description>Housing benefit (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="25"/>
+                    </basicentry>
+                    <basicentry index="32">
+                        <description>State pension (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="26"/>
+                    </basicentry>
+                    <basicentry index="33">
+                        <description>Child benefit (National variant)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="27"/>
+                    </basicentry>
+                    <basicentry index="34">
+                        <description>What is your main income source?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Salary/Wage</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. State benefits</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Pension</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Family support (e.g. from spouse)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="29">
+                        	<otherText source="10" column="30"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="35">
+                        <description>What is your total personal gross income from all sources? (Note: if  gross income not known, please give net income, i.e. after tax and other deductions)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Less than £149 weekly / £649 monthly / £7785 yearly</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. £150 - £204 weekly / £650 - £885 monthly / £7,786 - £10,635 yearly</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. £205 - £279 weekly / £886 - £1,208 monthly / £10,636 - £14,504 yearly</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. £280 - £392 weekly / £1,209 - £1,699 monthly / £14,505 - £20,394 yearly</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. More than £393 weekly / £1,700 monthly / £20,395 yearly</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="31"/>
+                    </basicentry>
+                    <basicentry index="36">
+                        <description>Does this include all of your benefits (housing and grants)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. No</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code 999</description>
+                                <input special="false">999</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="32"/>
+                    </basicentry>
+                    <basicentry index="37">
+                        <description>What type of income did you state?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option Gross income</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Net income</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="10" column="33"/>
+                    </basicentry>
+                    <compositeentry index="17">
+                        <description>What is your employment status? (Include up to two options)</description>
+                        <basicentry index="0">
+                            <description>What is your employment status?</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Paid or self employment</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Voluntary employment</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Sheltered employment</description>
+                                    <input special="false">3</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 4. Unemployed</description>
+                                    <input special="false">4</input>
+                                    <output>3</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 5. Student</description>
+                                    <input special="false">5</input>
+                                    <output>4</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 6. Housewife/husband</description>
+                                    <input special="false">6</input>
+                                    <output>5</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 7. Retired</description>
+                                    <input special="false">7</input>
+                                    <output>6</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 8. Other</description>
+                                    <input special="false">8</input>
+                                    <output>7</output>
+                                </translation>
+                            </translations>
+                            <mapping source="10" column="6">
+                            	<otherText source="10" column="7"/>
+                          	</mapping>
+                            <mapping source="10" column="9">
+                            	<otherText source="10" column="10"/>
+                          	</mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Full or part time?</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Full time</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Part time</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                            </translations>
+                            <mapping source="10" column="8"/>
+                            <mapping source="10" column="11"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="3">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="42">
+                        <description>*Please also estimate total GP contacts over past 12 months</description>
+                        <mapping source="11" column="72"/>
+                    </basicentry>
+                    <basicentry index="43">
+                        <description>Over the last 3 months, has the patient been in contact with the criminal justice services?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="11" column="73"/>
+                    </basicentry>
+                    <basicentry index="45">
+                        <description>How many contacts with the police?</description>
+                        <mapping source="11" column="74"/>
+                    </basicentry>
+                    <basicentry index="46">
+                        <description>How many nights spent in a police cell or prison?</description>
+                        <mapping source="11" column="75"/>
+                    </basicentry>
+                    <basicentry index="47">
+                        <description>How many psychiatric assessments whilst in custody?</description>
+                        <mapping source="11" column="76"/>
+                    </basicentry>
+                    <basicentry index="48">
+                        <description>How many civil court appearances?</description>
+                        <mapping source="11" column="77"/>
+                    </basicentry>
+                    <basicentry index="49">
+                        <description>How many criminal court appearances?</description>
+                        <mapping source="11" column="78"/>
+                    </basicentry>
+                    <compositeentry index="38">
+                        <description>Please list any use of inpatient hospital services over the last 12 months. (Note: see manual for definitions)</description>
+                        <basicentry index="0">
+                            <description>Service</description>
+                            <mapping source="11" column="5">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 999, 666 and null values to null (no Acute psychiatric ward admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Acute psychiatric ward admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>0</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="7">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Psychiatric rehabilitation ward admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Psychiatric rehabilitation ward admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>1</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="9">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Long-stay ward admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Long-stay ward admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>2</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="11">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Emergency / crisis centre admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Emergency / crisis centre admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>3</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="13">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no General medical ward admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to General medical ward admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>4</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="16">
+                            	<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other admissions)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other admissions option</description>
+                            			<input special="true">gt0</input>
+                            			<output>5</output>
+                            		</translation>
+                            	</translations>
+                            	<otherText source="11" column="15"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Admissions</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no admissions)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                            <mapping source="11" column="5"/>
+                            <mapping source="11" column="7"/>
+                            <mapping source="11" column="9"/>
+                            <mapping source="11" column="11"/>
+                            <mapping source="11" column="13"/>
+                            <mapping source="11" column="16"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Total number of inpatient days (over the last 12 months)</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no days)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                            <mapping source="11" column="6"/>
+                            <mapping source="11" column="8"/>
+                            <mapping source="11" column="10"/>
+                            <mapping source="11" column="12"/>
+                            <mapping source="11" column="14"/>
+                            <mapping source="11" column="17"/>
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="39">
+                        <description>Please list any use of outpatient hospital services over the last 3 months. (Note: see manual for definitions)</description>
+                        <basicentry index="0">
+                            <description>Service</description>
+                            <mapping source="11" column="18">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Accident and Emergency dept attendances)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Accident and Emergency dept option</description>
+                            			<input special="true">gt0</input>
+                            			<output>0</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="19">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Psychiatric outpatient visit appointments)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Psychiatric outpatient visit appointments option</description>
+                            			<input special="true">gt0</input>
+                            			<output>1</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="20">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other hospital outpatient visit appointments)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other hospital outpatient visit appointments option</description>
+                            			<input special="true">gt0</input>
+                            			<output>2</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="21">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Day hospital attendances)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Day hospital attendances option</description>
+                            			<input special="true">gt0</input>
+                            			<output>3</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="23">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other appointments)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other appointments option</description>
+                            			<input special="true">gt0</input>
+                            			<output>4</output>
+                            		</translation>
+                            	</translations>
+                            	<otherText source="11" column="22"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Number of units received (over the last 3 months)</description>
+                          	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no Other appointments)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                            <mapping source="11" column="18"/>
+                            <mapping source="11" column="19"/>
+                            <mapping source="11" column="20"/>
+                            <mapping source="11" column="21"/>
+                            <mapping source="11" column="23"/>
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="40">
+                        <description>Please list any use of community-based day services over the last 3 months. (Note: see manual for definitions)</description>
+                        <basicentry index="0">
+                            <description>Service</description>
+                            <mapping source="11" column="24">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Community mental health centre use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Community mental health centre option</description>
+                            			<input special="true">gt0</input>
+                            			<output>0</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="26">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Day care centre use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Day care centre option</description>
+                            			<input special="true">gt0</input>
+                            			<output>1</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="28">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Group therapy use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Group therapy option</description>
+                            			<input special="true">gt0</input>
+                            			<output>2</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="30">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Sheltered workshop use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Sheltered workshop option</description>
+                            			<input special="true">gt0</input>
+                            			<output>3</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="32">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Specialist education use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Specialist education option</description>
+                            			<input special="true">gt0</input>
+                            			<output>4</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="35">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other use)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other option</description>
+                            			<input special="true">gt0</input>
+                            			<output>5</output>
+                            		</translation>
+                            	</translations>
+                            	<otherText source="11" column="34"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Number of attendances</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no admissions)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                            <mapping source="11" column="24"/>
+                            <mapping source="11" column="26"/>
+                            <mapping source="11" column="28"/>
+                            <mapping source="11" column="30"/>
+                            <mapping source="11" column="32"/>
+                            <mapping source="11" column="35"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Average duration of attendance</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no admissions)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                           	<unit index="1" abbreviation="hrs" default="true"/>
+                            <mapping source="11" column="25"/>
+                            <mapping source="11" column="27"/>
+                            <mapping source="11" column="29"/>
+                            <mapping source="11" column="31"/>
+                            <mapping source="11" column="33"/>
+                            <mapping source="11" column="36"/>
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="41">
+                        <description>Please list any other primary and community care contacts over the last 3 months (Note: see manual for definitions)</description>
+                        <basicentry index="0">
+                            <description>Service</description>
+                            <mapping source="11" column="38">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Psychiatrist contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Psychiatrist option</description>
+                            			<input special="true">gt0</input>
+                            			<output>0</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="41">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Psychologist contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Psychologist option</description>
+                            			<input special="true">gt0</input>
+                            			<output>1</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="44">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Primary care physician contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Primary care physician option</description>
+                            			<input special="true">gt0</input>
+                            			<output>2</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="47">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Counsellor contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Counsellor option</description>
+                            			<input special="true">gt0</input>
+                            			<output>3</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="50">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no District nurse contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to District nurse option</description>
+                            			<input special="true">gt0</input>
+                            			<output>4</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="53">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Community psychiatric nurse / case manager contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Community psychiatric nurse / case manager option</description>
+                            			<input special="true">gt0</input>
+                            			<output>5</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="56">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Social worker contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Social worker option</description>
+                            			<input special="true">gt0</input>
+                            			<output>6</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="59">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Occupational therapist contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Occupational therapist option</description>
+                            			<input special="true">gt0</input>
+                            			<output>7</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="62">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Home help / care worker contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Home help / care worker option</description>
+                            			<input special="true">gt0</input>
+                            			<output>8</output>
+                            		</translation>
+                            	</translations>
+                            </mapping>
+                            <mapping source="11" column="66">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other (1) contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other option</description>
+                            			<input special="true">gt0</input>
+                            			<output>9</output>
+                            		</translation>
+                            	</translations>
+                            	<otherText source="11" column="64"/>
+                            </mapping>
+                            <mapping source="11" column="70">
+                           		<translations>
+                            		<translation standardCode="false">
+                            			<description>Translate 0, 666, 999 and null values to null (no Other (2) contacts)</description>
+                            			<input special="false">0</input>
+                            			<input special="false">666</input>
+                            			<input special="false">999</input>
+                            			<input special="false"></input>
+                            			<output></output>
+                            		</translation>
+                            		<translation standardCode="false">
+                            			<description>Translate values gt 0 to Other option</description>
+                            			<input special="true">gt0</input>
+                            			<output>9</output>
+                            		</translation>
+                            	</translations>
+                            	<otherText source="11" column="68"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Sector</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. govt</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. vol</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. private</description>
+                                    <input special="false">3</input>
+                                    <output>2</output>
+                                </translation>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                            </translations>
+                            <mapping source="11" column="37"/>
+                            <mapping source="11" column="40"/>
+                            <mapping source="11" column="43"/>
+                            <mapping source="11" column="46"/>
+                            <mapping source="11" column="49"/>
+                            <mapping source="11" column="52"/>
+                            <mapping source="11" column="55"/>
+                            <mapping source="11" column="58"/>
+                            <mapping source="11" column="61"/>
+                            <mapping source="11" column="65"/>
+                            <mapping source="11" column="69"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Total number of contacts over the last 3 months</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no contacts)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                            <mapping source="11" column="38"/>
+                            <mapping source="11" column="41"/>
+                            <mapping source="11" column="44"/>
+                            <mapping source="11" column="47"/>
+                            <mapping source="11" column="50"/>
+                            <mapping source="11" column="53"/>
+                            <mapping source="11" column="56"/>
+                            <mapping source="11" column="59"/>
+                            <mapping source="11" column="62"/>
+                            <mapping source="11" column="66"/>
+                            <mapping source="11" column="70"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Average contact time</description>
+                           	<translations>
+                           		<translation standardCode="false">
+                           			<description>Translate 0 and null values to null (no contacts)</description>
+                           			<input special="false">0</input>
+                           			<input special="false"></input>
+                           			<output></output>
+                           		</translation>
+                           		<translation standardCode="true">
+                           			<description>Translate 666, 999 to std code 970. Not applicable</description>
+                           			<input special="false">666</input>
+                           			<input special="false">999</input>
+                           			<output>1</output>
+                           		</translation>
+                           	</translations>
+                           	<unit index="0" abbreviation="mins" default="true"/>
+                            <mapping source="11" column="39"/>
+                            <mapping source="11" column="42"/>
+                            <mapping source="11" column="45"/>
+                            <mapping source="11" column="48"/>
+                            <mapping source="11" column="51"/>
+                            <mapping source="11" column="54"/>
+                            <mapping source="11" column="57"/>
+                            <mapping source="11" column="60"/>
+                            <mapping source="11" column="63"/>
+                            <mapping source="11" column="67"/>
+                            <mapping source="11" column="71"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="4">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <compositeentry index="50">
+                        <description>Please list below use of any drugs taken over the last three months</description>
+                        <basicentry index="0">
+                            <description>Name of drug</description>
+                            <translations>
+                            	<translation standardCode="false">
+                            		<description>Translate 999 to null</description>
+                            		<input special="false">999</input>
+                            		<output></output>
+                            	</translation>
+                            </translations>
+                            <mapping source="12" column="5"/>
+                            <mapping source="12" column="9"/>
+                            <mapping source="12" column="13"/>
+                            <mapping source="12" column="17"/>
+                            <mapping source="12" column="21"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Dosage (if known)</description>
+                            <unit index="0" abbreviation="mg" default="true">
+                            	<input>mgs</input>
+                            	<input>mg</input>
+                            </unit>
+                            <unit index="1" abbreviation="ml" default="false">
+                            	<input>mls</input>
+                            	<input>ml</input>
+                            </unit>
+                            <mapping source="12" column="6"/>
+                            <mapping source="12" column="10"/>
+                            <mapping source="12" column="14"/>
+                            <mapping source="12" column="18"/>
+                            <mapping source="12" column="22"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Dosage frequency</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. 3 times daily</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. 2 times daily</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Once daily</description>
+                                    <input special="false">3</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 4. Weekly</description>
+                                    <input special="false">4</input>
+                                    <output>3</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 5. Every 2 weeks</description>
+                                    <input special="false">5</input>
+                                    <output>4</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 6. Monthly</description>
+                                    <input special="false">6</input>
+                                    <output>5</output>
+                                </translation>
+                            </translations>
+                            <mapping source="12" column="7"/>
+                            <mapping source="12" column="11"/>
+                            <mapping source="12" column="15"/>
+                            <mapping source="12" column="19"/>
+                            <mapping source="12" column="23"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Oral/Depot</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 0. Oral</description>
+                                    <input special="false">0</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Depot</description>
+                                    <input special="false">1</input>
+                                    <output>1</output>
+                                </translation>
+                            </translations>
+                            <mapping source="12" column="8"/>
+                            <mapping source="12" column="12"/>
+                            <mapping source="12" column="16"/>
+                            <mapping source="12" column="20"/>
+                            <mapping source="12" column="24"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="5">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="53">
+                        <description>* Please specify nature of individual help</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate null to standard code Not Applicable</description>
+                        		<input special="false"></input>
+                        		<output>1</output>
+                        	</translation>
+                       	</translations>
+                        <mapping source="13" column="32"/>
+                    </basicentry>
+                    <compositeentry index="51">
+                        <description>In the last 3 months, have you received help from friends or relatives on any of the following tasks, as a consequence of your mental health problems? (Select all that apply)</description>
+                        <basicentry index="0">
+                            <description>Type of help</description>
+                            <mapping source="13" column="5">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 1 (Yes) to option Child Care</description>
+	                                    <input special="false">1</input>
+	                                    <output>0</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 0, 2 (No), 666 and 999 not applicable to null</description>
+	                                    <input special="false">0</input>
+	                                    <input special="false">999</input>
+	                                    <input special="false">666</input>
+	                                    <input special="false">2</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="13" column="7">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 1 (Yes) to option Personal care (e.g. washing, dressing etc.)</description>
+	                                    <input special="false">1</input>
+	                                    <output>1</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 0, 2 (No), 666 and 999 not applicable to null</description>
+	                                    <input special="false">0</input>
+	                                    <input special="false">999</input>
+	                                    <input special="false">666</input>
+	                                    <input special="false">2</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="13" column="9">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 1 (Yes) to option Help in/ around the house (e.g. cooking, cleaning etc.)</description>
+	                                    <input special="false">1</input>
+	                                    <output>2</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 0, 2 (No), 666 and 999 not applicable to null</description>
+	                                    <input special="false">0</input>
+	                                    <input special="false">999</input>
+	                                    <input special="false">666</input>
+	                                    <input special="false">2</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="13" column="11">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 1 (Yes) to option Help outside the home (e.g. shopping, transport etc.)</description>
+	                                    <input special="false">1</input>
+	                                    <output>3</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 0, 2 (No), 666 and 999 not applicable to null</description>
+	                                    <input special="false">0</input>
+	                                    <input special="false">999</input>
+	                                    <input special="false">666</input>
+	                                    <input special="false">2</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="13" column="14">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 1 (Yes) to option Other</description>
+	                                    <input special="false">1</input>
+	                                    <output>4</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translation for 0, 2 (No), 666 and 999 not applicable to null</description>
+	                                    <input special="false">0</input>
+	                                    <input special="false">999</input>
+	                                    <input special="false">666</input>
+	                                    <input special="false">2</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+	                            <otherText source="13" column="13"/>
+                            </mapping>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Average number of hours help per week</description>
+                            <translations>
+                            	<translation standardCode="false">
+                            		<description>Translate 0 to null</description>
+                            		<input special="false">0</input>
+                            		<output></output>
+                            	</translation>
+                            	<translation standardCode="true">
+                            		<description>Translate 666, 999 to Std code 970. Not applicable</description>
+                            		<input special="false">666</input>
+                            		<input special="false">999</input>
+                            		<output>1</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="13" column="6"/>
+                            <mapping source="13" column="8"/>
+                            <mapping source="13" column="10"/>
+                            <mapping source="13" column="12"/>
+                            <mapping source="13" column="15"/>
+                        </basicentry>
+                    </compositeentry>
+                    <compositeentry index="52">
+                        <description>In the last 3 months, have you seen anyone from any voluntary agencies for help with anything?</description>
+                        <basicentry index="0">
+                            <description>Name of voluntary agency</description>
+                            <translations>
+                            	<translation standardCode="true">
+                            		<description>Translate 0, 666, 999 to std code 960 data not known</description>
+                            		<input special="false">0</input>
+                            		<input special="false">666</input>
+                            		<input special="false">999</input>
+                            		<output>0</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="13" column="16"/>
+                            <mapping source="13" column="20"/>
+                            <mapping source="13" column="24"/>
+                            <mapping source="13" column="28"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Type of help received</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 1. Telephone counselling / info</description>
+                                    <input special="false">1</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Individual*</description>
+                                    <input special="false">2</input>
+                                    <output>1</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Group</description>
+                                    <input special="false">3</input>
+                                    <output>2</output>
+                                </translation>
+                            </translations>
+                            <mapping source="13" column="17"/>
+                            <mapping source="13" column="21"/>
+                            <mapping source="13" column="25"/>
+                            <mapping source="13" column="29"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Number of times visited / telephoned</description>
+                            <mapping source="13" column="18"/>
+                            <mapping source="13" column="22"/>
+                            <mapping source="13" column="26"/>
+                            <mapping source="13" column="30"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Duration of contact by phone or person</description>
+                            <mapping source="13" column="19"/>
+                            <mapping source="13" column="23"/>
+                            <mapping source="13" column="27"/>
+                            <mapping source="13" column="31"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="6">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="55">
+                        <description>Do you want to enter hospital or community accomodation details?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false"></input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="true">*</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="73" column="5"/>
+                    </basicentry>
+                    <basicentry index="56">
+                        <description>How many beds/places in the hospital ward or residential facility are currently available?</description>
+                        <mapping source="73" column="5"/>
+                    </basicentry>
+                    <basicentry index="57">
+                        <description>How many beds/places in the hospital ward or residential facility are currently occupied?</description>
+                        <mapping source="73" column="6"/>
+                    </basicentry>
+                    <basicentry index="60">
+                        <description>What is the annual recurrent cost of the facility, excluding care staff?, (Include catering, cleaning, etc., but exclude rent and capital costs; See manual)</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 999 to std code 999</description>
+                        		<input special="true">999*</input>
+                        		<output>3</output>
+                        	</translation>
+                        </translations>
+                        <mapping source="73" column="19"/>
+                    </basicentry>
+                    <basicentry index="61">
+                        <description>What is the average weekly charge or fee per resident place/bed?</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 999 to std code 999</description>
+                        		<input special="true">999*</input>
+                        		<output>3</output>
+                        	</translation>
+                        </translations>
+                        <mapping source="73" column="20"/>
+                    </basicentry>
+                    <compositeentry index="58">
+                        <description>Please complete the following staffing table (see manual for assistance). Note: only one category per staff member.</description>
+                        <basicentry index="0">
+                            <description>Care staff category</description>
+                            <constant value="Staff with a medical qualification" standardCode="false"/>
+                            <constant value="Staff with a psychology qualification" standardCode="false"/>
+                            <constant value="Staff with a nursing qualification" standardCode="false"/>
+                            <constant value="Staff with a social care qualification" standardCode="false"/>
+                            <constant value="Staff with no care qualification" standardCode="false"/>
+                            <constant value="Vacant care staff positions" standardCode="false"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Number of 'full-time equivalent' posts</description>
+                            <translations>
+                            	<translation standardCode="true">
+                            		<description>Translate 666*, 999* to std code 960. Data not known</description>
+                            		<input special="true">666*</input>
+                            		<input special="true">999*</input>
+                            		<output>0</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="73" column="7"/>
+                            <mapping source="73" column="9"/>
+                            <mapping source="73" column="11"/>
+                            <mapping source="73" column="13"/>
+                            <mapping source="73" column="15"/>
+                            <mapping source="73" column="17"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Total annual cost of care staff category</description>
+                            <translations>
+                            	<translation standardCode="true">
+                            		<description>Translate 666*, 999* to std code 960. Data not known</description>
+                            		<input special="true">666*</input>
+                            		<input special="true">999*</input>
+                            		<output>0</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="73" column="8"/>
+                            <mapping source="73" column="10"/>
+                            <mapping source="73" column="12"/>
+                            <mapping source="73" column="14"/>
+                            <mapping source="73" column="16"/>
+                            <mapping source="73" column="18"/>
+                        </basicentry>
+                    </compositeentry>
+                    <!-- Import framework can't cope with this at the moment! Derived entries in a composite
+                    <compositeentry index="59">
+                        <basicentry index="0">
+                            <description>Care staff category</description>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>Number of 'full-time equivalent' posts</description>
+                         </basicentry>
+                        <basicentry index="2">
+                            <description>Total annual cost of carestaff category</description>
+                        </basicentry>
+                    </compositeentry>
+                    -->
+                    <compositeentry index="62">
+                        <description>Who contributes towards the full cost of this accommodation? (Select all that apply)</description>
+                        <basicentry index="0">
+                            <mapping source="73" column="21">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translate True to option National government (health service/insurance fund) present</description>
+	                                    <input special="false">True</input>
+	                                    <output>0</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translate False to option National government (health service/insurance fund) absent</description>
+	                                    <input special="false">False</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="73" column="22">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translate True to option Local government present</description>
+	                                    <input special="false">True</input>
+	                                    <output>1</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translate False to option Local government absent</description>
+	                                    <input special="false">False</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="73" column="23">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translate True to option Voluntary organisation/charity present</description>
+	                                    <input special="false">True</input>
+	                                    <output>2</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translate False to option Voluntary organisation/charity absent</description>
+	                                    <input special="false">False</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="73" column="24">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translate True to option Private organisation/company present</description>
+	                                    <input special="false">True</input>
+	                                    <output>3</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translate False to option Private organisation/company absent</description>
+	                                    <input special="false">False</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                            <mapping source="73" column="25">
+	                            <translations>
+	                                <translation standardCode="false">
+	                                    <description>Translate True to option Private individual present</description>
+	                                    <input special="false">True</input>
+	                                    <output>4</output>
+	                                </translation>
+	                                <translation standardCode="false">
+	                                    <description>Translate False to option Private individual absent</description>
+	                                    <input special="false">False</input>
+	                                    <output></output>
+	                                </translation>
+	                            </translations>
+                            </mapping>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

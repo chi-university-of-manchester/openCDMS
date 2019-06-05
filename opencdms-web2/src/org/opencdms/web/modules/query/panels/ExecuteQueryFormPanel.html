@@ -1,0 +1,66 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+		<form wicket:id="executeForm">
+			<div class="label">Query:</div>
+			<span wicket:id="query"></span>
+			<br /><br />
+			
+			<div class="label">Execute method:</div>
+			<select wicket:id="method">
+				<option>Method 1</option>
+				<option>Method 2</option>
+			</select>
+			<br/>
+			
+			<div wicket:id="runContainer1">
+				<div wicket:id="runContainer2">
+					<div class="label" />
+					<input wicket:id="run" type="submit" value="Run" />
+				</div>
+				<div wicket:id="resultContainer">
+					<div wicket:id="resultPanel"></div>
+				</div>
+			</div>
+			
+			<div wicket:id="exportContainer1">
+				<div wicket:id="exportContainer2">
+					<div wicket:id="exportDetailsPanel" />
+					<div wicket:id="submitExportContainer1">
+						<div wicket:id="submitExportContainer2">
+							<div class="label"></div>
+							<div><input wicket:id="submitExport" type="submit" value="Submit" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</wicket:panel>
+</body>
+</html>

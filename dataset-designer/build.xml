@@ -1,0 +1,400 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="PsyGrid Dataset Designer" basedir="." default="all">
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+	<description>PsyGrid Dataset Designer</description>
+	<property file="build.properties"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="test.src.dir" value="${basedir}/test"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="doc.dir" value="${basedir}/doc/"/>
+	<property name="signed.jars.dir" value="${build.dir}/signed" />
+	<property name="unsigned.jars.dir" value="${build.dir}/unsigned" />
+	<property name="reports.tests" value="${build.dir}/reports"/>
+	<property name="build.src" value="${build.dir}/src"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	<property name="build.compiler" value="modern"/>
+	<property name="psygrid.icon.dir" value="${src.dir}/org/psygrid/collection/entry/icon"/>
+	<property name="psygrid-data-collection.jar" value ="psygrid-data-client_${client.version}.jar"/>
+	<property name="client.lib.dir" value="../psygrid-data-collection/lib"/>
+	<property name="psygrid.designer.jar" value="${pdd.project.name}_${designer.version}.jar"/>
+	<property name="psygrid.randomization.jar" value="randomization-client_${randomization.version}.jar"/>
+	<property name="psygrid.security.jar" value="psygrid-security_${security.version}.jar"/>
+	<property name="repository.client.jar" value="repository-client_${repository.version}.jar"/>
+	<property name="del.client.jar" value="del-client_${del.version}.jar"/>
+	<property name="esl.client.jar" value="esl-client_${esl.version}.jar"/>
+	<property name="common-client.jar" value="common-client_${common.version}.jar"/>
+	<property name="doc.dist.dir" value="../psygrid-doc/dist"/>
+	<property name="doc.jar" value="psygrid-doc_${doc.version}.jar"/>
+	<property name="doc.jh.lib.dir" value="../psygrid-doc/jh2.0/javahelp/lib"/>
+
+	<path id="base-classpath">
+			<!-- Jar files used when building or running the project go here -->
+			<fileset dir="${lib.dir}">
+				<include name="*.jar"/>
+			</fileset>
+			<fileset dir="${psygrid-data-collection.dist.dir}">
+				<include name="${psygrid-data-collection.jar}" />
+			</fileset>
+			<fileset dir="${data-element-library.dist.dir}">
+				<include name="${del.client.jar}"/>
+			</fileset>
+			<fileset dir="${randomization.dist.dir}">
+					<include name="${psygrid.randomization.jar}" />
+				</fileset>
+			<fileset dir="${repository.dist.dir}">
+				<include name="${repository.client.jar}" />
+			</fileset>
+			<fileset dir="${esl.dist.dir}">
+				<include name="${esl.client.jar}" />
+			</fileset>
+			<fileset dir="${repository.lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${common.lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${security.dist.dir}">
+				<include name="${psygrid.security.jar}"/>
+			</fileset>
+			<fileset dir="${common.dist.dir}">
+				<include name="${common-client.jar}"/>
+			</fileset>
+			<fileset dir="${security.lib.dir}">
+					<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${common.lib.client}">
+					<include name="**/*.jar"/>
+			</fileset>
+		<fileset dir="${doc.jh.lib.dir}">
+				<include name="jh.jar"/>
+				<include name="jsearch.jar"/>
+			</fileset>
+		<!-- Also include our own source tree -->
+			<pathelement path="."/>
+			<pathelement path="${build.classes}"/>
+			<pathelement path="${build.src}"/>
+	</path>
+	<!-- At the moment, the compile-classpath and run-classpath are the same as
+	base-classpath, but in the future we may move the relevant items from
+	base-classpath to these two classpaths -->
+	<path id="compile-classpath">
+		<path refid="base-classpath"/>
+	</path>
+	<path id="run-classpath">
+		<path refid="base-classpath"/>
+	</path>
+	<path id="test-classpath">
+		<path refid="base-classpath"/>
+		<pathelement path="${build.test.classes}"/>
+	</path>
+
+
+	<!-- Compile the source files -->
+		<target name="java" >
+			<!-- Run javac to turn .java files into .class -->
+			<javac target="1.5" source="1.5" debug="yes"
+	        	    	 destdir="${build.classes}"
+				 deprecation="on">
+				<src path="${build.src}"/>
+				<classpath refid="compile-classpath"/>
+			</javac>
+			<!-- Copy over any configuration files that you might have -->
+			<copy todir="${build.classes}" filtering="on">
+				<fileset dir="${src.dir}">
+					<exclude name="**/svn/**"/>
+					<exclude name="**/*.java"/>
+					<exclude name="**/package.html"/>
+				</fileset>
+			</copy>
+		</target>
+
+	<target name="clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${doc.dir}"/>
+			<fileset dir="${dist.dir}"/>
+			<fileset dir="${lib.dir}" includes="${psygrid.security.jar}"/>
+		</delete>
+	</target>
+
+	<!-- Prepare the source tree for compilation -->
+	<target name="prepare-src">
+		<mkdir dir="${build.src}"/>
+		<mkdir dir="${build.classes}"/>
+		<!-- set up security properties -->
+		<copy todir="${build.src}" filtering="on">
+			<fileset dir="${src.dir}">
+				<exclude name="**/svn/**"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="copy-jars" description="Compile java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${lib.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${build.classes}"/>
+	</target>
+
+	<target name="copy-jars" description="Copy jars from other PsyGrid projects">
+		<copy todir="${lib.dir}" overwrite="true">
+			<fileset dir="../security/dist">
+				<include name="${psygrid.security.jar}"/>
+			</fileset>
+			<fileset dir="../psygrid-data-collection/dist">
+				<include name="${psygrid-data-collection.jar}"/>
+			</fileset>
+			<fileset dir="../repository/dist">
+				<include name="${repository.client.jar}"/>
+			</fileset>
+			<fileset dir="${doc.dist.dir}">
+				<include name="${doc.jar}"/>
+			</fileset>
+                        <fileset dir="${data-element-library.dist.dir}">
+                                <include name="${del.client.jar}"/>
+                        </fileset>
+		</copy>
+	</target>
+
+	<!-- Create a jar of the classes and configuration files -->
+	<target name="jar" depends="java" description="Build jar file">
+		<jar destfile="${dist.dir}/${psygrid.designer.jar}" basedir="${build.classes}" update="no">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="copy-lib" description="Copy lib folder to build">
+		<copy todir="${dist.dir}/lib" overwrite="true">
+			<fileset dir="${lib.dir}"/>
+		</copy>
+	</target>
+
+	<target name="signjars" depends="jar">
+		<copy todir="${signed.jars.dir}">
+			<fileset dir="${lib.dir}" includes="*.jar"/>
+			<fileset dir="${dist.dir}" includes="${psygrid.designer.jar}"/>
+			<fileset dir="${dist.dir}" includes="${psygrid.entry.jar}"/>
+			<fileset dir="${psygrid-data-collection.dist.dir}" includes="${psygrid-data-collection.jar}"/>
+			<fileset dir="${randomization.dist.dir}" includes="${psygrid.randomization.jar}"/>
+			<fileset dir="${security.dist.dir}" includes="${psygrid.security.jar}"/>
+			<fileset dir="${repository.dist.dir}" includes="${repository.client.jar}"/>
+			<fileset dir="${esl.dist.dir}" includes="${esl.client.jar}"/>
+			<fileset dir="${data-element-library.dist.dir}" includes="${del.client.jar}"/>
+			<fileset dir="${doc.dist.dir}" includes="${doc.jar}"/>
+			<fileset dir="${common.dist.dir}" includes="${common-client.jar}"/>
+			<fileset dir="${common.lib.dir}" includes="xmlsec-1.2.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-logging-1.1.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-discovery-0.2.jar"/>
+			<fileset dir="${common.lib.dir}" includes="axis.jar"/>
+			<fileset dir="${common.lib.dir}" includes="jaxrpc.jar"/>
+			<fileset dir="${common.lib.dir}" includes="saaj.jar"/>
+			<fileset dir="${common.lib.dir}" includes="wsdl4j-1.5.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="opensaml-1.0.1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="mail.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xalan-2.6.0.jar"/>
+			<fileset dir="${common.lib.dir}" includes="log4j-1.2.14.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xercesImpl.jar"/>
+			<fileset dir="${common.lib.dir}" includes="xml-apis.jar"/>
+			<fileset dir="${common.lib.dir}" includes="bcprov-jdk15-131.jar"/>
+			<fileset dir="${common.lib.dir}" includes="iText-2.0.8.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-httpclient-3.1-alpha1.jar"/>
+			<fileset dir="${common.lib.dir}" includes="commons-codec-1.3.jar"/>
+			<fileset dir="${common.lib.dir}" includes="opencsv-1.7.jar"/>
+			<fileset dir="${common.lib.dir}/client" includes="*.jar"/>
+			<fileset dir="${repository.lib.dir}" includes="jfreechart-1.0.1.jar"/>
+			<fileset dir="${repository.lib.dir}" includes="jcommon-1.0.0.jar"/>
+			<fileset dir="${repository.lib.dir}" includes="jxl.jar"/>
+			<fileset dir="${common.lib.client}" includes="mjlib.jar"/>
+			<fileset dir="${doc.jh.lib.dir}" includes="jh.jar jsearch.jar"/>
+			<fileset dir="${client.lib.dir}/jdic/linux" includes="*.jar"/>
+			<fileset dir="${client.lib.dir}/jdic/win" includes="*.jar"/>
+			<fileset dir="${client.lib.dir}/jdic/mac" includes="*.jar"/>
+		</copy>
+		<signjar keystore="${keystore.location}" alias="${keystore.alias}"
+				storepass="${keystore.pass}" >
+			<fileset dir="${signed.jars.dir}" includes="*.jar"/>
+	    </signjar>
+	</target>
+
+	<target name="war" depends="signjars">
+		<zip destfile="${dist.dir}/dataset-designer.war">
+			<zipfileset dir="${build.dir}" includes="psygrid-dataset-designer.jnlp" prefix="app"/>
+			<zipfileset dir="${build.dir}" includes="version.xml" prefix="app"/>
+			<zipfileset dir="${signed.jars.dir}" includes="*.jar" prefix="app"/>
+			<zipfileset dir="../psygrid-common/etc/icons" includes="opencdms.gif" prefix="app"/>
+			<zipfileset dir="${common.lib.dir}/client" includes="jnlp-servlet.jar" prefix="WEB-INF/lib"/>
+			<zipfileset dir="${etc.dir}" includes="index.html"/>
+			<zipfileset dir="${etc.dir}" includes="web.xml" prefix="WEB-INF"/>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="stand-alone" depends="signjars">
+		<zip destfile="${dist.dir}/create-standalone.zip">
+			<zipfileset dir="${signed.jars.dir}" includes="*.jar" prefix="create/lib"/>
+			<zipfileset dir="${etc.dir}" includes="launcher.bat" prefix="create"/>
+		</zip>
+	</target>
+
+	<!-- Grab the shorthash code of the current git commit or 0000000 if unable to run git -->
+	<target name="git-revision">
+
+		<!-- The git command is different on unix-like and windows OSes  -->
+		<condition property="git.command" value="git.cmd" else="git">
+	   		<os family="windows" />
+	  	</condition>
+
+		<exec executable="${git.command}" outputproperty="git.shorthash" errorproperty="git.error">
+			<arg value="log"/>
+			<arg value="--pretty=format:%h"/>
+			<arg value="-n"/>
+			<arg value="1"/>
+	    </exec>
+
+		<!-- If there were errors grabbing the git shorthash set git.revision it to 0000000 -->
+		<condition property="git.revision" value="${git.shorthash}" else="0000000">
+			<length string="${git.error}" trim="yes" length="0" when="equal"/>
+		</condition>
+
+		<echo message="Git revision = ${git.revision}"/>
+
+	</target>
+
+	<target name="generate-properties" depends="git-revision">
+
+		<property name="client.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/templates/client.properties"
+			  tofile="${src.dir}/client.properties"
+			  overwrite="true"/>
+		<replace file="${src.dir}/client.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+						    token="@version@"
+						    value="${designer.version}"/>
+			<replacefilter
+						    token="@revision@"
+						    value="${client.revision}"/>
+			<replacefilter
+			    token="@system@"
+			    value="${client.system}"/>
+			<replacefilter
+						    token="@system.shortname@"
+						    value="${system.shortname}"/>
+		</replace>
+
+		<copy file="${etc.dir}/templates/logging.properties"
+			  tofile="${src.dir}/org/psygrid/datasetdesigner/logging.properties"
+			  overwrite="true"/>
+		<replace file="${src.dir}/org/psygrid/datasetdesigner/logging.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@system@"
+			    value="${client.system}"/>
+		</replace>
+
+		<copy file="${etc.dir}/templates/services.properties"
+			  tofile="${src.dir}/org/psygrid/datasetdesigner/properties/services.properties"
+			  overwrite="true"/>
+		<replace file="${src.dir}/org/psygrid/datasetdesigner/properties/services.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@esl.url@"
+			    value="${esl.url}"/>
+			<replacefilter
+			    token="@randomization.url@"
+			    value="${randomization.url}"/>
+			<replacefilter
+			    token="@transformers.url@"
+			    value="${transformers.url}"/>
+		</replace>
+
+		<copy file="${etc.dir}/psygrid-dataset-designer.jnlp"
+			  tofile="${build.dir}/psygrid-dataset-designer.jnlp"
+			  overwrite="true"/>
+		<replace file="${build.dir}/psygrid-dataset-designer.jnlp"
+						 propertyFile="build.properties">
+			<replacefilter
+			    token="@system.shortname@"
+			    value="${system.shortname}"/>
+			<replacefilter
+			    token="@del.version@"
+			    value="${del.version}"/>
+			<replacefilter
+			    token="@client.version@"
+			    value="${client.version}"/>
+			<replacefilter
+			    token="@security.version@"
+			    value="${security.version}"/>
+			<replacefilter
+			    token="@repository.version@"
+			    value="${repository.version}"/>
+			<replacefilter
+				token="@esl.version@"
+				value="${esl.version}"/>
+			<replacefilter
+				token="@randomization.version@"
+				value="${randomization.version}"/>
+			<replacefilter
+			    token="@designer.version@"
+			    value="${designer.version}"/>
+			<replacefilter
+			    token="@common.version@"
+			    value="${common.version}"/>
+			<replacefilter
+				token="@doc.version@"
+				value="${doc.version}"/>
+		</replace>
+	</target>
+
+	<target name="all" description="Clean, init, copy-groups, prepare-src, copy-jars, java, copy lib, jar, war">
+		<antcall target="clean" />
+		<antcall target="init" />
+		<antcall target="prepare-src" />
+		<antcall target="generate-properties" />
+		<antcall target="java"/>
+		<antcall target="jar"/>
+		<antcall target="war"/>
+		<antcall target="stand-alone"/>
+	</target>
+
+</project>

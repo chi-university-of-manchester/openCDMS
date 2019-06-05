@@ -1,0 +1,31 @@
+<%--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+--%>
+<meta name="user.name" content="${username}" />
+<meta name="user.project" content="${project}" />
+<meta name="user.group" content="${group}" />
+<meta name="nav.export" content="${exportPrivilege}" />
+<meta name="nav.reports" content="${reportsPrivilege}" />
+<meta name="nav.eslweb" content="${eslwebPrivilege}" />
+<meta name="nav.eslweb.sub" content="${eslwebsubPrivilege}" />
+<meta name="nav.eslWebViewByDetails" content="${eslWebViewByDetailsPrivilege}" />
+<meta name="nav.eslWebViewByNumber" content="${eslWebViewByNumberPrivilege}" />
+<meta name="nav.eslWebRndResult" content="${eslWebRndResultPrivilege}" />
+<meta name="nav.eslWebBreakIn" content="${eslWebBreakInPrivilege}" />
+<meta name="nav.eslWebStats" content="${eslWebStatsPrivilege}" />
+<meta name="nav.audit" content="${auditPrivilege}" />

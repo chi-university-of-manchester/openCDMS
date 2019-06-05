@@ -1,0 +1,2842 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="attributeauthority"
+	targetNamespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.psygrid.org/xml/security/attribute-authority/service"
+	xmlns:porttype="http://www.psygrid.org/xml/security/attribute-authority/service"
+	xmlns:intf="http://www.psygrid.org/xml/security/attribute-authroity/service"
+	xmlns:types="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
+		schemaLocation="xmldsig-core-schema.xsd" />
+	<types>		<xsd:schema
+			targetNamespace="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+			elementFormDefault="qualified" attributeFormDefault="qualified"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+			xmlns:pg="http://www.psygrid.org/xml/security/core/types"
+			xmlns="http://www.w3.org/2001/XMLSchema"
+			xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion">			<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
+				schemaLocation="xmldsig-core-schema.xsd" />			<xsd:import
+				namespace="http://www.psygrid.org/xml/security/core/types"
+				schemaLocation="security-core-schema.xsd" />			<xsd:element name="InputFault" type="xsd:string" />			<xsd:element name="ProcessingFault" type="xsd:string" />			<xsd:element name="NotAuthorisedFault" type="xsd:string" />
+
+			<complexType name="VoidType">
+				<sequence />
+			</complexType>
+
+			<xsd:complexType name="PostProcessLoginResponseType">
+				<xsd:sequence>
+					<element name="forcePasswordChange"
+						type="xsd:boolean" />
+					<element name="previousLoginDates" type="xsd:dateTime"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="previousLoginAddresses"
+						type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+					<element name="previousLoginHosts"
+						type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+					<element name="authenticated"
+						type="xsd:boolean" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="postProcessLoginResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Result"
+							type="types:PostProcessLoginResponseType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="postProcessLogin">
+			<xsd:complexType>
+				<xsd:sequence>
+					<element name="uid"
+						type="xsd:string" />			
+				</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>			
+
+			<xsd:element name="recordLoginAttempt">
+			<xsd:complexType>
+				<xsd:sequence>
+					<element name="uid"
+						type="xsd:string" />			
+					<element name="authenticated"
+						type="xsd:boolean" />
+					<element name="timestamp" type="xsd:dateTime"/>
+					<element name="ipAddress"
+						type="xsd:string" />
+					<element name="host"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+						
+			<xsd:element name="recordLoginAttemptResponse" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="locked" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="isAccountDormant">
+			<xsd:complexType>
+				<xsd:sequence>
+					<element name="uid"
+						type="xsd:string" />			
+				</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+						
+			<xsd:element name="isAccountDormantResponse" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="dormant" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>			
+									
+			<xsd:element name="updateConfigurationResponse"
+				type="xsd:boolean" />
+							<xsd:element name="retrieveConfigurationResponse"
+				type="xsd:string" />
+				
+			<xsd:element name="updateConfiguration">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="configuration"
+							type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="retrieveConfiguration">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="refresh" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="addGroupAttributeToGroup">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="projectCode" type="xsd:string"/>
+						<xsd:element name="groupCode" type="xsd:string"/>
+						<xsd:element ref="pg:GroupAttribute"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="addGroupAttributeToGroupResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="added" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="addGroupAttributeToUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="forename" type="xsd:string" />
+						<xsd:element name="surname" type="xsd:string" />
+						<xsd:element name="projectCode" type="xsd:string" />
+						<xsd:element name="groupCode" type="xsd:string" />
+						<xsd:element ref="pg:GroupAttribute" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="addGroupAttributeToUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="added" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="getAttributesForUserInProjectResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="assertion" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getAttributesForUserInProject">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="User" type="xsd:string" />						<xsd:element name="GroupID"
+							type="pg:ProjectType" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getAttributesForUserResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="assertion" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getAttributesForUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="User" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+
+			<xsd:element name="getProjectsForUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="User" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetAttributesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="attribute"
+						type="pg:AttributeType" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getAttributesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetAttributesResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+                        <xsd:element name="user"
+						    type="pg:UserPrivilegesType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUserFromLDAPResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user"
+						type="pg:UserType" nillable="true"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getGroupsInProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetGroupsInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="group" type="pg:GroupType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getGroupAttributesForUserInGroup">
+				<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="projectCode" type = "xsd:string"/>
+							<xsd:element name="groupCode" type="xsd:string"/>
+							<xsd:element name="userForename" type="xsd:string"/>
+							<xsd:element name="userSurname" type="xsd:string"/>
+						</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="GetGroupAttributesForUserInGroupResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="groupAttribute" type="pg:GroupAttributeType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="GetGroupAttributesForGroupResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="groupAttribute" type="pg:GroupAttributeType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getGroupAttributesForGroup">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="projectCode" type="xsd:string"/>
+						<xsd:element name="groupCode" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getGroupAttributesForGroupResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetGroupAttributesForGroupResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="getGroupAttributesForUserInGroupResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetGroupAttributesForUserInGroupResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+
+			<xsd:element name="getGroupsInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetGroupsInProjectResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetRolesInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="role" type="pg:RoleType"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getRolesInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetRolesInProjectResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getRolesInProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element
+				name="getUsersAndPrivilegesInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="users"
+							type="pg:UserPrivilegesType" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersAndPrivilegesInProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="users"
+							type="pg:UserPrivilegesType" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsers" type="types:VoidType" />
+
+			<xsd:element name="getVersionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="version" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getVersion" type="types:VoidType" />
+
+			<xsd:element name="isSuperUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="result" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="isSuperUser" type="types:VoidType" />
+
+
+			<xsd:element name="GetUsersInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetUsersInProjectResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getMyAttributesInProjectResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="assertion" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getMyAttributesInProject">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="GroupID"
+							type="pg:ProjectType" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getMyAttributesResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="assertion" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getMyAttributes" type="types:VoidType" />			<xsd:element name="getSystemLevelPrivilegeResponse">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="assertion" type="xsd:string" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="getSystemLevelPrivilege" type="types:VoidType" />
+
+			<xsd:element name="getMyProjects" type="types:VoidType" />
+
+			<xsd:element name="changePasswordResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="success" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="resetPasswordResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="success" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetProjectsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="project"
+						type="pg:ProjectDescriptionType" minOccurs="0"
+						maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProjectsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetProjectsResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getProjects" type="types:VoidType" />
+
+			<xsd:element name="userHasAttributes">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="uid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="uid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getUserFromLDAP">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="uid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="userExists">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="first" type="xsd:string" />
+						<xsd:element name="last" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="userExistsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="result" type="xsd:boolean" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="multiUserExists">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="first" type="xsd:string" />
+						<xsd:element name="last" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="MultiUserExistsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded"
+							name="item" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="multiUserExistsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:MultiUserExistsResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="projectExists">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="project" type="pg:ProjectType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="projectExistsResponse" type="xsd:boolean" />
+
+			<xsd:element name="getUIDFromCN">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="uid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUIDFromCNResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cn" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getCNFromUID">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="cn" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getCNFromUIDResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="uid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getEmailAddressForUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="dn" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getEmailAddressForUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="address" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+	    	<xsd:element name="getEmailAddressForUserWithPrivileges">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="project"
+							type="pg:ProjectType" />
+						<xsd:element name="group"
+							type="pg:GroupType" />
+						<xsd:element name="role"
+							type="pg:RoleType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetEmailAddressForUserWithPrivilegesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded"
+							name="item" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getEmailAddressForUserWithPrivilegesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetEmailAddressForUserWithPrivilegesResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getMobileNumberForUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="dn" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getMobileNumberForUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="number" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="ChangePasswordRequestType">
+				<xsd:sequence>
+					<element name="uid" type="xsd:string"
+						nillable="true" />
+					<element name="newPassword" type="xsd:short"
+						minOccurs="1" maxOccurs="unbounded">
+					</element>
+					<element name="oldPassword" type="xsd:short"
+						minOccurs="1" maxOccurs="unbounded">
+					</element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="changePassword">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="credential"
+							type="types:ChangePasswordRequestType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:complexType name="ResetPasswordRequestType">
+				<xsd:sequence>
+					<element name="uid" type="xsd:string" />
+					<element name="newPassword" type="xsd:short"
+						minOccurs="1" maxOccurs="unbounded">
+					</element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="resetPassword">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="credential"
+							type="types:ResetPasswordRequestType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetUsersInGroupInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInGroupInProjectResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							ref="types:GetUsersInGroupInProjectResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInGroupInProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Group" />
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetUsersInGroupInProjectWithRoleResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element
+				name="getUsersInGroupInProjectWithRoleResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element
+							ref="types:GetUsersInGroupInProjectWithRoleResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInGroupInProjectWithRole">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Group" />
+						<xsd:element ref="pg:Role" />
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="GetUsersInProjectWithRoleResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInProjectWithRoleResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:GetUsersInProjectWithRoleResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getUsersInProjectWithRole">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:Role" />
+						<xsd:element ref="pg:Project" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+		    <xsd:element name="GetUsersInProjectWithPermissionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="user" type="xsd:string"
+						minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="addUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="addUserResponse" type="xsd:boolean" />			<xsd:element name="DeleteUserRequest">				<xsd:complexType>					<xsd:sequence>						<xsd:element name="User" type="xsd:string"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deleteUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="types:DeleteUserRequest" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>			<xsd:element name="deleteUserResponse" type="xsd:boolean" />
+
+			<xsd:element name="DeleteProjectRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="Project" type="pg:ProjectType"
+						maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="deleteProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:DeleteProjectRequest" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="deleteProjectResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="DeleteProjectAndPolicyRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element name="Project" type="pg:ProjectType"
+						maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+				
+			<xsd:element name="deleteProjectAndPolicy">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="types:DeleteProjectAndPolicyRequest" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="deleteProjectAndPolicyResponse"
+				type="xsd:boolean" />				
+
+			<xsd:element name="addProjectToUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+						<xsd:element name="addProjectToUserResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="addGroupToProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="addGroupToProjectResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="addRoleToProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="addRoleToProjectResponse"
+				type="xsd:boolean" />
+
+			<xsd:element name="addGroupInProjectToUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="addGroupInProjectToUserResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="addRoleInProjectToUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+						<xsd:element name="addRoleInProjectToUserResponse"
+				type="xsd:boolean" />
+
+			<xsd:element name="deleteProjectFromUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+						<xsd:element name="deleteProjectFromUserResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="deleteGroupFromProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteGroupFromProjectResponse"
+				type="xsd:boolean" />
+
+			<xsd:element name="deleteRoleFromProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="deleteRoleFromProjectResponse"
+				type="xsd:boolean" />
+
+			<xsd:element name="deleteRoleInProjectFromUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+						<xsd:element name="deleteRoleInProjectFromUserResponse"
+				type="xsd:boolean" />
+			<xsd:element name="deleteGroupInProjectFromUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="deleteGroupInProjectFromUserResponse"
+				type="xsd:boolean" />
+							<xsd:element name="updateUser">				<xsd:complexType>					<xsd:sequence>						<xsd:element ref="pg:UserPrivileges"
+							maxOccurs="unbounded" />					</xsd:sequence>				</xsd:complexType>			</xsd:element>
+						<xsd:element name="updateUserResponse" type="xsd:boolean" />
+			
+			<xsd:element name="updateProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="updateProjectResponse"
+				type="xsd:boolean" />
+				
+			<xsd:element name="addProject">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="pg:ProjectDescription"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="addProjectResponse" type="xsd:boolean" />
+
+			<xsd:element name="userHasAttributesResponse" type="xsd:boolean" />
+			
+		</xsd:schema>	</types>
+	<wsdl:message name="recordLoginAttemptInput">
+		<wsdl:part name="input" element="types:recordLoginAttempt" />
+	</wsdl:message>
+
+	<wsdl:message name="recordLoginAttemptOutput">
+		<wsdl:part name="output"
+			element="types:recordLoginAttemptResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="isAccountDormantInput">
+		<wsdl:part name="input" element="types:isAccountDormant" />
+	</wsdl:message>
+
+	<wsdl:message name="isAccountDormantOutput">
+		<wsdl:part name="output"
+			element="types:isAccountDormantResponse" />
+	</wsdl:message>
+		<wsdl:message name="postProcessLoginInput">
+		<wsdl:part name="input" element="types:postProcessLogin" />
+	</wsdl:message>
+
+	<wsdl:message name="postProcessLoginOutput">
+		<wsdl:part name="output"
+			element="types:postProcessLoginResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="NotAuthorisedFaultMessage">		<part name="FaultDiagnostic" element="types:NotAuthorisedFault" />	</wsdl:message>	<wsdl:message name="InputFaultMessage">		<part name="FaultDiagnostic" element="types:InputFault" />	</wsdl:message>	<wsdl:message name="ProcessingFaultMessage">		<part name="FaultDiagnostic" element="types:ProcessingFault" />	</wsdl:message>	<wsdl:message name="getRolesInProjectInput">
+		<wsdl:part name="input" element="types:getRolesInProject" />
+	</wsdl:message>
+	<wsdl:message name="getRolesInProjectOutput">
+		<wsdl:part name="output"
+			element="types:getRolesInProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInProjectInput">
+		<wsdl:part name="input" element="types:getUsersInProject" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInProjectOutput">
+		<wsdl:part name="output"
+			element="types:getUsersInProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="getUsersAndPrivilegesInProjectInput">
+		<wsdl:part name="input"
+			element="types:getUsersAndPrivilegesInProject" />
+	</wsdl:message>
+	<wsdl:message name="getUsersAndPrivilegesInProjectOutput">
+		<wsdl:part name="output"
+			element="types:getUsersAndPrivilegesInProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInput">
+		<wsdl:part name="input" element="types:getUsers" />
+	</wsdl:message>
+	<wsdl:message name="getUsersOutput">
+		<wsdl:part name="output" element="types:getUsersResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getUserFromLDAPInput">
+		<wsdl:part name="input" element="types:getUserFromLDAP" />
+	</wsdl:message>
+	<wsdl:message name="getUserFromLDAPOutput">
+		<wsdl:part name="output" element="types:getUserFromLDAPResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="getUserInput">
+		<wsdl:part name="input" element="types:getUser" />
+	</wsdl:message>
+	<wsdl:message name="getUserOutput">
+		<wsdl:part name="output" element="types:getUserResponse" />
+	</wsdl:message>
+	<wsdl:message name="userHasAttributesInput">
+		<wsdl:part name="input" element="types:userHasAttributes" />
+	</wsdl:message>
+	<wsdl:message name="userHasAttributesOutput">
+		<wsdl:part name="output" element="types:userHasAttributesResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProjectsInput">
+		<wsdl:part name="input" element="types:getProjects" />
+	</wsdl:message>
+	<wsdl:message name="getProjectsOutput">
+		<wsdl:part name="output" element="types:getProjectsResponse" />
+	</wsdl:message>
+	<wsdl:message name="changePasswordInput">
+		<wsdl:part name="input" element="types:changePassword" />
+	</wsdl:message>
+	<wsdl:message name="changePasswordOutput">
+		<wsdl:part name="output" element="types:changePasswordResponse" />
+	</wsdl:message>
+	<wsdl:message name="resetPasswordInput">
+		<wsdl:part name="input" element="types:resetPassword" />
+	</wsdl:message>
+	<wsdl:message name="resetPasswordOutput">
+		<wsdl:part name="output" element="types:resetPasswordResponse" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInGroupInProjectInput">
+		<wsdl:part name="input"
+			element="types:getUsersInGroupInProject" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInGroupInProjectOutput">
+		<wsdl:part name="output"
+			element="types:getUsersInGroupInProjectResponse" />
+	</wsdl:message>	<wsdl:message name="getUsersInGroupInProjectWithRoleInput">
+		<wsdl:part name="input"
+			element="types:getUsersInGroupInProjectWithRole" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInGroupInProjectWithRoleOutput">
+		<wsdl:part name="output"
+			element="types:getUsersInGroupInProjectWithRoleResponse" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInProjectWithRoleInput">
+		<wsdl:part name="input"
+			element="types:getUsersInProjectWithRole" />
+	</wsdl:message>
+	<wsdl:message name="getUsersInProjectWithRoleOutput">
+		<wsdl:part name="output"
+			element="types:getUsersInProjectWithRoleResponse" />
+	</wsdl:message>
+	<wsdl:message name="getAttributesForUserInProjectInput">		<wsdl:part name="input"
+			element="types:getAttributesForUserInProject" />	</wsdl:message>	<wsdl:message name="getAttributesForUserInProjectOutput">		<wsdl:part name="output"
+			element="types:getAttributesForUserInProjectResponse" />	</wsdl:message>	<wsdl:message name="getAttributesForUserInput">		<wsdl:part name="input" element="types:getAttributesForUser" />	</wsdl:message>	<wsdl:message name="getAttributesForUserOutput">		<wsdl:part name="output"
+			element="types:getAttributesForUserResponse" />	</wsdl:message>
+
+	<wsdl:message name="getProjectsForUserInput">
+		<wsdl:part name="input" element="types:getProjectsForUser" />
+	</wsdl:message>
+	<wsdl:message name="getProjectsForUserOutput">
+		<wsdl:part name="output" element="types:getAttributesResponse" />
+	</wsdl:message>	<wsdl:message name="getMyAttributesInProjectInput">		<wsdl:part name="input"
+			element="types:getMyAttributesInProject" />	</wsdl:message>	<wsdl:message name="getMyAttributesInProjectOutput">		<wsdl:part name="output"
+			element="types:getMyAttributesInProjectResponse" />	</wsdl:message>	<wsdl:message name="getMyAttributesInput">		<wsdl:part name="input" element="types:getMyAttributes" />	</wsdl:message>	<wsdl:message name="getMyAttributesOutput">		<wsdl:part name="output"
+			element="types:getMyAttributesResponse" />	</wsdl:message>		<wsdl:message name="getSystemLevelPrivilegeInput">		<wsdl:part name="input" element="types:getSystemLevelPrivilege" />	</wsdl:message>	<wsdl:message name="getSystemLevelPrivilegeOutput">		<wsdl:part name="output"			element="types:getSystemLevelPrivilegeResponse" />	</wsdl:message>		
+	<wsdl:message name="getMyProjectsInput">
+		<wsdl:part name="input" element="types:getMyProjects" />
+	</wsdl:message>
+
+	<wsdl:message name="getMyProjectsOutput">
+		<wsdl:part name="output" element="types:getAttributesResponse" />
+	</wsdl:message>
+	<wsdl:message name="addUserInput">		<wsdl:part name="input" element="types:addUser" />	</wsdl:message>	<wsdl:message name="addUserOutput">		<wsdl:part name="output" element="types:addUserResponse" />	</wsdl:message>
+	<wsdl:message name="addProjectInput">
+		<wsdl:part name="input" element="types:addProject" />
+	</wsdl:message>
+	<wsdl:message name="addProjectOutput">
+		<wsdl:part name="output" element="types:addProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="deleteUserInput">		<wsdl:part name="input" element="types:deleteUser" />	</wsdl:message>	<wsdl:message name="deleteUserOutput">		<wsdl:part name="output" element="types:deleteUserResponse" />	</wsdl:message>
+	<wsdl:message name="deleteProjectInput">
+		<wsdl:part name="input" element="types:deleteProject" />
+	</wsdl:message>
+	<wsdl:message name="deleteProjectOutput">
+		<wsdl:part name="output" element="types:deleteProjectResponse" />
+	</wsdl:message>
+		<wsdl:message name="deleteProjectAndPolicyInput">
+		<wsdl:part name="input" element="types:deleteProjectAndPolicy" />
+	</wsdl:message>
+	<wsdl:message name="deleteProjectAndPolicyOutput">
+		<wsdl:part name="output" element="types:deleteProjectAndPolicyResponse" />
+	</wsdl:message>	<wsdl:message name="addProjectToUserInput">		<wsdl:part name="input" element="types:addProjectToUser" />	</wsdl:message>	<wsdl:message name="addProjectToUserOutput">		<wsdl:part name="output"
+			element="types:addProjectToUserResponse" />	</wsdl:message>
+	<wsdl:message name="addGroupToProjectInput">
+		<wsdl:part name="input" element="types:addGroupToProject" />
+	</wsdl:message>
+	<wsdl:message name="addGroupToProjectOutput">
+		<wsdl:part name="output"
+			element="types:addGroupToProjectResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="addRoleToProjectInput">
+		<wsdl:part name="input" element="types:addRoleToProject" />
+	</wsdl:message>
+	<wsdl:message name="addRoleToProjectOutput">
+		<wsdl:part name="output"
+			element="types:addRoleToProjectResponse" />
+	</wsdl:message>	<wsdl:message name="addRoleInProjectToUserInput">		<wsdl:part name="input" element="types:addRoleInProjectToUser" />	</wsdl:message>	<wsdl:message name="addRoleInProjectToUserOutput">		<wsdl:part name="output"
+			element="types:addRoleInProjectToUserResponse" />	</wsdl:message>
+
+	<wsdl:message name="addGroupInProjectToUserInput">
+		<wsdl:part name="input" element="types:addGroupInProjectToUser" />
+	</wsdl:message>
+	<wsdl:message name="addGroupInProjectToUserOutput">
+		<wsdl:part name="output"
+			element="types:addGroupInProjectToUserResponse" />
+	</wsdl:message>	<wsdl:message name="deleteProjectFromUserInput">		<wsdl:part name="input" element="types:deleteProjectFromUser" />	</wsdl:message>	<wsdl:message name="deleteProjectFromUserOutput">		<wsdl:part name="output"
+			element="types:deleteProjectFromUserResponse" />	</wsdl:message>
+
+	<wsdl:message name="deleteGroupFromProjectInput">
+		<wsdl:part name="input" element="types:deleteGroupFromProject" />
+	</wsdl:message>
+	<wsdl:message name="deleteGroupFromProjectOutput">
+		<wsdl:part name="output"
+			element="types:deleteGroupFromProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="deleteRoleFromProjectInput">
+		<wsdl:part name="input" element="types:deleteRoleFromProject" />
+	</wsdl:message>
+	<wsdl:message name="deleteRoleFromProjectOutput">
+		<wsdl:part name="output"
+			element="types:deleteRoleFromProjectResponse" />
+	</wsdl:message>
+	<wsdl:message name="deleteRoleInProjectFromUserInput">		<wsdl:part name="input"
+			element="types:deleteRoleInProjectFromUser" />	</wsdl:message>	<wsdl:message name="deleteRoleInProjectFromUserOutput">		<wsdl:part name="output"
+			element="types:deleteRoleInProjectFromUserResponse" />	</wsdl:message>
+	<wsdl:message name="deleteGroupInProjectFromUserInput">
+		<wsdl:part name="input"
+			element="types:deleteGroupInProjectFromUser" />
+	</wsdl:message>
+	<wsdl:message name="deleteGroupInProjectFromUserOutput">
+		<wsdl:part name="output"
+			element="types:deleteGroupInProjectFromUserResponse" />
+	</wsdl:message>	<wsdl:message name="updateUserInput">		<wsdl:part name="input" element="types:updateUser" />	</wsdl:message>
+	<wsdl:message name="updateUserOutput">
+		<wsdl:part name="output" element="types:updateUserResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateProjectInput">
+		<wsdl:part name="input" element="types:updateProject" />
+	</wsdl:message>
+	<wsdl:message name="updateProjectOutput">
+		<wsdl:part name="output" element="types:updateProjectResponse" />
+	</wsdl:message>	<wsdl:message name="updateConfigurationInput">		<wsdl:part name="input" element="types:updateConfiguration" />	</wsdl:message>
+	<wsdl:message name="updateConfigurationOutput">
+		<wsdl:part name="output"
+			element="types:updateConfigurationResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="retrieveConfigurationInput">		<wsdl:part name="input" element="types:retrieveConfiguration" />	</wsdl:message>
+	<wsdl:message name="retrieveConfigurationOutput">		<wsdl:part name="output"
+			element="types:retrieveConfigurationResponse" />	</wsdl:message>
+
+	<wsdl:message name="addGroupAttributeToGroupInput">
+		<wsdl:part name="input" element="types:addGroupAttributeToGroup" />
+	</wsdl:message>
+
+	<wsdl:message name="addGroupAttributeToGroupOutput">
+		<wsdl:part name="output" element="types:addGroupAttributeToGroupResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="addGroupAttributeToUserInput">
+		<wsdl:part name="input" element="types:addGroupAttributeToUser" />
+	</wsdl:message>
+
+	<wsdl:message name="addGroupAttributeToUserOutput" >
+		<wsdl:part name="output" element="types:addGroupAttributeToUserResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getVersionInput">
+		<wsdl:part name="input" element="types:getVersion" />
+	</wsdl:message>
+
+	<wsdl:message name="getVersionOutput">
+		<wsdl:part name="output" element="types:getVersionResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="isSuperUserInput">
+		<wsdl:part name="input" element="types:isSuperUser" />
+	</wsdl:message>
+
+	<wsdl:message name="isSuperUserOutput">
+		<wsdl:part name="output" element="types:isSuperUserResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="userExistsInput">
+		<wsdl:part name="input" element="types:userExists" />
+	</wsdl:message>
+
+	<wsdl:message name="userExistsOutput">
+		<wsdl:part name="output" element="types:userExistsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="multiUserExistsInput">
+		<wsdl:part name="input" element="types:multiUserExists" />
+	</wsdl:message>
+
+	<wsdl:message name="multiUserExistsOutput">
+		<wsdl:part name="output"
+			element="types:multiUserExistsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="projectExistsInput">
+		<wsdl:part name="input" element="types:projectExists" />
+	</wsdl:message>
+
+	<wsdl:message name="projectExistsOutput">
+		<wsdl:part name="output"
+			element="types:projectExistsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getCNFromUIDInput">
+		<wsdl:part name="input" element="types:getCNFromUID" />
+	</wsdl:message>
+
+	<wsdl:message name="getCNFromUIDOutput">
+		<wsdl:part name="output" element="types:getCNFromUIDResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getUIDFromCNInput">
+		<wsdl:part name="input" element="types:getUIDFromCN" />
+	</wsdl:message>
+
+	<wsdl:message name="getUIDFromCNOutput">
+		<wsdl:part name="output" element="types:getUIDFromCNResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getGroupsInProjectInput">
+		<wsdl:part name="input" element="types:getGroupsInProject" />
+	</wsdl:message>
+	<wsdl:message name="getGroupsInProjectOutput">
+		<wsdl:part name="output"
+			element="types:getGroupsInProjectResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getGroupAttributesForUserInGroupInput">
+		<wsdl:part name="input" element="types:getGroupAttributesForUserInGroup" />
+	</wsdl:message>
+
+	<wsdl:message name="getGroupAttributesForUserInGroupOutput">
+		<wsdl:part name="output" element="types:getGroupAttributesForUserInGroupResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getGroupAttributesForGroupInput">
+		<wsdl:part name="input" element="types:getGroupAttributesForGroup" />
+	</wsdl:message>
+
+	<wsdl:message name="getGroupAttributesForGroupOutput">
+		<wsdl:part name="output" element="types:getGroupAttributesForGroupResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="getEmailAddressForUserInput">
+		<wsdl:part name="input" element="types:getEmailAddressForUser" />
+	</wsdl:message>
+	<wsdl:message name="getEmailAddressForUserOutput">
+		<wsdl:part name="output"
+			element="types:getEmailAddressForUserResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="getEmailAddressForUserWithPrivilegesInput">
+		<wsdl:part name="input" element="types:getEmailAddressForUserWithPrivileges" />
+	</wsdl:message>
+	<wsdl:message name="getEmailAddressForUserWithPrivilegesOutput">
+		<wsdl:part name="output"
+			element="types:getEmailAddressForUserWithPrivilegesResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="getMobileNumberForUserInput">
+		<wsdl:part name="input" element="types:getMobileNumberForUser" />
+	</wsdl:message>
+	<wsdl:message name="getMobileNumberForUserOutput">
+		<wsdl:part name="output"
+			element="types:getMobileNumberForUserResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="AttributeAuthorityManagementPortType">
+		<wsdl:operation name="retrieveConfiguration">
+			<wsdl:input message="tns:retrieveConfigurationInput" />
+			<wsdl:output message="tns:retrieveConfigurationOutput" />
+			<fault name="UserNotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="addGroupAttributeToGroup">
+			<wsdl:input message="tns:addGroupAttributeToGroupInput" />
+			<wsdl:output message="tns:addGroupAttributeToGroupOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="addGroupAttributeToUser">
+			<wsdl:input message="tns:addGroupAttributeToUserInput" />
+			<wsdl:output message="tns:addGroupAttributeToUserOutput" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="updateConfiguration">
+			<wsdl:input message="tns:updateConfigurationInput" />
+			<wsdl:output message="tns:updateConfigurationOutput" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+			<fault name="UserNotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getVersion">
+			<wsdl:input message="tns:getVersionInput" />
+			<wsdl:output message="tns:getVersionOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="isSuperUser">
+			<wsdl:input message="tns:isSuperUserInput" />
+			<wsdl:output message="tns:isSuperUserOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsersAndPrivilegesInProject">
+			<wsdl:input
+				message="tns:getUsersAndPrivilegesInProjectInput" />
+			<wsdl:output
+				message="tns:getUsersAndPrivilegesInProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsers">
+			<wsdl:input message="tns:getUsersInput" />
+			<wsdl:output message="tns:getUsersOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUser">
+			<wsdl:input message="tns:getUserInput" />
+			<wsdl:output message="tns:getUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="userHasAttributes">
+			<wsdl:input message="tns:userHasAttributesInput" />
+			<wsdl:output message="tns:userHasAttributesOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		
+	    <wsdl:operation name="getUserFromLDAP">
+			<wsdl:input message="tns:getUserFromLDAPInput" />
+			<wsdl:output message="tns:getUserFromLDAPOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		<wsdl:operation name="addUser">			<wsdl:input message="tns:addUserInput" />			<wsdl:output message="tns:addUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="addProject">
+			<wsdl:input message="tns:addProjectInput" />
+			<wsdl:output message="tns:addProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteUser">			<wsdl:input message="tns:deleteUserInput" />			<wsdl:output message="tns:deleteUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="deleteProject">
+			<wsdl:input message="tns:deleteProjectInput" />
+			<wsdl:output message="tns:deleteProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteProjectAndPolicy">
+			<wsdl:input message="tns:deleteProjectAndPolicyInput" />
+			<wsdl:output message="tns:deleteProjectAndPolicyOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		
+		<wsdl:operation name="addProjectToUser">			<wsdl:input message="tns:addProjectToUserInput" />			<wsdl:output message="tns:addProjectToUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		<wsdl:operation name="addGroupToProject">
+			<wsdl:input message="tns:addGroupToProjectInput" />
+			<wsdl:output message="tns:addGroupToProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="addRoleToProject">
+			<wsdl:input message="tns:addRoleToProjectInput" />
+			<wsdl:output message="tns:addRoleToProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		<wsdl:operation name="addRoleInProjectToUser">			<wsdl:input message="tns:addRoleInProjectToUserInput" />			<wsdl:output message="tns:addRoleInProjectToUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="deleteGroupInProjectFromUser">			<wsdl:input message="tns:deleteGroupInProjectFromUserInput" />			<wsdl:output
+				message="tns:deleteGroupInProjectFromUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="addGroupInProjectToUser">
+			<wsdl:input message="tns:addGroupInProjectToUserInput" />
+			<wsdl:output message="tns:addGroupInProjectToUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteRoleInProjectFromUser">
+			<wsdl:input message="tns:deleteRoleInProjectFromUserInput" />
+			<wsdl:output
+				message="tns:deleteRoleInProjectFromUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteProjectFromUser">			<wsdl:input message="tns:deleteProjectFromUserInput" />			<wsdl:output message="tns:deleteProjectFromUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="deleteGroupFromProject">
+			<wsdl:input message="tns:deleteGroupFromProjectInput" />
+			<wsdl:output message="tns:deleteGroupFromProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteRoleFromProject">
+			<wsdl:input message="tns:deleteRoleFromProjectInput" />
+			<wsdl:output message="tns:deleteRoleFromProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="updateUser">			<wsdl:input message="tns:updateUserInput" />			<wsdl:output message="tns:updateUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		<wsdl:operation name="updateProject">
+			<wsdl:input message="tns:updateProjectInput" />
+			<wsdl:output message="tns:updateProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="userExists">
+			<wsdl:input message="tns:userExistsInput" />
+			<wsdl:output message="tns:userExistsOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="multiUserExists">
+			<wsdl:input message="tns:multiUserExistsInput" />
+			<wsdl:output message="tns:multiUserExistsOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="projectExists">
+			<wsdl:input message="tns:projectExistsInput" />
+			<wsdl:output message="tns:projectExistsOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="getCNFromUID">
+			<wsdl:input message="tns:getCNFromUIDInput" />
+			<wsdl:output message="tns:getCNFromUIDOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUIDFromCN">
+			<wsdl:input message="tns:getUIDFromCNInput" />
+			<wsdl:output message="tns:getUIDFromCNOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="resetPassword">
+			<wsdl:input message="tns:resetPasswordInput" />
+			<wsdl:output message="tns:resetPasswordOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>	</wsdl:portType>	<wsdl:portType name="AttributeAuthorityQueryPortType">		<wsdl:operation name="getAttributesForUserInProject">			<wsdl:input
+				message="tns:getAttributesForUserInProjectInput" />			<wsdl:output
+				message="tns:getAttributesForUserInProjectOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="getMyAttributes">			<wsdl:input message="tns:getMyAttributesInput" />			<wsdl:output message="tns:getMyAttributesOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="getSystemLevelPrivilege">			<wsdl:input message="tns:getSystemLevelPrivilegeInput" />			<wsdl:output message="tns:getSystemLevelPrivilegeOutput" />			<fault name="NotAuthorisedFault"				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		<wsdl:operation name="getMyProjects">
+			<wsdl:input message="tns:getMyProjectsInput" />
+			<wsdl:output message="tns:getMyProjectsOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		<wsdl:operation name="getMyAttributesInProject">			<wsdl:input message="tns:getMyAttributesInProjectInput" />			<wsdl:output message="tns:getMyAttributesInProjectOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>		<wsdl:operation name="getAttributesForUser">			<wsdl:input message="tns:getAttributesForUserInput" />			<wsdl:output message="tns:getAttributesForUserOutput" />			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />			<fault name="InputFault" message="tns:InputFaultMessage" />		</wsdl:operation>
+		<wsdl:operation name="getProjectsForUser">
+			<wsdl:input message="tns:getProjectsForUserInput" />
+			<wsdl:output message="tns:getProjectsForUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsersInGroupInProject">
+			<wsdl:input message="tns:getUsersInGroupInProjectInput" />
+			<wsdl:output message="tns:getUsersInGroupInProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsersInGroupInProjectWithRole">
+			<wsdl:input
+				message="tns:getUsersInGroupInProjectWithRoleInput" />
+			<wsdl:output
+				message="tns:getUsersInGroupInProjectWithRoleOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsersInProjectWithRole">
+			<wsdl:input message="tns:getUsersInProjectWithRoleInput" />
+			<wsdl:output message="tns:getUsersInProjectWithRoleOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>		<wsdl:operation name="getRolesInProject">
+			<wsdl:input message="tns:getRolesInProjectInput" />
+			<wsdl:output message="tns:getRolesInProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getGroupsInProject">
+			<wsdl:input message="tns:getGroupsInProjectInput" />
+			<wsdl:output message="tns:getGroupsInProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getGroupAttributesForUserInGroup">
+			<wsdl:input message="tns:getGroupAttributesForUserInGroupInput"/>
+			<wsdl:output message="tns:getGroupAttributesForUserInGroupOutput"/>
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getGroupAttributesForGroup">
+			<wsdl:input message="tns:getGroupAttributesForGroupInput"/>
+			<wsdl:output message="tns:getGroupAttributesForGroupOutput"/>
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getUsersInProject">
+			<wsdl:input message="tns:getUsersInProjectInput" />
+			<wsdl:output message="tns:getUsersInProjectOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getProjects">
+			<wsdl:input message="tns:getProjectsInput" />
+			<wsdl:output message="tns:getProjectsOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="changePassword">
+			<wsdl:input message="tns:changePasswordInput" />
+			<wsdl:output message="tns:changePasswordOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="postProcessLogin">
+			<wsdl:input message="tns:postProcessLoginInput" />
+			<wsdl:output message="tns:postProcessLoginOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="recordLoginAttempt">
+			<wsdl:input message="tns:recordLoginAttemptInput" />
+			<wsdl:output message="tns:recordLoginAttemptOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+
+		<wsdl:operation name="isAccountDormant">
+			<wsdl:input message="tns:isAccountDormantInput" />
+			<wsdl:output message="tns:isAccountDormantOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+				
+	    <wsdl:operation name="getEmailAddressForUser">
+			<wsdl:input message="tns:getEmailAddressForUserInput" />
+			<wsdl:output message="tns:getEmailAddressForUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>
+		
+	    <wsdl:operation name="getEmailAddressForUserWithPrivileges">
+			<wsdl:input message="tns:getEmailAddressForUserWithPrivilegesInput" />
+			<wsdl:output message="tns:getEmailAddressForUserWithPrivilegesOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>	
+		
+	    <wsdl:operation name="getMobileNumberForUser">
+			<wsdl:input message="tns:getMobileNumberForUserInput" />
+			<wsdl:output message="tns:getMobileNumberForUserOutput" />
+			<fault name="NotAuthorisedFault"
+				message="tns:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="tns:ProcessingFaultMessage" />
+			<fault name="InputFault" message="tns:InputFaultMessage" />
+		</wsdl:operation>			
+		
+	</wsdl:portType>	<binding name="AttributeAuthorityPortTypeManagementSOAPBinding"
+		type="tns:AttributeAuthorityManagementPortType">		<documentation>			SOAP Binding for the AttributeAuthorityManagementPortType		</documentation>		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="userExists">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/userExists" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+
+		<operation name="addGroupAttributeToGroup">
+			<soap:operation soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addGroupAttributeToGroup"/>
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+		</operation>
+
+		<operation name="addGroupAttributeToUser">
+			<soap:operation soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addGroupAttributeToUser"/>
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>		
+		</operation>
+
+		<operation name="multiUserExists">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/multiUserExists" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+
+		<operation name="projectExists">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/projectExists" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+
+		<operation name="getCNFromUID">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getCNFromUID" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="getUIDFromCN">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUIDFromCN" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="getUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUser" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="userHasAttributes">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/userHasAttributes" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		
+		<operation name="getUserFromLDAP">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUserFromLDAP" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="addUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="addProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="deleteUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="deleteProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="deleteProjectAndPolicy">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteProjectAndPolicy" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="addProjectToUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addProjectToUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="addGroupToProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addGroupToProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="addRoleToProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addRoleToProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="addRoleInProjectToUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addRoleInProjectToUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="addGroupInProjectToUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/addRoleInProjectToUser" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="deleteProjectFromUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteProjectFromUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="deleteGroupFromProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteGroupFromProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="deleteRoleFromProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteGroupFromProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="deleteRoleInProjectFromUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteRoleInProjectFromUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="deleteGroupInProjectFromUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/deleteRoleInProjectFromUser" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="updateUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/updateUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="updateProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/updateProject" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<operation name="updateConfiguration">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/updateConfiguration" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="UserNotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="UserNotAuthorisedFault" />
+			</fault>
+		</operation>
+		<wsdl:operation name="retrieveConfiguration">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/retrieveConfiguration" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="UserNotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="UserNotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getVersion">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getVersion" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="isSuperUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/isSuperUser" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		<wsdl:operation name="getUsersAndPrivilegesInProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsersAndPrivilegesInProject" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getUsers">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsers" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<wsdl:operation name="resetPassword">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/resetPassword" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+				
+	</binding>	<binding name="AttributeAuthorityPortTypeQuerySOAPBinding"
+		type="tns:AttributeAuthorityQueryPortType">		<documentation>			SOAP Binding for the AttributeAuthorityQueryPortType		</documentation>		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />		<operation name="getAttributesForUserInProject">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getAttributesForUserInProject" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>		<operation name="getAttributesForUser">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getAttributesForUser" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>
+		<operation name="getProjectsForUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getProjectsForUser" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>		<operation name="getMyAttributesInProject">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getMyAttributesInProject" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</fault>		</operation>				<operation name="getSystemLevelPrivilege">			<soap:operation				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getSystemLevelPrivilege" />			<input>				<soap:body use="literal" />			</input>			<output>				<soap:body use="literal" />			</output>			<fault name="NotAuthorisedFault">				<soap:fault					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"					use="literal" name="NotAuthorisedFault" />			</fault>			<fault name="ProcessingFault">				<soap:fault					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"					use="literal" name="ProcessingFault" />			</fault>			<fault name="InputFault">				<soap:fault					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"					use="literal" name="InputFault" />			</fault>		</operation>		<operation name="getMyAttributes">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getMyAttributes" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+
+		<operation name="getGroupAttributesForUserInGroup">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getGroupAttributesForUserInGroup" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+
+		<operation name="getGroupAttributesForGroup">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getGroupAttributesForGroup" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+
+		</operation>
+
+		<operation name="getMyProjects">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getMyProjects" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</fault>
+		</operation>
+		<wsdl:operation name="getRolesInProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getRolesInProject" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="getGroupsInProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getGroupsInProject" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="getUsersInProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsersInProject" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProjects">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getProjects" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="changePassword">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/changePassword" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="postProcessLogin">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/postProcessLogin" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="recordLoginAttempt">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/recordLoginAttempt" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<wsdl:operation name="isAccountDormant">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/isAccountDormant" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>		
+
+		<wsdl:operation name="getUsersInGroupInProject">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsersInGroupInProject" />			<wsdl:input>				<soap:body use="literal" />			</wsdl:input>			<wsdl:output>				<soap:body use="literal" />			</wsdl:output>			<wsdl:fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</wsdl:fault>			<wsdl:fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</wsdl:fault>			<wsdl:fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</wsdl:fault>		</wsdl:operation>
+		<wsdl:operation name="getUsersInProjectWithRole">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsersInProjectWithRole" />			<wsdl:input>				<soap:body use="literal" />			</wsdl:input>			<wsdl:output>				<soap:body use="literal" />			</wsdl:output>			<wsdl:fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</wsdl:fault>			<wsdl:fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</wsdl:fault>			<wsdl:fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</wsdl:fault>		</wsdl:operation>		<wsdl:operation name="getUsersInGroupInProjectWithRole">			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getUsersInGroupInProjectWithRole" />			<wsdl:input>				<soap:body use="literal" />			</wsdl:input>			<wsdl:output>				<soap:body use="literal" />			</wsdl:output>			<wsdl:fault name="NotAuthorisedFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />			</wsdl:fault>			<wsdl:fault name="ProcessingFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />			</wsdl:fault>			<wsdl:fault name="InputFault">				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />			</wsdl:fault>		</wsdl:operation>
+	    <wsdl:operation name="getEmailAddressForUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getEmailAddressForUser" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+	    <wsdl:operation name="getEmailAddressForUserWithPrivileges">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getEmailAddressForUserWithPrivileges" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>	
+	    <wsdl:operation name="getMobileNumberForUser">
+			<soap:operation
+				soapAction="http://www.psygrid.org/xml/security/attribute-authority/service/getMobileNumberForUser" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="NotAuthorisedFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="NotAuthorisedFault" />
+			</wsdl:fault>
+			<wsdl:fault name="ProcessingFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="ProcessingFault" />
+			</wsdl:fault>
+			<wsdl:fault name="InputFault">
+				<soap:fault
+					namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+					use="literal" name="InputFault" />
+			</wsdl:fault>
+		</wsdl:operation>				</binding>	<service name="AttributeAuthorityService">		<port name="AttributeAuthorityPortTypeManagementSOAPPort"
+			binding="tns:AttributeAuthorityPortTypeManagementSOAPBinding">			<soap:address location="@admin@" />		</port>		<port name="AttributeAuthorityPortTypeQuerySOAPPort"
+			binding="tns:AttributeAuthorityPortTypeQuerySOAPBinding">			<soap:address location="@query@" />		</port>
+	</service>
+</wsdl:definitions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="generated"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/xmlsec-1.2.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/spring.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/excludes/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/saaj.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/axis.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psygrid-common"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/mail.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/opensaml-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix-asn1.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15-131.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/wss4j.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-httpclient-3.1-alpha1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/xercesImpl.jar" sourcepath="/psygrid-common/lib/source/xerces-2_10_0_src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/xalan-2.6.0.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

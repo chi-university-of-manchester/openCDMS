@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<aa:Config
+	xmlns="http://www.psygrid.org/xml/security/secureservice/config"
+	xmlns:aa="http://www.psygrid.org/xml/security/secureservice/config">
+	<aa:Roles>
+		<aa:administrator>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509SubjectName>CN=John Ainsworth, OU=Informatics, O=PsyGrid, C=UK</ds:X509SubjectName>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</aa:administrator>
+		<aa:administrator>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509SubjectName>CN=Robert Harper, OU=Informatics, O=PsyGrid, C=UK</ds:X509SubjectName>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</aa:administrator>
+	</aa:Roles>
+	<aa:Issuers>
+		<aa:administration-authority>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509SubjectName>EMAILADDRESS=sysadmin@psygrid.org, CN=PsyGrid Infrastructure Certificate Authority, OU=Informatics, O=PsyGrid, C=UK</ds:X509SubjectName>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</aa:administration-authority>
+		<aa:user-authority>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509SubjectName>CN=Globus Simple CA, OU=simpleCA-atisha.smb.man.ac.uk, OU=GlobusTest, O=Grid</ds:X509SubjectName>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</aa:user-authority>
+		<aa:user-authority>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509SubjectName>CN=Psygrid Online CA, OU=Informatics, O=PsyGrid, C=UK</ds:X509SubjectName>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</aa:user-authority>
+	</aa:Issuers>
+</aa:Config>

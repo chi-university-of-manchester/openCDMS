@@ -1,0 +1,136 @@
+Screening form
+	-- Baseline Core 
+	CHECKED 28-Feb-2006 RSH.
+	TODO - add de-identification transformers
+
+WHO Screening Schedule
+	-- Baseline Core
+	CHECKED 08-MAR-2006 RSH
+	
+1.a) Personal Details Form No Consent
+	-- Baseline Core
+	CHECKED 28-Feb-2006 RSH.
+
+1.b) Personal Details Form With Consent
+	-- Baseline Core -> Some TODOs left
+	CHECKED 01-MAR-2006 RSH.
+	TODO - add de-identification transformers
+	
+2) PANSS:
+	-- Baseline Core -> Done
+	-- 6 months -> Done
+	-- 12 months -> Done
+	CHECKED 28-Feb-2006 RSH.
+	
+3) Young Mania Scale
+	-- Baseline Core -> Done
+	-- 6 months -> Done
+	-- 12 months -> Done
+	CHECKED 28-Feb-2006 RSH.
+	
+4) Global Assessment Functioning
+	-- Baseline Core
+	-- 12 months
+	CHECKED 28-FEB-2006 RSH
+
+5) Duration of Untreated Psychosis
+	-- Baseline Core
+	CHECKED 28-FEB-2006 RSH
+	
+6) Drug Check
+	-- Baseline Core
+	-- 12 months
+	CHECKED 01-MAR-2006 RSH
+	
+7) Pathways to care (collated only)
+	-- Baseline Section B -> Started
+	INCOMPLETE 01-MAR-2006 RSH
+	See Bug 252
+	
+8) Pre-morbid adjustment scale
+	-- Baseline Section B
+	CHECKED 01-MAR-2006 RSH
+	
+9) Calgary depression for Schizophrenia Scale
+	-- Baseline Section B -> Done
+	-- 6 months -> Done
+	-- 12 months -> Done
+	CHECKED 02-MAR-2006 RSH
+	
+10) EIS Family History
+	-- Baseline Section B -> Done
+	CHECKED 02-MAR-2006 RSH
+	
+11) EQ5D
+	-- Baseline Section B -> Done
+	-- 12 months -> Done
+	CHECKED 02-MAR-2006 RSH
+	TODO - add de-identification transformers
+	
+12a) Drug side effects
+	-- Baseline Section B
+	-- Week 12
+	-- Week 26
+	-- Week 52
+	CHECKED 02-MAR-2006 RSH
+
+12b) Drug side effects ANNSERS
+	CHECKED 02-MAR-2006 RSH
+	3 FIXME items remain relating to bugs 248, 249, 250 - these are 
+	minor however and do not prevent the form from working.
+
+13) Insight Scale - Form is completed, but occurrences must be fixed
+	-- Baseline Section C
+	-- 12 months
+	CHECKED 02-MAR-2006 RSH
+	
+14) MacArthur Adverse Outcomes:
+	* Screening, Carer
+		-- 6 months
+		-- 12 months
+	CHECKED 05-MAR-2005 RSH
+		
+	* Screening, Client
+		-- 6 months
+		-- 12 months
+	CHECKED 05-MAR-2006 RSH
+		
+	* Detailed, Client (self harm)
+		-- Baseline Section C, Most Serious
+		-- Baseline Section C, Closest to Contact
+	CHECKED 03-MAR-2006 RSH
+		
+	* Detailed, Client (violence)
+		-- Baseline Section C, Most Serious
+		-- Baseline Section C, Closest to Contact
+	CHECKED 03-MAR-2006 RSH
+	
+15) CSSRI
+	-- Baseline Section C
+	-- 6 months
+	-- 12 months
+	CHECKED 04-MAR-2005 RSH
+	FIXME items still remain, but it basically works now
+	
+16) Time Use Interview and Score Sheet
+	-- Baseline Section C
+	-- 6 months -> Started
+	-- 12 months -> Started
+	CHECKED UPTO END OF INTERVIEW 07-MAR-2006 RSH
+	Waiting on feedback on how to do the scoresheet
+	
+17) Seven-point compliance scale record
+	-- Baseline Section C -> Done
+	-- 6 months -> Done
+	-- 12 months -> Done
+	CHECKED 05-MAR-2005 RSH
+	
+18) Personal Details - Follow-up
+	-- 6 Months
+	-- 12 Months
+	CHECKED 05-MAR-2006 RSH
+	
+18) Study termination Record
+	-- 12 months
+	-- Patient Withdrawal
+	CHECKED 05-MAR-2006 RSH

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+    
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!-- This config file defines the scheduled jobs to run in the ESL -->
+    		
+ 	<bean name="queuedEmailsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.common.email.QueuedEmailsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+	 			<entry key="sendEmails" value="@sendmails@"/>
+				<entry key="emailDAO"     value-ref="eslDAO" />
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="systemAddress" value="@systemAddress@"/>
+				</map>
+		</property>
+	</bean> 
+				
+	<bean name="queuedSMSsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.esl.scheduling.QueuedSMSsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+	 			<entry key="sendSMSs" value="@sendSMSs@"/>
+				<entry key="eslDAO"     value-ref="eslDAO" />
+				<entry key="sender" value-ref="smsSender" />
+				</map>
+		</property>
+	</bean> 
+	
+	<bean name="checkSMSAccountJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.esl.scheduling.CheckSMSAccountJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- Send out system email to provide account info -->
+				<entry key="sendEmail" value="@smsEmailLog@"/>
+				<entry key="emailAddress" value="@systemAddress@"/>
+				<entry key="sender" value-ref="smsSender" />
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="dao"     value-ref="eslDAO" />
+				</map>
+		</property>
+	</bean> 
+	
+	<bean id="queuedEmailsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="queuedEmailsJob"/>
+		<!-- run every 20 minutes -->
+		<property name="cronExpression" value="0 0/5 * * * ?"/>
+	</bean>
+	
+		<bean id="queuedSMSsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="queuedSMSsJob"/>
+		<!-- run every 20 minutes -->
+		<property name="cronExpression" value="0 0/5 * * * ?"/>
+	</bean>
+	
+		<bean id="checkSMSAccountTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="checkSMSAccountJob"/>
+		<!-- run every day at 11:50pm to check logs for SMS sent on current day --> 
+ 		<property name="cronExpression" value="0 50 23 * * ?"/>
+<!--  testing only		<property name="cronExpression" value="0 0/40 * * * ?"/> -->
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="queuedEmailsTrigger"/>
+				<ref bean="queuedSMSsTrigger"/>
+				<ref bean="checkSMSAccountTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

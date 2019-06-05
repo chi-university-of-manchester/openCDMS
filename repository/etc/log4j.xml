@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+        
+	<appender name="RepositoryAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/repository.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+
+	<logger name="org.psygrid.data" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="RepositoryAppender"/>
+	</logger>
+
+</log4j:configuration>

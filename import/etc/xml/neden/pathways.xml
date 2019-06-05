@@ -1,0 +1,1074 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="10">
+        <description>Pathways to Care - Collated</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="22" column="2"/>
+            	<mapping source="22" column="3"/>
+            	<mapping source="22" column="4"/>
+            	<mapping source="23" column="2"/>
+            	<mapping source="23" column="3"/>
+            	<mapping source="23" column="4"/>
+            	<mapping source="44" column="2"/>
+            	<mapping source="44" column="3"/>
+            	<mapping source="44" column="4"/>
+            	<mapping source="45" column="2"/>
+            	<mapping source="45" column="3"/>
+            	<mapping source="45" column="4"/>
+            	<mapping source="46" column="2"/>
+            	<mapping source="46" column="3"/>
+            	<mapping source="46" column="4"/>
+            	<mapping source="47" column="2"/>
+            	<mapping source="47" column="3"/>
+            	<mapping source="47" column="4"/>
+            	<mapping source="48" column="2"/>
+            	<mapping source="48" column="3"/>
+            	<mapping source="48" column="4"/>
+            	<mapping source="49" column="2"/>
+            	<mapping source="49" column="3"/>
+            	<mapping source="49" column="4"/>
+            	<mapping source="50" column="2"/>
+            	<mapping source="50" column="3"/>
+            	<mapping source="50" column="4"/>
+            	<mapping source="51" column="2"/>
+            	<mapping source="51" column="3"/>
+            	<mapping source="51" column="4"/>
+            	<mapping source="52" column="2"/>
+            	<mapping source="52" column="3"/>
+            	<mapping source="52" column="4"/>
+            	<mapping source="87" column="2"/>
+            	<mapping source="87" column="3"/>
+            	<mapping source="87" column="4"/>
+            	<mapping source="88" column="2"/>
+            	<mapping source="88" column="3"/>
+            	<mapping source="88" column="4"/>
+            	<mapping source="89" column="2"/>
+            	<mapping source="89" column="3"/>
+            	<mapping source="89" column="4"/>
+            	<mapping source="90" column="2"/>
+            	<mapping source="90" column="3"/>
+            	<mapping source="90" column="4"/>
+            	<mapping source="91" column="2"/>
+            	<mapping source="91" column="3"/>
+            	<mapping source="91" column="4"/>
+            	<mapping source="92" column="2"/>
+            	<mapping source="92" column="3"/>
+            	<mapping source="92" column="4"/>
+            	<mapping source="93" column="2"/>
+            	<mapping source="93" column="3"/>
+            	<mapping source="93" column="4"/>
+            	<mapping source="94" column="2"/>
+            	<mapping source="94" column="3"/>
+            	<mapping source="94" column="4"/>
+            	<mapping source="95" column="2"/>
+            	<mapping source="95" column="3"/>
+            	<mapping source="95" column="4"/>
+            	<mapping source="96" column="2"/>
+            	<mapping source="96" column="3"/>
+            	<mapping source="96" column="4"/>
+            	<mapping source="97" column="2"/>
+            	<mapping source="97" column="3"/>
+            	<mapping source="97" column="4"/>
+            	<mapping source="98" column="2"/>
+            	<mapping source="98" column="3"/>
+            	<mapping source="98" column="4"/>
+            	<mapping source="99" column="2"/>
+            	<mapping source="99" column="3"/>
+            	<mapping source="99" column="4"/>
+            	<mapping source="100" column="2"/>
+            	<mapping source="100" column="3"/>
+            	<mapping source="100" column="4"/>
+            	<mapping source="101" column="2"/>
+            	<mapping source="101" column="3"/>
+            	<mapping source="101" column="4"/>
+            	<mapping source="102" column="2"/>
+            	<mapping source="102" column="3"/>
+            	<mapping source="102" column="4"/>
+            	<mapping source="103" column="2"/>
+            	<mapping source="103" column="3"/>
+            	<mapping source="103" column="4"/>
+            	<mapping source="104" column="2"/>
+            	<mapping source="104" column="3"/>
+            	<mapping source="104" column="4"/>
+            	<mapping source="105" column="2"/>
+            	<mapping source="105" column="3"/>
+            	<mapping source="105" column="4"/>
+            	<mapping source="106" column="2"/>
+            	<mapping source="106" column="3"/>
+            	<mapping source="106" column="4"/>
+            </emptydoc>
+            <interviewer source="22" column="4"/>
+            <interviewdate source="22" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="0">
+                        <description>Does the client have any history of previous care by any mental health service?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="22" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>If Yes, give details:</description>
+                        <mapping source="22" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Additional Info</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation null to standard code 970 Not Applicable</description>
+                                <input special="false"></input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="22" column="7"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="true" index="0">
+                	<instances>
+                		<instance index="0">
+                			<emptyinst>
+				            	<mapping source="23" column="2"/>
+				            	<mapping source="23" column="3"/>
+				            	<mapping source="23" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="1">
+                			<emptyinst>
+				            	<mapping source="44" column="2"/>
+				            	<mapping source="44" column="3"/>
+				            	<mapping source="44" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="2">
+                			<emptyinst>
+				            	<mapping source="45" column="2"/>
+				            	<mapping source="45" column="3"/>
+				            	<mapping source="45" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="3">
+                			<emptyinst>
+				            	<mapping source="46" column="2"/>
+				            	<mapping source="46" column="3"/>
+				            	<mapping source="46" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="4">
+                			<emptyinst>
+				            	<mapping source="47" column="2"/>
+				            	<mapping source="47" column="3"/>
+				            	<mapping source="47" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="5">
+                			<emptyinst>
+				            	<mapping source="48" column="2"/>
+				            	<mapping source="48" column="3"/>
+				            	<mapping source="48" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="6">
+                			<emptyinst>
+				            	<mapping source="49" column="2"/>
+				            	<mapping source="49" column="3"/>
+				            	<mapping source="49" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="7">
+                			<emptyinst>
+				            	<mapping source="50" column="2"/>
+				            	<mapping source="50" column="3"/>
+				            	<mapping source="50" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="8">
+                			<emptyinst>
+				            	<mapping source="51" column="2"/>
+				            	<mapping source="51" column="3"/>
+				            	<mapping source="51" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="9">
+                			<emptyinst>
+				            	<mapping source="52" column="2"/>
+				            	<mapping source="52" column="3"/>
+				            	<mapping source="52" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="10">
+                			<emptyinst>
+				            	<mapping source="87" column="2"/>
+				            	<mapping source="87" column="3"/>
+				            	<mapping source="87" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="11">
+                			<emptyinst>
+				            	<mapping source="88" column="2"/>
+				            	<mapping source="88" column="3"/>
+				            	<mapping source="88" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="12">
+                			<emptyinst>
+				            	<mapping source="89" column="2"/>
+				            	<mapping source="89" column="3"/>
+				            	<mapping source="89" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="13">
+                			<emptyinst>
+				            	<mapping source="90" column="2"/>
+				            	<mapping source="90" column="3"/>
+				            	<mapping source="90" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="14">
+                			<emptyinst>
+				            	<mapping source="91" column="2"/>
+				            	<mapping source="91" column="3"/>
+				            	<mapping source="91" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="15">
+                			<emptyinst>
+				            	<mapping source="92" column="2"/>
+				            	<mapping source="92" column="3"/>
+				            	<mapping source="92" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="16">
+                			<emptyinst>
+				            	<mapping source="93" column="2"/>
+				            	<mapping source="93" column="3"/>
+				            	<mapping source="93" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="17">
+                			<emptyinst>
+				            	<mapping source="94" column="2"/>
+				            	<mapping source="94" column="3"/>
+				            	<mapping source="94" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="18">
+                			<emptyinst>
+				            	<mapping source="95" column="2"/>
+				            	<mapping source="95" column="3"/>
+				            	<mapping source="95" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="19">
+                			<emptyinst>
+				            	<mapping source="96" column="2"/>
+				            	<mapping source="96" column="3"/>
+				            	<mapping source="96" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="20">
+                			<emptyinst>
+				            	<mapping source="97" column="2"/>
+				            	<mapping source="97" column="3"/>
+				            	<mapping source="97" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="21">
+                			<emptyinst>
+				            	<mapping source="98" column="2"/>
+				            	<mapping source="98" column="3"/>
+				            	<mapping source="98" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="22">
+                			<emptyinst>
+				            	<mapping source="99" column="2"/>
+				            	<mapping source="99" column="3"/>
+				            	<mapping source="99" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="23">
+                			<emptyinst>
+				            	<mapping source="100" column="2"/>
+				            	<mapping source="100" column="3"/>
+				            	<mapping source="100" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="24">
+                			<emptyinst>
+				            	<mapping source="101" column="2"/>
+				            	<mapping source="101" column="3"/>
+				            	<mapping source="101" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="25">
+                			<emptyinst>
+				            	<mapping source="102" column="2"/>
+				            	<mapping source="102" column="3"/>
+				            	<mapping source="102" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="26">
+                			<emptyinst>
+				            	<mapping source="103" column="2"/>
+				            	<mapping source="103" column="3"/>
+				            	<mapping source="103" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="27">
+                			<emptyinst>
+				            	<mapping source="104" column="2"/>
+				            	<mapping source="104" column="3"/>
+				            	<mapping source="104" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="28">
+                			<emptyinst>
+				            	<mapping source="105" column="2"/>
+				            	<mapping source="105" column="3"/>
+				            	<mapping source="105" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="29">
+                			<emptyinst>
+				            	<mapping source="106" column="2"/>
+				            	<mapping source="106" column="3"/>
+				            	<mapping source="106" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                	</instances>
+                    <basicentry index="3">
+                        <description>Source</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Client</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Carer/Family</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Notes</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Client and Carer</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Other (Specify)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="5" occurrence="0"/>
+                        <mapping source="44" column="5" occurrence="1"/>
+                        <mapping source="45" column="5" occurrence="2"/>
+                        <mapping source="46" column="5" occurrence="3"/>
+                        <mapping source="47" column="5" occurrence="4"/>
+                        <mapping source="48" column="5" occurrence="5"/>
+                        <mapping source="49" column="5" occurrence="6"/>
+                        <mapping source="50" column="5" occurrence="7"/>
+                        <mapping source="51" column="5" occurrence="8"/>
+                        <mapping source="52" column="5" occurrence="9"/>
+                        <mapping source="87" column="5" occurrence="10"/>
+                        <mapping source="88" column="5" occurrence="11"/>
+                        <mapping source="89" column="5" occurrence="12"/>
+                        <mapping source="90" column="5" occurrence="13"/>
+                        <mapping source="91" column="5" occurrence="14"/>
+                        <mapping source="92" column="5" occurrence="15"/>
+                        <mapping source="93" column="5" occurrence="16"/>
+                        <mapping source="94" column="5" occurrence="17"/>
+                        <mapping source="95" column="5" occurrence="18"/>
+                        <mapping source="96" column="5" occurrence="19"/>
+                        <mapping source="97" column="5" occurrence="20"/>
+                        <mapping source="98" column="5" occurrence="21"/>
+                        <mapping source="99" column="5" occurrence="22"/>
+                        <mapping source="100" column="5" occurrence="23"/>
+                        <mapping source="101" column="5" occurrence="24"/>
+                        <mapping source="102" column="5" occurrence="25"/>
+                        <mapping source="103" column="5" occurrence="26"/>
+                        <mapping source="104" column="5" occurrence="27"/>
+                        <mapping source="105" column="5" occurrence="28"/>
+                        <mapping source="106" column="5" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Who was seen?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. GP</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. CPN</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Social services</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Religious Leader</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Casualty Dept</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Private doctor</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Police</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Psychiatric Hospital</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Home treatment team</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Primary Care Team</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 11. CMHT (unspecified)</description>
+                                <input special="false">11</input>
+                                <output>10</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 12. Psychiatrist</description>
+                                <input special="false">12</input>
+                                <output>11</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 13. Psychiatrist (drugs service)</description>
+                                <input special="false">13</input>
+                                <output>12</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 14. Neurologist</description>
+                                <input special="false">14</input>
+                                <output>13</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 15. Counsellor</description>
+                                <input special="false">15</input>
+                                <output>14</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 16. Support Worker</description>
+                                <input special="false">16</input>
+                                <output>15</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 17. Child &amp; Adol. Psych services</description>
+                                <input special="false">17</input>
+                                <output>16</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 18. Other (specify)</description>
+                                <input special="false">18</input>
+                                <output>17</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 19. Prison services</description>
+                                <input special="false">19</input>
+                                <output>18</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="6" occurrence="0"/>
+                        <mapping source="44" column="6" occurrence="1"/>
+                        <mapping source="45" column="6" occurrence="2"/>
+                        <mapping source="46" column="6" occurrence="3"/>
+                        <mapping source="47" column="6" occurrence="4"/>
+                        <mapping source="48" column="6" occurrence="5"/>
+                        <mapping source="49" column="6" occurrence="6"/>
+                        <mapping source="50" column="6" occurrence="7"/>
+                        <mapping source="51" column="6" occurrence="8"/>
+                        <mapping source="52" column="6" occurrence="9"/>
+                        <mapping source="87" column="6" occurrence="10"/>
+                        <mapping source="88" column="6" occurrence="11"/>
+                        <mapping source="89" column="6" occurrence="12"/>
+                        <mapping source="90" column="6" occurrence="13"/>
+                        <mapping source="91" column="6" occurrence="14"/>
+                        <mapping source="92" column="6" occurrence="15"/>
+                        <mapping source="93" column="6" occurrence="16"/>
+                        <mapping source="94" column="6" occurrence="17"/>
+                        <mapping source="95" column="6" occurrence="18"/>
+                        <mapping source="96" column="6" occurrence="19"/>
+                        <mapping source="97" column="6" occurrence="20"/>
+                        <mapping source="98" column="6" occurrence="21"/>
+                        <mapping source="99" column="6" occurrence="22"/>
+                        <mapping source="100" column="6" occurrence="23"/>
+                        <mapping source="101" column="6" occurrence="24"/>
+                        <mapping source="102" column="6" occurrence="25"/>
+                        <mapping source="103" column="6" occurrence="26"/>
+                        <mapping source="104" column="6" occurrence="27"/>
+                        <mapping source="105" column="6" occurrence="28"/>
+                        <mapping source="106" column="6" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>How Seen</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. In Person</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Phone Call</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Letter</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="7" occurrence="0"/>
+                        <mapping source="44" column="7" occurrence="1"/>
+                        <mapping source="45" column="7" occurrence="2"/>
+                        <mapping source="46" column="7" occurrence="3"/>
+                        <mapping source="47" column="7" occurrence="4"/>
+                        <mapping source="48" column="7" occurrence="5"/>
+                        <mapping source="49" column="7" occurrence="6"/>
+                        <mapping source="50" column="7" occurrence="7"/>
+                        <mapping source="51" column="7" occurrence="8"/>
+                        <mapping source="52" column="7" occurrence="9"/>
+                        <mapping source="87" column="7" occurrence="10"/>
+                        <mapping source="88" column="7" occurrence="11"/>
+                        <mapping source="89" column="7" occurrence="12"/>
+                        <mapping source="90" column="7" occurrence="13"/>
+                        <mapping source="91" column="7" occurrence="14"/>
+                        <mapping source="92" column="7" occurrence="15"/>
+                        <mapping source="93" column="7" occurrence="16"/>
+                        <mapping source="94" column="7" occurrence="17"/>
+                        <mapping source="95" column="7" occurrence="18"/>
+                        <mapping source="96" column="7" occurrence="19"/>
+                        <mapping source="97" column="7" occurrence="20"/>
+                        <mapping source="98" column="7" occurrence="21"/>
+                        <mapping source="99" column="7" occurrence="22"/>
+                        <mapping source="100" column="7" occurrence="23"/>
+                        <mapping source="101" column="7" occurrence="24"/>
+                        <mapping source="102" column="7" occurrence="25"/>
+                        <mapping source="103" column="7" occurrence="26"/>
+                        <mapping source="104" column="7" occurrence="27"/>
+                        <mapping source="105" column="7" occurrence="28"/>
+                        <mapping source="106" column="7" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>When was this person/team seen?</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="23" column="8" occurrence="0"/>
+                        <mapping source="44" column="8" occurrence="1"/>
+                        <mapping source="45" column="8" occurrence="2"/>
+                        <mapping source="46" column="8" occurrence="3"/>
+                        <mapping source="47" column="8" occurrence="4"/>
+                        <mapping source="48" column="8" occurrence="5"/>
+                        <mapping source="49" column="8" occurrence="6"/>
+                        <mapping source="50" column="8" occurrence="7"/>
+                        <mapping source="51" column="8" occurrence="8"/>
+                        <mapping source="52" column="8" occurrence="9"/>
+                        <mapping source="87" column="8" occurrence="10"/>
+                        <mapping source="88" column="8" occurrence="11"/>
+                        <mapping source="89" column="8" occurrence="12"/>
+                        <mapping source="90" column="8" occurrence="13"/>
+                        <mapping source="91" column="8" occurrence="14"/>
+                        <mapping source="92" column="8" occurrence="15"/>
+                        <mapping source="93" column="8" occurrence="16"/>
+                        <mapping source="94" column="8" occurrence="17"/>
+                        <mapping source="95" column="8" occurrence="18"/>
+                        <mapping source="96" column="8" occurrence="19"/>
+                        <mapping source="97" column="8" occurrence="20"/>
+                        <mapping source="98" column="8" occurrence="21"/>
+                        <mapping source="99" column="8" occurrence="22"/>
+                        <mapping source="100" column="8" occurrence="23"/>
+                        <mapping source="101" column="8" occurrence="24"/>
+                        <mapping source="102" column="8" occurrence="25"/>
+                        <mapping source="103" column="8" occurrence="26"/>
+                        <mapping source="104" column="8" occurrence="27"/>
+                        <mapping source="105" column="8" occurrence="28"/>
+                        <mapping source="106" column="8" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Was the appointment attended?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. No</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Client</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Family</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Client and family</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="9" occurrence="0"/>
+                        <mapping source="44" column="9" occurrence="1"/>
+                        <mapping source="45" column="9" occurrence="2"/>
+                        <mapping source="46" column="9" occurrence="3"/>
+                        <mapping source="47" column="9" occurrence="4"/>
+                        <mapping source="48" column="9" occurrence="5"/>
+                        <mapping source="49" column="9" occurrence="6"/>
+                        <mapping source="50" column="9" occurrence="7"/>
+                        <mapping source="51" column="9" occurrence="8"/>
+                        <mapping source="52" column="9" occurrence="9"/>
+                        <mapping source="87" column="9" occurrence="10"/>
+                        <mapping source="88" column="9" occurrence="11"/>
+                        <mapping source="89" column="9" occurrence="12"/>
+                        <mapping source="90" column="9" occurrence="13"/>
+                        <mapping source="91" column="9" occurrence="14"/>
+                        <mapping source="92" column="9" occurrence="15"/>
+                        <mapping source="93" column="9" occurrence="16"/>
+                        <mapping source="94" column="9" occurrence="17"/>
+                        <mapping source="95" column="9" occurrence="18"/>
+                        <mapping source="96" column="9" occurrence="19"/>
+                        <mapping source="97" column="9" occurrence="20"/>
+                        <mapping source="98" column="9" occurrence="21"/>
+                        <mapping source="99" column="9" occurrence="22"/>
+                        <mapping source="100" column="9" occurrence="23"/>
+                        <mapping source="101" column="9" occurrence="24"/>
+                        <mapping source="102" column="9" occurrence="25"/>
+                        <mapping source="103" column="9" occurrence="26"/>
+                        <mapping source="104" column="9" occurrence="27"/>
+                        <mapping source="105" column="9" occurrence="28"/>
+                        <mapping source="106" column="9" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Who suggested that care was sought</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Client</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Family member</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Friend</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Referred from previous carer (Enter Pathway No.)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Client and family</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. GP (source referral to GP unknown)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Work colleague</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Detained by police (due to offending/behaviour</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Pathway contact approached client to offer help</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 10. Follow up appointment (Enter Pathway No.)</description>
+                                <input special="false">10</input>
+                                <output>9</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for option 666. Unknown to std code 960. Data not known</description>
+                                <input special="false">666</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="10" occurrence="0"/>
+                        <mapping source="44" column="10" occurrence="1"/>
+                        <mapping source="45" column="10" occurrence="2"/>
+                        <mapping source="46" column="10" occurrence="3"/>
+                        <mapping source="47" column="10" occurrence="4"/>
+                        <mapping source="48" column="10" occurrence="5"/>
+                        <mapping source="49" column="10" occurrence="6"/>
+                        <mapping source="50" column="10" occurrence="7"/>
+                        <mapping source="51" column="10" occurrence="8"/>
+                        <mapping source="52" column="10" occurrence="9"/>
+                        <mapping source="87" column="10" occurrence="10"/>
+                        <mapping source="88" column="10" occurrence="11"/>
+                        <mapping source="89" column="10" occurrence="12"/>
+                        <mapping source="90" column="10" occurrence="13"/>
+                        <mapping source="91" column="10" occurrence="14"/>
+                        <mapping source="92" column="10" occurrence="15"/>
+                        <mapping source="93" column="10" occurrence="16"/>
+                        <mapping source="94" column="10" occurrence="17"/>
+                        <mapping source="95" column="10" occurrence="18"/>
+                        <mapping source="96" column="10" occurrence="19"/>
+                        <mapping source="97" column="10" occurrence="20"/>
+                        <mapping source="98" column="10" occurrence="21"/>
+                        <mapping source="99" column="10" occurrence="22"/>
+                        <mapping source="100" column="10" occurrence="23"/>
+                        <mapping source="101" column="10" occurrence="24"/>
+                        <mapping source="102" column="10" occurrence="25"/>
+                        <mapping source="103" column="10" occurrence="26"/>
+                        <mapping source="104" column="10" occurrence="27"/>
+                        <mapping source="105" column="10" occurrence="28"/>
+                        <mapping source="106" column="10" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>What was the main problem presented?</description>
+                        <mapping source="23" column="11" occurrence="0"/>
+                        <mapping source="44" column="11" occurrence="1"/>
+                        <mapping source="45" column="11" occurrence="2"/>
+                        <mapping source="46" column="11" occurrence="3"/>
+                        <mapping source="47" column="11" occurrence="4"/>
+                        <mapping source="48" column="11" occurrence="5"/>
+                        <mapping source="49" column="11" occurrence="6"/>
+                        <mapping source="50" column="11" occurrence="7"/>
+                        <mapping source="51" column="11" occurrence="8"/>
+                        <mapping source="52" column="11" occurrence="9"/>
+                        <mapping source="87" column="11" occurrence="10"/>
+                        <mapping source="88" column="11" occurrence="11"/>
+                        <mapping source="89" column="11" occurrence="12"/>
+                        <mapping source="90" column="11" occurrence="13"/>
+                        <mapping source="91" column="11" occurrence="14"/>
+                        <mapping source="92" column="11" occurrence="15"/>
+                        <mapping source="93" column="11" occurrence="16"/>
+                        <mapping source="94" column="11" occurrence="17"/>
+                        <mapping source="95" column="11" occurrence="18"/>
+                        <mapping source="96" column="11" occurrence="19"/>
+                        <mapping source="97" column="11" occurrence="20"/>
+                        <mapping source="98" column="11" occurrence="21"/>
+                        <mapping source="99" column="11" occurrence="22"/>
+                        <mapping source="100" column="11" occurrence="23"/>
+                        <mapping source="101" column="11" occurrence="24"/>
+                        <mapping source="102" column="11" occurrence="25"/>
+                        <mapping source="103" column="11" occurrence="26"/>
+                        <mapping source="104" column="11" occurrence="27"/>
+                        <mapping source="105" column="11" occurrence="28"/>
+                        <mapping source="106" column="11" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Do you (the researcher) consider the client's symptoms at this point to have been: </description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Psychotic</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Non-psychotic</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Symptomology unclear</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="12" occurrence="0"/>
+                        <mapping source="44" column="12" occurrence="1"/>
+                        <mapping source="45" column="12" occurrence="2"/>
+                        <mapping source="46" column="12" occurrence="3"/>
+                        <mapping source="47" column="12" occurrence="4"/>
+                        <mapping source="48" column="12" occurrence="5"/>
+                        <mapping source="49" column="12" occurrence="6"/>
+                        <mapping source="50" column="12" occurrence="7"/>
+                        <mapping source="51" column="12" occurrence="8"/>
+                        <mapping source="52" column="12" occurrence="9"/>
+                        <mapping source="87" column="12" occurrence="10"/>
+                        <mapping source="88" column="12" occurrence="11"/>
+                        <mapping source="89" column="12" occurrence="12"/>
+                        <mapping source="90" column="12" occurrence="13"/>
+                        <mapping source="91" column="12" occurrence="14"/>
+                        <mapping source="92" column="12" occurrence="15"/>
+                        <mapping source="93" column="12" occurrence="16"/>
+                        <mapping source="94" column="12" occurrence="17"/>
+                        <mapping source="95" column="12" occurrence="18"/>
+                        <mapping source="96" column="12" occurrence="19"/>
+                        <mapping source="97" column="12" occurrence="20"/>
+                        <mapping source="98" column="12" occurrence="21"/>
+                        <mapping source="99" column="12" occurrence="22"/>
+                        <mapping source="100" column="12" occurrence="23"/>
+                        <mapping source="101" column="12" occurrence="24"/>
+                        <mapping source="102" column="12" occurrence="25"/>
+                        <mapping source="103" column="12" occurrence="26"/>
+                        <mapping source="104" column="12" occurrence="27"/>
+                        <mapping source="105" column="12" occurrence="28"/>
+                        <mapping source="106" column="12" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Was medication offered?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Antipsychotic</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Other</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="13" occurrence="0"/>
+                        <mapping source="44" column="13" occurrence="1"/>
+                        <mapping source="45" column="13" occurrence="2"/>
+                        <mapping source="46" column="13" occurrence="3"/>
+                        <mapping source="47" column="13" occurrence="4"/>
+                        <mapping source="48" column="13" occurrence="5"/>
+                        <mapping source="49" column="13" occurrence="6"/>
+                        <mapping source="50" column="13" occurrence="7"/>
+                        <mapping source="51" column="13" occurrence="8"/>
+                        <mapping source="52" column="13" occurrence="9"/>
+                        <mapping source="87" column="13" occurrence="10"/>
+                        <mapping source="88" column="13" occurrence="11"/>
+                        <mapping source="89" column="13" occurrence="12"/>
+                        <mapping source="90" column="13" occurrence="13"/>
+                        <mapping source="91" column="13" occurrence="14"/>
+                        <mapping source="92" column="13" occurrence="15"/>
+                        <mapping source="93" column="13" occurrence="16"/>
+                        <mapping source="94" column="13" occurrence="17"/>
+                        <mapping source="95" column="13" occurrence="18"/>
+                        <mapping source="96" column="13" occurrence="19"/>
+                        <mapping source="97" column="13" occurrence="20"/>
+                        <mapping source="98" column="13" occurrence="21"/>
+                        <mapping source="99" column="13" occurrence="22"/>
+                        <mapping source="100" column="13" occurrence="23"/>
+                        <mapping source="101" column="13" occurrence="24"/>
+                        <mapping source="102" column="13" occurrence="25"/>
+                        <mapping source="103" column="13" occurrence="26"/>
+                        <mapping source="104" column="13" occurrence="27"/>
+                        <mapping source="105" column="13" occurrence="28"/>
+                        <mapping source="106" column="13" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="12">
+                    	<!--  see bug 546 -->
+                        <description>Was the client referred to other services.</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Accepted by EIS</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Referred to EIS - not accepted</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Referred to other agency/professional (Enter Pathway No.)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Follow up Appointment (Enter Pathway No.)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 5 to std code 999</description>
+                                <input special="false">5</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="14" occurrence="0"/>
+                        <mapping source="44" column="14" occurrence="1"/>
+                        <mapping source="45" column="14" occurrence="2"/>
+                        <mapping source="46" column="14" occurrence="3"/>
+                        <mapping source="47" column="14" occurrence="4"/>
+                        <mapping source="48" column="14" occurrence="5"/>
+                        <mapping source="49" column="14" occurrence="6"/>
+                        <mapping source="50" column="14" occurrence="7"/>
+                        <mapping source="51" column="14" occurrence="8"/>
+                        <mapping source="52" column="14" occurrence="9"/>
+                        <mapping source="87" column="14" occurrence="10"/>
+                        <mapping source="88" column="14" occurrence="11"/>
+                        <mapping source="89" column="14" occurrence="12"/>
+                        <mapping source="90" column="14" occurrence="13"/>
+                        <mapping source="91" column="14" occurrence="14"/>
+                        <mapping source="92" column="14" occurrence="15"/>
+                        <mapping source="93" column="14" occurrence="16"/>
+                        <mapping source="94" column="14" occurrence="17"/>
+                        <mapping source="95" column="14" occurrence="18"/>
+                        <mapping source="96" column="14" occurrence="19"/>
+                        <mapping source="97" column="14" occurrence="20"/>
+                        <mapping source="98" column="14" occurrence="21"/>
+                        <mapping source="99" column="14" occurrence="22"/>
+                        <mapping source="100" column="14" occurrence="23"/>
+                        <mapping source="101" column="14" occurrence="24"/>
+                        <mapping source="102" column="14" occurrence="25"/>
+                        <mapping source="103" column="14" occurrence="26"/>
+                        <mapping source="104" column="14" occurrence="27"/>
+                        <mapping source="105" column="14" occurrence="28"/>
+                        <mapping source="106" column="14" occurrence="29"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>What other treatment/advice offered?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Counselling/Advice/Support</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular Visits/ Assertive Outreach</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Outpatients appointments</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Religious intervention</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Physical Health Checks</description>
+                                <input special="false">5</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Admission - Sectioned</description>
+                                <input special="false">6</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Admission - Voluntary</description>
+                                <input special="false">7</input>
+                                <output>7</output>
+                            </translation>
+                        </translations>
+                        <mapping source="23" column="15" occurrence="0"/>
+                        <mapping source="44" column="15" occurrence="1"/>
+                        <mapping source="45" column="15" occurrence="2"/>
+                        <mapping source="46" column="15" occurrence="3"/>
+                        <mapping source="47" column="15" occurrence="4"/>
+                        <mapping source="48" column="15" occurrence="5"/>
+                        <mapping source="49" column="15" occurrence="6"/>
+                        <mapping source="50" column="15" occurrence="7"/>
+                        <mapping source="51" column="15" occurrence="8"/>
+                        <mapping source="52" column="15" occurrence="9"/>
+                        <mapping source="87" column="15" occurrence="10"/>
+                        <mapping source="88" column="15" occurrence="11"/>
+                        <mapping source="89" column="15" occurrence="12"/>
+                        <mapping source="90" column="15" occurrence="13"/>
+                        <mapping source="91" column="15" occurrence="14"/>
+                        <mapping source="92" column="15" occurrence="15"/>
+                        <mapping source="93" column="15" occurrence="16"/>
+                        <mapping source="94" column="15" occurrence="17"/>
+                        <mapping source="95" column="15" occurrence="18"/>
+                        <mapping source="96" column="15" occurrence="19"/>
+                        <mapping source="97" column="15" occurrence="20"/>
+                        <mapping source="98" column="15" occurrence="21"/>
+                        <mapping source="99" column="15" occurrence="22"/>
+                        <mapping source="100" column="15" occurrence="23"/>
+                        <mapping source="101" column="15" occurrence="24"/>
+                        <mapping source="102" column="15" occurrence="25"/>
+                        <mapping source="103" column="15" occurrence="26"/>
+                        <mapping source="104" column="15" occurrence="27"/>
+                        <mapping source="105" column="15" occurrence="28"/>
+                        <mapping source="106" column="15" occurrence="29"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

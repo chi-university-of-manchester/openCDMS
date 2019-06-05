@@ -1,0 +1,216 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- Ant build script for PsyGrid Common -->
+<project name="PsyGrid Common" basedir="." default="all">
+	
+    <description>PsyGrid Common Ant build file</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+	<!-- Set global properties for the build -->
+    <property file="build.properties" />
+    <property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes" value="${build.dir}/classes"/>
+	<property name="build.gen" value="${build.dir}/gen"/>
+    <property name="build.doc" value="${build.dir}/doc/" />
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="etc.dir" value="${basedir}/etc" />
+    <property name="src.dir" value="${basedir}/src" />
+    <property name="dist.dir" value="${basedir}/dist/" />
+    <property name="common.lib.dir" value="${basedir}/../psygrid-common/lib" />
+
+	<property name="test.src" value="${basedir}/test"/>
+	<property name="test.classes" value="${basedir}/build/test/classes"/>
+	<property name="test.output" value="${basedir}/build/test/output"/>
+
+    <path id="compile.class.path">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${common.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+
+		<!-- Also include our own source tree -->
+		<pathelement path="."/>
+        <pathelement path="${build.dir}" />
+		<pathelement path="${build.classes}" />
+		<pathelement path="${build.gen}" />
+    </path>
+
+	<path id="tests.classpath">
+		<path refid="compile.class.path" />
+		<pathelement location="${build.classes}" />
+		<pathelement location="${test.classes}" />
+	</path>
+	
+	<taskdef name="xdoclet" classname="org.xdoclet.ant.XDocletTask">
+		<classpath refid="compile.class.path" />
+	</taskdef>
+	
+	<taskdef name="testng" classname="com.beust.testng.TestNGAntTask">
+ 		<classpath refid="compile.class.path" />
+	</taskdef>
+
+    <target name="init" description="Initialization for the build">
+        <tstamp/>
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${build.gen}" />
+        <mkdir dir="${build.classes}" />
+        <mkdir dir="${build.doc}" />
+        <mkdir dir="${dist.dir}" />
+		<mkdir dir="${test.classes}"/>
+		<mkdir dir="${test.output}"/>
+    </target>
+
+	<path id="jaxb.class.path">
+		<fileset dir="${common.lib.dir}/excludes">
+			<include name="jaxb-xjc.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}/client">
+			<include name="jaxb-api.jar" />
+			<include name="jaxb-impl.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="activation.jar" />
+		</fileset>
+	</path>
+
+	<target name="jaxb" depends="init">
+		<java fork="yes" classname="com.sun.tools.xjc.XJCFacade" dir="." classpathref="jaxb.class.path">
+			<arg value="-d" />
+			<arg value="${build.gen}" />
+			<arg value="-p" />
+			<arg value="org.psygrid.dataimport.jaxb.imp" />
+			<arg value="etc/schemas/import.xsd" />
+		</java>
+		<java fork="yes" classname="com.sun.tools.xjc.XJCFacade" dir="." classpathref="jaxb.class.path">
+			<arg value="-d" />
+			<arg value="${build.gen}" />
+			<arg value="-p" />
+			<arg value="org.psygrid.dataimport.jaxb.doc" />
+			<arg value="etc/schemas/importdoc.xsd" />
+		</java>
+	</target>
+
+    <target name="clean-eclipse" if="eclipse.running" description="Clean up for Eclipse">
+        <delete failonerror="false">
+            <fileset dir="${src.dir}" includes="**/*.cfg.xml **/*.hbm.xml" />
+        </delete>
+        <eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite" />
+    </target>
+	
+    <target name="clean" depends="clean-eclipse" description="Clean up">
+        <delete failonerror="false" includeEmptyDirs="true">
+            <fileset dir="${build.dir}" />
+			<fileset dir="${dist.dir}" />
+        </delete>
+    </target>
+	
+    <target name="compile" depends="jaxb, init" description="Compile java source files">
+        <javac target="1.5" source="1.5" destdir="${build.classes}" classpathref="compile.class.path" debug="true">
+            <src path="${src.dir}" />
+            <src path="${build.gen}" />
+            <include name="**/*.java" />
+        </javac>
+		<copy todir="${build.classes}" filtering="on">
+			<fileset dir="${src.dir}">
+				<exclude name="**/svn/**"/>
+				<exclude name="**/*.java"/>
+				<exclude name="**/package.html"/>
+			</fileset>
+		</copy>
+    </target>
+
+	
+	<target name="compile-tests" depends="compile" description="Compile test classes">
+		<javac target="1.5" source="1.5" destdir="${test.classes}" classpathref="tests.classpath" debug="true">
+			<src path="${test.src}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+	<target  name="unit-tests" description="run tests using testng" depends="compile-tests">
+	      <testng classpathref="tests.classpath" outputdir="${test.output}" verbose="2" haltonfailure="true" excludedgroups="integration-tests">
+	         <classfileset dir="${test.classes}" includes="**/*.class"/>
+	      </testng>
+	</target>
+	
+	<target name="xdoclet2" depends="compile" description="Generate Hibernate mapping and config files using XDoclet2">
+		<xdoclet>
+			<!-- the files that will be parsed for Hibernate XDoclet tags. -->
+			<fileset dir="${src.dir}/org/psygrid/common/email">
+				<include name="QueuedEmail.java" />
+				<include name="Email.java"/>
+			</fileset>
+
+			<!-- generate the Hibernate mapping files -->
+			<component classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin" destdir="${build.classes}" version="${hibernate.version}" />
+			<!-- generate the Hibernate configuration file -->
+			<!--
+			<component classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin" destdir="${build.dir}" version="${hibernate.version}" jdbcdriver="${database.driver}"
+            dialect="${database.dialect}" jdbcurl="${database.url}${database.schema.esl}" jdbcusername="${database.user}" jdbcpassword="${database.password}" />
+            -->
+		</xdoclet>
+
+	</target>
+
+	<target name="javadoc" description="Generate JavaDocs">
+        <javadoc packagenames="org.psygrid.*" sourcepath="${src.dir}" defaultexcludes="yes" destdir="${doc.dir}" author="true" link="http://java.sun.com/j2se/1.5.0/docs/api/" />
+    </target>
+
+    <target name="build" depends="compile, xdoclet2" description="Build jars etc">
+        <jar destfile="${dist.dir}/common-client_${common.version}.jar" basedir="${build.classes}">
+            <include name="org/psygrid/**/*.class" />
+            <include name="org/psygrid/**/*.properties" />
+            <include name="org/psygrid/**/*.png" />
+            <include name="org/psygrid/**/*.jpg" />
+            <include name="org/psygrid/**/*.gif" />
+        	<include name="org/psygrid/common/email/*.hbm.xml"/>
+        </jar>
+    </target>
+
+	<target name="build-standalone" depends="compile" description="Build jars etc">
+        <jar destfile="${dist.dir}/common-client_${common.version}.jar" basedir="${build.classes}">
+            <include name="org/psygrid/common/**/*.class" />
+        </jar>
+    </target>
+
+	<!-- Builds dist.agent.jar
+	     To use this agent try:
+         java -Dorg.psygrid.rmi.agent.port=3000 -javaagent:custom-agent.jar -classpath <application-classpath> <application-main-class>
+	-->
+    <target name="build-agent-jar"
+        description="build an agent jar that can be used with -javaagent ">
+        <jar jarfile="${dist.dir}/custom-agent.jar" basedir="${build.classes}">
+            <include name="org/psygrid/rmi/agent/*.class" />
+            <manifest>
+                <attribute name="Premain-Class" value="org.psygrid.rmi.agent.CustomAgent"/>
+            </manifest>
+        </jar>
+    </target>
+
+     <target name="all" depends="clean, init, build, build-agent-jar" />
+
+	<target name="all-standalone" depends="clean, build-standalone" />
+
+</project>

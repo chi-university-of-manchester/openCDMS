@@ -1,0 +1,8 @@
+
+# /
+/build
+/dist
+/bin
+
+# /gen/
+/gen/org

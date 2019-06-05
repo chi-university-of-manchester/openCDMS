@@ -1,0 +1,972 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="PsyGrid Security" basedir="." default="all">
+
+	<description>PsyGrid Security Ant build file</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+    <!-- Set global properties for the build -->
+	<property file="build.properties"/>
+
+
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="gen.dir" value="${basedir}/generated/"/>
+	<property name="doc.dir" value="${basedir}/doc/"/>
+	<property name="tomcat.dir" value="/var/apache-tomcat-5.5.12"/>
+
+	<path id="compile.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.dist.dir}">
+			<include name="common-client_*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+
+	<target name="taskdefs">
+		<taskdef name="axis-java2wsdl" classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="axis-wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="xdoclet" classname="org.xdoclet.ant.XDocletTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/sql"/>
+		<mkdir dir="${gen.dir}"/>
+	</target>
+
+	<target name="compile-src" description="Compile hand made java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="on">
+			<src path="${src.dir}"/>
+			<include name="**/*.java"/>
+			<!--TODO<exclude name="org/psygrid/security/exclude/*.java"/>-->
+		</javac>
+	</target>
+
+	<target name="compile-gen" description="Compile generated java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="on">
+			<src path="${gen.dir}"/>
+			<include name="**/*.java"/>
+		</javac>
+	</target>
+
+	<target name="paxdoclet2" description="Generate Hibernate mapping and config files using XDoclet2">
+		<xdoclet>
+			<!-- the files that will be parsed for Hibernate XDoclet tags. -->
+			<fileset dir="${src.dir}/${pa.hibernate.package}">
+				<include name="*.java"/>
+			</fileset>
+
+			<!-- generate the Hibernate mapping files -->
+			<component
+		            classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+		            destdir="${build.dir}"
+		            version="${hibernate.version}"
+		        />
+
+			<!-- generate the Hibernate configuration file -->
+			<component
+		    		classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin"
+		    	 	destdir="${build.dir}/pa"
+		    		version="${hibernate.version}"
+		    		jdbcdriver="${database.driver}"
+		    		dialect="${database.dialect}"
+		    		jdbcurl="${database.url}${database.schema}"
+		    		jdbcusername="${database.user}"
+		    		jdbcpassword="${database.password}"
+		    	/>
+		</xdoclet>
+	</target>
+
+	<target name="aaxdoclet2" description="Generate Hibernate mapping and config files using XDoclet2">
+		<xdoclet>
+			<!-- the files that will be parsed for Hibernate XDoclet tags. -->
+			<fileset dir="${src.dir}/${aa.hibernate.package}">
+				<include name="*.java"/>
+			</fileset>
+			<!-- generate the Hibernate mapping files -->
+			<component
+		            classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+		            destdir="${build.dir}"
+		            version="${hibernate.version}"
+		        />
+
+			<!-- generate the Hibernate configuration file -->
+			<component
+		    		classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin"
+		    	 	destdir="${build.dir}/aa"
+		    		version="${hibernate.version}"
+		    		jdbcdriver="${database.driver}"
+		    		dialect="${database.dialect}"
+		    		jdbcurl="${database.url}${database.schema}"
+		    		jdbcusername="${database.user}"
+		    		jdbcpassword="${database.password}"
+		    	/>
+		</xdoclet>
+	</target>
+
+	<target name="eclipse" if="eclipse.running" description="Eclipse specific task">
+		<copy todir="${src.dir}">
+			<fileset dir="${build.dir}">
+				<include name="**/*.cfg.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${src.dir}/${aa.hibernate.package}" overwrite="true">
+			<fileset dir="${build.dir}/${aa.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${src.dir}/${pa.hibernate.package}" overwrite="true">
+			<fileset dir="${build.dir}/${pa.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+
+	<target name="pagenerateschema" depends="taskdefs, paxdoclet2, eclipse" description="Generate database schema">
+
+		<!-- run the export to the database (if export=true) -->
+		<hibernatetool destdir="${build.dir}/pa">
+			<configuration configurationfile="${build.dir}/pa/hibernate.cfg.xml" />
+			<hbm2ddl export="${schema.export}" drop="false" />
+		</hibernatetool>
+
+		<!-- generate the "drop" SQL script, containing drop statements only -->
+		<hibernatetool destdir="${build.dir}/pa">
+			<configuration configurationfile="${build.dir}/pa/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="true"
+					 create="false"
+					 outputfilename="drop.sql"/>
+		</hibernatetool>
+
+		<!-- generate the "create" SQL script, containing no drop statements -->
+		<hibernatetool destdir="${build.dir}/pa">
+			<configuration configurationfile="${build.dir}/pa/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="false"
+					 create="true"
+					 outputfilename="create.sql"/>
+		</hibernatetool>
+
+		<copy todir="${src.dir}">
+			<fileset dir="${build.dir}">
+				<include name="pa/**/*.cfg.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${src.dir}/${pa.hibernate.package}">
+			<fileset dir="${build.dir}/${pa.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- copy the drop and create scripts to files with provider specific names -->
+		<copy file="${build.dir}/pa/drop.sql" tofile="${dist.dir}/sql/pa-drop-${database.provider}.sql"/>
+		<copy file="${build.dir}/pa/create.sql" tofile="${dist.dir}/sql/pa-create-${database.provider}.sql"/>
+
+	</target>
+
+	<target name="aagenerateschema" depends="taskdefs, aaxdoclet2, eclipse" description="Generate database schema">
+		<!-- run the export to the database (if export=true) -->
+		<hibernatetool destdir="${build.dir}/aa">
+			<configuration configurationfile="${build.dir}/aa/hibernate.cfg.xml" />
+			<hbm2ddl export="${schema.export}" drop="false" />
+		</hibernatetool>
+
+		<!-- generate the "drop" SQL script, containing drop statements only -->
+		<hibernatetool destdir="${build.dir}/aa">
+			<configuration configurationfile="${build.dir}/aa/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="true"
+					 create="false"
+					 outputfilename="drop.sql"/>
+		</hibernatetool>
+
+		<!-- generate the "create" SQL script, containing no drop statements -->
+		<hibernatetool destdir="${build.dir}/aa">
+			<configuration configurationfile="${build.dir}/aa/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="false"
+					 create="true"
+					 outputfilename="create.sql"/>
+		</hibernatetool>
+
+		<copy todir="${src.dir}">
+			<fileset dir="${build.dir}">
+				<include name="aa/**/*.cfg.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${src.dir}/${aa.hibernate.package}">
+			<fileset dir="${build.dir}/${aa.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- copy the drop and create scripts to files with provider specific names -->
+		<copy file="${build.dir}/aa/drop.sql" tofile="${dist.dir}/sql/aa-drop-${database.provider}.sql"/>
+		<copy file="${build.dir}/aa/create.sql" tofile="${dist.dir}/sql/aa-create-${database.provider}.sql"/>
+
+	</target>
+
+	<target name="javadoc" description="Generate JavaDocs">
+		<javadoc packagenames="org.psygrid.*"
+				 sourcepath="${src.dir}"
+				 defaultexcludes="yes"
+				 destdir="${doc.dir}"
+				 author="true"
+			     link="http://java.sun.com/j2se/1.5.0/docs/api/"
+		/>
+	</target>
+
+	<target name="archives" description="create the jar files">
+		<jar destfile="${dist.dir}/psygrid-security_${security.version}.jar"
+			basedir="${build.dir}"
+			includes="**/*.class" />
+	</target>
+
+	<target name="server-jar" description="create the server jar file">
+		<jar destfile="${dist.dir}/psygrid-security-server_${security.version}.jar">
+			<fileset dir="${build.dir}">
+				<include name="**/*.class"/>
+				<include name="**/*.hbm.xml"/>
+				<include name="aa/applicationContext.xml"/>
+			</fileset>
+			<fileset dir="${build.dir}/aa">
+				<include name="aa.properties"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<!-- Grab the shorthash code of the current git commit or 0000000 if unable to run git -->
+	<target name="git-revision">
+
+		<!-- The git command is different on unix-like and windows OSes  -->
+		<condition property="git.command" value="git.cmd" else="git">
+	   		<os family="windows" />
+	  	</condition>
+
+		<exec executable="${git.command}" outputproperty="git.shorthash" errorproperty="git.error">
+			<arg value="log"/>
+			<arg value="--pretty=format:%h"/>
+			<arg value="-n"/>
+			<arg value="1"/>
+	    </exec>
+
+		<!-- If there were errors grabbing the git shorthash set git.revision it to 0000000 -->
+		<condition property="git.revision" value="${git.shorthash}" else="0000000">
+			<length string="${git.error}" trim="yes" length="0" when="equal"/>
+		</condition>
+
+		<echo message="Git revision = ${git.revision}"/>
+
+	</target>
+
+	<target name="package-attribute-authority" depends="git-revision" >
+
+		<property name="aa.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/attribute-authority/web.xml" todir="${build.dir}/aa"/>
+		<replace file="${build.dir}/aa/web.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@version@"
+			    value="${aa.version}"/>
+			<replacefilter
+			    token="@revision@"
+			    value="${aa.revision}"/>
+			<replacefilter
+			    token="@accessControl@"
+			    value="${aa.access.control}"/>
+			<replacefilter
+			    token="@SAML-statement-lifetime@"
+			    value="${org.psygrid.security.attributeauthority.statement.lifetime}"/>
+			<replacefilter
+			    token="@password-lifetime@"
+			    value="${org.psygrid.security.attributeauthority.password.lifetime}"/>
+			<replacefilter
+			    token="@prevent-password-reuse@"
+			    value="${org.psygrid.security.attributeauthority.prevent.password.reuse}"/>
+			<replacefilter
+			    token="@account-lockout-duration@"
+			    value="${org.psygrid.security.attributeauthority.account.lockout.duration}"/>
+			<replacefilter
+			    token="@allowed-login-attempts@"
+			    value="${org.psygrid.security.attributeauthority.allowed.login.attempts}"/>
+		</replace>
+
+		<copy file="${etc.dir}/attribute-authority/aasaml.properties" todir="${build.dir}/aa"/>
+		<replace file="${build.dir}/aa/aasaml.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@AA-keyname@"
+			    value="${org.apache.ws.security.saml.issuer.key.name}"/>
+			<replacefilter
+			    token="@AA-password@"
+			    value="${org.apache.ws.security.saml.issuer.key.password}"/>
+			<replacefilter
+			    token="@AA-issuer@"
+			    value="${org.apache.ws.security.saml.issuer}"/>
+		</replace>
+
+		<copy file="${etc.dir}/attribute-authority/crypto.properties" todir="${build.dir}/aa"/>
+		<replace file="${build.dir}/aa/crypto.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@AA-alias@"
+			    value="${org.apache.ws.security.crypto.merlin.keystore.alias}"/>
+			<replacefilter
+			    token="@AA-kspassword@"
+			    value="${org.apache.ws.security.crypto.merlin.keystore.password}"/>
+			<replacefilter
+			    token="@AA-kslocation@"
+			    value="${org.apache.ws.security.crypto.merlin.file}"/>
+			<replacefilter
+			    token="@AA-aliaspassword@"
+			    value="${org.apache.ws.security.crypto.merlin.alias.password}"/>
+		</replace>
+
+		<copy file="${etc.dir}/attribute-authority/paqc.properties" todir="${build.dir}/aa"/>
+		<replace file="${build.dir}/aa/paqc.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@kslocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@kspassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@tslocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@tspassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@PA-query-url@"
+			    value="${org.psygrid.security.policyauthority.query.serviceURL}"/>
+			<replacefilter
+			    token="@PA-admin-url@"
+			    value="${org.psygrid.security.policyauthority.admin.serviceURL}"/>
+		</replace>
+
+		<copy file="${etc.dir}/attribute-authority/aa.properties" todir="${build.dir}/aa"/>
+		<replace file="${build.dir}/aa/aa.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@ldap@"
+			    value="${org.psygrid.security.authentication.ldapDirectoryURL}"/>
+			<replacefilter
+			    token="@ldapRoot@"
+			    value="${org.psygrid.security.authentication.ldap.root}"/>
+			<replacefilter
+			    token="@ldapRootPassword@"
+			    value="${org.psygrid.security.authentication.ldap.root.password}"/>
+			<replacefilter
+			    token="@ldapBaseDN@"
+			    value="${org.psygrid.security.authentication.ldap.baseDN}"/>
+			<replacefilter
+			    token="@ldapUserBaseDN@"
+			    value="${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+			<replacefilter
+			    token="@ldapPasswordHash@"
+			    value="${org.psygrid.security.authentication.ldap.passwordHash}"/>
+			<replacefilter
+			    token="@ldapVendor@"
+			    value="${org.psygrid.security.authentication.ldap.vendor}"/>
+			<replacefilter
+			    token="@ldapUseTLS@"
+			    value="${org.psygrid.security.authentication.ldap.useTLS}"/>
+		</replace>
+
+		<war destfile="${dist.dir}/attribute-authority.war"
+			webxml="${build.dir}/aa/web.xml">
+			<webinf
+				file="${etc.dir}/attribute-authority/server-config.wsdd" />
+			<webinf
+				file="${build.dir}/aa/applicationContext.xml" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/attributeauthority/resource/wsdl" prefix="WEB-INF/wsdl"
+				includes="attribute-authority*" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/resource/" prefix="WEB-INF/wsdl"
+				includes="*.xsd" />
+
+			<lib dir="${lib.dir}">
+				<include name="*.jar"/>
+				<exclude name="junit.jar"/>
+			</lib>
+			<lib dir="${dist.dir}">
+				<include name="psygrid-security_${security.version}.jar"/>
+			</lib>
+			<classes dir="${src.dir}">
+				<include name="org/psygrid/security/attributeauthority/**/*.xml"/>
+			</classes>
+			<classes
+			   file="${build.dir}/aa/crypto.properties"/>
+			<classes
+			   file="${build.dir}/aa/aasaml.properties"/>
+			<classes
+			   file="${build.dir}/aa/aa.properties"/>
+			<classes
+			   file="${build.dir}/aa/paqc.properties"/>
+			<classes file="${etc.dir}/rebel.xml"/>
+			<fileset dir="${etc.dir}/docroot/attribute-authority/" />
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+	</target>
+
+	<target name="package-policy-authority" depends="git-revision" >
+
+		<property name="pa.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/policy-authority/web.xml" todir="${build.dir}/pa"/>
+		<replace file="${build.dir}/pa/web.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@version@"
+			    value="${pa.version}"/>
+			<replacefilter
+			    token="@revision@"
+			    value="${pa.revision}"/>
+			<replacefilter
+			    token="@accessControl@"
+			    value="${pa.access.control}"/>
+			<replacefilter
+			    token="@aa-trust-location@"
+			    value="${org.psygrid.security.policyauthority.trustedaa.location}"/>
+			<replacefilter
+			    token="@default-authority-alias@"
+			    value="${org.psygrid.security.policyauthority.defaultauthority.alias}"/>
+			<replacefilter
+			    token="@aa-trust-password@"
+			    value="${org.psygrid.security.policyauthority.trustedaa.password}"/>
+		</replace>
+
+
+		<copy file="${etc.dir}/policy-authority/aaqc.properties" todir="${build.dir}/pa"/>
+		<replace file="${build.dir}/pa/aaqc.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@kslocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@kspassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@tslocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@tspassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@AA-query-url@"
+			    value="${org.psygrid.security.attributeauthority.query.serviceURL}"/>
+			<replacefilter
+				token="@ldap@"
+				value="${org.psygrid.security.authentication.ldapDirectoryURL}" />
+		</replace>
+
+		<war destfile="${dist.dir}/policy-authority.war" webxml="${build.dir}/pa/web.xml">
+			<webinf
+				file="${etc.dir}/policy-authority/server-config.wsdd" />
+			<webinf
+				file="${build.dir}/pa/applicationContext.xml" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/policyauthority/resource/wsdl" prefix="WEB-INF/wsdl"
+				includes="policy-authority*" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/resource/" prefix="WEB-INF/wsdl"
+				includes="*.xsd" />
+			<lib dir="${lib.dir}">
+				<include name="*.jar"/>
+				<exclude name="junit.jar"/>
+			</lib>
+			<lib dir="${dist.dir}">
+				<include name="psygrid-security_${security.version}.jar"/>
+			</lib>
+			<classes dir="${src.dir}">
+				<include name="org/psygrid/security/policyauthority/**/*.xml"/>
+			</classes>
+			<classes
+			   file="${build.dir}/pa/aaqc.properties"/>
+			<classes file="${etc.dir}/rebel.xml"/>
+
+			<fileset dir="${etc.dir}/docroot/policy-authority/" />
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+	</target>
+
+	<target name="package-secure-service-example">
+		<war destfile="${dist.dir}/secure-service-example.war"
+			webxml="${etc.dir}/secure-service-example/web.xml">
+			<webinf
+				file="${etc.dir}/secure-service-example/server-config.wsdd" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/resource/wsdl" prefix="WEB-INF/wsdl"
+				includes="secure-service-example* xmldsig-core-schema.xsd" />
+			<lib dir="${lib.dir}" includes="*.jar" />
+
+			<classes
+				file="${etc.dir}/secure-service-example/saml.properties" />
+			<classes dir="${src.dir}">
+				<include name="org/psygrid/security/example/**/*.xml"/>
+			</classes>
+			<classes
+			   dir="${etc.dir}/keystores" includes="*.jks"/>
+			<classes
+			   dir="${etc.dir}/secure-service-example" includes="*.properties"/>
+			<fileset dir="${etc.dir}/docroot/secure-service-example/" />
+		</war>
+	</target>
+
+	<target name="package-authentication" depends="git-revision" >
+
+		<property name="auth.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/authentication/web.xml" todir="${build.dir}/authentication"/>
+		<replace file="${build.dir}/authentication/web.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@version@"
+			    value="${auth.version}"/>
+			<replacefilter
+			    token="@revision@"
+			    value="${auth.revision}"/>
+		</replace>
+
+		<copy file="${etc.dir}/authentication/authentication.properties" todir="${build.dir}/authentication"/>
+		<replace file="${build.dir}/authentication/authentication.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@auth-host@"
+			    value="${org.psygrid.security.authentication.host}"/>
+			<replacefilter
+			    token="@auth-port@"
+			    value="${org.psygrid.security.authentication.port}"/>
+			<replacefilter
+			    token="@tslocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@tspassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@auth-cert-lifetime@"
+			    value="${org.psygrid.security.authentication.lifetime}"/>
+			<replacefilter
+			    token="@ldap@"
+			    value="${org.psygrid.security.authentication.ldapDirectoryURL}"/>
+			<replacefilter
+			    token="@ldapBaseDN@"
+			    value="${org.psygrid.security.authentication.ldap.baseDN}"/>
+			<replacefilter
+			    token="@ldapRoot@"
+			    value="${org.psygrid.security.authentication.ldap.root}"/>
+			<replacefilter
+			    token="@ldapRootPassword@"
+			    value="${org.psygrid.security.authentication.ldap.root.password}"/>
+			<replacefilter
+			    token="@ldapPasswordHash@"
+			    value="${org.psygrid.security.authentication.ldap.passwordHash}"/>
+			<replacefilter
+			    token="@ldapUseTLS@"
+			    value="${org.psygrid.security.authentication.ldap.useTLS}"/>
+			<replacefilter
+			    token="@caKeyStoreLocation@"
+			    value="${org.psygrid.security.authentication.caKeyStoreLocation}"/>
+			<replacefilter
+			    token="@caKeyStorePassword@"
+			    value="${org.psygrid.security.authentication.caKeyStorePassword}"/>
+			<replacefilter
+			    token="@caKeyStoreAlias@"
+			    value="${org.psygrid.security.authentication.caKeyStoreAlias}"/>
+			<replacefilter
+			    token="@clientKeyStoreAlias@"
+			    value="${org.psygrid.collection.entry.security.clientKeystoreAlias}"/>
+		</replace>
+
+		<copy file="${etc.dir}/authentication/aaqc.properties" todir="${build.dir}/authentication"/>
+		<replace file="${build.dir}/authentication/aaqc.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@kslocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@kspassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@tslocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@tspassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@AA-query-url@"
+			    value="${org.psygrid.security.attributeauthority.query.serviceURL}"/>
+			<replacefilter
+				token="@ldap@"
+				value="${org.psygrid.security.authentication.ldapDirectoryURL}" />
+		</replace>
+
+		<war destfile="${dist.dir}/authentication.war"
+			webxml="${build.dir}/authentication/web.xml">
+			<webinf
+				file="${etc.dir}/authentication/server-config.wsdd" />
+			<zipfileset dir="${src.dir}/org/psygrid/security/authentication/resource/wsdl" prefix="WEB-INF/wsdl"
+				includes="authentication*" />
+			<lib dir="${lib.dir}">
+				<include name="*.jar"/>
+				<exclude name="junit.jar"/>
+			</lib>
+			<lib dir="${dist.dir}">
+				<include name="psygrid-security_${security.version}.jar"/>
+			</lib>
+			<classes dir="${src.dir}">
+				<include name="org/psygrid/security/authentication/**/*.xml"/>
+			</classes>
+			<classes
+			   file="${build.dir}/authentication/aaqc.properties"/>
+			<classes
+			   file="${build.dir}/authentication/authentication.properties"/>
+			<classes file="${etc.dir}/rebel.xml"/>
+			<fileset dir="${etc.dir}/docroot/authentication/" />
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+	</target>
+
+	<target name="eclipse.clean" if="eclipse.running" description="Clean up for Eclipse">
+		<delete>
+			<fileset dir="${src.dir}"
+					 includes="**/*.cfg.xml **/*.hbm.xml"/>
+		</delete>
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+	<target name="clean" depends="eclipse.clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${dist.dir}"/>
+			<fileset dir="${doc.dir}"/>
+			<fileset dir="${gen.dir}"/>
+ 		</delete>
+		 <delete failonerror="false" file="${src.dir}/org/psygrid/security/attributeauthority/model/hibernate/Persistent.hbm.xml"/>
+		 <delete failonerror="false" file="${src.dir}/org/psygrid/security/policyauthority/model/hibernate/Persistent.hbm.xml"/>
+	</target>
+
+	<target name="reset" depends="clean" description="Start again">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${gen.dir}" includes="**/*"/>
+		</delete>
+	</target>
+
+	<target name="deploy" >
+		<copy file="${etc.dir}/test/test.properties" todir="${build.dir}"/>
+		<copy file="${dist.dir}/attribute-authority.war" todir="${tomcat.dir}/mutual-auth-webapps"/>
+		<copy file="${dist.dir}/policy-authority.war" todir="${tomcat.dir}/mutual-auth-webapps"/>
+		<copy file="${dist.dir}/authentication.war" todir="${tomcat.dir}/server-auth-webapps"/>
+	</target>
+
+	<target name="undeploy">
+		<delete file="${tomcat.dir}/mutual-auth-webapps/attribute-authority.war"/>
+		<delete file="${tomcat.dir}/mutual-auth-webapps/policy-authority.war"/>
+		<delete file="${tomcat.dir}/server-auth-webapps/authentication.war"/>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${tomcat.dir}/mutual-auth-webapps/attribute-authority"/>
+			<fileset dir="${tomcat.dir}/mutual-auth-webapps/policy-authority"/>
+			<fileset dir="${tomcat.dir}/server-auth-webapps/authentication"/>
+		</delete>
+	</target>
+
+	<target name="generate-authentication">
+		<copy file="${src.dir}/org/psygrid/security/authentication/resource/wsdl/authentication.wsdl"
+			  todir="${build.dir}/auth"
+			  overwrite="true"/>
+		<replace file="${build.dir}/auth/authentication.wsdl"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@login@"
+			    value="${auth.location}"/>
+		</replace>
+		<axis-wsdl2java
+			url="${build.dir}/auth/authentication.wsdl"
+			serverSide="true" skeletonDeploy="true"
+			output="${gen.dir}" testCase="true">
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/authentication/service/types"
+				package="org.psygrid.security.authentication.types" />
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/authentication/service"
+				package="org.psygrid.security.authentication.service" />
+		</axis-wsdl2java>
+	</target>
+
+	<!--classpathref="axis.classpath"-->
+	<target name="generate-secure-service-example">
+		<axis-wsdl2java
+			url="${src.dir}/org/psygrid/security/resource/wsdl/secure-service-example.wsdl"
+			serverSide="true" skeletonDeploy="true"
+			output="${gen.dir}" testCase="true">
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/secure-service-example/service/types"
+				package="org.psygrid.security.example.types" />
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+				package="org.psygrid.security.example.service" />
+		</axis-wsdl2java>
+	</target>
+
+	<!--classpathref="axis.classpath"-->
+	<target name="generate-attribute-authority">
+		<copy file="${src.dir}/org/psygrid/security/attributeauthority/resource/wsdl/attribute-authority.wsdl"
+			  todir="${build.dir}/aa"
+			  overwrite="true"/>
+		<copy todir="${build.dir}/aa" overwrite="true">
+			<fileset dir="${src.dir}/org/psygrid/security/resource/" includes="*.xsd"/>
+		</copy>
+		<replace file="${build.dir}/aa/attribute-authority.wsdl"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@admin@"
+			    value="${aa.location.admin}"/>
+			<replacefilter
+			    token="@query@"
+			    value="${aa.location.query}"/>
+		</replace>
+		<axis-wsdl2java
+			url="${build.dir}/aa/attribute-authority.wsdl"
+			serverSide="true" skeletonDeploy="true"
+			output="${gen.dir}" testCase="true">
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+				package="org.psygrid.security.attributeauthority.types" />
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+				package="org.psygrid.security.attributeauthority.service" />
+		</axis-wsdl2java>
+	</target>
+
+	<!--classpathref="axis.classpath"-->
+	<target name="generate-policy-authority">
+		<copy file="${src.dir}/org/psygrid/security/policyauthority/resource/wsdl/policy-authority.wsdl"
+			  todir="${build.dir}/pa"
+			  overwrite="true"/>
+		<copy todir="${build.dir}/pa" overwrite="true">
+			<fileset dir="${src.dir}/org/psygrid/security/resource/" includes="*.xsd"/>
+		</copy>
+		<replace file="${build.dir}/pa/policy-authority.wsdl"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@admin@"
+			    value="${pa.location.admin}"/>
+			<replacefilter
+			    token="@query@"
+			    value="${pa.location.query}"/>
+		</replace>
+		<axis-wsdl2java
+			url="${build.dir}/pa/policy-authority.wsdl"
+			serverSide="true" skeletonDeploy="true"
+			output="${gen.dir}" testCase="true">
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/policy-authority/service/types"
+				package="org.psygrid.security.policyauthority.types" />
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/policy-authority/service"
+				package="org.psygrid.security.policyauthority.service" />
+		</axis-wsdl2java>
+	</target>
+
+	<!--classpathref="axis.classpath"-->
+	<target name="generate-test" depends="init">
+		<axis-java2wsdl
+			style="RPC" use="ENCODED"
+			output="${gen.dir}/test.wsdl"
+			location="test-service"
+			classname="org.psygrid.security.attributeauthority.TestQueryPortTypeImpl"
+			namespace="http://www.psygrid.org/xml/security/attribute-authority/service">
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+				package="org.psygrid.security.attributeauthority.types" />
+			<mapping
+				namespace="http://www.psygrid.org/xml/security/attribute-authority/service"
+				package="org.psygrid.security.attributeauthority.service" />
+		</axis-java2wsdl>
+	</target>
+
+	<target name="generate" depends="init, taskdefs"
+		description="perform code generation" >
+		<!-- add new services here -->
+		<antcall target="generate-secure-service-example" />
+		<antcall target="generate-authentication" />
+		<antcall target="generate-attribute-authority" />
+		<antcall target="generate-policy-authority" />
+	</target>
+
+	<target name="prepare-datasource"
+		   depends="generate-schema,
+					generate-all-xml" />
+
+	<target name="generate-schema"
+		description="perform hibernate schema generation" >
+		<!-- add new services here -->
+		<antcall target="pagenerateschema" />
+		<antcall target="aagenerateschema" />
+	</target>
+
+	<target name="package"
+		description="make the build products">
+		<!-- add new services here -->
+		<antcall target="package-authentication" />
+		<!--<antcall target="package-secure-service-example" />-->
+		<antcall target="package-attribute-authority" />
+		<antcall target="package-policy-authority" />
+	</target>
+
+	<target name="compile" description="compile all source" >
+		<antcall target="compile-gen" />
+		<antcall target="compile-src" />
+	</target>
+
+	<target name="all" description="build all" >
+		<antcall target="generate" />
+		<antcall target="compile" />
+		<antcall target="archives" />
+		<antcall target="prepare-datasource" />
+		<antcall target="package" />
+		<antcall target="server-jar" />
+	</target>
+
+	<target name="c+p" description="compile source and package - use when interface has not changed" >
+		<antcall target="init" />
+		<antcall target="compile" />
+		<antcall target="archives" />
+		<antcall target="package" />
+	</target>
+
+	<target name="c+p+d" depends="c+p" description="compile source and package - use when interface has not changed" >
+		<antcall target="deploy" />
+	</target>
+
+	<target name="reset-all"
+		description="start again" >
+		<antcall target="reset" />
+		<antcall target="all" />
+	</target>
+
+	<target name="aa-generate-application-context-xml">
+		<copy file="${etc.dir}/attribute-authority/applicationContext.xml"
+			  tofile="${build.dir}/aa/applicationContext.xml"
+			  overwrite="true"/>
+		<replace file="${build.dir}/aa/applicationContext.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.aa}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+		</replace>
+	</target>
+
+	<target name="pa-generate-application-context-xml">
+		<copy file="${etc.dir}/policy-authority/applicationContext.xml"
+			  tofile="${build.dir}/pa/applicationContext.xml"
+			  overwrite="true"/>
+		<replace file="${build.dir}/pa/applicationContext.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.pa}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+		</replace>
+	</target>
+
+	<target name="generate-all-xml" >
+		<antcall target="pa-generate-application-context-xml" />
+		<antcall target="aa-generate-application-context-xml" />
+	</target>
+</project>
+
+
+
+
+
+
+
+

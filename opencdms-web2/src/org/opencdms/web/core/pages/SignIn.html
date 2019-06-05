@@ -1,0 +1,60 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.sourceforge.net/" xml:lang="us_EN" lang="us_EN">
+<head>
+	<title>openCDMS | Login</title>
+    <link rel="stylesheet" type="text/css" href="/opencdms/styles/default.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/opencdms/images/favicon.ico" />
+</head>
+<body>
+<div id="maincontainer">
+
+    <div id="header" />
+
+	<div class="content">
+	    <form class="login" wicket:id="loginform">
+	         <div wicket:id="feedback"></div>
+	         <div class="input">
+	         	<label for="username">Username:</label> <input id="username" wicket:id="username" type="text"/>
+	         </div>
+	         <div class="input">
+	         	<label for="password">Password:</label> <input id="password" wicket:id="password" type="password"/>
+	         </div>
+	         <input class="button" type="submit" value="Signin"/>
+	         <br/>
+	    	 <a href="#" wicket:id="resetPassword">Reset password</a>
+	    </form>
+    </div>
+    
+    <div id="footer">
+        <div id="help">
+            <p><a target="_blank" href="http://www.psygrid.org/psygrid/documents/help/ch06.html">Help</a></p>
+        </div>
+        <div id="copyright">
+            <ul>
+                <li>&copy; Copyright 2012 University of Manchester</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

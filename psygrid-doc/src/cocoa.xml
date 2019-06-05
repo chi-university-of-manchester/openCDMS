@@ -1,0 +1,3123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+		Copyright (c) 2006-2008, The University of Manchester, UK. This file
+		is part of PsyGrid. PsyGrid is free software: you can redistribute it
+		and/or modify it under the terms of the GNU Lesser General Public
+		License as published by the Free Software Foundation, either version 3
+		of the License, or (at your option) any later version. PsyGrid is
+		distributed in the hope that it will be useful, but WITHOUT ANY
+		WARRANTY; without even the implied warranty of MERCHANTABILITY or
+		FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+		License for more details. You should have received a copy of the GNU
+		Lesser General Public License along with PsyGrid. If not, see
+		<http://www.gnu.org/licenses/>.
+	-->
+<chapter id="cocoa">
+  <title>openCDMS Collect</title>
+
+  <section id="cocoaintro">
+    <title>Introduction</title>
+
+    <para>This chapter is for end users (Clinical Research Teams) of openCDMS
+    Collect. Collect provides the means to enter data gathered from
+    participant assessments into a central database.</para>
+
+    <para><xref linkend="cocoaconcepts" /> provides some important
+    introductory material. First, it provides a glossary of commonly-used
+    terms. Secondly, it provides some general information about how openCDMS
+    studies are organised and how your work fits into the general
+    scheme.</para>
+
+    <para>The core content is organised into two chapters. The first, called
+    <xref linkend="collect_applicationoverview" /> introduces the application
+    'as you see' it when you launch it. This section documents the
+    application's main points of control (menu options, buttons etc.) These
+    control points are labelled for easy reference.</para>
+
+    <para>The next section, <xref linkend="collect_functionalityguide" />
+    shows you how to use Collect. It is organised into clear subsections, each
+    representing the tasks you will commonly carry out whilst using the
+    application.</para>
+
+    <para><xref linkend="cocoaproblems" /> details how to report problems with
+    the software.</para>
+  </section>
+
+  <section id="cocoaconcepts">
+    <title>Basic concepts and terminology</title>
+
+    <section id="cocoaterminology">
+      <title>Glossary of Terms</title>
+
+      <section id="cocoatermrecord">
+        <title>Record</title>
+
+        <para>Every participant entered into the system has all his or her
+        assessment data stored in a record. Each record can be identified by
+        its unique participant identifier, and contains multiple
+        documents.</para>
+      </section>
+
+      <section id="cocoatermrecordstatus">
+        <title>Record Status</title>
+
+        <para>The record status reflects the progress of the participant
+        through the study. The record status will update automatically when a
+        study stage is completed.</para>
+      </section>
+
+      <section id="cocoatermdocument">
+        <title>Document</title>
+
+        <para>A document contains participant data and is part of a record.
+        Each document can be completed independently of other documents, and
+        has its own status (see 'Document Status' definition below). Documents
+        may have multiple sections. A document can only be saved as complete
+        if all the data is entered and validated, but may be saved as
+        incomplete at any time.</para>
+      </section>
+
+      <section id="cocoatermdocstatus">
+        <title>Document Status</title>
+
+        <para>The point at which a document exists in the document work flow
+        process. See <xref linkend="usingcocoareview" /> .</para>
+      </section>
+
+      <section id="cocoatermsection">
+        <title>Section</title>
+
+        <para>A section is a part of a document. Long documents are divided
+        into sections.</para>
+      </section>
+
+      <section id="cocoatermincompletedoc">
+        <title>Incomplete Documents</title>
+
+        <para>A document is incomplete if one or more mandatory data items
+        have not been entered (i.e. validation would fail if you tried to save
+        the document as complete). Documents can be saved to the database as
+        incomplete, and then can be completed at a later time.</para>
+      </section>
+
+      <section id="cocoatermcompletedoc">
+        <title>Complete Documents</title>
+
+        <para>A document is complete when all mandatory data items have been
+        entered. The data in the document may still be freely amended.</para>
+      </section>
+
+      <section id="cocoatermpendingdoc">
+        <title>Pending Documents</title>
+
+        <para>Pending documents are complete documents that have been
+        committed to the database and are awaiting approval.</para>
+      </section>
+
+      <section id="cocoatermrejecteddoc">
+        <title>Rejected Documents</title>
+
+        <para>Rejected documents have been reviewed and are not considered
+        acceptable. The reasons why the document has been rejected are stored
+        in the rejected document.</para>
+      </section>
+
+      <section id="cocoatermapproveddoc">
+        <title>Approved Documents</title>
+
+        <para>Approved documents have been reviewed and are considered to be
+        acceptable. No further changes to the data in the document is
+        expected.</para>
+      </section>
+
+      <section id="cocoatermcontrolleddoc">
+        <title>Controlled Documents</title>
+
+        <para>Controlled documents may only be edited by accompanying each
+        change with a comment as to why the change has been made.</para>
+      </section>
+
+      <section id="cocoatermstudynumber">
+        <title>Participant Identifier</title>
+
+        <para>The Participant Identifier uniquely identifies a participant and
+        their record in the system. The system automatically generates
+        participant identifiers. The format of the participant identifier is
+        PPP/GGGGGG-Z, where PPP is the 3-letter study code, GGGGGG is the
+        6-digit centre code and Z is the participant number.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>The study code uniquely identifies the study within the
+            openCDMS system e.g. OLK is Outlook, ED2 is EDIE2 etc.</para>
+          </listitem>
+
+          <listitem>
+            <para>The centre code identifies a subset of a whole study (see
+            <xref linkend="cocoatermgroup" /> ).</para>
+          </listitem>
+
+          <listitem>
+            <para>The participant number is just a number that increments as
+            records are added to a centre in a study.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section id="defn_studystage">
+        <title>Study Stage</title>
+
+        <para>As is discussed in <xref linkend="usingcocoareview">
+             , studies can be organised into different data collection groups, as is the case in a longitudinal study where data must be gathered at different time points. A 'study stage' represents one of these time points, and contains the relevant documents for that stage. 
+          </xref></para>
+      </section>
+
+      <section id="defn_participantregister">
+        <title>Participant Register</title>
+
+        <para>The 'Participant Register' is an openCDMS facility that is
+        provided in order to maintain a mapping between the system-generated
+        'participant identifier', and the participant's personal information
+        (name, address, etc.).</para>
+
+        <para>The register stores this sensitive information in a separate
+        database from that which holds particpant records. Not all studies are
+        configured to use the register; <emphasis role="bold">if the register
+        is not being used it is vital that users maintain their own mapping
+        between the participant's identifier and identifiable
+        details</emphasis>.</para>
+      </section>
+
+      <section id="defn_datareplication">
+        <title>Data Replication</title>
+
+        <para>As described in <xref linkend="datareplication" /> section, data
+        replication is a feature to help share information between similar
+        studies (i.e. they have some of the same documents) that share some of
+        their participants. By using this feature, data entered for a
+        participant in one study may be automatically replicate to the other,
+        thereby preventing redundant data entry.</para>
+      </section>
+
+      <section id="cocoatermtransformed">
+        <title>Transformed Values</title>
+
+        <para>Where potentially identifiable data is entered into the database
+        it is transformed such that it cannot be recovered. The database to
+        preserve anonymity transforms all participant’s initials, postcodes
+        and NHS numbers. The picture of a “T” in a circle indicates a
+        transformed value.</para>
+      </section>
+
+      <section id="defn_study">
+        <title>Study</title>
+
+        <para>A study is a collection of document to be completed by or about
+        the study's participants.</para>
+      </section>
+
+      <section id="cocoatermgroup">
+        <title>Study Centre</title>
+
+        <para>A study centre represents a geographical subdivision of the
+        complete study. Each participant in the study will be associated with
+        one study centre.</para>
+      </section>
+
+      <section id="cocoatermoffline">
+        <title>Off-line</title>
+
+        <para>Collect is said to be off-line when the computer is not
+        connected to the openCDMS server. All data is stored locally on the
+        computer and it is not possible to access the central openCDMS
+        database.</para>
+      </section>
+
+      <section id="cocoatermonline">
+        <title>On-line</title>
+
+        <para>Collect is said to be on-line when the computer is connected to
+        the openCDMS server. The user can interact with the database when
+        on-line.</para>
+      </section>
+
+      <section id="cocoatermrepository">
+        <title>Database</title>
+
+        <para>The database is the secure central database that is used for
+        long-term storage of the participant assessment data.</para>
+      </section>
+    </section>
+
+    <section id="intro_coreconcepts">
+      <title>Overview of Core Concepts</title>
+
+      <para>As explained in the glossary, a study is a collection of clinical
+      research forms that will be populated with data about the study's
+      participants.</para>
+
+      <para>Studies for openCDMS are highly configurable, and therefore each
+      can have different features, resulting in some differences in the way
+      that you use 'Collect'.</para>
+
+      <para>This section first surveys the features that most studies have in
+      common, and then it lists various other study-specific configurations;
+      it is advisable that you know which of these configurations that the
+      study you are working on has been configured with.</para>
+
+      <section>
+        <title>A Typical Study</title>
+
+        <para>A typical study will be organised into different centres,
+        representing different geographical regions. As a collect user, you
+        will have been assigned to one or more of these centres. Participant
+        records 'belong' to a particular centre, and as a member of that
+        centre, you will be able to view / amend all participant records that
+        belong to the centre.</para>
+
+        <para>Practically speaking, this means that once you save a
+        participant record to the database, any other member of that centre
+        who has been given the necessary privileges can download, view, and
+        amend that participant record.</para>
+
+        <para>Each participant within the study is assigned a unique
+        identifier by the system. As detailed in <xref
+        linkend="cocoatermstudynumber" /> , the unique identifier embeds the
+        study that the participant is in, and the centre code to which they
+        have been assiged. Each participant will be accessed in Collect by
+        this anonymous participant identifier.</para>
+
+        <para>Typically, the documents that must be completed for each
+        paricipant are grouped into different study stages, as explained in
+        the glossary. These stages usually represent different time points in
+        a study (e.g. at time of entry into study, six months later,
+        etc.).</para>
+
+        <para>In order to track the degree of completeness of a particpant
+        record, each record is assigned a 'record status'. The status names
+        are study-specific, but they typically indicate the last study stage
+        for which all documents have been completed. Typically the study is
+        configured so that on completion of the last document in a study stage
+        the record status is automatically changed to the equivalent status
+        value e.g. complete the final document in the "Baseline" study stage
+        and the status is changed to "Baseline completed".</para>
+
+        <para>Individual documents also have a 'status' which tells you where
+        they are in the document work flow. As the document work flow varies
+        per study, please see <xref linkend="usingcocoareview" /> . In brief,
+        this status indicates how complete the data in the document is.</para>
+      </section>
+
+      <section>
+        <title>Various Study Options</title>
+
+        <para>This section covers the various features that a study may be
+        given at design time - it is highly recommended that you find out
+        exactly how your study has been configured before reading any further.
+        Knowing this info will make learning how to use the application much
+        easier.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Integration with the Participant Register : if this option
+            has been configured, the openCDMS system will maintain a mapping
+            between patient-identifiable information and the anonymous,
+            system-generated Participant Identifier. If your study integrates
+            with the Participant Register then you will be asked to enter the
+            Participant's identifiable personal details (name, address, etc.)
+            when you enter a new participant using Collect. <emphasis
+            role="bold">If you are not asked to enter this data then you must
+            maintain a mapping between the openCDMS Participant Identifier and
+            the Participant's personal details yourself</emphasis>.</para>
+          </listitem>
+
+          <listitem>
+            <para>Work Flow Type: It is important for you to know what type of
+            document work flow your study employs, see <xref
+            linkend="usingcocoareview" />.</para>
+          </listitem>
+
+          <listitem>
+            <para>Randomisation: Some studies have been set up to randomise
+            participants into an arm of a clinical trial. Upon completion of a
+            designated document you will be asked whether you wish to
+            randomize the participant or not.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section id="usingcocoareview">
+        <title>Collect Document Work Flows</title>
+
+        <para>The work flow stages that participants' documents go through
+        depend on how the partcular study you are working on has been set up.
+        Your study will use one of two work flows - one is called "Review and
+        Approve" and the other is called "Implicit". The primary differences
+        between the two is that "Review and Approve" requires a Clinical Study
+        Manager (CSM) to review submitted documents and to either approve or
+        reject them. The "Implicit" work flow is much simpler. It does not
+        require a CSM to review submitted documents. As the name implies, data
+        review is assumed to be carried out solely by the data entrant. This
+        section documents the progress of documents through each type of work
+        flow.</para>
+
+        <para>Please note that the following document work flows are with
+        respect to documents that have been committed to the database. If you
+        are NOT working in 'Always online' mode, you must remember to commit
+        your records (which contain the documents) to the database before they
+        enter the work flow.</para>
+
+        <para>See <xref linkend="corecon_alwaysonlinemode" /> for an
+        explanation of the benefits of using 'Always-online' mode.</para>
+
+        <para>These work flows share two stages, that of 'Incomplete' and
+        'Complete'. The following section clarifies the meaning of
+        these.</para>
+
+        <section id="differencebetweencompleteandincomplete">
+          <title>The 'Complete' and 'Incomplete' Work Flow Stages</title>
+        </section>
+
+        <para>If you are performing data entry on a document and you do not
+        have all the required data to hand, you may wish to save the document
+        as 'incomplete'. This saving option bypasses data validation.</para>
+
+        <para>The distinction between 'complete' and 'incomplete' documents is
+        very helpful for managing a project and generally keeping track of how
+        much data entry is left to be done. However, it is the responsibility
+        of the user to maintain a meaningful distinction between the
+        states.</para>
+
+        <para>The distinction may become blurred if you do either of the
+        following:</para>
+
+        <itemizedlist>
+          <listitem>Complete the data entry for a document but save it as
+          'incomplete'</listitem>
+
+          <listitem>Apply missing codes for the data in a document that you do
+          not currently have and then save it as 'complete'.</listitem>
+        </itemizedlist>
+
+        <para>The first scenario would make it appear that less data entry has
+        been done that it actually has, and the second scenario would do the
+        opposite - and make it look like much more work has been done than it
+        actually has.</para>
+
+        <para>See <xref linkend="savingcompletingdocs" /> for information on
+        how to save documents as 'complete' and 'incomplete'.</para>
+
+        <section id="reviewandapprove">
+          <title>'Review and Approve' Work Flow</title>
+
+          <figure>
+            <title>Review and approve cycle</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Collect_review_and_approve_diagram.JPG" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>The diagram above shows the work flow of documents managed by
+          the 'Review and approve' process. Note that the 'incomplete' state
+          is shown by a dotted line, noting that it is not a mandatory part of
+          the workflow, but is available as a matter of convenience when
+          entering data. It is entirely possible to skip the incomplete step,
+          and to immediately complete the document.</para>
+
+          <para>Once a document is completed, the user can then move it to the
+          'pending approval' stage so that the Clinical Study Manager (CSM)
+          may begin the review process. (See <xref
+          linkend="movedocinreviewandapprove" /> for how to progress a
+          document from 'complete' to 'pending approval').</para>
+
+          <para>The CSM may then either reject or approve the document. If the
+          document is 'rejected', then the Clinical Research Officer (CRO)
+          must address the reason the document has been rejected (see <xref
+          linkend="usingcocoarejecteddocs" /> for details on how to handle
+          rejected documents).</para>
+
+          <para>After making the necessary corrections, the document can be
+          moved back to 'pending approval' and the review cycle starts
+          again.</para>
+
+          <para>Once the document has been 'approved' by the CSM, it is
+          usually finished. But if the CSM learns after the fact that the
+          document requires revision or additional information, the CSM can
+          re-open the document for editing, which will move the document back
+          to the 'pending approval' state, and further back then to 'Rejected'
+          if required.</para>
+        </section>
+
+        <section id="unmanagedworkflow">
+          <title>Implicit Document Work Flow</title>
+
+          <para>Studies that use this work flow place the onus of veriyfing
+          document data on the CRO - essentially, the CRO acts implicitly as
+          the CSM by self-assuring the validity of document data. This means
+          that there are fewer work flow stages to complete, which makes the
+          study less complicated to manage.</para>
+
+          <figure>
+            <title>Implicit Flow Diagram</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Collect_implicit_review_and_approve_diagram.JPG" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>The most important aspect of the work flow to grasp is the
+          difference the 'Complete' and 'Controlled' work flow state.
+          'Complete' means that all required fields have been populated in the
+          document, but the data can still be changed and these changes are
+          not recorded.</para>
+
+          <para>Once the CRO is confident that the data for a document is,
+          complete and correct, they should then move the document to the
+          'Controlled' work flow state. See <xref
+          linkend="movedocinimplicitworkflow" /> for instructions on how to
+          progress a document from the 'complete' to 'controlled'
+          state.</para>
+
+          <para>This state is similar to 'Approved' in the 'Review and
+          Approve' work flow, combined with the data editing provided by the
+          'Rejected' state .</para>
+        </section>
+      </section>
+
+      <section id="corecon_connectivity">
+        <title>Connectivity modes</title>
+
+        <para>Two different connectivity modes are provided to suit your
+        working habits.</para>
+
+        <section id="corecon_alwaysonlinemode">
+          <title>'Always Online' Mode</title>
+
+          <para>You should use 'Always Online' mode when you always have an
+          active network connection (that allows you to connect to the
+          openCDMS database) whilst you are entering data.</para>
+
+          <para>When a Document is completed (or you opt to save it as
+          incomplete) it is saved to the openCDMS database immediately. When
+          completing or amending the Document it is retrieved from the
+          Database, you make the changes, then it is saved to the Database
+          again.</para>
+
+          <para>'Always online' mode has many benefits over 'Online and
+          offline' mode, but principally the security and integrity of your
+          data is maximized by using this mode.</para>
+
+          <para>The 'Always-online' mode was introduced in Collect version
+          6.1. All users, whether they are installing 6.1 for the first time
+          or upgrading from a previous version, will have their application
+          set by default to use 'Always-online' mode.</para>
+        </section>
+
+        <section>
+          <title>'Online and Offline' Mode</title>
+
+          <para>This mode should only be used if you have a requirement to
+          enter data on your computer in a location where you do not have a
+          network connection (you are 'off-line'). Data entered is saved on
+          your computer's hard disk (in an encrypted format), then you must
+          manually choose to 'Commit' the data to the openCDMS Database when
+          you are connected to the network (you are 'on-line').</para>
+
+          <para>You can tell if you are on'line or off-line by viewing the
+          connectivity icon in the lower right-hand corner of the Status Bar.
+          If the connectivity icon is red, it means that you are off-line. If
+          it is green, you are on-line. When you are off-line Collect can only
+          be used to enter data; when you are on-line all of Collect's
+          functionality will be available.</para>
+
+          <para>We only recommend using this mode when it is absolutely
+          necessary, as your data is considerably more vulnerable whilst it is
+          stored on your computer's hard disk than when it is committed to the
+          openCDMS Database. Even when using this mode you should commit data
+          to the Database as often as possible; it is not good practice to
+          have data stored on your hard disk for long periods of time.</para>
+        </section>
+
+        <section>
+          <title>Setting connectivity mode.</title>
+
+          <para>You can invoke this dialog from the applicaiton menu. Select
+          Settings-&gt;Settings.</para>
+
+          <figure>
+            <title>Setting Connectivity Mode</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Application_settings_dlg.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </section>
+      </section>
+    </section>
+  </section>
+
+  <section id="collect_applicationoverview">
+    <title>Overview of the Collect Application User Interface</title>
+
+    <section>
+      <title>The Application at a Glance</title>
+
+      <figure id="application_overview_image">
+        <title>Collect application overview</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/Collect_application_overview.jpg" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The image above shows the primary areas of the application,
+      namely:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A - Application Menu</para>
+        </listitem>
+
+        <listitem>
+          <para>B - Participant View</para>
+        </listitem>
+
+        <listitem>
+          <para>C - Status Bar</para>
+        </listitem>
+
+        <listitem>
+          <para>D - Document View</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The following sections cover in detail what is shown in each
+      application area, and how to use it.</para>
+    </section>
+
+    <section id="usingtheparticipantview">
+      <title>Introduction to the Participant View</title>
+
+      <section id="collectparticipantwindow">
+        <title>Overview of the Participant View</title>
+
+        <figure id="participantwindowimage">
+          <title>Collect - Participant View</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/Collect_participant_view.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>When you open a participant in Collect, the participant view
+        will display that participant's record. (To learn how to load a
+        participant, see <xref linkend="openingexistingparticipant" />
+        ).</para>
+
+        <para>The participant view is an organised 'tree view' of a
+        participant record. The view is document-centric, with the documents
+        organised into their respective study stages. (These stages have been
+        organised from top to bottom in their required order of completion).
+        You can click on a study stage to open it up and see what documents it
+        contains.</para>
+
+        <para>The following sections explain all of the information that is
+        presented in this view.</para>
+      </section>
+
+      <section id="pv_studystages">
+        <title>Display of Study Stages in the Participant Window</title>
+
+        <para>As you can see in the diagram, there are three 'levels' in the
+        tree view. The top level is the participant themself. The second
+        'level' comprises the study stages into which the documents (third
+        level) have been organised.</para>
+      </section>
+
+      <section id="pv_documents">
+        <title>Display of Documents in the Participant Window</title>
+
+        <para>Each document is displayed adjacent to an icon that represents
+        the status of the document. If you are unsure what the icon means then
+        hold the mouse cursor over the document in question - a tooltip will
+        be displayed containing the name of the document and its status. The
+        following table describes the document icons</para>
+
+        <figure>
+          <title>Participant Window - Document Icons</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/Collect_document_icons.JPG" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Further notes and comments about the document statuses:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>No started - Document not yet started for the
+            participant</para>
+          </listitem>
+
+          <listitem>
+            <para>Incomplete - Document saved as incomplete in the
+            database.</para>
+          </listitem>
+
+          <listitem>
+            <para>Complete - Document saved as complete in the
+            database.</para>
+          </listitem>
+
+          <listitem>
+            <para>Pending - Document is pending approval in the database. Not
+            applicable if the study does not use the 'Review and Approve'
+            workflow.</para>
+          </listitem>
+
+          <listitem>
+            <para>Approved - Document has been approved by the CSM. Not
+            applicable if the study does not use the 'Review and Approve'
+            workflow.</para>
+          </listitem>
+
+          <listitem>
+            <para>Rejected - Document has been rejected by the CSM. Not
+            applicable if the study does not use the 'Review and Approve'
+            workflow.</para>
+          </listitem>
+
+          <listitem>
+            <para>Locally incomplete - Document is stored locally as
+            incomplete. Not applicable if 'Always online' mode is being
+            used.</para>
+          </listitem>
+
+          <listitem>
+            <para>Ready To Submit - Document has been completed but is stored
+            locally. Not applicable if 'Always online' mode is being
+            used.</para>
+          </listitem>
+
+          <listitem>
+            <para>Locked - Document is locked and it is not possible to enter
+            data for it.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>Document Status Filter</title>
+
+        <para>The Document Status Filter allows the displayed Documents for
+        the participant to be filtered by their status. By default the filter
+        is set to 'All", so all Documents are displayed regardless of status.
+        Changing this to a specific status will result in the Participant View
+        tree being refreshed to only show Documents in the selected status. If
+        a Study Stage contains no Documents in the selected status then it
+        will be empty and will not be able to be expanded.</para>
+      </section>
+    </section>
+
+    <section id="usingthedocumentview">
+      <title>Introduction to the Document View</title>
+
+      <figure id="docviewimage">
+        <title>Document View</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/Collect_document_view.jpg" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The image above displays the main features of the document view.
+      The following sections will provide an overview of each feature and will
+      label all controls for easy reference throughout the rest of the
+      document.</para>
+
+      <section id="cocoatoolbar">
+        <title>Toolbar</title>
+
+        <para>The toolbar buttons available are as follows:</para>
+
+        <figure>
+          <title>Toolbar</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/collect_document_toolbar.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <orderedlist>
+          <listitem>
+             The 'back' button. 
+
+            <para>Move back to the previous section (disabled if on the first
+            section). Note that the same functionality is provided by the
+            'back' button at the bottom of the document window.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'forward' button. 
+
+            <para>Move forward to the next section of the document. If the
+            last section is currently displayed then the forward button
+            changes to Save (or other equivalent action depending upon the
+            document status); this will be indicated by arrow on the button
+            changing from white to red, and the text on the forward button at
+            the bottom of the document window changing to indicate what the
+            action will be.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'save incomplete' button. 
+
+            <para>Save the document as 'incomplete'. (See <xref
+            linkend="differencebetweencompleteandincomplete" />for a
+            discussion of the diffence between complete and incomplete
+            documents).</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'print' button. 
+
+            <para>Print the document (see <xref
+            linkend="usingcocoaprintdoc" /> ).</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'missing code' button. 
+
+            <para>Apply missing code to section (see <xref
+            linkend="usingcocoaautofillstdcode" /> ).</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'import' button. 
+
+            <para>Import data (see <xref linkend="usingcocoaimport" />
+            ).</para>
+
+             
+          </listitem>
+
+          <listitem>
+             The 'close document' button. 
+
+            <para>Close the current document</para>
+
+             
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section id="collectdocumentoverview">
+        <title>Collect Document Overview</title>
+
+        <para>This section of the view displays the name of the currently-open
+        document, as well as the study stage to which it belongs.</para>
+
+        <para>If the document has been organised into multiple sections, the
+        section control will appear here. You can click on this drop-down list
+        box in order to view the document's sections and navigate between them
+        allowing you to skip to a later section without going through all
+        sections by using the forward or back buttons. Note that you will only
+        be allowed to skip to sections that have been completed, so when data
+        is entered initially each section must be entered in turn.</para>
+
+        <para>For some sections it is possible to complete them multiple
+        times; for example a section concerning details about a relative of a
+        participant. which would be completed once for each relative. When a
+        section like this is being edited an additional toolbar will appear
+        adjacent to the section drop-down (see <xref
+        linkend="collect_section_toolbar" />). The buttons in this toolbar
+        are, from left to right; insert a new section before the current one,
+        insert a new section after the current one, remove the current
+        section. If the section has only been completed once the remove button
+        will be disabled.</para>
+
+        <figure id="collect_section_toolbar">
+          <title>Section toolbar</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/Collect_section_toolbar.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="collectdocumentwindow">
+        <title>Collect Document Window</title>
+
+        <para>The document window is where the participant data is actually
+        entered. See<xref linkend="usingcocoacompletingdocs" /> for
+        information on data entry. The navigation buttons at the bottom of the
+        window are identical of purpose to the 'forward' and 'back' buttons in
+        the document toolbar.</para>
+      </section>
+
+      <section>
+        <title>The Status Bar</title>
+
+        <para>The status bar will indicate when the application is performing
+        long-running tasks, such as updating Collect with a representation of
+        a study from the database.</para>
+
+        <para>The square status icon in the lower right-hand corner of the
+        status bar indicates whether you are on-line or off-line. (Green means
+        on-line, red means off-line). See<xref
+        linkend="corecon_connectivity" />for information about the on-line and
+        off-line statuses.</para>
+      </section>
+    </section>
+
+    <section id="collect_mainmenu">
+      <title>The Application Menu</title>
+
+      <section id="collect_file_menu">
+        <title>The 'File' Menu</title>
+
+        <figure>
+          <title>File menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/Collect_file_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>The 'File' menu provides options for the creating a new record
+        and for opening an existing record. each option is explained
+        below.</para>
+
+        <orderedlist>
+          <listitem>
+             'New participant' 
+
+            <para>Allows you to create a new participant. See <xref
+            linkend="usingcocoanewrecord" /> for details.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             'Open participant' 
+
+            <para>Allows you to open an existing participant record. See <xref
+            linkend="openingexistingparticipant" /> for details.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             Exit 
+
+            <para>Allows you to exit Collect. See <xref
+            linkend="exitcollect" /> for details.</para>
+
+             
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section>
+        <title>The 'Database' Menu</title>
+
+        <figure>
+          <title>Database menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_database_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <orderedlist>
+          <listitem>
+            <para>Update. Allows you to update Collect's local representation
+            of the study. This option is generally not needed to be used
+            because Collect automatically performs an update whenever it
+            starts up and is able to connect to the database.</para>
+          </listitem>
+
+          <listitem>
+            <para>The 'Commit' option will appear only if you are not working
+            in 'Always-online' mode. See <xref
+            linkend="usingcocoacommittingdata" />to learn how to commit data
+            to the database.</para>
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section>
+         
+
+        <title>The 'Print' Menu</title>
+
+         
+
+        <figure>
+          <title>Print menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_print_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+         The 'Print' menu contains options that allow you to extract and view information, in various formats, about a participant. Each option is explained below. 
+
+        <orderedlist>
+          <listitem>'Paper document...' <para>This option creates a blank .pdf
+          template of the chosen document in order to enable you to capture
+          the data on paper.</para></listitem>
+
+          <listitem>Report <para>This option allows you to print out various
+          reports that are available for your study.</para></listitem>
+
+          <listitem>Document <para>This option creates a .pdf document holding
+          document data for a chosen participant and
+          document.</para></listitem>
+
+          <listitem>Record <para>This option creates an amalgamated .pdf
+          document that holds the document data for all documents within the
+          record.</para></listitem>
+        </orderedlist>
+
+         
+      </section>
+
+      <section>
+        <title>The 'Advanced' Menu</title>
+
+        <figure>
+          <title>Advanced menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_advanced_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>The 'Advanced' Menu contains options that only need to be used
+        in specific circumstances.</para>
+
+        <orderedlist>
+          <listitem>
+            <para>Rebuild Local Caches - this option deletes Collect's local
+            data caches from your computer then rebuilds them from the
+            repository.</para>
+
+            <para>For performance reasons Collect caches the status of all
+            participants in the database, and the statuses of all documents
+            completed for them, in files on your local hard-drive. These are
+            refreshed on each login to Collect, so in normal operation they
+            provide an accurate representation of the the data in the
+            database. However, in exceptional circumstances your local cache
+            and the actual state of the database can get out of sync.
+            Selecting this option completely rebuilds the caches from the
+            database, thus getting them back in sync.</para>
+
+            <para>You will generally only need to use this option if advised
+            to by support. If you are working in "online and offline" mode you
+            will be forced to commit all local data to the database beofre the
+            rebuilding of your caches can occur.</para>
+          </listitem>
+
+          <listitem>
+            <para>Link Records - allows two records to be linked for data
+            replication. See <xref linkend="datareplication" /> for full
+            details. <emphasis role="italics">Only displayed if you are a
+            member of a study that uses data replication.</emphasis></para>
+          </listitem>
+
+          <listitem>
+            <para>Synchronize Linked Records - allows two records that are
+            already linked to have their data synchronized. See <xref
+            linkend="datareplication" /> for full details. <emphasis
+            role="italics">Only displayed if you are a member of a study that
+            uses data replication.</emphasis></para>
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section>
+        <title>The 'Options' Menu</title>
+
+        <figure>
+          <title>Options menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_options_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>The 'Options' Menu provides options for configuring the system,
+        and for changing your password.</para>
+
+        <orderedlist>
+          <listitem>
+             Change password... 
+
+            <para>Use this option to change your password.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             Settings... 
+
+            <para>Use this option if you want to change your proxy settings,
+            change the Collect home directory, or to change your
+            'Always-online' status.</para>
+
+             
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section>
+        <title>The 'Help' Menu</title>
+
+        <figure>
+          <title>Help menu</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_help_menu.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <orderedlist>
+          <listitem>
+             Help 
+
+            <para>This option launches the 'help' documentation.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             Email log file 
+
+            <para>This option emails a copy of Collect's logfiles to the
+            support team. The support team may request that you invoke this
+            option to help diagose any problems you may be
+            experiencing.</para>
+
+             
+          </listitem>
+
+          <listitem>
+             About 
+
+            <para>This option launches a dialog that displays software version
+            information.</para>
+
+             
+          </listitem>
+        </orderedlist>
+      </section>
+    </section>
+  </section>
+
+  <section id="collect_functionalityguide">
+    <title>Collect Functionality - a 'How To' Guide</title>
+
+    <section id="usingcocoanewrecord">
+      <title>Creating a new record for a participant</title>
+
+      <para>The procedure for creating a new participant record is as
+      follows:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Log into Collect and go to the File menu -&gt; New
+          Participant.</para>
+        </listitem>
+
+        <listitem>
+          <para>Select the relevant study.</para>
+
+          <figure>
+            <title>Select study dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Collect_choose_study_dlg.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </listitem>
+
+        <listitem>
+          <para>Once you have selected the study for which you wish to create
+          a new participant, the Participant Identifier dialog will
+          appear.</para>
+
+          <figure>
+            <title>Participant Identifier dialog - specify study-level
+            details</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Collect_participant_identifier_dlg.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>This dialog requires you to enter data about how this
+          participant is affiliated with the study. Primarily, a participant
+          is assigned to a particular centre (usually corresponding to a
+          geographical region). Some studies may have only one center, in
+          which case you do not have to make a choice. If the centre you have
+          chosen has been further sub-divided into sites, you will need to
+          select the site with which this participant is affiliated. Finally
+          you may also need to specify the site consultant with whom this
+          participant is affiliated.</para>
+        </listitem>
+
+        <listitem>
+          <para>Once you have specified this information, a Participant
+          Identifier is presented to you by the system, at the bottom of the
+          dialog. If the Participant Register is not being used you <emphasis
+          role="bold">must</emphasis> record this number, and manually
+          maintain the mapping between this identifier and the participant's
+          identity (to maintain participant confidentiality and anonymity, the
+          electronic system does not hold participant identifiable
+          information, unless the Participant Register is used). You will need
+          to know the Participant Identifier whenever you want to add to or
+          modify their record.</para>
+
+          <para>Click OK when you have selected the centre, site and
+          consultant and have the recorded the participant identifier.</para>
+        </listitem>
+
+        <listitem>
+          <para>The Consent dialog will then appear.</para>
+
+          <figure>
+            <title>Consent dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_3db490c9.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>You can now confirm to the system that the participant has
+          given consent by ticking the relevant consent items, which will be
+          specific to each study. This step is important as if you don’t enter
+          the correct consent it is possible that you won’t be able to add any
+          data for the participant!</para>
+
+          <para>You must also enter one or two dates. The first date is for
+          “Date of entry to study” and this must be completed for all studies.
+          The second date is in response to a question that is specific to
+          each study (and for some studies this question may not be specified
+          at all, in which case you will only see “Date of entry to study” as
+          above). The significance of this second date is that it is the date
+          from which all scheduling of follow-up documents is calculated from.
+          For instance 6 month follow ups would be expected to be completed 6
+          months after this date.</para>
+        </listitem>
+
+        <listitem>
+          <para>Some studies may use the openCDMS Participant Register, in
+          which case you will be prompted to record the participant’s details
+          later on in this process and so you will not need to maintain a
+          separate log of this data. More information about the Participant
+          Register can be found in <xref linkend="usingcocoaesl" /> and in the
+          <xref linkend="psygridweb" />.</para>
+        </listitem>
+
+        <listitem>
+          <para>Finally, for some studies you may be asked whether you wish to
+          link the record to a record in another study. For details about
+          record linking and data replication please see the separate openCDMS
+          Data Replication Guide.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>On completion of these steps the new participant has been
+      successfully added, and will be opened in the Participant View ready for
+      Documents to be completed. See <xref
+      linkend="collectparticipantwindow" />for an overview of how the
+      participant record is displayed.</para>
+    </section>
+
+    <section id="openingexistingparticipant">
+      <title>Opening Existing Participants</title>
+
+      <para>To open an existing participant record, select 'File-&gt;Open
+      Participant' from the menu. From the resulting dialog, first select the
+      study to which the participant belongs. You will then be presented you
+      with the Identifiers for all Participants from the Study that you are
+      able to open.</para>
+
+      <para>The list of Participant Identifiers will contain both Participants
+      that you have added, and also Participants added by your colleagues on
+      the study who are members of the same Centres as yourself.</para>
+
+      <para>To narrow down the Identifiers that are displayed you may use the
+      'Filter by document status' option. By default this is set to 'All', so
+      all available Identifiers are shown. If instead you select a specific
+      Document Status here the list of Identifiers will be refreshed to only
+      show those which contain Documents in the selected Status. For example,
+      if you wish to amend Documents that have been rejected, selectiong
+      'Rejected' in the filter will cause the list of identifiers to only show
+      Participant's whose Record contains rejected Documents.</para>
+
+      <para>Once you select a participant identifier in the dialog and then
+      select 'OK' the record will be loaded into the 'Participant Window'. See
+      <xref linkend="collectparticipantwindow" />for documentation on how a
+      participant record is displayed.</para>
+
+      <figure id="chooseexistingparticipantimage">
+        <title>Choose Participant Dialog</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/Collect_choose_participant_dlg.JPG" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+
+    <section id="usingcocoacompletingdocs">
+      <title>Document Data Entry</title>
+
+      <para>Once you have a participant record loaded, you can open a document
+      in one of two ways:</para>
+
+      <orderedlist>
+        <listitem>double-click on the document of interest in the participant
+        window.</listitem>
+
+        <listitem>right-click on the document of interest, and select 'Open'
+        from the resulting context menu.</listitem>
+      </orderedlist>
+
+      <para>See <xref linkend="usingthedocumentview" /> for on overview of how
+      documents are displayed.</para>
+
+      <para>Documents are completed by answering the questions proposed in the
+      data entry area. Some questions require a value to be typed in (a number
+      or some free text) whereas others present a list of options from which
+      the answer is selected. Dates are entered using a calendar control. Some
+      questions may have additional help information associated with them, in
+      which case a blue “question mark” help icon will appear next to the
+      question text. Clicking this will display the help information.</para>
+
+      <para>Questions may have validation applied to prevent you from entering
+      invalid data, for instance to restrict a numeric value to a certain
+      range. If you enter an invalid value a red cross icon will appear next
+      to the entry field, and hovering the mouse pointer over this will show
+      the reason why the value is invalid.</para>
+
+      <figure id="validationerroronentryimage">
+        <title>Data entry screen - validation error on entry</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_validation_error_on_entry.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Some documents have multiple sections, as shown in the Sections
+      pane to the left of the window. You can move through theses sections
+      using the “Forward” and “Back” buttons at the end of the section or
+      using the arrow buttons located in the top-left of the window. When you
+      try to move forward to the next section validation of the current
+      section is performed and you will not be permitted to go to the next
+      section if any validation errors are found. As well as invalid data
+      missing values for mandatory questions will also cause validation
+      errors.</para>
+
+      <figure>
+        <title>Data entry screen - validation error in section</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_validation_error_on_section.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>You will be informed that validation errors were found, and all
+      problematic values will be marked with the red cross icon.</para>
+
+      <para>If there are validation errors present you will not be permitted
+      to move on to the next section, and hence will be unable to complete the
+      document. If the validation error is due to you not knowing the value
+      for a mandatory field then you may save the document in its current
+      state as an 'incomplete' document that may be finished at a later date.
+      Please see <xref linkend="savingcompletingdocs" /> for more information
+      on how to save the document as either 'complete' or 'incomplete'.</para>
+
+      <section id="usingcocoaenteringtext">
+        <title>Entering text and numbers</title>
+
+        <para>Text and numeric data is just entered by typing it in to the
+        entry field:</para>
+
+        <figure>
+          <title>Single-line text entry field</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_26afa1a4.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If for a mandatory question you do not know the answer then you
+        should choose one of the “missing codes” that are used to signify
+        missing data. To show the missing code menu click on the button with
+        the downwards pointing arrow to the right of the field.</para>
+
+        <figure>
+          <title>Text entry field - select missing code</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_470306eb.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>When a missing code has been selected it will be displayed in
+        the entry field and the field itself will be disabled.</para>
+
+        <figure>
+          <title>Text entry field - with missing code</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m5bd43f5f.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>To enter an actual value in the field after a missing code has
+        been selected open the missing code menu again and select “Enable
+        editing”. The entry field will be cleared and is editable
+        again.</para>
+
+        <para>If it anticipated that more than one line of text will be
+        required then a larger text entry field will be displayed.</para>
+
+        <figure>
+          <title>Multi-line text entry field</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m45ee07a9.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Note that a maximum of 255 characters of text may be entered in
+        a standard text entry field, with 32768 characters permitted in the
+        large text entry field.</para>
+      </section>
+
+      <section id="usingcocoaenteringdates">
+        <title>Entering dates</title>
+
+        <para>There are several ways that dates may be entered. First, a date
+        may be selected from a calendar by clicking on the button with the "-"
+        symbol:</para>
+
+        <figure>
+          <title>Date entry field - calendar</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/collect_calendar_control.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The date is selected by clicking on it in the calendar, which
+        allows you to scroll back and forwards through months and years. You
+        may also enter a date by just typing it directly into the entry field.
+        When typing in a date it must be in “dd-mmm-yyyy” format (e.g.
+        17-Oct-2007) otherwise validation will fail.</para>
+
+        <figure>
+          <title>Date entry field - date</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_20677047.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>In some situations you may not know the full date, but do know
+        the month and year or year only. In this case you may enter a partial
+        date. Click on the button with the downwards pointing arrow (as if
+        selecting a missing code) and choose "Enter partial date".</para>
+
+        <figure>
+          <title>Date entry field - partial date (1)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_470306eb.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The entry field will change to now consist of a dropdown list of
+        months plus a field to enter the year. If you only know the year
+        select “Unknown” from the month dropdown. The year must be entered
+        with 4 digits.</para>
+
+        <figure>
+          <title>Date entry field - partial date (2)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m3618e9bf.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>To go back to entering a full date click on the button with the
+        downwards pointing arrow and select “Enter full date”. Missing codes
+        are selected in the same way as for text/numeric data.</para>
+      </section>
+
+      <section id="usingcocoaselectfromlist">
+        <title>Select from list of options</title>
+
+        <para>The list of available options is presented as a set of radio
+        buttons, one of which must be selected. Note that the missing codes
+        appear at the end of the list of options.</para>
+
+        <figure>
+          <title>List of options entry field (1)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_75b92683.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Some options require additional text to be added. These options
+        will be accompanied by a text entry field which will become enabled
+        when the option is selected.</para>
+
+        <figure>
+          <title>List of options entry field (2)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_7e2b003c.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="usingcocoaautocalculated">
+        <title>Automatically calculated fields</title>
+
+        <para>Some fields will be automatically calculated from other data
+        that you enter. In the following example the Subtotal field is
+        automatically calculated as the summation of the previous seven
+        fields:</para>
+
+        <figure>
+          <title>Calculated field</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m44a9ce2d.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="usingcocoaexternalcalc">
+        <title>Automatically calculated fields – external calculation</title>
+
+        <para>Slightly different from "normal" automatically calculated fields
+        in that the calculation is not performed by Collect itself, but is
+        done by an external service. As such you must be online in order to
+        run the calculation. The calculation is initiated by pressing the
+        "Calculate" button and is NOT automatically updated if changes are
+        made to the inputs; in this case you must manually initiate the
+        calculation again.</para>
+
+        <figure>
+          <title>Externally calculated field</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_16095522.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="usingcocoadatatables">
+        <title>Entering data in tables</title>
+
+        <para>The following screenshot shows an example of entering data in
+        tables.</para>
+
+        <figure>
+          <title>Tabular data entry</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m45547cc8.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>All individual data fields work in the same way as normal,
+        except selection from a list of options - the options are now
+        presented in a dropdown list. To add a new row click the "New row"
+        button – an empty row will be added to the bottom of the table. To
+        delete a row click on the "trashcan" button to the right of that row.
+        To apply the same missing code to all fields in a row click the "paper
+        and pencil" button to the right of that row and select the relevant
+        missing code from the resulting dialog.</para>
+      </section>
+
+      <section id="usingcocoadisabledfields">
+        <title>Disabled fields</title>
+
+        <para>Some fields may be disabled, in which case they will be greyed
+        out and it is not possible to enter data in them.</para>
+
+        <figure>
+          <title>Disabled fields (1)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m3c73234b.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Disabled fields may become enabled in response to the selection
+        of a particular option for a preceding question.</para>
+
+        <figure>
+          <title>Disabled fields (2)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m1e845603.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If the option selected is then changed the fields will be
+        disabled again, in which case any data entered when they were enabled
+        will be cleared.</para>
+      </section>
+    </section>
+
+    <section id="usingcocoashortcuts">
+      <title>Data Entry Shortcuts</title>
+
+      <section id="usingcocoakeyboardnav">
+        <title>Keyboard navigation</title>
+
+        <para>You can speed up some data entry tasks by using the keyboard,
+        rather than the mouse, to move through a document.</para>
+
+        <para>The "tab" key can be used to move between the different data
+        entry field. Repeatedly pressing "tab" causes the current selection to
+        change. You can move back by holding "shift" and pressing "tab". For
+        entries where a value has to be input (text, numeric) two presses of
+        tab are required to move from one entry to the next. This is because –
+        with the cursor in the field for entering text/numbers – one press of
+        tab will activate the button for selecting a missing code. A second
+        press of tab will move from this button to the next data entry
+        field.</para>
+
+        <para>For multiple-choice questions pressing "space" causes the
+        highlighted entry to be selected/deselected, depending on its status.
+        Also, pressing space when a button is activate is equivalent to
+        clicking the mouse on the button (e.g. to move to the next section
+        press tab until the Forward button is active, then press space.</para>
+      </section>
+
+      <section id="usingcocoaautofillstdcode">
+        <title>Auto fill section with missing code</title>
+
+        <para>You can apply the same missing code (e.g. 'Not Applicable') to
+        every entry on a section of a form using just three mouse clicks.
+        Simply click the "missing code" button on the tool bar (see <xref
+        linkend="cocoatoolbar" />). Then select the required missing code and
+        click "OK".</para>
+
+        <figure>
+          <title>Choose Missing Code dialog</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/collect_missing_code_dialog.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section>
+        <title>Auto save</title>
+
+        <para>If Collect is exited whilst an document is being entered or
+        edited is present then the data is automatically saved locally, and
+        the next time Collect is started it will open up displaying the
+        document, just as it was when Collect was shutdown.</para>
+
+        <para>Additionally, whilst data is being entered the document is
+        automatically saved every minute. Therefore in the event of a computer
+        or software error the data will not have to be re-entered</para>
+      </section>
+
+      <section id="usingcocoaimport">
+        <title>Import document contents from an external source</title>
+
+        <para>The "Import document" feature can be used to automatically
+        transfer data from an original (source) file into a Collect document.
+        This feature is not always available; it is enabled only for documents
+        that have been provided with a mapping to an external data
+        source.</para>
+
+        <para>In order to import from a source file into a blank Collect
+        document, you first load the new, blank document in the same way as
+        you would if you were to going to proceed with manual text entry. Once
+        the document is loaded, the import button (as shown below) will appear
+        as enabled (i.e. it will be in colour, not greyed-out and
+        disabled):</para>
+
+        <figure>
+          <title>Import document (1)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_21dfe62a.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If this icon appears in grey, it means that the current document
+        has not been import-enabled. In this case, manual entry is your only
+        option. Before proceeding, it is important to know the name and
+        location of the source file from which the data will be imported. Once
+        you are sure of the correct source file, then you are ready to
+        proceed. By clicking on the import icon, a file selection dialog will
+        appear (shown below). From here you can navigate to the file, which
+        must be stored on your local computer, and must have one of the
+        following file suffixes:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>csv (comma-separated value formatted file)</para>
+          </listitem>
+
+          <listitem>
+            <para>xml (extended markup language formatted file)</para>
+          </listitem>
+        </itemizedlist>
+
+        <figure>
+          <title>Import document (2)</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m3774597f.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>After selecting the appropriate file, the import will occur
+        automatically, and you should see that the document has been populated
+        with entries. It is important that you visually inspect the data to
+        make sure that the entries have been populated correctly; if the wrong
+        import file were chosen, then it is possible that some or all entries
+        in the document may get populated, although with incorrect data.
+        Therefore, a visual inspection is always necessary.</para>
+
+        <para>If the import was only partially successful, then the number of
+        errors that occurred will be reported to you in a pop-up dialog. In
+        this case, the document will be treated as incomplete - visual
+        inspection will reveal that certain entries have no data against them.
+        In this case, it will be necessary for you to complete the remaining
+        entries manually.</para>
+      </section>
+    </section>
+
+    <section id="savingcompletingdocs">
+      <title>Saving Documents</title>
+
+      <section id="savecompletedocument">
+        <title>Saving a Completed Document</title>
+
+        <para>If you are working with a single-section document, simply fill
+        in the data for all of the mandatory fields and then select the
+        forward button in the document toolbar. Your document will then be
+        saved as complete.</para>
+
+        <para>If you are working with a multiple-section document, you must
+        fill in the data for all mandatory fields in the first section. Then
+        you must navigate to the next section using the forward-arrow, and
+        fill in its mandatory data. Repeat this process for all sections. When
+        you have finished entering data for the final section, select the
+        forward arrow to save the document as 'complete'.</para>
+
+        <para>Note that if some of the data is invalid, you will not be able
+        to navigate to a subsequent section or to save the document. Refer to
+        <xref linkend="validationerroronentryimage" /> to see how entries with
+        validation errors are marked.</para>
+
+        <para><emphasis role="bold">Note: if you are not working in
+        'Always-online' mode, then the document is not in the database yet.
+        You must commit your data in order for it to be sent to the
+        database.emphasis</emphasis> Offline users should see <xref
+        linkend="usingcocoacommittingdata" /> for information on how to commit
+        data to the database.</para>
+      </section>
+
+      <section id="saveincompletedocument">
+        <title>Saving a Document as Incomplete</title>
+
+        <para>If you are working on a Document and don't have all the data
+        necessary to complete it then you may save it as 'Incomplete', which
+        allows it to be opened again at a later date and finished off. To save
+        a document as incomplete click the 'Save Incomplete' button in the
+        document toolbar. See <xref linkend="cocoatoolbar" />if you are not
+        familiar with this button.</para>
+      </section>
+
+      <section>
+        <title>Problems when saving</title>
+
+        <para>
+          <emphasis role="italics">Note: This is only applicable for users
+          working in 'Always-online' mode.</emphasis>
+        </para>
+
+        <para>In exceptional and unexpected circumstances it is possible that
+        an error may occur when Collect attempts to save a document to the
+        database. If this occurs a warning dialog will be displayed to the
+        user. The document will then be saved to your local hard disk
+        (encrypted) so that the data is not lost; you may then try to save the
+        document again at a later date. Documents saved in this way into an
+        "error state" will be signified in the participant tree-view by a red
+        icon. We recommend that you contact support as soon as possible
+        informing them of the problem so that it may be investigated.</para>
+
+        <figure>
+          <title>Problem Saving Document dialog</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/collect_problem_saving_document.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+    </section>
+
+    <section id="movedocinworkflow">
+      <title>Moving Documents through the Work Flow</title>
+
+      <section id="movedocinreviewandapprove">
+        <title>'Review and Approve' Work Flow</title>
+
+        <section>
+          <para>Once a document has been saved as 'Complete' it may be
+          re-opened and edited as many times as required. Once you are happy
+          with the data and do not anticipate further changes you should move
+          the document to 'Pending' in order for the document to be reviewed
+          by a Clinical Study Manager.</para>
+
+          <para>You do this be right-clicking on the document in the
+          Participant View and selecting 'Submit for Review'; the Document
+          will have its status changed to Pending and the icon for the
+          Document in the Participant View will change signifying this. If you
+          have multiple Documents in the same Study Stage that all need moving
+          to Pending you can right-click on the Study Stage and select 'Submit
+          all complete documents for review' from the pop-up menu:</para>
+
+          <figure>
+            <screenshot>
+              <screeninfo>Submit documents for review</screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/collect_submit_for_review.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>Selecting this option will move all 'complete' documents in
+          that study stage to 'pending approval'. You can also invoke this
+          menu option by right-clicking on the Participant in the tree, which
+          will then move all 'complete' documents for the Participant to
+          'Pending'.</para>
+        </section>
+
+        <section id="usingcocoareviewdocs">
+          <title>Reviewing Documents</title>
+
+          <para>
+            <emphasis role="italics">Note: Only the Clinical Study Manager may
+            review documents.</emphasis>
+          </para>
+
+          <para>You must be on-line to review documents. Choose "File-&gt;Open
+          Participant" from the menu to open the Record of the Participant
+          whose Documents you wish to review (you can use 'Filter by document
+          status' to show only Participants with Documents in the Pending
+          status, as described in <xref
+          linkend="openingexistingparticipant" />). The Participant's Record
+          will be opened, and to review a Pending Document simply double-click
+          on it in the Participant View to open it.</para>
+
+          <para>If you see something that you think may be wrong, you can mark
+          it as invalid . To do this, right-click on the entry field and
+          select "Mark entry as invalid".</para>
+
+          <figure>
+            <title>Mark entry as invalid</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/collect_invalidate_entry.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>A dialog will be displayed where you must enter an annotation;
+          this is a description of why the value is invalid to aid the CRO in
+          correcting it. Click OK to apply the annotation and mark the entry
+          as invalid.</para>
+
+          <figure>
+            <title>Enter annotation dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_5685935e.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>A yellow triangle icon will now appear adjacent to the entry
+          field to notify that it has been marked as invalid; hovering the
+          mouse pointer over this icon will show the annotation. If
+          subsequently you change your mind and decide that the value is valid
+          after all, right click on it and select "Mark entry as
+          valid".</para>
+
+          <para>Once you have finished reviewing the document click the
+          Forward button from the last section. If you have marked any entries
+          as invalid then the document will be Rejected. The CRO(s)
+          responsible for the data entry will be emailed notifying them of
+          this.</para>
+
+          <para>If no entries have been marked as invalid then the document
+          will be Approved.</para>
+        </section>
+
+        <section id="usingcocoarejecteddocs">
+          <title>Working with Rejected Documents</title>
+
+          <para>You must be on-line to edit rejected documents. Choose
+          "File-&gt;Open Participant" from the menu to open the Record of the
+          Participant whose Documents you wish to correct (you can use 'Filter
+          by document status' to show only Participants with Documents in the
+          Rejected status, as described in <xref
+          linkend="openingexistingparticipant" />). The Participant's Record
+          will be opened, and to correct a Rejected Document simply
+          double-click on it in the Participant View to open it.</para>
+
+          <para>When the document is loaded you can view the reasons why the
+          document has been rejected. Move the mouse over the yellow warning
+          triangles, and the reason why the value has been rejected will be
+          displayed.</para>
+
+          <para>To amend the value, double click on the entry field with the
+          left mouse button. This brings up the Edit Entry dialog, where you
+          may edit the value and enter a reason for the change. Note that even
+          if you do not change the value (i.e. you believe the value that was
+          rejected to be correct) you must still enter a reason, which in this
+          case will inform your Clinical Study Manager of the reason for your
+          entry remaining the same.</para>
+
+          <figure>
+            <title>Edit Entry dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_m31fd69a2.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>When you have amended all of the rejected values click on
+          "Forward" at the end of the document. The changes will be committed
+          to the database and the document moved back to the Pending Approval
+          state.</para>
+        </section>
+
+        <section id="usingcocoarereview">
+          <title>Reviewing a re-committed document</title>
+
+          <para>
+            <emphasis role="italics">This action only applies to the Clinical
+            Study Manager.</emphasis>
+          </para>
+
+          <para>Proceed as in <xref linkend="usingcocoareviewdocs" /> . You
+          can view the response or edits to a rejection by looking for the
+          blue "i" icon. Hover the mouse over this icon to see the response
+          from the CRO to the rejection of the value.</para>
+
+          <figure>
+            <title>Review amended document</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/collect_review_amended_document.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>To confirm that the value is now OK right-click on the entry
+          field and select "Mark as valid". If the value is still invalid
+          right-click and select "Mark entry as invalid" - an annotation is
+          required.</para>
+
+          <para>To view the complete change history of an entry right-click on
+          it and select "View Provenance". This is useful to compare the
+          current value with the previous (rejected) value.</para>
+
+          <figure>
+            <title>View provenance dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_566ab731.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </section>
+      </section>
+
+      <section>
+        <title>'Implicit' Work Flow</title>
+
+        <para>TODO</para>
+      </section>
+    </section>
+
+    <section id="usingcocoacommittingdata">
+      <title>Committing Data to the Database</title>
+
+      <para>
+        <emphasis role="bold">If you are operating in 'Always-online' mode,
+        you do not have to worry about committing data to the database because
+        this happens automatically whenever you complete a document, or when
+        you save it as 'incomplete'. However, if you are NOT operating in
+        'Always-online' mode, the information in this section is critical to
+        you.</emphasis>
+      </para>
+
+      <para>After a document has been completed and saved it is stored locally
+      on your computer – <emphasis role="bold">IT IS NOT AUTOMATICALLY
+      COMMITTED TO THE CENTRAL DATA DATABASE!</emphasis></para>
+
+      <para>You should try to commit documents as soon as possible for the
+      following reasons:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>If the computer on which they are stored fails they might be
+          lost.</para>
+        </listitem>
+
+        <listitem>
+          <para>If the computer on which they are stored is stolen they will
+          be lost.</para>
+        </listitem>
+
+        <listitem>
+          <para>The recruitment statistics are not updated until a document is
+          committed for a record.</para>
+        </listitem>
+
+        <listitem>
+          <para>Although data stored locally is encrypted, it is not as secure
+          as data held in the database.</para>
+        </listitem>
+
+        <listitem>
+          <para>Others cannot see data stored locally and so it only has value
+          when entered into the database.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>To commit data to the central database select ‘Commit’ from the
+      Database menu. A dialog will be launched showing you the records that
+      may be committed. By default records with complete documents are
+      pre-selected to be committed; you must select records with incomplete
+      documents that you want to commit (note that if a record has both
+      complete and incomplete documents it will appear in the list
+      twice).</para>
+
+      <figure>
+        <title>Commit dialog</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/collect_commit_dialog.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>Once you have selected the records to commit click OK. Upon
+      completion the records selected will have been saved to the central
+      database and removed from your local computer.</para>
+    </section>
+
+    <section id="vieweditrecordproperties">
+      <title>Viewing/Editing Participant Record Properties</title>
+
+      <para>From the participant window it is possible to view and change
+      record-level participant data. In order to invoke the Participant
+      Properties dialog, right-click on the participant record and then select
+      'View/Edit Participant Properties' in the resulting dialog, as shown
+      below:</para>
+
+      <figure>
+        <title>View/Edit Record Properties</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/Collect_open_participant_properties_dlg.jpg" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>This will invoke the participant properties dialog.</para>
+
+      <figure>
+        <title>'Record Properties' Dialog</title>
+
+        <screenshot>
+          <screeninfo />
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/Collect_record_properties_dlg.JPG" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+
+      <para>From this dialog, it is possible to change the following record
+      properties:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>'Current Record Status' - this status is changed automatically
+          as you complete documents for the participant. Once all documents in
+          a study stage have been completed, the status change automatically
+          to reflect this (e.g. once all baseline documents have been
+          completed, the status will move automatically to 'Baseline
+          Completed'. You may need to edit this status, however if a
+          participant withdraws from a study, or if you wish to invalidate the
+          current record (i.e. remove it from the study).</para>
+        </listitem>
+
+        <listitem>
+          <para>'Consent for the record held' - the entering of consent
+          information is mandatory upon creation of a new participant. If any
+          of these consent details change you may amend them by editing this
+          property.</para>
+        </listitem>
+
+        <listitem>
+          <para>'Date of entry into study' - This date can be changed here if
+          necessary. Also, some studies also record a second date - and this
+          can also be amended.</para>
+        </listitem>
+
+        <listitem>
+          <para>'Notes' - general notes regarding the participant record can
+          be modified.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="usingcocoaesl">
+      <title>Integration with the Participant Register</title>
+
+      <para>
+        <emphasis role="italics">This section only applies to studies where
+        the Participant Register is used to store identifiable participant
+        details.</emphasis>
+      </para>
+
+      <para>For each study deployed on the openCDMS system it can be defined
+      whether or not the study makes uses of the openCDMS Participant
+      Register. The Participant Register allows identifiable participant data
+      (e.g. name. address, etc.) to be stored electronically, linked to the
+      study/screening code generated by openCDMS Collect.</para>
+
+      <section>
+        <title>Entering a new Participant</title>
+
+        <para>If the Participant Register is being used, then when creating a
+        new record for a participant (see <xref
+        linkend="usingcocoanewrecord" />) an additional dialog will be
+        displayed after the Consent dialog. The Participant Register dialog
+        allows you to enter the participant’s details and on clicking the OK
+        button these details will be uploaded to the Participant
+        Register.</para>
+
+        <figure>
+          <title>Participant Register dialog</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_675a9304.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>In order to upload the participant’s details to the Participant
+        Register you must be online; if this is not the case then the
+        participant’s details will be stored on your computer until the next
+        time you use the Database – Commit action when they will be uploaded
+        to the Participant Register (provided you are now online. To inform
+        you that the participant’s details could not immediately be uploaded
+        to the Participant Register the following dialog will be shown.</para>
+
+        <figure>
+          <title>Participant Register - could not upload message</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m68cb4c94.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section>
+        <title>Opening participant records</title>
+
+        <para>A participant is opened using the File -&gt; Open Participant
+        menu option (see <xref linkend="usingcocoanewrecord" />). This will
+        allow you to select the participant identifier or use identifiable
+        data (such as name or date of birth) to search for the
+        participant.</para>
+
+        <figure>
+          <title>Participant Register - Open Participant</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_openparticipantregister.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The 'More..' button shown in the Open Participant dialog allows
+        the search criteria to be widened to include all details stored in the
+        participant register.</para>
+
+        <para>Participant details may also be viewed and edited using the
+        openCDMS web interface; see <xref linkend="psygridweb" />for further
+        details.</para>
+      </section>
+
+      <section>
+        <title>Viewing/editing Participant Register Details</title>
+
+        <para>You may edit the details of a Participant in the Register by
+        opening the Participant as normal and right-clicking on their
+        identifier in the participant view. Select the "View/Edit Participant
+        Register" option and the Participant Register dialog will be
+        displayed, in the same way as it is before randomization. Clicking
+        Edit will allow the data ito be amended, and then clicking OK will
+        save the data to the register.</para>
+
+        <figure>
+          <title>Participant Register - View/edit Participant Menu</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_viewparticipantmenu.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Participant details may also be viewed and edited using the
+        openCDMS web interface; see <xref linkend="psygridweb" />for further
+        details.</para>
+      </section>
+
+      <section>
+        <title>Randomisation</title>
+
+        <para>If the study is a clinical trial then the Participant Register
+        will also be used to provide randomization. One of the documents will
+        have been defined as being the trigger for randomization, in that
+        after its completion you must decide whether the participant is
+        eligible to participate in the trial or not. When this document is
+        completed (i.e. the end of the document is reached and you choose to
+        save it) a dialog will be displayed allowing you to choose whether the
+        participant should be randomized or not.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>If the participant is eligible for the trial click Yes – you
+            will first be displayed the participant's details from the
+            Participant Register for review; if all the details are correct
+            click OK to proceed with randomization and allocate the
+            participant to one of the treatment arms. If the details in the
+            Participant Register are not correct click Edit; the fields in the
+            dialog will be opened for editing. On clicking OK the amended
+            details will be uploaded to the Participant Register before the
+            randomization process is started. Clicking Cancel at any time
+            aborts the randomization attempt (and discards changes to the
+            Participant's details, if Edit was clicked) and you will be
+            returned to the document view.</para>
+          </listitem>
+
+          <listitem>
+            <para>If the participant is not eligible for the trial click No –
+            the participant will not be allocated to a treatment arm which
+            implies that their participation in the study is over.</para>
+          </listitem>
+
+          <listitem>
+            <para>If you are unsure whether to click Yes or No then clicking
+            the Cancel button will return you to the document view.</para>
+          </listitem>
+        </itemizedlist>
+
+        <figure>
+          <title>Randomize dialog</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m1faea1a5.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If there is a problem during the randomization process the
+        system will not allow you to save the document. There are two common
+        situations which will cause randomization to fail:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>The application is offline, and so it cannot communicate
+            with the Participant Register to perform randomization. In this
+            case you should select “Go back and continue editing” from the
+            Save Document dialog, then use Local – Save Incomplete Document to
+            save the document to your computer. Then, when you are online open
+            the incomplete document and try to save it again.</para>
+          </listitem>
+
+          <listitem>
+            <para>The participant’s details are not found in the Participant
+            Register. This can happen if the record was created and the
+            document that triggers randomization completed whilst you were
+            offline. If you then open the incomplete document when online,
+            save it and try to perform randomization again before you have
+            done a Commit then randomization will fail, because the
+            participant’s details are only uploaded to the Participant
+            Register during the Commit process. So, perform a Commit then try
+            to save the document again.</para>
+          </listitem>
+        </itemizedlist>
+
+        <figure>
+          <title>Randomization failed dialog</title>
+
+          <screenshot>
+            <screeninfo />
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_1fe86126.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <section>
+          <title>What if I don't randomize the participant?</title>
+
+          <para>If you do not choose to randomize the participant at this
+          stage you may do so at a later date by opening the participant
+          record and right-clicking on the participant identifier in the
+          participant view. If it is possible to randomize the participant
+          (i.e. the document that is the randomization trigger has been
+          completed but the participant has not been randomized) then there
+          will be an item in the popup-menu 'Randomize participant'. Clicking
+          this will allow you to randomize the participant.</para>
+        </section>
+      </section>
+    </section>
+
+    <section id="datareplication">
+      <title>Data Replication</title>
+
+      <section>
+        <title>Introduction</title>
+
+        <para>Data Replication functionality has been added to the openCDMS
+        Collect data collection application in order to allow data for studies
+        that share participants to be entered just once. A pair of data
+        collection studies hosted on the openCDMS platform may be linked, with
+        one being designated the primary study, and the other the secondary
+        study. The documents (assessment forms) that are common between the
+        two studies are also connected. When a new participant is added to the
+        primary study the user is given the option to link this to an
+        equivalent record in the secondary study. Then when data is entered
+        into the primary record for any of the common documents it will
+        automatically be replicated into the equivalent document in the
+        secondary record.</para>
+      </section>
+
+      <section id="datarepnewrecords">
+        <title>Linking new records</title>
+
+        <para>To link a record in the primary dataset to a record in the
+        secondary dataset at the point when the primary record is created the
+        following steps should be taken.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Create the primary record as normal.</para>
+          </listitem>
+
+          <listitem>
+            <para>After the consent for the record has been entered an
+            additional dialog box will be displayed asking if you wish to link
+            the record to one in the secondary dataset:</para>
+
+            <figure>
+              <title>Link records dialog</title>
+
+              <screenshot>
+                <screeninfo />
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/DataReplication_html_164c966f.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+
+          <listitem>
+            <para>If you do not want to link the record to one in the
+            secondary dataset (and hence enter the participant into the
+            secondary study too), click No and you will be taken straight to
+            the view to enter data as normal. If you do wish to link it click
+            Yes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Assuming Yes was clicked, you now have to initialize the
+            secondary record. This is essentially the same as creating a new
+            record ordinarily, but as it is only possible to link the primary
+            record to a new secondary record the identifier dialog does not
+            include the options for saying whether a new or existing record is
+            being used. Therefore you go straight into selecting the centre
+            for the secondary record. Note that the centres shown are
+            dependent upon the centre of the primary record; it is defined in
+            the dataset of the primary record which centres in the secondary
+            dataset each centre in the primary may be linked to.</para>
+
+            <figure>
+              <title>Link records - secondary record participant
+              identifier</title>
+
+              <screenshot>
+                <screeninfo />
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/DataReplication_html_f443e7d.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+
+          <listitem>
+            <para>To complete the process of linking the two records just
+            complete the consent for the secondary record as usual. On
+            successful entry of the consent, the records are linked.</para>
+          </listitem>
+
+          <listitem>
+            <para>Note that if at any point during the process of initializing
+            the secondary record Cancel is clicked the primary record is still
+            created, but it won't be linked to a secondary record.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section id="usingcocoaexistingrecords">
+        <title>Linking existing records</title>
+
+        <para>It is also possible to link records for data replication when
+        either the primary record, or both primary and secondary records,
+        already exist. Note that the application must be online (able to
+        connect to the central openCDMS data database) for the duration of
+        this procedure.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Choose the Link Records option from the Advanced menu</para>
+          </listitem>
+
+          <listitem>
+            <para>A list of records belonging to primary datasets, that are
+            not already linked to records in secondary datasets, will be
+            displayed. Only records committed to the database will be
+            displayed.</para>
+          </listitem>
+
+          <listitem>
+            <para>After selecting the primary record the identifier dialog is
+            displayed to permit the selection of the secondary record. The
+            identifier dialog is the same as the standard one used when adding
+            a new document, and it is possible to select an existing record or
+            create a new record.</para>
+          </listitem>
+
+          <listitem>
+            <para>Once the secondary record has been selected or created it is
+            linked with the primary record. Data for documents in the primary
+            record is then replicated from the primary record to the secondary
+            record. We consider the data replication separately for both a new
+            and an existing secondary record below.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section id="datarepexistingnewsecond">
+          <title>New secondary record</title>
+
+          <para>When a new secondary record is linked to an existing primary
+          record the data replication process is relatively straightforward.
+          Data from the primary record for all complete documents – either
+          stored locally or in the database – that are common between the
+          primary and secondary datasets will be replicated to the secondary
+          record. The replicated documents will initially be stored locally
+          and must be committed to the database as normal. It is recommended
+          that this is done as soon as possible.</para>
+        </section>
+
+        <section id="datarepexistingexistingsecond">
+          <title>Existing secondary record</title>
+
+          <para>When an existing secondary record is linked to an existing
+          primary record the data replication process is essentially the same
+          as for a new secondary record – except when there are conflicts. A
+          conflict occurs when a document that is common between the primary
+          and secondary datasets already exists in the secondary record. When
+          the secondary record is linked to a primary record all data is
+          entered via the primary record, therefore to ensure that the data is
+          consistent between the two records any conflicts must be dealt with
+          when the records are linked.</para>
+
+          <para>How conflicts are dealt with depends upon the exact situation,
+          as follows.</para>
+
+          <table>
+            <title>Data replication conflicts</title>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Document in primary record</entry>
+
+                  <entry>Document in secondary record</entry>
+
+                  <entry>Conflict resolution</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>Complete</entry>
+
+                  <entry>Complete</entry>
+
+                  <entry>The complete document in the secondary record is
+                  removed and replaced with a document replicated from primary
+                  record. User warned of this and may cancel the linking
+                  process. See <xref
+                  linkend="replicate_fig_completeboth" /></entry>
+                </row>
+
+                <row>
+                  <entry>No document</entry>
+
+                  <entry>Complete</entry>
+
+                  <entry>Two options are presented: 1.Replicate the document
+                  “backwards” from the secondary record to the primary record.
+                  2.Delete the document from the secondary record. User may
+                  also cancel the linking process. See <xref
+                  linkend="replicate_fig_complete2" /></entry>
+                </row>
+
+                <row>
+                  <entry>Incomplete</entry>
+
+                  <entry>Complete</entry>
+
+                  <entry>Two options are presented: 1.Remove the incomplete
+                  document from the primary record and replace it with a
+                  document replicated backwards” from the secondary record to
+                  the primary record. 2.Remove the complete document from the
+                  secondary record. User may also cancel the linking process.
+                  See <xref
+                  linkend="replicate_fig_complete2incomplete1" /></entry>
+                </row>
+
+                <row>
+                  <entry>Incomplete</entry>
+
+                  <entry>Incomplete</entry>
+
+                  <entry>The incomplete document in the secondary record is
+                  deleted.</entry>
+                </row>
+
+                <row>
+                  <entry>No document</entry>
+
+                  <entry>Incomplete</entry>
+
+                  <entry>The data from the incomplete document in the
+                  secondary record is replicated “backwards” to the primary
+                  record; the incomplete document in the secondary record is
+                  then deleted. User warned of this and may cancel the linking
+                  process. See <xref
+                  linkend="replicate_fig_incomplete2" /></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+
+          <para>Note that when one of the dialogs is displayed that permits a
+          choice as to how the records will be linked the choice made here
+          will apply to all documents at conflict in that way.</para>
+
+          <para>After the linking process has been completed, and whatever
+          action necessary to resolve conflicts has been taken, it is possible
+          (depending upon what conflicts there were) that both primary and
+          secondary records, stored both locally and remotely, may have been
+          altered. Therefore - if not using 'always-online' mode, in which
+          case all data will be saved to the database automatically - it is
+          recommended that both the primary and secondary records held locally
+          are committed to the database immediately after they are
+          linked.</para>
+
+          <figure id="replicate_fig_completeboth">
+            <title>Complete document in both primary and secondary
+            dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/DataReplication_html_3537818f.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <figure id="replicate_fig_complete2">
+            <title>Complete documents in the secondary record that aren't in
+            the primary dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/DataReplication_html_m57c01092.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <figure id="replicate_fig_complete2incomplete1">
+            <title>Complete documents in the secondary, incomplete in the
+            primary dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/DataReplication_html_25ce9736.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <figure id="replicate_fig_incomplete2">
+            <title>Incomplete documents in the secondary will be moved to the
+            primary dialog</title>
+
+            <screenshot>
+              <screeninfo />
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/DataReplication_html_5cfa081.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </section>
+      </section>
+
+      <section id="datarepafterlink">
+        <title>Using Collect after linking records</title>
+
+        <para>After two records have been linked all further operations to
+        them must be performed via the primary record, and these operations
+        will then be mirrored to the secondary record. For example:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>It is not possible to add a new document to the secondary
+            record where that document is common between the primary and
+            secondary datasets. Instead the following warning will be
+            displayed.</para>
+
+            <figure>
+              <title>Document cannot be created dialog</title>
+
+              <screenshot>
+                <screeninfo />
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/DataReplication_html_me274f1b.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+
+          <listitem>
+            <para>It will not be possible to edit a complete document stored
+            locally int he secondary record when it is a common document with
+            the primary. The complete primary document should be edited
+            instead and changes made to it will be replicated to the
+            secondary.</para>
+          </listitem>
+
+          <listitem>
+            <para>All "review and approve" functionality i.e. Load Pending
+            Document, Load Rejected Document, Load Approved Document may only
+            be performed on shared documents in the primary record. Again,
+            changes in data and also document status will be replicated to the
+            secondary.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Note that data is not replicated to the secondary record when a
+        document in the primary record is saved as incomplete. The data will
+        be replicated when the document is first saved as complete, and
+        subsequently after that.</para>
+
+        <para>Also, remember that any documents in the secondary record that
+        do not have an equivalent in the primary record will need to be
+        completed for the secondary record just the same as in a record for
+        the secondary dataset that is not linked to one in the primary
+        dataset. As the majority of the data for linked records is entered via
+        the primary it is easy to forget this!</para>
+      </section>
+
+      <section id="synclinkedrecords">
+        <title>Synchronize linked record</title>
+
+        <para>Normally once two records have been linked there is no need for
+        any other explicit action; data is entered as normal for the 'primary'
+        record and this gets automatically replicated to the 'secondary'
+        record.</para>
+
+        <para>However, there are special circumstances in which the linked
+        records can get out of sync i.e. the data stored in primary and
+        secondary records is not identical. Some examples of how this might
+        happen:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>The secondary record does not have sufficient consent for
+            documents to be replicated to it from the primary record. Consent
+            is then added to the secondary record that will allow the
+            documents to be replicated.</para>
+          </listitem>
+
+          <listitem>
+            <para>A document that has been in the primary dataset from the
+            start of the study is added to the secondary dataset part-way
+            through the study. For records created upto this point the data
+            would not have been replicated to the secondary.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>To make sure that two linked records are in sync use the
+        'Synchronize Linked Record" option from the Advanced menu. Select the
+        primary record from the list and the system will then synchronize the
+        data held in the primary and secondary records. Behind the scenes the
+        process is essentially the same as what is done when existing records
+        are linked (see <xref linkend="usingcocoaexistingrecords" />). After
+        the synchronization has completed it is recommended that a Commit is
+        done (if not in 'Always-online' mode), although this may not actually
+        be necessary).</para>
+      </section>
+    </section>
+
+    <section id="usingcocoaprintdoc">
+      <title>Printing documents</title>
+
+      <para>During the data entry process the document may be printed at any
+      time by clicking the Print icon in the toolbar below the menus. This
+      works in the same way as the Database – Print Document menu item, except
+      it is the document currently being edited that is printed, rather than a
+      document stored in the database.</para>
+    </section>
+
+    <section id="exitcollect">
+      <title>Exiting Collect</title>
+    </section>
+
+    <para>You can exit the application by selecting 'File-&gt;Exit' from the
+    application menu. If you are not using 'Always-online' mode and you still
+    have local documents that need to be committed, Collect will prompt you to
+    do so with the following dialog.</para>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/collect_commit_on_exit_dlg.jpg" />
+      </imageobject>
+    </mediaobject>
+
+    <para>It is recommended that you commit your data to the database
+    frequently.</para>
+  </section>
+
+  <section id="cocoaproblems">
+    <title>Problem Reporting</title>
+
+    <para>Although the system has been through extensive testing, no system is
+    ever completely free of problems. Please report problems as you find them.
+    Types of problems that you should report are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>System crashes</para>
+      </listitem>
+
+      <listitem>
+        <para>Error messages</para>
+      </listitem>
+
+      <listitem>
+        <para>Inability to do something</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as it used to</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as you expect</para>
+      </listitem>
+
+      <listitem>
+        <para>Not working as you would like</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Please provide as much information as you can</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>What were you doing when it happened</para>
+      </listitem>
+
+      <listitem>
+        <para>Detail description of the steps that led up to the
+        problem</para>
+      </listitem>
+
+      <listitem>
+        <para>Is it repeatable, if so how?</para>
+      </listitem>
+
+      <listitem>
+        <para>What happened?</para>
+      </listitem>
+
+      <listitem>
+        <para>Details of error messages (if present)</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Bugs can be reported by emailing <link linkend="support">openCDMS
+    Support</link></para>
+
+    <para>When the system crashes, you will see an error message, which will
+    look something like this:</para>
+
+    <figure>
+      <title>Unexpected problem dialog</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGridUserGuide_html_m41663e04.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+</chapter>

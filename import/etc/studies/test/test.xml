@@ -1,0 +1,640 @@
+<org.psygrid.datasetdesigner.model.StudyDataSet>
+  <ds class="p.m.h.dataset">
+    <exportSecurityActive>false</exportSecurityActive>
+    <projectCode>TST</projectCode>
+    <published>false</published>
+    <documents>
+      <p.m.h.doc>
+        <isImportEnabled>false</isImportEnabled>
+        <entries>
+          <p.m.h.txtentry>
+            <size>0</size>
+            <validationRules/>
+            <transformers/>
+            <outputTransformers/>
+            <units/>
+            <disableStandardCodes>false</disableStandardCodes>
+            <label>1</label>
+            <section>
+              <occurrences>
+                <p.m.h.secocc>
+                  <section reference="../../.."/>
+                  <multipleAllowed>false</multipleAllowed>
+                  <name>Main Section</name>
+                  <description>Main Section</description>
+                  <version>0</version>
+                </p.m.h.secocc>
+              </occurrences>
+              <name>Main Section</name>
+              <displayText>Main Section</displayText>
+              <description>Main Section</description>
+              <version>0</version>
+            </section>
+            <entryStatus>MANDATORY</entryStatus>
+            <locked>false</locked>
+            <elementRelationships/>
+            <metaData/>
+            <isEditable>true</isEditable>
+            <isHeadRevision>false</isHeadRevision>
+            <isChanged>false</isChanged>
+            <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+            <isRevisionCandidate>true</isRevisionCandidate>
+            <myDataSet reference="../../../../.."/>
+            <autoVersionNo>0</autoVersionNo>
+            <name>name</name>
+            <displayText>name</displayText>
+            <version>0</version>
+          </p.m.h.txtentry>
+          <org.psygrid.data.model.hibernate.IntegerEntry>
+            <validationRules/>
+            <transformers/>
+            <outputTransformers/>
+            <units/>
+            <disableStandardCodes>false</disableStandardCodes>
+            <section reference="../../p.m.h.txtentry/section"/>
+            <entryStatus reference="../../p.m.h.txtentry/entryStatus"/>
+            <locked>false</locked>
+            <elementRelationships/>
+            <metaData/>
+            <isEditable>true</isEditable>
+            <isHeadRevision>false</isHeadRevision>
+            <isChanged>false</isChanged>
+            <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+            <isRevisionCandidate>true</isRevisionCandidate>
+            <myDataSet reference="../../../../.."/>
+            <autoVersionNo>0</autoVersionNo>
+            <name>shoessize</name>
+            <displayText>shoe size</displayText>
+            <version>0</version>
+          </org.psygrid.data.model.hibernate.IntegerEntry>
+        </entries>
+        <sections>
+          <org.psygrid.data.model.hibernate.Section reference="../../entries/p.m.h.txtentry/section"/>
+        </sections>
+        <occurrences>
+          <p.m.h.dococc>
+            <label></label>
+            <document reference="../../.."/>
+            <documentGroup>
+              <allowedRecordStatus>
+                <p.m.h.status>
+                  <readOnly>false</readOnly>
+                  <code>0</code>
+                  <shortName>Referred</shortName>
+                  <longName>Referred</longName>
+                  <statusTransitions>
+                    <p.m.h.status>
+                      <readOnly>false</readOnly>
+                      <code>1</code>
+                      <shortName>Ineligible</shortName>
+                      <longName>Screened; ineligible</longName>
+                      <statusTransitions/>
+                      <inactive>true</inactive>
+                      <genericState>INACTIVE</genericState>
+                      <version>0</version>
+                    </p.m.h.status>
+                    <p.m.h.status>
+                      <readOnly>false</readOnly>
+                      <code>2</code>
+                      <shortName>Unable</shortName>
+                      <longName>Unable to consent</longName>
+                      <statusTransitions/>
+                      <inactive>true</inactive>
+                      <genericState reference="../../p.m.h.status/genericState"/>
+                      <version>0</version>
+                    </p.m.h.status>
+                    <p.m.h.status>
+                      <readOnly>false</readOnly>
+                      <code>3</code>
+                      <shortName>Consented</shortName>
+                      <longName>Consented</longName>
+                      <statusTransitions>
+                        <p.m.h.status>
+                          <readOnly>false</readOnly>
+                          <code>6</code>
+                          <shortName>Active</shortName>
+                          <longName>Active</longName>
+                          <statusTransitions>
+                            <p.m.h.status>
+                              <readOnly>false</readOnly>
+                              <code>7</code>
+                              <shortName>Complete</shortName>
+                              <longName>Complete</longName>
+                              <statusTransitions/>
+                              <inactive>true</inactive>
+                              <genericState>COMPLETED</genericState>
+                              <version>0</version>
+                            </p.m.h.status>
+                            <p.m.h.status>
+                              <readOnly>false</readOnly>
+                              <code>8</code>
+                              <shortName>Deceased</shortName>
+                              <longName>Deceased</longName>
+                              <statusTransitions/>
+                              <inactive>true</inactive>
+                              <genericState>LEFT</genericState>
+                              <version>0</version>
+                            </p.m.h.status>
+                            <p.m.h.status>
+                              <readOnly>false</readOnly>
+                              <code>9</code>
+                              <shortName>Withdrew</shortName>
+                              <longName>Withdrew</longName>
+                              <statusTransitions/>
+                              <inactive>true</inactive>
+                              <genericState reference="../../../../../../p.m.h.status/genericState"/>
+                              <version>0</version>
+                            </p.m.h.status>
+                            <p.m.h.status>
+                              <readOnly>false</readOnly>
+                              <code>10</code>
+                              <shortName>Lost</shortName>
+                              <longName>Lost</longName>
+                              <statusTransitions/>
+                              <inactive>true</inactive>
+                              <genericState reference="../../p.m.h.status[2]/genericState"/>
+                              <version>0</version>
+                            </p.m.h.status>
+                            <p.m.h.status>
+                              <readOnly>false</readOnly>
+                              <code>11</code>
+                              <shortName>Invalid</shortName>
+                              <longName>Invalid</longName>
+                              <statusTransitions/>
+                              <inactive>true</inactive>
+                              <genericState>INVALID</genericState>
+                              <version>0</version>
+                            </p.m.h.status>
+                          </statusTransitions>
+                          <inactive>false</inactive>
+                          <genericState>ACTIVE</genericState>
+                          <version>0</version>
+                        </p.m.h.status>
+                        <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status"/>
+                        <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+                        <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+                        <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+                        <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+                      </statusTransitions>
+                      <inactive>false</inactive>
+                      <genericState reference="../statusTransitions/p.m.h.status/genericState"/>
+                      <version>0</version>
+                    </p.m.h.status>
+                    <p.m.h.status>
+                      <readOnly>false</readOnly>
+                      <code>4</code>
+                      <shortName>Refused</shortName>
+                      <longName>Consent refused</longName>
+                      <statusTransitions/>
+                      <inactive>true</inactive>
+                      <genericState reference="../../p.m.h.status/genericState"/>
+                      <version>0</version>
+                    </p.m.h.status>
+                    <p.m.h.status>
+                      <readOnly>false</readOnly>
+                      <code>5</code>
+                      <shortName>Withdrawn</shortName>
+                      <longName>Clinician withdrew referral</longName>
+                      <statusTransitions/>
+                      <inactive>true</inactive>
+                      <genericState reference="../../p.m.h.status/genericState"/>
+                      <version>0</version>
+                    </p.m.h.status>
+                    <p.m.h.status reference="../p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status"/>
+                    <p.m.h.status reference="../p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+                    <p.m.h.status reference="../p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+                    <p.m.h.status reference="../p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+                    <p.m.h.status reference="../p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+                  </statusTransitions>
+                  <inactive>false</inactive>
+                  <genericState>REFERRED</genericState>
+                  <version>0</version>
+                </p.m.h.status>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+                <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+              </allowedRecordStatus>
+              <prerequisiteGroups/>
+              <name>Baseline</name>
+              <displayText>Baseline</displayText>
+              <version>0</version>
+            </documentGroup>
+            <reminders/>
+            <randomizationTrigger>false</randomizationTrigger>
+            <locked>false</locked>
+            <name>Baseline-History</name>
+            <displayText>Baseline-History</displayText>
+            <description>Baseline-History</description>
+            <version>0</version>
+          </p.m.h.dococc>
+        </occurrences>
+        <conFrmGrps/>
+        <editingPermitted>false</editingPermitted>
+        <longRunning>false</longRunning>
+        <statuses>
+          <p.m.h.status>
+            <readOnly>false</readOnly>
+            <code>0</code>
+            <shortName>Incomplete</shortName>
+            <longName>Incomplete</longName>
+            <statusTransitions>
+              <p.m.h.status>
+                <readOnly>false</readOnly>
+                <code>1</code>
+                <shortName>Pending</shortName>
+                <longName>Pending Approval</longName>
+                <statusTransitions>
+                  <p.m.h.status reference="../../../.."/>
+                  <p.m.h.status>
+                    <readOnly>false</readOnly>
+                    <code>2</code>
+                    <shortName>Rejected</shortName>
+                    <longName>Rejected</longName>
+                    <statusTransitions>
+                      <p.m.h.status reference="../../../.."/>
+                    </statusTransitions>
+                    <inactive>false</inactive>
+                    <version>0</version>
+                  </p.m.h.status>
+                  <p.m.h.status>
+                    <readOnly>false</readOnly>
+                    <code>3</code>
+                    <shortName>Approved</shortName>
+                    <longName>Approved</longName>
+                    <statusTransitions>
+                      <p.m.h.status reference="../../../.."/>
+                    </statusTransitions>
+                    <inactive>false</inactive>
+                    <version>0</version>
+                  </p.m.h.status>
+                </statusTransitions>
+                <inactive>false</inactive>
+                <version>0</version>
+              </p.m.h.status>
+              <p.m.h.status>
+                <readOnly>false</readOnly>
+                <code>4</code>
+                <shortName>Complete</shortName>
+                <longName>Complete</longName>
+                <statusTransitions>
+                  <p.m.h.status reference="../../../.."/>
+                  <p.m.h.status reference="../../../p.m.h.status"/>
+                </statusTransitions>
+                <inactive>false</inactive>
+                <version>0</version>
+              </p.m.h.status>
+            </statusTransitions>
+            <inactive>false</inactive>
+            <version>0</version>
+          </p.m.h.status>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+        </statuses>
+        <elementRelationships/>
+        <metaData/>
+        <isEditable>true</isEditable>
+        <isHeadRevision>false</isHeadRevision>
+        <isChanged>false</isChanged>
+        <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+        <isRevisionCandidate>true</isRevisionCandidate>
+        <myDataSet reference="../../.."/>
+        <autoVersionNo>0</autoVersionNo>
+        <name>History</name>
+        <displayText>History</displayText>
+        <version>0</version>
+      </p.m.h.doc>
+      <p.m.h.doc>
+        <isImportEnabled>false</isImportEnabled>
+        <entries>
+          <org.psygrid.data.model.hibernate.IntegerEntry>
+            <validationRules/>
+            <transformers/>
+            <outputTransformers/>
+            <units/>
+            <disableStandardCodes>false</disableStandardCodes>
+            <section>
+              <occurrences>
+                <p.m.h.secocc>
+                  <section reference="../../.."/>
+                  <multipleAllowed>false</multipleAllowed>
+                  <name>Main Section</name>
+                  <description>Main Section</description>
+                  <version>0</version>
+                </p.m.h.secocc>
+              </occurrences>
+              <name>Main Section</name>
+              <displayText>Main Section</displayText>
+              <description>Main Section</description>
+              <version>0</version>
+            </section>
+            <entryStatus reference="../../../../p.m.h.doc/entries/p.m.h.txtentry/entryStatus"/>
+            <locked>false</locked>
+            <elementRelationships/>
+            <metaData/>
+            <isEditable>true</isEditable>
+            <isHeadRevision>false</isHeadRevision>
+            <isChanged>false</isChanged>
+            <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+            <isRevisionCandidate>true</isRevisionCandidate>
+            <myDataSet reference="../../../../.."/>
+            <autoVersionNo>0</autoVersionNo>
+            <name>hatsize</name>
+            <displayText>Hat size</displayText>
+            <version>0</version>
+          </org.psygrid.data.model.hibernate.IntegerEntry>
+          <p.m.h.longtxtentry>
+            <validationRules/>
+            <transformers/>
+            <outputTransformers/>
+            <units/>
+            <disableStandardCodes>false</disableStandardCodes>
+            <section reference="../../org.psygrid.data.model.hibernate.IntegerEntry/section"/>
+            <entryStatus reference="../../../../p.m.h.doc/entries/p.m.h.txtentry/entryStatus"/>
+            <locked>false</locked>
+            <elementRelationships/>
+            <metaData/>
+            <isEditable>true</isEditable>
+            <isHeadRevision>false</isHeadRevision>
+            <isChanged>false</isChanged>
+            <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+            <isRevisionCandidate>true</isRevisionCandidate>
+            <myDataSet reference="../../../../.."/>
+            <autoVersionNo>0</autoVersionNo>
+            <name>address</name>
+            <displayText>address</displayText>
+            <version>0</version>
+          </p.m.h.longtxtentry>
+          <p.m.h.numentry>
+            <validationRules/>
+            <transformers/>
+            <outputTransformers/>
+            <units/>
+            <disableStandardCodes>false</disableStandardCodes>
+            <section reference="../../org.psygrid.data.model.hibernate.IntegerEntry/section"/>
+            <entryStatus reference="../../../../p.m.h.doc/entries/p.m.h.txtentry/entryStatus"/>
+            <locked>false</locked>
+            <elementRelationships/>
+            <metaData/>
+            <isEditable>true</isEditable>
+            <isHeadRevision>false</isHeadRevision>
+            <isChanged>false</isChanged>
+            <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+            <isRevisionCandidate>true</isRevisionCandidate>
+            <myDataSet reference="../../../../.."/>
+            <autoVersionNo>0</autoVersionNo>
+            <name>weight</name>
+            <displayText>weight</displayText>
+            <version>0</version>
+          </p.m.h.numentry>
+        </entries>
+        <sections>
+          <org.psygrid.data.model.hibernate.Section reference="../../entries/org.psygrid.data.model.hibernate.IntegerEntry/section"/>
+        </sections>
+        <occurrences>
+          <p.m.h.dococc>
+            <label></label>
+            <document reference="../../.."/>
+            <documentGroup reference="../../../../p.m.h.doc/occurrences/p.m.h.dococc/documentGroup"/>
+            <reminders/>
+            <randomizationTrigger>false</randomizationTrigger>
+            <locked>false</locked>
+            <name>Baseline-questionnaire</name>
+            <displayText>Baseline-questionnaire</displayText>
+            <description>Baseline-questionnaire</description>
+            <version>0</version>
+          </p.m.h.dococc>
+          <p.m.h.dococc>
+            <document reference="../../.."/>
+            <reminders/>
+            <randomizationTrigger>false</randomizationTrigger>
+            <locked>false</locked>
+            <name>Preview Doc0.8369234538581425</name>
+            <version>0</version>
+          </p.m.h.dococc>
+        </occurrences>
+        <conFrmGrps/>
+        <editingPermitted>false</editingPermitted>
+        <longRunning>false</longRunning>
+        <statuses>
+          <p.m.h.status>
+            <readOnly>false</readOnly>
+            <code>0</code>
+            <shortName>Incomplete</shortName>
+            <longName>Incomplete</longName>
+            <statusTransitions>
+              <p.m.h.status>
+                <readOnly>false</readOnly>
+                <code>1</code>
+                <shortName>Pending</shortName>
+                <longName>Pending Approval</longName>
+                <statusTransitions>
+                  <p.m.h.status reference="../../../.."/>
+                  <p.m.h.status>
+                    <readOnly>false</readOnly>
+                    <code>2</code>
+                    <shortName>Rejected</shortName>
+                    <longName>Rejected</longName>
+                    <statusTransitions>
+                      <p.m.h.status reference="../../../.."/>
+                    </statusTransitions>
+                    <inactive>false</inactive>
+                    <version>0</version>
+                  </p.m.h.status>
+                  <p.m.h.status>
+                    <readOnly>false</readOnly>
+                    <code>3</code>
+                    <shortName>Approved</shortName>
+                    <longName>Approved</longName>
+                    <statusTransitions>
+                      <p.m.h.status reference="../../../.."/>
+                    </statusTransitions>
+                    <inactive>false</inactive>
+                    <version>0</version>
+                  </p.m.h.status>
+                </statusTransitions>
+                <inactive>false</inactive>
+                <version>0</version>
+              </p.m.h.status>
+              <p.m.h.status>
+                <readOnly>false</readOnly>
+                <code>4</code>
+                <shortName>Complete</shortName>
+                <longName>Complete</longName>
+                <statusTransitions>
+                  <p.m.h.status reference="../../../.."/>
+                  <p.m.h.status reference="../../../p.m.h.status"/>
+                </statusTransitions>
+                <inactive>false</inactive>
+                <version>0</version>
+              </p.m.h.status>
+            </statusTransitions>
+            <inactive>false</inactive>
+            <version>0</version>
+          </p.m.h.status>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+          <p.m.h.status reference="../p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+        </statuses>
+        <elementRelationships/>
+        <metaData/>
+        <isEditable>true</isEditable>
+        <isHeadRevision>false</isHeadRevision>
+        <isChanged>false</isChanged>
+        <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+        <isRevisionCandidate>true</isRevisionCandidate>
+        <myDataSet reference="../../.."/>
+        <autoVersionNo>0</autoVersionNo>
+        <name>questionnaire</name>
+        <displayText>questionnaire</displayText>
+        <description>questionnaire</description>
+        <version>0</version>
+      </p.m.h.doc>
+    </documents>
+    <allConsentFormGroups>
+      <p.m.h.consentgroup>
+        <description>Main Consent Form</description>
+        <consentForms>
+          <p.m.h.primconsent>
+            <associatedConsentForms/>
+            <group reference="../../.."/>
+            <referenceNumber> </referenceNumber>
+            <question>Has the participant agreed to take part in the study?</question>
+            <version>0</version>
+          </p.m.h.primconsent>
+        </consentForms>
+        <eslTrigger>true</eslTrigger>
+        <version>0</version>
+      </p.m.h.consentgroup>
+    </allConsentFormGroups>
+    <validationRules/>
+    <deletedObjects/>
+    <idSuffixSize>0</idSuffixSize>
+    <transformers/>
+    <documentGroups>
+      <p.m.h.docgroup reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup"/>
+    </documentGroups>
+    <units/>
+    <groups>
+      <org.psygrid.data.model.hibernate.Group>
+        <name>Manchester</name>
+        <longName>Manchester</longName>
+        <maxSuffix>0</maxSuffix>
+        <sites>
+          <org.psygrid.data.model.hibernate.Site>
+            <siteName>Stopford</siteName>
+            <siteId>STP</siteId>
+            <geographicCode>M1</geographicCode>
+            <consultants>
+              <string>fred</string>
+            </consultants>
+            <version>0</version>
+          </org.psygrid.data.model.hibernate.Site>
+        </sites>
+        <theSecondaryGroups/>
+        <version>0</version>
+      </org.psygrid.data.model.hibernate.Group>
+    </groups>
+    <eslUsed>true</eslUsed>
+    <randomizationRequired>false</randomizationRequired>
+    <sendMonthlySummaries>false</sendMonthlySummaries>
+    <reviewReminderCount>0</reviewReminderCount>
+    <externalIdUsed>false</externalIdUsed>
+    <noReviewAndApprove>false</noReviewAndApprove>
+    <eslCustomFields/>
+    <statuses>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[2]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[3]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[4]"/>
+      <p.m.h.status reference="../../documents/p.m.h.doc/occurrences/p.m.h.dococc/documentGroup/allowedRecordStatus/p.m.h.status/statusTransitions/p.m.h.status[3]/statusTransitions/p.m.h.status/statusTransitions/p.m.h.status[5]"/>
+    </statuses>
+    <elementRelationships/>
+    <metaData/>
+    <isEditable>true</isEditable>
+    <isHeadRevision>false</isHeadRevision>
+    <isChanged>false</isChanged>
+    <elementPatchingAction>Accept all existing elements</elementPatchingAction>
+    <isRevisionCandidate>false</isRevisionCandidate>
+    <autoVersionNo>0</autoVersionNo>
+    <name>Test</name>
+    <displayText>Test</displayText>
+    <description>My Test</description>
+    <version>0</version>
+  </ds>
+  <reports/>
+  <groups>
+    <org.psygrid.datasetdesigner.model.GroupModel>
+      <group class="org.psygrid.data.model.hibernate.Group" reference="../../../ds/groups/org.psygrid.data.model.hibernate.Group"/>
+      <id>Manchester</id>
+    </org.psygrid.datasetdesigner.model.GroupModel>
+  </groups>
+  <roles>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>ChiefInvestigator</name>
+      <idCode>2</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>PrincipalInvestigator</name>
+      <idCode>4</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>ProjectAdministrator</name>
+      <idCode>5</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>ClinicalResearchManager</name>
+      <idCode>6</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>ClinicalResearchOfficer</name>
+      <idCode>7</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>ScientificResearchOfficer</name>
+      <idCode>8</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>TreatmentAdministrator</name>
+      <idCode>11</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>RecruitmentManager</name>
+      <idCode>10</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+    <org.psygrid.www.xml.security.core.types.RoleType>
+      <name>DataAnalyst</name>
+      <idCode>9</idCode>
+      <____hashCodeCalc>false</____hashCodeCalc>
+    </org.psygrid.www.xml.security.core.types.RoleType>
+  </roles>
+  <singleCentreStudy>false</singleCentreStudy>
+  <lastStoredLocation>C:\myprojects\opencdms\source\import\etc\conf\test\test.xml</lastStoredLocation>
+  <dirty>true</dirty>
+  <readOnly>false</readOnly>
+</org.psygrid.datasetdesigner.model.StudyDataSet>

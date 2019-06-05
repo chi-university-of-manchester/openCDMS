@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans>
+
+	<!-- setup wicket application -->
+	<bean id="wicketApplication" class="org.opencdms.web.core.application.OpenCdmsWeb">
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="aaqc" ref="aaqc"/>
+		<property name="mailSender" ref="mailSender"/>
+		<property name="uploadPath" value="${upload.path}"/>
+	</bean>
+
+	<bean id="mailSender" class="org.psygrid.common.email.PsyGridMailSenderImpl">
+		<property name="host"><value>localhost</value></property>
+	</bean>
+
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionContextIntegrationFilter
+			</value>
+		</property>
+	</bean>
+	
+	<!-- Storage components -->
+	<bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+		<property name="context">
+			<value>org.acegisecurity.context.SecurityContextImpl</value>
+		</property>
+	</bean>
+		
+
+	<bean id="aaqc" class="org.psygrid.security.attributeauthority.client.AAQueryClient">
+		<constructor-arg index="0" value="aaclient.properties"/>
+	</bean>
+		
+	<bean id="paqc" class="org.psygrid.security.policyauthority.client.PAQueryClient">
+		<constructor-arg index="0" value="paclient.properties"/>
+	</bean>
+		
+	<bean id="initialDirContextFactory" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
+		<constructor-arg value="ldap://localhost:389/"/>
+		<property name="managerDn"><value>CN=root,O=openCDMS Virtualized,C=UK</value></property>
+        <property name="managerPassword"><value>cherry</value></property>
+	</bean>
+
+    <bean id="userSearch" class="org.acegisecurity.ldap.search.FilterBasedLdapUserSearch">
+		<constructor-arg index="0">
+			<value>OU=users,O=openCDMS Virtualized,C=UK</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>(uid={0})</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref local="initialDirContextFactory" />
+		</constructor-arg>            
+		<property name="searchSubtree">
+		  	<value>true</value>
+		</property>            
+    </bean>            
+
+	<bean id="authenticationProvider" class="org.opencdms.web.core.security.ldap.PsygridLdapAuthenticationProvider">
+		<constructor-arg>
+			<bean class="org.opencdms.web.core.security.ldap.PsygridBindAuthenticator">
+				<constructor-arg><ref local="initialDirContextFactory"/></constructor-arg>
+				<property name="userSearch">
+					<ref local="userSearch" />
+				</property>
+				<property name="ldapPasswordHash"><value>NONE</value></property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="org.opencdms.web.core.security.ldap.PsygridLdapAuthoritiesPopulator">
+				<property name="paqc">
+					<ref local="paqc" />
+				</property>
+			</bean>
+		</constructor-arg>
+		<property name="aaqc" ref="aaqc"/>
+	</bean>
+
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+	    <property name="providers">
+	        <list>
+	            <ref bean="authenticationProvider"/>
+	        </list>
+	    </property>
+	</bean>
+
+	<!-- 
+		End of Authentication components
+	 -->
+
+</beans>
+

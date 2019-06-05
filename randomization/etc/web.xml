@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+  	<display-name>Randomization</display-name>
+  
+	<context-param>
+        <param-name>policyAuthorityProperties</param-name>
+	    <param-value>paqc.properties</param-value>
+	</context-param>
+
+	<context-param>
+        <param-name>randomizationProperties</param-name>
+	    <param-value>randomization.properties</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+  	<servlet>
+    	<servlet-name>AxisServlet</servlet-name>
+    	<display-name>Apache-Axis Servlet</display-name>
+    	<servlet-class>
+        	org.apache.axis.transport.http.AxisServlet
+    	</servlet-class>
+        <load-on-startup>1</load-on-startup>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>AxisServlet</servlet-name>
+    	<url-pattern>/services/*</url-pattern>
+  	</servlet-mapping>
+
+  	<session-config>
+    	<session-timeout>60</session-timeout>
+  	</session-config>
+  
+  	<welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+  	
+    <error-page>
+        <error-code>404</error-code>
+        <location>/notfound.html</location>
+    </error-page>   
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.html</location>
+    </error-page>   
+    
+</web-app>

@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!--
+	**********************************************************************
+	*  This file should ideally be modular i.e. several files            *
+	**********************************************************************
+	-->
+
+	<!--
+	**********************************************************************
+	*  Domain model persistence                                          *
+	**********************************************************************
+	-->
+
+	<!-- 
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/Repository"/>
+    </bean>
+    -->
+        
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    					  destroy-method="close">
+    	<property name="driverClassName"><value>com.mysql.jdbc.Driver</value></property>
+        <property name="url"><value>jdbc:mysql://localhost:3306/psygrid</value></property>
+        <property name="username"><value>opencdms</value></property>
+        <property name="password"><value>cherry</value></property>
+        <property name="initialSize"><value>5</value></property>
+        <property name="maxActive"><value>20</value></property>
+        <property name="maxIdle"><value>10</value></property>
+        <property name="maxWait"><value>10000</value></property>
+    </bean>
+
+    <bean id="entityInterceptor" class="org.psygrid.data.repository.dao.hibernate.EntityInterceptor"/>
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>org/psygrid/data/model/hibernate/Persistent.hbm.xml</value>
+                <value>org/psygrid/data/export/hibernate/ExportRequest.hbm.xml</value>
+             	<value>org/psygrid/data/export/hibernate/ExportDocument.hbm.xml</value>
+                <value>org/psygrid/data/export/hibernate/ExportSecurityActionMap.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Action.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Config.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Participant.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/Sample.hbm.xml</value>
+                <value>org/psygrid/data/sampletracking/server/model/SampleRevision.hbm.xml</value>
+                <value>org/psygrid/data/importing/model/ImportRequest.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+            	<!-- NB: DB2 may not like this  <prop key="hibernate.use_sql_comments">true</prop> -->
+        	</props>
+        </property>
+        <property name="entityInterceptor">
+        	<ref local="entityInterceptor"/>
+        </property>
+    </bean>
+
+	<bean id="factory" class="org.psygrid.data.model.hibernate.HibernateFactory" />
+
+	<!--
+	**********************************************************************
+	*  Beans used by several services                                    *
+	**********************************************************************
+	-->
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	     <property name="sessionFactory">
+             <ref local="sessionFactory"/>
+         </property>
+    </bean>
+
+	<bean id="serviceInterceptor" class="org.psygrid.data.utils.service.ServiceInterceptor" />
+	
+	<!--  parent transaction proxy bean for all services -->
+	<bean id="txProxyTemplate"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager" ref="transactionManager"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="serviceInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	    		<prop key="generateIdentifiers">PROPAGATION_REQUIRED, ISOLATION_SERIALIZABLE</prop>
+	      		<prop key="getSampleConfig">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	      		<prop key="getNextSampleNumber">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<!-- 
+	      			Rollback on all exceptions thrown from a service.
+	      			We should really declare the required checked exceptions explicitly.
+	      		 -->
+	      		<prop key="*">PROPAGATION_REQUIRED,-java.lang.Exception</prop>
+	    	</props>
+	  	</property>
+	</bean>
+
+	<bean id="accessController" class="org.psygrid.security.accesscontrol.AccessEnforcementFunction" />
+
+	<bean id="documentSecurityHelper" class="org.psygrid.data.utils.security.DocumentSecurityHelper">
+		<property name="accessController" ref="accessController"/>
+	</bean>
+	
+	<bean id="auditLogger" class="org.psygrid.logging.AuditLogger">
+		<constructor-arg value="org.psygrid.data.utils.service.AbstractServiceImpl"></constructor-arg>
+	</bean>
+
+	<!-- parent bean for services extending AbstractServiceImpl -->
+	<bean id="abstractServiceImpl" class="org.psygrid.data.utils.service.AbstractServiceImpl" abstract="true">
+		<property name="accessControl" ref="accessController"/>
+		<property name="docHelper" ref="documentSecurityHelper"/>
+		<property name="repositoryDAO" ref="repositoryDAO"/>
+		<property name="logHelper" ref="auditLogger"/>
+	</bean>
+
+	<bean id="mailSender" class="org.psygrid.common.email.PsyGridMailSenderImpl">
+		<property name="host"><value>localhost</value></property>
+	</bean>
+	
+<!-- 	<bean id="servletContext" class="org.springframework.web.context.support.ServletContextFactoryBean"/> -->
+
+	<bean id="aaqcWrapper" class="org.psygrid.data.utils.wrappers.AAQCWrapper">
+		<property name="properties">
+			<value>aaclient.properties</value>
+		</property>
+		<property name="IAccessEnforcementFunction">
+			<ref local="accessController" />
+		</property>
+	</bean>
+	
+	<bean id="eslClient" class="org.psygrid.data.utils.esl.RemoteClient">
+		<property name="aaqc" ref="aaqcWrapper"/>
+	</bean>
+
+	<!-- Scheduling needs to be configured in one place - not modular :( -->	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="reminderTrigger"/>
+				<ref bean="reportTrigger"/>
+				<ref bean="monthlySummaryTrigger"/>
+				<ref bean="exportTrigger"/>
+				<ref bean="immediateExportTrigger"/>
+				<ref bean="immediateImportTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+	**********************************************************************
+	*  Core Repository                                                   *
+	**********************************************************************
+	-->
+    
+    <bean id="jdbcDao" class="org.psygrid.data.repository.dao.jdbc.JdbcDAOImpl">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+    </bean>
+    
+    <bean id="jdbcTransactionManager"
+    	  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+    </bean>
+    
+    <bean id="jdbcDaoService"
+    	  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="jdbcTransactionManager"/>
+		</property>
+		<property name="target" ref="jdbcDao"/>
+	  	<property name="transactionAttributes">
+	    	<props>
+	    		<prop key="reserveIdentifierSpace">PROPAGATION_REQUIRED, ISOLATION_SERIALIZABLE</prop>
+	    	</props>
+	  	</property>
+	</bean>
+                	    
+	<bean id="repositoryDAO" class="org.psygrid.data.repository.dao.hibernate.RepositoryDAOHibernate">
+    	<property name="sessionFactory">
+        	<ref local="sessionFactory"/>
+    	</property>
+    	<property name="interceptor">
+    		<ref local="entityInterceptor"/>
+    	</property>
+    	<property name="sysAdminEmail">
+    		<value>virtual@opencdms.org</value>
+    	</property>
+    	<property name="officerRole">
+    		<value>ClinicalResearchOfficer</value>
+    	</property>
+    	<property name="managerRole">
+    		<value>ClinicalResearchManager</value>
+    	</property>
+    	<property name="aaqc">
+    		<ref local="aaqcWrapper"/>
+    	</property>
+    	<property name="mailSender">
+    		<ref local="mailSender"/>
+    	</property>
+    	<property name="sendMails" value="false"/>
+    	<property name="eslClient">
+	    	<ref local="eslClient"/>
+    	</property>
+	</bean>	
+	
+	<bean id="inputTransformer" class="org.psygrid.data.repository.transformer.InputTransformerImpl">
+		<property name="dao" ref="repositoryDAO"/>
+	</bean>
+
+	<bean id="mailClient" class="org.psygrid.data.utils.email.MailClientImpl">
+		<property name="aaqc">
+			<ref local="aaqcWrapper"/>
+		</property>
+		<property name="mailSender">
+			<ref local="mailSender"/>
+		</property>
+    	<property name="sysAdminEmail">
+    		<value>virtual@opencdms.org</value>
+    	</property>
+ 	    <property name="sendMails" value="false"/>
+	</bean>
+
+	<bean id="repositoryServiceImpl" class="org.psygrid.data.repository.RepositoryServiceImpl" parent="abstractServiceImpl" >
+		<property name="jdbcDao" ref="jdbcDaoService"/>
+		<property name="inputTransformer" ref="inputTransformer"/>
+		<property name="mailClient" ref="mailClient"/>
+		<!--  The dependencies below will eventually be removed -->
+		<property name="sampleTrackingService" ref="sampleTrackingService"/>
+		<property name="exportService" ref="exportService"/>
+		<property name="importService" ref="importService"/>
+	</bean>
+	
+	<bean id="repositoryService" parent="txProxyTemplate" >
+	  	<property name="target" ref="repositoryServiceImpl"/>
+	</bean>
+
+	<bean name="reminderJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.repository.scheduling.ReminderJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="dao" value-ref="repositoryDAO"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="false"/>
+				<entry key="sysAdminEmail" value="virtual@opencdms.org"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="reminderTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="reminderJob"/>
+		<!-- run every morning at 1 AM -->
+		<property name="cronExpression" value="0 0 1 * * ?"/>
+	</bean>
+
+	<bean name="monthlySummaryJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.repository.scheduling.MonthlySummaryJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="dao" value-ref="repositoryDAO"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="false"/>
+				<entry key="sysAdminEmail" value="virtual@opencdms.org"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="monthlySummaryTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="monthlySummaryJob"/>
+		<!-- run first day of each Month at 1:40 AM -->
+		<property name="cronExpression" value="0 40 1 1 * ?"/>
+	</bean>
+
+	
+	<!--
+	**********************************************************************
+	*  Exporting                                                         *
+	**********************************************************************
+	-->
+
+	<bean id="exportDAO" class="org.psygrid.data.export.ExportDAOHibernate">
+    	<property name="sessionFactory">
+        	<ref local="sessionFactory"/>
+    	</property>
+	</bean>
+
+	<bean id="exportServiceImpl" class="org.psygrid.data.export.ExportServiceImpl" parent="abstractServiceImpl">
+		<property name="exportDAO" ref="exportDAO"/>
+	</bean>
+
+	<bean id="exportService" parent="txProxyTemplate" >
+	  	<property name="target" ref="exportServiceImpl"/>
+	</bean>
+	
+	<bean name="exportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.export.scheduling.ExportJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="exportDAO" value-ref="exportDAO"/>
+				<entry key="queryDAO" value-ref="queryDAO"/>
+				<entry key="dao" value-ref="repositoryDAO"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="false"/>
+				<entry key="sysAdminEmail" value="virtual@opencdms.org"/>
+				<entry key="exportFilePath" value="c:\exports"/>
+				<entry key="aaqc" value-ref="aaqcWrapper"/>
+				<entry key="exportWebUrl" value="https://localhost:8443/psygrid/secure/export/status.html"/>
+				<entry key="exportXSDLocation" value="/home/lucy/Documents/DataLinkageAndAnalysis/DataLinkage/PsyGridXMLSchema.xsd"/>
+<!-- 				<entry key="servletContext"><ref bean="servletContext"/></entry> -->
+			</map>
+		</property>
+	</bean>
+    
+	<bean id="exportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="exportJob"/>
+		<!-- run every 10 minutes between 2AM and 4:50AM-->
+		<property name="cronExpression" value="0 0/10 2-4 * * ?"/>
+	</bean>
+
+	<bean name="immediateExportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.export.scheduling.ImmediateExportJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="dao" value-ref="repositoryDAO"/>
+				<entry key="exportDAO" value-ref="exportDAO"/>
+				<entry key="queryDAO" value-ref="queryDAO"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="false"/>
+				<entry key="sysAdminEmail" value="virtual@opencdms.org"/>
+				<entry key="exportFilePath" value="c:\exports"/>
+				<entry key="aaqc" value-ref="aaqcWrapper"/>
+				<entry key="exportWebUrl" value="https://localhost:8443/psygrid/secure/export/status.html"/>
+				<entry key="exportXSDLocation" value="/home/lucy/Documents/DataLinkageAndAnalysis/DataLinkage/PsyGridXMLSchema.xsd"/>
+<!--  				<entry key="servletContext"><ref bean="servletContext"/></entry> -->
+			</map>
+		</property>
+	</bean>
+
+	<bean id="immediateExportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="immediateExportJob"/>
+		<!-- run every 5 minutes between 0600 and 2355 -->
+		<property name="cronExpression" value="0 0/5 6-23 * * ?"/>
+	</bean>
+
+	<!-- 	
+	**********************************************************************
+	*  Importing                                                         *
+	**********************************************************************
+ 	-->
+    
+    <bean id="importDAO" class="org.psygrid.data.importing.model.ImportDAOHibernate">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="importServiceImpl" class="org.psygrid.data.importing.ImportServiceImpl">
+		<property name="importDAO" ref="importDAO"/>
+    	<property name="mailSender" ref="mailSender" />
+    	<property name="sendMails" value="false"/>
+    	<property name="sysAdminEmail" value="virtual@opencdms.org"/>
+    	<property name="importFilePath" value="${import.directory}"/>
+    	<property name="aaqc">
+    		<ref local="aaqcWrapper"/>
+    	</property>
+	</bean>
+
+	<bean id="importService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+	  	<property name="target" ref="importServiceImpl"/>
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<!--  <prop key="runNextImport">PROPAGATION_NEVER</prop>  -->
+	      		<prop key="getImportStatuses">PROPAGATION_REQUIRED</prop>
+	      		<prop key="requestImport">PROPAGATION_REQUIRED</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+	<bean name="importJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.importing.ImportJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="importService" value-ref="importService"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="immediateImportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="importJob"/>
+		<!-- run every 5 minutes between 0600 and 2355 -->
+		<property name="cronExpression" value="0 0/5 6-23 * * ?"/>
+	</bean>
+
+	<!-- End Importing -->
+	
+	
+	
+	<!--
+	**********************************************************************
+	*  Reporting                                                         *
+	**********************************************************************
+	-->
+
+    <bean id="reportingDAO" class="org.psygrid.data.reporting.ReportingDAOHibernate">
+    	<property name="sessionFactory">
+        	<ref local="sessionFactory"/>
+    	</property>
+    	<property name="client">
+	    	<ref local="eslClient"/>
+    	</property>
+    	<property name="aaqc">
+    		<ref local="aaqcWrapper"/>
+    	</property>
+	</bean>
+
+	<bean id="reportsServiceImpl" class="org.psygrid.data.reporting.ReportsServiceImpl" parent="abstractServiceImpl">
+		<property name="reportingDAO" ref="reportingDAO"/>
+	</bean>
+
+	<bean id="reportsService" parent="txProxyTemplate" >
+	  	<property name="target" ref="reportsServiceImpl"/>
+	</bean>
+
+	<bean name="reportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.reporting.scheduling.ReportsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="dao" value-ref="repositoryDAO"/>
+				<entry key="reportsService" value-ref="reportsService"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="false"/>
+				<entry key="sysAdminEmail" value="virtual@opencdms.org"/>
+				<entry key="reportUser" value="CN=John Ainsworth, OU=Informatics, O=PsyGrid, C=UK"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="reportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="reportJob"/>
+		<!-- run every Monday at 1:20 AM -->
+		<property name="cronExpression" value="0 20 1 ? * MON"/>
+	</bean>
+    
+
+	<!--
+	**********************************************************************
+	*  Querying                                                          *
+	**********************************************************************
+	-->
+
+    <bean id="queryDAO" class="org.psygrid.data.query.QueryDAOHibernate">
+    	<property name="sessionFactory">
+        	<ref local="sessionFactory"/>
+    	</property>
+	</bean>
+
+	<bean id="queryServiceImpl" class="org.psygrid.data.query.QueryServiceImpl" parent="abstractServiceImpl">
+		<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+
+	<bean id="queryService" parent="txProxyTemplate" >
+	  	<property name="target" ref="queryServiceImpl"/>
+	</bean>
+
+	<!--
+	**********************************************************************
+	*  Sample Tracking                                                          *
+	**********************************************************************
+	-->
+
+    <bean id="sampleTrackingDAO" class="org.psygrid.data.sampletracking.server.model.SampleTrackingDAOHibernate">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="sampleTrackingServiceImpl" class="org.psygrid.data.sampletracking.server.SampleTrackingServiceImpl">
+		<property name="sampleTrackingDAO" ref="sampleTrackingDAO"/>
+    	<property name="eventHandler" ref="sampleTrackingEventHandler"/>
+	</bean>
+
+	<bean id="sampleTrackingEventHandler" class="org.psygrid.data.sampletracking.server.SampleTrackingEventHandler">
+		<property name="sampleTrackingDAO" ref="sampleTrackingDAO"/>
+    	<property name="mailSender" ref="mailSender" />
+    	<property name="sendMails" value="false"/>
+    	<property name="sysAdminEmail" value="virtual@opencdms.org"/>
+	</bean>
+
+	<bean id="sampleTrackingService" parent="txProxyTemplate">
+	  	<property name="target" ref="sampleTrackingServiceImpl"/>
+	</bean>
+
+        	
+</beans>

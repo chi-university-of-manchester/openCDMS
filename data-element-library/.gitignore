@@ -1,0 +1,30 @@
+
+# /
+/build
+/doc
+/dist
+/bin
+
+# /etc/
+/etc/context.xml
+/etc/applicationContext.xml
+
+# /etc/security/
+/etc/security/paqc.properties
+/etc/security/aaclient.properties
+
+# /etc/wsdl/
+/etc/wsdl/*.wsdl
+
+# /gen/
+/gen/*
+
+# /src/
+/src/hibernate.cfg.xml
+/src/applicationCtx.xml
+
+# /src/org/psygrid/data/model/hibernate/
+/src/org/psygrid/data/model/hibernate/Persistent.hbm.xml
+
+# /test/
+/test/applicationContext.xml

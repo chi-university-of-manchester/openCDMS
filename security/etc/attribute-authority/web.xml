@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>attribute-authority</display-name>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+        <param-name>identity</param-name>
+	    <param-value>PsyGrid Attribute Authority</param-value>
+	</context-param>
+	<context-param>
+        <param-name>version</param-name>
+	    <param-value>@version@ (Revision @revision@)</param-value>
+	</context-param>
+	<context-param>
+        <param-name>configurationFile</param-name>
+	    <param-value>@accessControl@</param-value>
+	</context-param>
+	<context-param>
+        <param-name>configurationSchemaFile</param-name>
+	    <param-value>secure-service-config-schema.xsd</param-value>
+	</context-param>
+	<context-param>
+    <param-name>policyAuthorityProperties</param-name>
+	    <param-value>paqc.properties</param-value>
+	</context-param>
+	<context-param>
+	<param-name>attributeAuthorityProperties</param-name>
+	    <param-value>aa.properties</param-value>
+	</context-param>
+	<context-param>
+    <param-name>statementLifetime</param-name>
+	    <param-value>@SAML-statement-lifetime@</param-value>
+	</context-param>
+	<context-param>
+	<param-name>passwordLifetime</param-name>
+	    <param-value>@password-lifetime@</param-value>
+	</context-param>
+    <context-param>
+	<param-name>preventPasswordResuse</param-name>
+	    <param-value>@prevent-password-reuse@</param-value>
+	</context-param>
+	<context-param>
+	<param-name>allowedLoginAttempts</param-name>
+	    <param-value>@allowed-login-attempts@</param-value>
+	</context-param>
+    <context-param>
+	<param-name>accountLockoutDuration</param-name>
+	    <param-value>@account-lockout-duration@</param-value>
+	</context-param>
+    <context-param>
+	<param-name>aaIssuerProperties</param-name>
+	    <param-value>aasaml.properties</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>AxisServlet</servlet-name>
+		<display-name>Apache-Axis Servlet</display-name>
+		<servlet-class>
+			org.apache.axis.transport.http.AxisServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/notfound.html</location>
+    </error-page>   
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.html</location>
+    </error-page>   
+    
+</web-app>

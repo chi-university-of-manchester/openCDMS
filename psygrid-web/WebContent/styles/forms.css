@@ -1,0 +1,227 @@
+/*
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+form label { 
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	width: 100px; 
+	padding: 0; 
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	text-align: right; 
+}
+
+form label.checkboxlabel1 {  
+  display: block;
+  float: none;
+  text-align: left;
+  width: auto;
+  clear: right;
+  padding-top: 5px;
+  margin-left: 130px;
+}
+
+form label.checkboxlabel2 {  
+  display: block;
+  float: none;
+  text-align: left;
+  width: auto;
+  clear: right;
+  padding-top: 5px;
+  margin-left: 160px;
+}
+
+form label.checkboxlabel3 {  
+  display: block;
+  float: none;
+  text-align: left;
+  width: auto;
+  clear: right;
+  padding-top: 5px;
+  margin-left: 30px;
+}
+
+form label.medium {
+	width: 200px;
+}
+
+form label.long { 
+	width: 400px;
+	text-align: left; 
+}
+
+form {  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
+  font:100% verdana,arial,sans-serif;
+}
+
+form.login {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  min-width: 300px;
+  max-width: 400px;
+  width: 350px;
+}
+
+/*
+form.export {
+  min-width: 400px;
+  max-width: 500px;
+  width: 500px;
+}
+
+form.report {
+  min-width: 400px;
+  max-width: 700px;
+  width: 700px;
+}
+*/
+
+form fieldset {
+  /* clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+  border-color: gray;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE */
+  /*margin: 5px 0px 5px 0px;*/
+}
+
+form input, form textarea, form select {
+	float: left;
+	/* display: inline; inline display must not be set or will hide submit buttons in IE 5x mac */
+	width:auto;      /* set width of form elements to auto-size, otherwise watch for wrap on resize */
+	margin:5px 0px 0px 10px; /* set margin on left of form elements rather than right of
+                              label aligns textarea better in IE */
+	border: 1px solid gray;
+	color: Black;
+	padding: 0px;
+	background: White url(/psygrid/images/input_background.gif) repeat-x;
+}
+
+form input.disabled {
+	color: DarkGrey;
+	background: White url(/psygrid/images/input_background_disabled.gif) repeat-x;
+}
+
+form span.message {
+	float: left;
+	width:auto; 
+	margin: 0px;
+	padding: 5px 0px 0px 10px;
+}
+
+form br {
+	clear:left; /* setting clear on inputs didn't work consistently, so brs added for degrade */
+}
+
+.select-width {
+	width: 400px;	
+}
+
+.answer {  
+  font:100% verdana,arial,sans-serif;
+  color: gray;
+  margin: 0px 0px 0px 110px; 
+  padding-top: 5px;
+  display: block;
+}
+
+.checkbox {  
+  clear: left;
+  margin-left: 110px;
+  margin-right: 5px;
+}
+
+.checkbox2 {  
+  clear: left;
+  margin-left: 140px;
+  margin-right: 5px;
+}
+
+.checkbox3 {  
+  clear: all;
+  margin-left: 10px;
+  margin-right: 5px;
+  display: block;
+}
+
+.radio {  
+  margin-right: 5px;
+}
+
+.checkboxtext {  
+  padding-top: 5px;
+  display: block;
+}
+
+.error {
+  font: 90% verdana, arial, sans-serif;
+  color: red;
+  padding-left: 115px;
+  display: block;
+}
+
+.warning {
+  font: 100% verdana, arial, sans-serif;
+  color: red;
+}
+
+.label {
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	width: 100px; 
+	padding: 0; 
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	text-align: right; 
+}
+
+.heading {
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	width: 400px; 
+	padding: 0; 
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	text-align: left;
+	font-weight: bold; 
+}
+
+span.select-checks {
+	display: block;
+	margin-left: 110px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+span.select-checks-docs {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+span.clear-link {
+	display: block;
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+div.explain {
+	margin-left: 110px;
+	font-style: italic;
+}
+ 

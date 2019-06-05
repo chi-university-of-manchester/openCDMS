@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="org/psygrid/tools/addrandstratavalue/AddStrataValidation.java|org/psygrid/tools/addrandstratavalue/PatchRandomizer.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repository"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/security"/>
+	<classpathentry kind="var" path="JUNIT_HOME/junit.jar" sourcepath="/JUNIT_SRC_HOME/junitsrc.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/opensaml-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/axis.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/randomization"/>
+	<classpathentry kind="lib" path="lib/RandomDotOrg_wsdl.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/electronic-screening-log"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psygrid-common"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/jxl.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/client/binding-1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psygrid-data-collection"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dataset-designer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/data-element-library"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

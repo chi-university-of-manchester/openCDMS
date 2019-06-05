@@ -1,0 +1,82 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- Ant build script for PsyGrid Outlook Data Set -->
+<project name="Outlook Data Set" basedir="." default="compile">
+
+	<description>PsyGrid Outlook Data Set Ant build file</description>
+
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib"/>
+	<property name="common.dist.dir" value="${basedir}/../psygrid-common/dist"/>
+
+	<path id="compile.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="../security/dist">
+			<include name="psygrid-security_${security.version}.jar" />
+		</fileset>
+		<fileset dir="../repository/dist">
+			<include name="repository-client_${repository.version}.jar" />
+		</fileset>
+		<fileset dir="../electronic-screening-log/dist">
+			<include name="esl-client_${esl.version}.jar" />
+		</fileset>
+		<fileset dir="../randomization/dist">
+			<include name="randomization-client_${randomization.version}.jar" />
+		</fileset>
+	        <fileset dir="../data-element-library/dist">
+                        <include name="del-client_${del.version}.jar" />
+                </fileset>
+		<fileset dir="${common.dist.dir}">
+		    <include name="common-client_*.jar"/>
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+	</target>
+
+	<target name="clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+		</delete>
+	</target>
+
+	<target name="compile" depends="init" description="Compile java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+	<target name="all" depends="clean">
+		<antcall target="compile"/>
+	</target>
+</project>

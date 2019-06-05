@@ -1,0 +1,2540 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="6">
+        <description>Drug Check</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+                <mapping source="24" column="2"/>
+                <mapping source="24" column="3"/>
+                <mapping source="24" column="4"/>
+            </emptydoc>
+            <interviewer source="24" column="4"/>
+            <interviewdate source="24" column="2">
+                <formats>
+                    <format>dd/MM/yyyy HH:mm:ss</format>
+                </formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Sleeping tablets or sedatives? (like valium or normison)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translate null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>How many times a day do you take the sleeping tablets/sedatives?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>How much do you usually have at each time of the day?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>What is the name of the sleeping tables/sedatives?</description>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        <mapping source="24" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Marijuana, cannabis, or hash?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input>False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input>True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="14"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Drugs you sniff, like petrol/glue?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input>False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input>True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="15"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="16"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="17"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Petrol</description>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Glue</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Aerosol</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="18">
+                            <otherText source="24" column="18"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>Drugs like LSD?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="19"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="20"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="21"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="22"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Speed, ecstasy, crack or cocaine?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="23"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="24"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="25"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="26"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option Pills</description>
+                                <input special="false">Ecstasy</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Powder</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Injection</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="27">
+                            <otherText source="24" column="27"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Heroin, morphine or methadone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="28"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="29"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="30"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="31"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Pills</description>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Powder</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Liquid</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Injection</description>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="32">
+                            <otherText source="24" column="32"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="29">
+                        <description>Other Drugs not listed above</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="33"/>
+                    </basicentry>
+                    <basicentry index="31">
+                        <description>You said that you have been using... (summarize the drugs that were identified from the list above), which of these drugs have caused you the most problems or hassles in the last 3 months? Take into consideration the various risk factors associated with the substances the patient is presently using &amp; select the most problematic drugs based on ALL available information.</description>
+                        <constant value="3" standardCode="true"/>
+                    </basicentry>
+                    <compositeentry index="30">
+                        <description>Other drugs</description>
+                        <basicentry index="0">
+                            <description>Type of drug</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation of 0, 999 and 666 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="24" column="34"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>How often have you had them?</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 0. None</description>
+                                    <input special="false">0</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                    <input special="false">1</input>
+                                    <input special="false">2</input>
+                                    <input special="false">3</input>
+                                    <input special="false">4</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                    <input special="false">5</input>
+                                    <input special="false">6</input>
+                                    <input special="false">7</input>
+                                    <output>3</output>
+                                </translation>
+                            	<translation standardCode="true">
+                                	<description>Translation of 999 and 666 to std code 999</description>
+                                	<input special="false">999</input>
+                                	<input special="false">666</input>
+                                	<output>3</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="24" column="35"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Amount (£) per week</description>
+                            <translations>
+                                <translation standardCode="true">
+                                    <description>Translation of 999 and 666 to std code 999</description>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output>3</output>
+                                </translation>
+                            </translations>
+                            <mapping source="24" column="36"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Quantity</description>
+                            <translations>
+                                <translation standardCode="true">
+                                    <description>Translation of 999 and 666 to std code 999</description>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output>3</output>
+                                </translation>
+                            </translations>
+                            <mapping source="24" column="37"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="33">
+                        <description>Did (substance) cause any money problems for you?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="38"/>
+                    </basicentry>
+                    <basicentry index="34">
+                        <description>Did (substance) make you have problems at work, or at school (Tafe/University/ training courses)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="39"/>
+                    </basicentry>
+                    <basicentry index="35">
+                        <description>Did you have housing problems because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="40"/>
+                    </basicentry>
+                    <basicentry index="36">
+                        <description>Were there problems at home or with your family because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="41"/>
+                    </basicentry>
+                    <basicentry index="37">
+                        <description>Did you have any arguments or fights because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="42"/>
+                    </basicentry>
+                    <basicentry index="38">
+                        <description>Has (substance) caused any trouble with the law, or the police?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="43"/>
+                    </basicentry>
+                    <basicentry index="39">
+                        <description>Has (substance) caused any health problems or injuries?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="44"/>
+                    </basicentry>
+                    <basicentry index="40">
+                        <description>Have you done anything 'risky' or 'outrageous' after  using (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="45"/>
+                    </basicentry>
+                    <basicentry index="43">
+                        <description>Being uninterested in your usual activities?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="47"/>
+                    </basicentry>
+                    <basicentry index="44">
+                        <description>Feeling depressed?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="48"/>
+                    </basicentry>
+                    <basicentry index="45">
+                        <description>Being suspicious or distrustful of others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="49"/>
+                    </basicentry>
+                    <basicentry index="46">
+                        <description>Having strange thoughts?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="50"/>
+                    </basicentry>
+                    <basicentry index="47">
+                        <description>Missing doses of medication?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="51"/>
+                    </basicentry>
+                    <compositeentry index="41">
+                        <description>Enter details of 'risky' or 'outrageous' behaviour (e.g. driving under the influence; unprotected sex; sharing needles)</description>
+                        <basicentry index="0">
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translate 0, 666, 999 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">666</input>
+                                    <input special="false">999</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="24" column="46"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="2">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="49">
+                        <description>Did you ever think your use of (substance) was out of control?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="52"/>
+                    </basicentry>
+                    <basicentry index="50">
+                        <description>Did the prospect of missing a fix (or dose) or not chasing, make you anxious or worried?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="53"/>
+                    </basicentry>
+                    <basicentry index="51">
+                        <description>Did you worry about your use of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="54"/>
+                    </basicentry>
+                    <basicentry index="52">
+                        <description>Did you wish you could stop?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="55"/>
+                    </basicentry>
+                    <basicentry index="53">
+                        <description>How difficult did you find it to stop, or go without (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. not difficult</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. quite difficult</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. very difficult</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. impossible</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="56"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="3">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="54">
+                        <description>Do you want to change your use of (substance) right now?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. no</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. probably not</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. unsure</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. possibly</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. definitely</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="57"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="4">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="55">
+                        <description>Do you think you could change your use of (substance) now if you wanted to?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. definitely could not</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. probably could not</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. unsure</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. probably could</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. definitely could</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="24" column="58"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="5">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="57">
+                        <description>Problem List Total</description>
+                    </basicentry>
+                    <basicentry index="58">
+                        <description>SDS Total</description>
+                    </basicentry>
+                    <basicentry index="59">
+                        <description>Readiness to Change</description>
+                    </basicentry>
+                    <basicentry index="60">
+                        <description>Confidence to Change</description>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+                <mapping source="86" column="2"/>
+                <mapping source="86" column="3"/>
+                <mapping source="86" column="4"/>
+            </emptydoc>
+            <interviewer source="86" column="4"/>
+            <interviewdate source="86" column="2">
+                <formats>
+                    <format>dd/MM/yyyy HH:mm:ss</format>
+                </formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Sleeping tablets or sedatives? (like valium or normison)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translate null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>How many times a day do you take the sleeping tablets/sedatives?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>How much do you usually have at each time of the day?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>What is the name of the sleeping tables/sedatives?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Marijuana, cannabis, or hash?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input>False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input>True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="14"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Drugs you sniff, like petrol/glue?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input>False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input>True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="15"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="16"/>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="17"/>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Petrol</description>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Glue</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Aerosol</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="18">
+                            <otherText source="86" column="18"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="15">
+                        <description>Drugs like LSD?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="19"/>
+                    </basicentry>
+                    <basicentry index="16">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="20"/>
+                    </basicentry>
+                    <basicentry index="17">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="21"/>
+                    </basicentry>
+                    <basicentry index="18">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="22"/>
+                    </basicentry>
+                    <basicentry index="19">
+                        <description>Speed, ecstasy, crack or cocaine?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="23"/>
+                    </basicentry>
+                    <basicentry index="20">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="24"/>
+                    </basicentry>
+                    <basicentry index="21">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="25"/>
+                    </basicentry>
+                    <basicentry index="22">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="26"/>
+                    </basicentry>
+                    <basicentry index="23">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option Pills</description>
+                                <input special="false">Ecstasy</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Powder</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Injection</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="27">
+                            <otherText source="86" column="27"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="24">
+                        <description>Heroin, morphine or methadone?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="28"/>
+                    </basicentry>
+                    <basicentry index="25">
+                        <description>How often have you had them?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                <input special="false">1</input>
+                                <input special="false">2</input>
+                                <input special="false">3</input>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                <input special="false">5</input>
+                                <input special="false">6</input>
+                                <input special="false">7</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation of 999 and 666 to std code 999</description>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                       </translations>
+                        <mapping source="86" column="29"/>
+                    </basicentry>
+                    <basicentry index="26">
+                        <description>Amount (£) per week</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="30"/>
+                    </basicentry>
+                    <basicentry index="27">
+                        <description>How much do you usually have?</description>
+                        <translations>
+                            <translation standardCode="true">
+                            	<description>Translate 999 to std code 999 data unable to be captured</description>
+                            	<input special="false">999</input>
+                            	<output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="31"/>
+                    </basicentry>
+                    <basicentry index="28">
+                        <description>Type</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation of null, 999 and 666 to std code 999</description>
+                                <input special="false"></input>
+                                <input special="false">999</input>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Pills</description>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Powder</description>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Liquid</description>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Injection</description>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Other (please specify)</description>
+                                <input special="true">*</input>
+                                <output>4</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="32">
+                            <otherText source="86" column="32"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="29">
+                        <description>Other Drugs not listed above</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option No</description>
+                                <input special="false">False</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option Yes</description>
+                                <input special="false">True</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="33"/>
+                    </basicentry>
+                    <basicentry index="31">
+                        <description>You said that you have been using... (summarize the drugs that were identified from the list above), which of these drugs have caused you the most problems or hassles in the last 3 months? Take into consideration the various risk factors associated with the substances the patient is presently using &amp; select the most problematic drugs based on ALL available information.</description>
+                        <constant value="3" standardCode="true"/>
+                    </basicentry>
+                    <compositeentry index="30">
+                        <description>Other drugs</description>
+                        <basicentry index="0">
+                            <description>Type of drug</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation of 0, 999 and 666 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="86" column="34"/>
+                        </basicentry>
+                        <basicentry index="1">
+                            <description>How often have you had them?</description>
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translation for option 0. None</description>
+                                    <input special="false">0</input>
+                                    <output>0</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 2. Regular user (1-3 times weekly)</description>
+                                    <input special="false">1</input>
+                                    <input special="false">2</input>
+                                    <input special="false">3</input>
+                                    <input special="false">4</input>
+                                    <output>2</output>
+                                </translation>
+                                <translation standardCode="false">
+                                    <description>Translation for option 3. Frequent user (almost everyday)</description>
+                                    <input special="false">5</input>
+                                    <input special="false">6</input>
+                                    <input special="false">7</input>
+                                    <output>3</output>
+                                </translation>
+                            	<translation standardCode="true">
+                                	<description>Translation of 999 and 666 to std code 999</description>
+                                	<input special="false">999</input>
+                                	<input special="false">666</input>
+                                	<output>3</output>
+                            	</translation>
+                            </translations>
+                            <mapping source="86" column="35"/>
+                        </basicentry>
+                        <basicentry index="2">
+                            <description>Amount (£) per week</description>
+                            <translations>
+                                <translation standardCode="true">
+                                    <description>Translation of 999 and 666 to std code 999</description>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output>3</output>
+                                </translation>
+                            </translations>
+                            <mapping source="86" column="36"/>
+                        </basicentry>
+                        <basicentry index="3">
+                            <description>Quantity</description>
+                            <translations>
+                                <translation standardCode="true">
+                                    <description>Translation of 999 and 666 to std code 999</description>
+                                    <input special="false">999</input>
+                                    <input special="false">666</input>
+                                    <output>3</output>
+                                </translation>
+                            </translations>
+                            <mapping source="86" column="37"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="33">
+                        <description>Did (substance) cause any money problems for you?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="38"/>
+                    </basicentry>
+                    <basicentry index="34">
+                        <description>Did (substance) make you have problems at work, or at school (Tafe/University/ training courses)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="39"/>
+                    </basicentry>
+                    <basicentry index="35">
+                        <description>Did you have housing problems because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="40"/>
+                    </basicentry>
+                    <basicentry index="36">
+                        <description>Were there problems at home or with your family because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="41"/>
+                    </basicentry>
+                    <basicentry index="37">
+                        <description>Did you have any arguments or fights because of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="42"/>
+                    </basicentry>
+                    <basicentry index="38">
+                        <description>Has (substance) caused any trouble with the law, or the police?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="43"/>
+                    </basicentry>
+                    <basicentry index="39">
+                        <description>Has (substance) caused any health problems or injuries?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="44"/>
+                    </basicentry>
+                    <basicentry index="40">
+                        <description>Have you done anything 'risky' or 'outrageous' after  using (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="45"/>
+                    </basicentry>
+                    <basicentry index="43">
+                        <description>Being uninterested in your usual activities?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="47"/>
+                    </basicentry>
+                    <basicentry index="44">
+                        <description>Feeling depressed?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="48"/>
+                    </basicentry>
+                    <basicentry index="45">
+                        <description>Being suspicious or distrustful of others?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="49"/>
+                    </basicentry>
+                    <basicentry index="46">
+                        <description>Having strange thoughts?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="50"/>
+                    </basicentry>
+                    <basicentry index="47">
+                        <description>Missing doses of medication?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. A bit</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. A lot</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="51"/>
+                    </basicentry>
+                    <compositeentry index="41">
+                        <description>Enter details of 'risky' or 'outrageous' behaviour (e.g. driving under the influence; unprotected sex; sharing needles)</description>
+                        <basicentry index="0">
+                            <translations>
+                                <translation standardCode="false">
+                                    <description>Translate 0, 666, 999 to null</description>
+                                    <input special="false">0</input>
+                                    <input special="false">666</input>
+                                    <input special="false">999</input>
+                                    <output></output>
+                                </translation>
+                            </translations>
+                            <mapping source="86" column="46"/>
+                        </basicentry>
+                    </compositeentry>
+                </sectionoccurrence>
+            </section>
+            <section index="2">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="49">
+                        <description>Did you ever think your use of (substance) was out of control?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="52"/>
+                    </basicentry>
+                    <basicentry index="50">
+                        <description>Did the prospect of missing a fix (or dose) or not chasing, make you anxious or worried?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="53"/>
+                    </basicentry>
+                    <basicentry index="51">
+                        <description>Did you worry about your use of (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="54"/>
+                    </basicentry>
+                    <basicentry index="52">
+                        <description>Did you wish you could stop?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. never/almost never</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. sometimes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. often</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. always/nearly always</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="55"/>
+                    </basicentry>
+                    <basicentry index="53">
+                        <description>How difficult did you find it to stop, or go without (substance)?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. not difficult</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. quite difficult</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. very difficult</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. impossible</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="56"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="3">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="54">
+                        <description>Do you want to change your use of (substance) right now?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. no</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. probably not</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. unsure</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. possibly</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. definitely</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="57"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="4">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="55">
+                        <description>Do you think you could change your use of (substance) now if you wanted to?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. definitely could not</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. probably could not</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. unsure</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. probably could</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. definitely could</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code 999 data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="86" column="58"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="5">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="57">
+                        <description>Problem List Total</description>
+                    </basicentry>
+                    <basicentry index="58">
+                        <description>SDS Total</description>
+                    </basicentry>
+                    <basicentry index="59">
+                        <description>Readiness to Change</description>
+                    </basicentry>
+                    <basicentry index="60">
+                        <description>Confidence to Change</description>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

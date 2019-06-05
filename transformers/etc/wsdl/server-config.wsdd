@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="datetransformer" provider="java:RPC">
+  <operation name="getMonthAndYear" qname="ns1:getMonthAndYear" returnQName="getMonthAndYearReturn" returnType="xsd:string" soapAction="" xmlns:ns1="urn:transformers.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="getMonthAndYear"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="DateTransformer"/>
+  <parameter name="scope" value="Application"/>
+  <parameter name="className" value="org.psygrid.transformers.DatetransformerSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="datetransformer"/>
+  <parameter name="wsdlTargetNamespace" value="urn:transformers.psygrid.org"/>
+  <parameter name="wsdlServiceElement" value="DateTransformerService"/>
+ </service>
+ <service name="externaltransformer" provider="java:RPC">
+  <operation name="opcrit" qname="ns2:opcrit" returnQName="opcritReturn" returnType="xsd:string" soapAction="" xmlns:ns2="urn:transformers.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+  </operation>
+  <operation name="drnNephropathy" qname="ns3:drnNephropathy" returnQName="drnNephropathyReturn" returnType="xsd:string" soapAction="" xmlns:ns3="urn:transformers.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="drnNephropathy opcrit"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="ExternalTransformer"/>
+  <parameter name="scope" value="Application"/>
+  <parameter name="className" value="org.psygrid.transformers.ExternaltransformerSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="externaltransformer"/>
+  <parameter name="wsdlTargetNamespace" value="urn:transformers.psygrid.org"/>
+  <parameter name="wsdlServiceElement" value="ExternalTransformerService"/>
+ </service>
+ <service name="postcodetransformer" provider="java:RPC">
+  <operation name="getSOA" qname="ns4:getSOA" returnQName="getSOAReturn" returnType="xsd:string" soapAction="" xmlns:ns4="urn:transformers.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="getSOA"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="PostCodeTransformer"/>
+  <parameter name="scope" value="Application"/>
+  <parameter name="className" value="org.psygrid.transformers.PostcodetransformerSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="postcodetransformer"/>
+  <parameter name="wsdlTargetNamespace" value="urn:transformers.psygrid.org"/>
+  <parameter name="wsdlServiceElement" value="PostCodeTransformerService"/>
+ </service>
+ <service name="sha1transformer" provider="java:RPC">
+  <operation name="encrypt" qname="ns5:encrypt" returnQName="encryptReturn" returnType="xsd:string" soapAction="" xmlns:ns5="urn:transformers.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="encrypt"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="Sha1Transformer"/>
+  <parameter name="scope" value="Application"/>
+  <parameter name="className" value="org.psygrid.transformers.Sha1TransformerSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="sha1transformer"/>
+  <parameter name="wsdlTargetNamespace" value="urn:transformers.psygrid.org"/>
+  <parameter name="wsdlServiceElement" value="Sha1TransformerService"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="randomization" provider="java:RPC">
+  <operation name="allocate" qname="ns1:allocate" returnQName="allocateReturn" returnType="xsd:string" soapAction="" xmlns:ns1="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+   <parameter name="in1" type="xsd:string"/>
+   <parameter name="in2" type="ns1:ArrayOfParameter"/>
+   <parameter name="in3" type="xsd:string"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns1:fault" type="ns1:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns1:fault" type="ns1:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns1:fault" type="ns1:NotAuthorisedFault"/>
+   <fault class="org.psygrid.randomization.DuplicateSubjectFault" qname="ns1:fault" type="ns1:DuplicateSubjectFault"/>
+  </operation>
+  <operation name="getVersion" qname="ns2:getVersion" returnQName="getVersionReturn" returnType="xsd:string" soapAction="" xmlns:ns2="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <operation name="getAllocation" qname="ns3:getAllocation" returnQName="getAllocationReturn" returnType="xsd:string" soapAction="" xmlns:ns3="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+   <parameter name="in1" type="xsd:string"/>
+   <parameter name="in2" type="xsd:string"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns3:fault" type="ns3:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns3:fault" type="ns3:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns3:fault" type="ns3:NotAuthorisedFault"/>
+  </operation>
+  <operation name="checkIntegrity" qname="ns4:checkIntegrity" returnQName="checkIntegrityReturn" returnType="xsd:boolean" soapAction="" xmlns:ns4="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="xsd:string"/>
+   <parameter name="in1" type="xsd:string"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns4:fault" type="ns4:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns4:fault" type="ns4:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns4:fault" type="ns4:NotAuthorisedFault"/>
+  </operation>
+  <operation name="saveRandomizer" qname="ns5:saveRandomizer" soapAction="" xmlns:ns5="urn:randomization.psygrid.org">
+   <parameter name="in0" type="ns6:Randomizer" xmlns:ns6="http://dto.model.randomization.psygrid.org"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns5:fault" type="ns5:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns5:fault" type="ns5:NotAuthorisedFault"/>
+   <fault class="org.psygrid.randomization.DuplicateRandomizerFault" qname="ns5:fault" type="ns5:DuplicateRandomizerFault"/>
+  </operation>
+  <operation name="getRandomizerStatistics" qname="ns7:getRandomizerStatistics" returnQName="getRandomizerStatisticsReturn" returnType="ns7:ArrayOfArrayOf_xsd_string" soapAction="" xmlns:ns7="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="ns7:ArrayOfParameter"/>
+   <parameter name="in2" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns7:fault" type="ns7:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns7:fault" type="ns7:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns7:fault" type="ns7:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getRandomizerStatistics" qname="ns8:getRandomizerStatistics" returnQName="getRandomizerStatisticsReturn" returnType="ns8:ArrayOfArrayOf_xsd_string" soapAction="" xmlns:ns8="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns8:fault" type="ns8:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns8:fault" type="ns8:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns8:fault" type="ns8:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getAllAllocations" qname="ns9:getAllAllocations" returnQName="getAllAllocationsReturn" returnType="ns9:ArrayOfArrayOf_xsd_string" soapAction="" xmlns:ns9="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns9:fault" type="ns9:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns9:fault" type="ns9:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns9:fault" type="ns9:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getSubjectRandomizationEvents" qname="ns10:getSubjectRandomizationEvents" returnQName="getSubjectRandomizationEventsReturn" returnType="ns10:ArrayOf_xsd_dateTime" soapAction="" xmlns:ns10="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns10:fault" type="ns10:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns10:fault" type="ns10:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns10:fault" type="ns10:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getRandomizationResultForDate" qname="ns11:getRandomizationResultForDate" returnQName="getRandomizationResultForDateReturn" returnType="ns11:ArrayOf_xsd_string" soapAction="" xmlns:ns11="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns11:fault" type="ns11:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns11:fault" type="ns11:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns11:fault" type="ns11:NotAuthorisedFault"/>
+  </operation>
+  <operation name="deleteRandomizer" qname="ns12:deleteRandomizer" soapAction="" xmlns:ns12="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns12:fault" type="ns12:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns12:fault" type="ns12:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns12:fault" type="ns12:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getRandomizer" qname="ns14:getRandomizer" returnQName="getRandomizerReturn" returnType="ns13:Randomizer" soapAction="" xmlns:ns13="http://dto.model.randomization.psygrid.org" xmlns:ns14="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns14:fault" type="ns14:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.RandomizationFault" qname="ns14:fault" type="ns14:RandomizationFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns14:fault" type="ns14:NotAuthorisedFault"/>
+  </operation>
+  <operation name="getRandomisedParticipantsWithinTimeframe" qname="ns15:getRandomisedParticipantsWithinTimeframe" returnQName="getRandomisedParticipantsWithinTimeframeReturn" returnType="ns15:ArrayOf_xsd_string" soapAction="" xmlns:ns15="urn:randomization.psygrid.org">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <fault class="org.psygrid.randomization.UnknownRandomizerFault" qname="ns15:fault" type="ns15:UnknownRandomizerFault"/>
+   <fault class="org.psygrid.randomization.NotAuthorisedFault" qname="ns15:fault" type="ns15:NotAuthorisedFault"/>
+  </operation>
+  <parameter name="wsdlServicePort" value="randomization"/>
+  <parameter name="className" value="org.psygrid.randomization.RandomizationSoapBindingImpl"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="allowedMethods" value="getRandomizer getVersion getAllAllocations getRandomizerStatistics saveRandomizer getAllocation deleteRandomizer checkIntegrity getSubjectRandomizationEvents allocate getRandomisedParticipantsWithinTimeframe getRandomizationResultForDate"/>
+  <parameter name="wsdlServiceElement" value="RandomizationService"/>
+  <parameter name="wsdlTargetNamespace" value="urn:randomization.psygrid.org"/>
+  <parameter name="wsdlPortType" value="Randomization"/>
+  <parameter name="scope" value="Application"/>
+  <parameter name="schemaUnqualified" value="urn:randomization.psygrid.org,http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns16:Persistent" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.Persistent" xmlns:ns16="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns17:IBRpbrblRandomizer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.IBRpbrblRandomizer" xmlns:ns17="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns18:DuplicateRandomizerFault" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.DuplicateRandomizerFault" xmlns:ns18="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns19:BlockRandomizer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.BlockRandomizer" xmlns:ns19="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns20:Parameter" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.Parameter" xmlns:ns20="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns21:Randomizer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.Randomizer" xmlns:ns21="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns22:Stratum" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.Stratum" xmlns:ns22="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns23:PersistableRNG" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.PersistableRNG" xmlns:ns23="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns24:RandomizationFault" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.RandomizationFault" xmlns:ns24="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns25:BlockItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.BlockItem" xmlns:ns25="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns26:DuplicateSubjectFault" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.DuplicateSubjectFault" xmlns:ns26="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns27:StratumPointer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.StratumPointer" xmlns:ns27="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns28:StratumCombination" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.StratumCombination" xmlns:ns28="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns29:NotAuthorisedFault" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.NotAuthorisedFault" xmlns:ns29="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns30:RpmrblRandomizer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.RpmrblRandomizer" xmlns:ns30="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns31:UnknownRandomizerFault" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.UnknownRandomizerFault" xmlns:ns31="urn:randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns32:Treatment" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.Treatment" xmlns:ns32="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns33:Allocation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.Allocation" xmlns:ns33="http://dto.model.randomization.psygrid.org"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns34:StratifiedRandomizer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.psygrid.randomization.model.dto.StratifiedRandomizer" xmlns:ns34="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="ns36:BlockItem" languageSpecificType="java:org.psygrid.randomization.model.dto.BlockItem[]" qname="ns35:ArrayOf_tns1_BlockItem" xmlns:ns35="urn:randomization.psygrid.org" xmlns:ns36="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns37:ArrayOf_xsd_string" xmlns:ns37="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <arrayMapping innerType="ns38:Parameter" languageSpecificType="java:org.psygrid.randomization.Parameter[]" qname="ns38:ArrayOfParameter" xmlns:ns38="urn:randomization.psygrid.org"/>
+  <arrayMapping innerType="ns40:StratumCombination" languageSpecificType="java:org.psygrid.randomization.model.dto.StratumCombination[]" qname="ns39:ArrayOf_tns1_StratumCombination" xmlns:ns39="urn:randomization.psygrid.org" xmlns:ns40="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="xsd:dateTime" languageSpecificType="java:java.util.Calendar[]" qname="ns41:ArrayOf_xsd_dateTime" xmlns:ns41="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <arrayMapping innerType="ns43:StratumPointer" languageSpecificType="java:org.psygrid.randomization.model.dto.StratumPointer[]" qname="ns42:ArrayOf_tns1_StratumPointer" xmlns:ns42="urn:randomization.psygrid.org" xmlns:ns43="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="ns45:Stratum" languageSpecificType="java:org.psygrid.randomization.model.dto.Stratum[]" qname="ns44:ArrayOf_tns1_Stratum" xmlns:ns44="urn:randomization.psygrid.org" xmlns:ns45="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="ns47:Allocation" languageSpecificType="java:org.psygrid.randomization.model.dto.Allocation[]" qname="ns46:ArrayOf_tns1_Allocation" xmlns:ns46="urn:randomization.psygrid.org" xmlns:ns47="http://dto.model.randomization.psygrid.org"/>
+  <arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[][]" qname="ns48:ArrayOfArrayOf_xsd_string" xmlns:ns48="urn:randomization.psygrid.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <arrayMapping innerType="ns50:Treatment" languageSpecificType="java:org.psygrid.randomization.model.dto.Treatment[]" qname="ns49:ArrayOf_tns1_Treatment" xmlns:ns49="urn:randomization.psygrid.org" xmlns:ns50="http://dto.model.randomization.psygrid.org"/>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

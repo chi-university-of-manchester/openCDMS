@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans>
+
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,changeDefaultPasswordFilter,refreshSamlFilter,exceptionTranslationFilter,filterSecurityInterceptor,logoutFilter
+			</value>
+		</property>
+	</bean>
+	
+	<!-- Storage components -->
+	<bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+		<property name="context">
+			<value>org.acegisecurity.context.SecurityContextImpl</value>
+		</property>
+	</bean>
+		
+	<!-- ============================================================================= -->
+	<!-- The following beans are for a production environment, authenticating against  -->
+	<!-- an LDAP server and using the Attribute Authority Query Client to retrieve     -->
+	<!-- security credentials for the user.                                            -->
+	<!-- For a production deployment these beans should be uncommented, whilst the     -->
+	<!-- "test" beans below should be commented.                                       -->
+	<!-- ============================================================================= -->
+	<bean id="aaqc" class="org.psygrid.security.attributeauthority.client.AAQueryClient">
+		<constructor-arg index="0" value="aaclient.properties"/>
+	</bean>
+		
+	<bean id="paqc" class="org.psygrid.security.policyauthority.client.PAQueryClient">
+		<constructor-arg index="0" value="paclient.properties"/>
+	</bean>
+		
+	<bean id="psygridAuthenticationFilter" class="org.psygrid.web.security.PsygridAuthenticationListener">
+		<constructor-arg index="0" ref="aaqc"/>
+	</bean>
+
+	<bean id="initialDirContextFactory" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
+		<constructor-arg value="@ldapDirectoryURL@"/>
+		<property name="managerDn"><value>@ldapRoot@</value></property>
+        <property name="managerPassword"><value>@ldapRootPassword@</value></property>
+	</bean>
+
+    <bean id="userSearch" class="org.acegisecurity.ldap.search.FilterBasedLdapUserSearch">
+		<constructor-arg index="0">
+			<value>@ldapUserBase@</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>(uid={0})</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref local="initialDirContextFactory" />
+		</constructor-arg>            
+		<property name="searchSubtree">
+		  	<value>true</value>
+		</property>            
+    </bean>            
+
+	<bean id="authenticationProvider" class="org.psygrid.web.ldap.PsygridLdapAuthenticationProvider">
+		<constructor-arg>
+			<bean class="org.psygrid.web.ldap.PsygridBindAuthenticator">
+				<constructor-arg><ref local="initialDirContextFactory"/></constructor-arg>
+				<property name="userSearch">
+					<ref local="userSearch" />
+				</property>
+				<property name="ldapPasswordHash"><value>@ldapPasswordHash@</value></property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="org.psygrid.web.ldap.PsygridLdapAuthoritiesPopulator">
+				<property name="paqc">
+					<ref local="paqc" />
+				</property>
+			</bean>
+		</constructor-arg>
+		<property name="aaqc" ref="aaqc"/>
+	</bean>
+
+	<bean id="samlRefresher" class="org.psygrid.web.security.PsygridSamlRefresher">
+		<property name="aaqc" ref="aaqc"/>
+	</bean>
+	
+	<!-- ============================================================================= -->
+	<!-- End of production authentication beans                                        -->
+	<!-- ============================================================================= -->
+	
+	
+	<!-- ============================================================================= -->
+	<!-- The following beans are for testing only, with an unsecured system i.e. where -->
+	<!-- the data repository etc. is configured to stib out authentication calls.      -->
+	<!-- For a test deployment these beans should be uncommented, whilst the           -->
+	<!-- "production" beans above should be commented.                                 -->
+	<!-- ============================================================================= -->
+<!-- 
+	<bean id="memoryAuthenticationDao" class="org.psygrid.web.inmemory.PsygridInMemoryDaoImpl">
+	    <property name="userMap">
+	        <value>
+	            user=173913,ROLE_USER,ROLE_EXPORT,ROLE_REPORTS,ROLE_ESLWEB,ROLE_TRENDS_REPORTS
+	        </value>
+	    </property>
+	    <property name="projects">
+	    	<map>
+	    		<entry key="Outlook" value="OLK" />
+	    		<entry key="EDIE 2" value="ED2" />
+	    		<entry key="EDIE Test" value="EDT" />
+	    		<entry key="National EDEN" value="NED" />
+	    	</map>
+	    </property>
+	    <property name="groups">
+	    	<map>
+	    		<entry>
+	    			<key><value>OLK</value></key>
+	    			<list>
+	    				<value>002001</value>
+	    				<value>002002</value>
+	    			</list>
+	    		</entry>
+	    		<entry>
+	    			<key><value>ED2</value></key>
+	    			<list>
+	    				<value>001001</value>
+	    			</list>
+	    		</entry>
+	    		<entry>
+	    			<key><value>EDT</value></key>
+	    			<list>
+	    				<value>001001</value>
+	    			</list>
+	    		</entry>
+	    		<entry>
+	    			<key><value>NED</value></key>
+	    			<list>
+	    				<value>001001</value>
+	    			</list>
+	    		</entry>
+	    	</map>
+	    	
+	    </property>
+	</bean>
+	
+	<bean id="authenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+	     <property name="userDetailsService">
+	         <ref local="memoryAuthenticationDao"/>
+	     </property>
+	</bean>
+	
+	<bean id="samlRefresher" class="org.psygrid.web.security.NullSamlRefresher"/>
+-->
+	<!-- ============================================================================= -->
+	<!-- End of test authentication beans                                              -->
+	<!-- ============================================================================= -->
+	
+	
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+	    <property name="providers">
+	        <list>
+	            <ref bean="authenticationProvider"/>
+	        </list>
+	    </property>
+	</bean>
+
+	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+	    <property name="authenticationManager">
+	        <ref bean="authenticationManager"/>
+	    </property>
+	    <property name="authenticationFailureUrl">
+	        <value>/loginfail.jsp</value>
+	    </property>
+	    <property name="defaultTargetUrl">
+	        <value>/</value>
+	    </property>
+	    <property name="filterProcessesUrl">
+	        <value>/j_acegi_security_check</value>
+	    </property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.acegisecurity.LockedException">/accountlocked.jsp</prop>
+				<prop key="org.psygrid.web.security.UnableToCompleteAuthentication">/cantcomplete.jsp</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 
+		End of Authentication components
+	 -->
+
+	<bean id="changeDefaultPasswordFilter" class="org.psygrid.web.acegi.ChangeDefaultPasswordFilter">
+		<constructor-arg index="0" ref="aaqc"/>
+		<property name="changePasswordUrl">
+			<value>/secure/changepwd.html</value>
+		</property>
+	</bean>
+
+	<bean id="refreshSamlFilter" class="org.psygrid.web.acegi.RefreshSamlFilter">
+		<property name="samlRefresher">
+			<ref bean="samlRefresher" />
+		</property>
+	</bean>
+	
+	<!-- 
+		Exception translation filter components
+	 -->
+	<bean id="exceptionTranslationFilter"
+		class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<ref bean="formLoginAuthenticationEntryPoint" />
+		</property>
+		<property name="accessDeniedHandler">
+            <bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+                <property name="errorPage">
+                    <value>/notauthorisedredirect.jsp</value>
+                </property>
+            </bean>
+		</property>
+	</bean>
+
+	<bean id="formLoginAuthenticationEntryPoint"
+		class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl">
+			<value>/login.jsp</value>
+		</property>
+		<property name="forceHttps">
+			<value>false</value>
+		</property>
+	</bean>
+	<!-- 
+		End of exception translation filter components
+	 -->
+
+	<!-- 
+		Authorization components 
+	-->
+	<bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter"/>
+
+	<bean id="accessDecisionManager" class="org.acegisecurity.vote.UnanimousBased">
+	    <property name="allowIfAllAbstainDecisions">
+	        <value>false</value>
+	    </property>
+	    <property name="decisionVoters">
+	        <list>
+	           <ref local="roleVoter"/>
+	        </list>
+	    </property>
+	</bean>
+
+	<bean id="filterSecurityInterceptor"
+		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager">
+			<ref bean="authenticationManager" />
+		</property>
+		<property name="accessDecisionManager">
+			<ref bean="accessDecisionManager" />
+		</property>
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT 
+				/secure/export/**=ROLE_EXPORT
+				/secure/reports/**=ROLE_REPORTS
+				/secure/audit/**=ROLE_AUDIT
+				/secure/eslweb/index.html=ROLE_ESLWEB
+				/secure/eslweb/studycodebypersonaldetails.html=ROLE_ESL_VIEW_BY_DETAILS
+				/secure/eslweb/personaldetailsbystudycode.html=ROLE_ESL_VIEW_BY_NUMBER
+				/secure/eslweb/treatmentarmbystudycode.html=ROLE_ESL_TREAT_ARM
+				/secure/eslweb/treatmentarmbypersonaldetails.html=ROLE_ESL_TREAT_ARM
+				/secure/eslweb/treatmentarmstatistics.html=ROLE_ESL_STATS
+				/secure/eslweb/emergencybreakin.html=ROLE_ESL_BREAK_IN
+				/secure/**=ROLE_USER
+			</value>
+		</property>
+	</bean>
+	
+	<!-- Start logout config -->	
+	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/logout.jsp"/>
+		<constructor-arg>
+			<list>
+				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/j_acegi_logout" />
+	</bean>
+	<!-- End logout config -->	
+
+</beans>
+

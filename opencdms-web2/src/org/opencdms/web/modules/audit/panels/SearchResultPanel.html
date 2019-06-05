@@ -1,0 +1,57 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+
+		<h2>Results</h2>
+		<div wicket:id="noResultsContainer">
+			<p>Your search returned no results.</p>
+		</div>
+		<div wicket:id="resultsContainer">
+			<p>Showing <span wicket:id="startResult"></span> to <span wicket:id="endResult"></span> of <span wicket:id="totalResults"></span>
+			<input wicket:id="prevButton" type="submit" value="Prev" />
+			<input wicket:id="nextButton" type="submit" value="Next" />
+			
+			<table>
+				<tr>
+					<th>Participant</th>
+					<th>When</th>
+					<th>User</th>
+					<th>Action</th>
+				</tr>
+				<tr wicket:id="resultsList">
+					<td><span wicket:id="participant" /></td>
+					<td><span wicket:id="when" /></td>
+					<td><span wicket:id="user" /></td>
+					<td><span wicket:id="action" /></td>
+					<td><input wicket:id="view" type="submit" value="View" /></td>
+				</tr>
+			</table>
+		</div>
+	</wicket:panel>
+</body>
+</html>

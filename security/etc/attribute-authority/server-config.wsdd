@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="enableNamespacePrefixOptimization"
+			value="false" />
+		<parameter name="disablePrettyXML" value="true" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+	</globalConfiguration>
+	<handler name="LocalResponder"
+		type="java:org.apache.axis.transport.local.LocalResponder" />
+
+	<handler name="URLMapper"
+		type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate"
+		type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+
+	<service name="AdminService" provider="java:MSG">
+		<parameter name="allowedMethods" value="AdminService" />
+		<parameter name="enableRemoteAdmin" value="false" />
+		<parameter name="className" value="org.apache.axis.utils.Admin" />
+		<namespace>http://xml.apache.org/axis/wsdd/</namespace>
+	</service>
+	<service name="Version" provider="java:RPC">
+		<parameter name="allowedMethods" value="getVersion" />
+		<parameter name="className" value="org.apache.axis.Version" />
+	</service>
+
+	<service name="query" provider="java:RPC" style="wrapped"
+		use="literal">
+		<requestFlow>
+			<!--      <handler type="java:org.psygrid.security.SOAPMessageLogHandler" /> -->
+			<!--    <handler type="java:org.apache.ws.axis.security.WSDoAllReceiver" >
+				<parameter name="action" value="Timestamp SAMLTokenUnsigned"/>
+				<parameter name="samlPropFile" value="saml.properties"/>
+				</handler>-->
+		</requestFlow>
+		<responseFlow>
+			<!--        <handler type="java:org.psygrid.security.SOAPMessageLogHandler" /> -->
+		</responseFlow>
+		<parameter name="wsdlTargetNamespace"
+			value="http://www.psygrid.org/xml/security/attribute-authority/service" />
+		<parameter name="wsdlServiceElement"
+			value="AttributeAuthorityService" />
+		<parameter name="schemaQualified"
+			value="http://www.w3.org/2000/09/xmldsig#,http://www.psygrid.org/xml/security/attribute-authority/service/types,http://www.psygrid.org/xml/security/core/types" />
+		<parameter name="schemaUnqualified"
+			value="urn:oasis:names:tc:SAML:1.0:assertion" />
+		<parameter name="wsdlServicePort"
+			value="AttributeAuthorityPortTypeQuerySOAPPort" />
+		<parameter name="className"
+			value="org.psygrid.security.attributeauthority.AttributeAuthorityQueryPortTypeImpl" />
+		<parameter name="wsdlPortType"
+			value="AttributeAuthorityQueryPortType" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="application" />
+
+
+       <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ProjectDescriptionType"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectDescriptionType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:UserPrivilegesType"
+        type="java:org.psygrid.www.xml.security.core.types.UserPrivilegesType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:UserType"
+        type="java:org.psygrid.www.xml.security.core.types.UserType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:PrivilegeType"
+        type="java:org.psygrid.www.xml.security.core.types.PrivilegeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInProjectWithRoleResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:CompositeRuleType"
+        type="java:org.psygrid.www.xml.security.core.types.CompositeRuleType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInProjectResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetRolesInProjectResponse"
+        type="java:org.psygrid.www.xml.security.core.types.RoleType[]"
+        innerType="cmp-ns:RoleType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:ResetPasswordRequestType"
+        type="java:org.psygrid.security.attributeauthority.types.ResetPasswordRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetGroupsInProjectResponse"
+        type="java:org.psygrid.www.xml.security.core.types.GroupType[]"
+        innerType="cmp-ns:GroupType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInGroupInProjectWithRoleResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>MultiUserExistsResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetAttributesResponse"
+        type="java:org.psygrid.www.xml.security.core.types.AttributeType[]"
+        innerType="cmp-ns:AttributeType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:GroupType"
+        type="java:org.psygrid.www.xml.security.core.types.GroupType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:PostProcessLoginResponseType"
+        type="java:org.psygrid.security.attributeauthority.types.PostProcessLoginResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ProjectType"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:AttributeType"
+        type="java:org.psygrid.www.xml.security.core.types.AttributeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:CodeType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:ChangePasswordRequestType"
+        type="java:org.psygrid.security.attributeauthority.types.ChangePasswordRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:OperatorType"
+        type="java:org.psygrid.www.xml.security.core.types.OperatorType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:RoleType"
+        type="java:org.psygrid.www.xml.security.core.types.RoleType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ArgumentType"
+        type="java:org.psygrid.www.xml.security.core.types.ArgumentType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>DeleteProjectRequest"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectType[]"
+        innerType="cmp-ns:ProjectType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetProjectsResponse"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectDescriptionType[]"
+        innerType="cmp-ns:ProjectDescriptionType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>DeleteUserRequest"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInGroupInProjectResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:GroupAttributeType"
+        type="java:org.psygrid.www.xml.security.core.types.GroupAttributeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetGroupAttributesForUserInGroupResponse"
+        type="java:org.psygrid.www.xml.security.core.types.GroupAttributeType[]"
+        innerType="cmp-ns:GroupAttributeType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+	</service>
+	<service name="admin" provider="java:RPC" style="wrapped"
+		use="literal">
+		<parameter name="wsdlTargetNamespace"
+			value="http://www.psygrid.org/xml/security/attribute-authority/service" />
+		<parameter name="wsdlServiceElement"
+			value="AttributeAuthorityService" />
+		<parameter name="schemaQualified"
+			value="http://www.w3.org/2000/09/xmldsig#,http://www.psygrid.org/xml/security/attribute-authority/service/types,http://www.psygrid.org/xml/security/core/types" />
+		<parameter name="schemaUnqualified"
+			value="urn:oasis:names:tc:SAML:1.0:assertion" />
+		<parameter name="wsdlServicePort"
+			value="AttributeAuthorityPortTypeManagementSOAPPort" />
+		<parameter name="className"
+			value="org.psygrid.security.attributeauthority.AttributeAuthorityManagementPortTypeImpl" />
+		>
+		<parameter name="wsdlPortType"
+			value="AttributeAuthorityManagementPortType" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="application" />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ProjectDescriptionType"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectDescriptionType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:UserPrivilegesType"
+        type="java:org.psygrid.www.xml.security.core.types.UserPrivilegesType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:UserType"
+        type="java:org.psygrid.www.xml.security.core.types.UserType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:PrivilegeType"
+        type="java:org.psygrid.www.xml.security.core.types.PrivilegeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInProjectWithRoleResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:CompositeRuleType"
+        type="java:org.psygrid.www.xml.security.core.types.CompositeRuleType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInProjectResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetRolesInProjectResponse"
+        type="java:org.psygrid.www.xml.security.core.types.RoleType[]"
+        innerType="cmp-ns:RoleType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:ResetPasswordRequestType"
+        type="java:org.psygrid.security.attributeauthority.types.ResetPasswordRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetGroupsInProjectResponse"
+        type="java:org.psygrid.www.xml.security.core.types.GroupType[]"
+        innerType="cmp-ns:GroupType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInGroupInProjectWithRoleResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>MultiUserExistsResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetAttributesResponse"
+        type="java:org.psygrid.www.xml.security.core.types.AttributeType[]"
+        innerType="cmp-ns:AttributeType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:GroupType"
+        type="java:org.psygrid.www.xml.security.core.types.GroupType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:PostProcessLoginResponseType"
+        type="java:org.psygrid.security.attributeauthority.types.PostProcessLoginResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ProjectType"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:AttributeType"
+        type="java:org.psygrid.www.xml.security.core.types.AttributeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:CodeType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:ChangePasswordRequestType"
+        type="java:org.psygrid.security.attributeauthority.types.ChangePasswordRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:OperatorType"
+        type="java:org.psygrid.www.xml.security.core.types.OperatorType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:RoleType"
+        type="java:org.psygrid.www.xml.security.core.types.RoleType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:ArgumentType"
+        type="java:org.psygrid.www.xml.security.core.types.ArgumentType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>DeleteProjectRequest"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectType[]"
+        innerType="cmp-ns:ProjectType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetProjectsResponse"
+        type="java:org.psygrid.www.xml.security.core.types.ProjectDescriptionType[]"
+        innerType="cmp-ns:ProjectDescriptionType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>DeleteUserRequest"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetUsersInGroupInProjectResponse"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+
+      <typeMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/core/types"
+        qname="ns:GroupAttributeType"
+        type="java:org.psygrid.www.xml.security.core.types.GroupAttributeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+
+      <arrayMapping
+        xmlns:ns="http://www.psygrid.org/xml/security/attribute-authority/service/types"
+        qname="ns:>GetGroupAttributesForUserInGroupResponse"
+        type="java:org.psygrid.www.xml.security.core.types.GroupAttributeType[]"
+        innerType="cmp-ns:GroupAttributeType" xmlns:cmp-ns="http://www.psygrid.org/xml/security/core/types"
+        encodingStyle=""
+      />
+      
+      
+		<requestFlow>
+			<!--     <handler type="java:org.psygrid.security.SOAPMessageLogHandler" /> -->
+			<!--    <handler type="java:org.apache.ws.axis.security.WSDoAllReceiver" >
+				<parameter name="action" value="Timestamp SAMLTokenUnsigned"/>
+				<parameter name="samlPropFile" value="saml.properties"/>
+				</handler> -->
+		</requestFlow>
+		<responseFlow>
+			<!--     <handler type="java:org.psygrid.security.SOAPMessageLogHandler" /> -->
+		</responseFlow>
+	</service>
+
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler
+				type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+		<parameter name="qs:list"
+			value="org.apache.axis.transport.http.QSListHandler" />
+		<parameter name="qs:wsdl"
+			value="org.apache.axis.transport.http.QSWSDLHandler" />
+		<parameter name="qs:method"
+			value="org.apache.axis.transport.http.QSMethodHandler" />
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+</deployment>

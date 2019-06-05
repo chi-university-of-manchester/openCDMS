@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<chapter>
+  <title>Installation and Removal of Software</title>
+
+  <section id="installusername">
+    <title>Obtaining a openCDMS user name and password</title>
+
+    <para>The system administrator allocates openCDMS usernames and passwords
+    centrally. Usernames are typically of the form FirstnameLastname.</para>
+
+    <para>Please contact your project manager to request an account - they
+    will then create your account or request openCDMS to do this. You should
+    provide the following information:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Full name</para>
+      </listitem>
+
+      <listitem>
+        <para>Email address</para>
+      </listitem>
+
+      <listitem>
+        <para>Project(s) you are working on</para>
+      </listitem>
+
+      <listitem>
+        <para>Geographical area(s) of the project(s) you are responsible
+        for</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="installsystems">
+    <title>openCDMS Systems</title>
+
+    <para>There are currently three different, independent, openCDMS systems
+    deployed. Each of these systems is completely self-contained and all of
+    the various software components are available for all of them. If, for
+    example, you need to enter data onto two different systems you would need
+    to download and install two versions of openCDMS Collect - one for each of
+    the two systems.</para>
+
+    <section id="installsystemsnhs">
+      <title>NHS system</title>
+
+      <para>The original "live" system deployed within the NHS network. To be
+      able to connect to this system you need to have an NHS network
+      connection. All software for the NHS system is downloaded from URLs
+      starting with <emphasis
+      role="bold">http://nww.psygrid.nhs.uk</emphasis></para>
+
+      <para>Currently the following projects are hosted on the NHS
+      system:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Outlook</para>
+        </listitem>
+
+        <listitem>
+          <para>National Eden</para>
+        </listitem>
+
+        <listitem>
+          <para>EDIE 2</para>
+        </listitem>
+
+        <listitem>
+          <para>Address</para>
+        </listitem>
+
+        <listitem>
+          <para>Command</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="installsystemspublic">
+      <title>MHRN public internet system</title>
+
+      <para>A second "live" system commissioned for the MHRN, but deployed on
+      the public internet. All software for thist system is downloaded from
+      URLs starting with <emphasis
+      role="bold">http://mhrn.psygrid.org</emphasis></para>
+    </section>
+
+    <section id="installsystemstest">
+      <title>"Test" system</title>
+
+      <para>This system is used for testing, training, and familiarization
+      with the software. <emphasis role="bold">No real patient data must be
+      entered on this system!</emphasis></para>
+
+      <para>Also, please be aware that as this system is used for software
+      testing it is liable to go in and out of service at any time, and any
+      data entered may be erased without notice. All software for the public
+      internet system is downloaded from URLs starting with <emphasis
+      role="bold">http://psygrid.smb.man.ac.uk</emphasis></para>
+    </section>
+  </section>
+
+  <section id="installwebstart">
+    <title>Java WebStart Software</title>
+
+    <para>The following PsyGrid software applications are distributed by a
+    technology known as Java WebStart (which allows Java applications to be
+    distributed over the internet):</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>openCDMS Collect</para>
+      </listitem>
+
+      <listitem>
+        <para>openCDMS Create</para>
+      </listitem>
+
+      <listitem>
+        <para>openCDMS Control</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>The installation and uninstallation procedure for these applications
+    is essentially the same and will be detailed below.</para>
+
+    <section id="installwebstartprep">
+      <title>Preparation and Prerequisites</title>
+
+      <para></para>
+
+      <section id="installconfiguring">
+        <title>Configuring your computer</title>
+
+        <para>openCDMS software is able to run on any computer such as a
+        desktop or a laptop. It has been tested on Windows XP, Mac OS X and
+        Fedora Linux operating systems. Since it is a pure Java application it
+        should work correctly on all operating systems.</para>
+
+        <para>Your computer must have a web browser such as Internet Explorer
+        or Firefox installed. You will almost certainly have a web browser
+        already installed on your computer, but if not contact your local IT
+        support.</para>
+
+        <para>You computer must have the Java Runtime Environment (JRE) 5.0 or
+        greater installed. To see if you have Java installed open a command
+        prompt (on Windows go to the Start menu, then the Accessories sub-menu
+        and select Command Prompt) and type</para>
+
+        <programlisting>java -version</programlisting>
+
+        <para>If you have Java installed you will see something like
+        this:</para>
+
+        <programlisting>java version "1.5.0_13"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_13-b05)
+Java HotSpot(TM) Client VM (build 1.5.0_13-b05, mixed mode, sharing)</programlisting>
+
+        <para>So long as the first line has the version as 1.5.x or 1.6.x then
+        your JRE version is fine and no further action is required. If it is
+        1.4.x then you need to upgrade your JRE; please contact your local IT
+        support.</para>
+
+        <para>If instead you see something like this then Java is not
+        installed on your computer, and you need to contact your local IT
+        support to resolve this before you may start using openCDMS
+        software.</para>
+
+        <programlisting>'java' is not recognized as an internal or external command, operable program or batch file.</programlisting>
+      </section>
+
+      <section id="installrootcert">
+        <title>Installing the openCDMS CA root certificate</title>
+
+        <para><emphasis role="italics">Optional but
+        recommended.</emphasis></para>
+
+        <para>The openCDMS CA root certificate enables you computer to
+        establish a secure trust relationship with the central openCDMS
+        computers. You must download the appropriate certificate for the
+        system you are using (see below) and save it to disk.</para>
+
+        <table>
+          <title>URLS for root certificates</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>NHS system</entry>
+
+                <entry>https://developers.psygrid.org/twiki/pub/PsyGridDev/SystemSecurity/PsyGridCA.cer</entry>
+              </row>
+
+              <row>
+                <entry>Public internet system</entry>
+
+                <entry>???</entry>
+              </row>
+
+              <row>
+                <entry>Test system</entry>
+
+                <entry>???</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para>Double click on this file when it has downloaded. You will see
+        the following window open:</para>
+
+        <figure>
+          <title>Certificate dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_1502bfae.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Click on the "Install Certificate Button", and you will see the
+        following window:</para>
+
+        <figure>
+          <title>Certificate Import Wizard dialog (1)</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_57a9712c.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Click on "Next" and the following window will appear:</para>
+
+        <figure>
+          <title>Certificate Import Wizard dialog (2)</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m3241da30.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Again, click on "Next", and you will see this window:</para>
+
+        <figure>
+          <title>Certificate Import Wizard dialog (3)</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_2fe08583.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Now click on "Finish". You will see the following. Verify that
+        the Thumbprint is as shown here. If in doubt contact <link
+        linkend="support">openCDMS Support</link>. When you are ready to
+        proceed click on "Yes".</para>
+
+        <figure>
+          <title>Security Warning dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_53c9fc62.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Then you will see the following confirmation:</para>
+
+        <figure>
+          <title>Certificate Import Wizard success dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_7abf676a.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+    </section>
+
+    <section id="installmain">
+      <title>Installation</title>
+
+      <section id="installdownload">
+        <title>Downloading and Installing openCDMS software</title>
+
+        <para>Open Internet Explorer (or any other web browser). Enter the URL
+        for the openCDMS software that you wish to install (see below) in the
+        address bar and press enter. A page will load which will be completely
+        blank except for a link in the top left corner which will be something
+        like "Launch Application". Click on the link.</para>
+
+        <table>
+          <title>URLs for downloading openCDMS software</title>
+
+          <tgroup cols="4">
+            <thead>
+              <row>
+                <entry></entry>
+
+                <entry>Collect</entry>
+
+                <entry>Control</entry>
+
+                <entry>Create</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>NHS system</entry>
+
+                <entry><ulink
+                url="http://nww.psygrid.nhs.uk/psygrid-data-client">http://nww.psygrid.nhs.uk/psygrid-data-client</ulink></entry>
+
+                <entry><ulink
+                url="http://nww.psygrid.nhs.uk/psygrid-securitymanager">http://nww.psygrid.nhs.uk/psygrid-securitymanager</ulink></entry>
+
+                <entry><ulink
+                url="http://nww.psygrid.nhs.uk/dataset-designer">http://nww.psygrid.nhs.uk/dataset-designer</ulink></entry>
+              </row>
+
+              <row>
+                <entry>Public Internet system</entry>
+
+                <entry><ulink
+                url="http://???/psygrid-data-client">http://???/psygrid-data-client</ulink></entry>
+
+                <entry><ulink
+                url="http://???/psygrid-securitymanager">http://???/psygrid-securitymanager</ulink></entry>
+
+                <entry><ulink
+                url="http://???/dataset-designer">http://???/dataset-designer</ulink></entry>
+              </row>
+
+              <row>
+                <entry>Test system</entry>
+
+                <entry><ulink
+                url="http://psygrid.smb.man.ac.uk/psygrid-data-client">http://psygrid.smb.man.ac.uk/psygrid-data-client</ulink></entry>
+
+                <entry><ulink
+                url="http://psygrid.smb.man.ac.uk/psygrid-securitymanager">http://psygrid.smb.man.ac.uk/psygrid-securitymanager</ulink></entry>
+
+                <entry><ulink
+                url="http://psygrid.smb.man.ac.uk/dataset-designer">http://psygrid.smb.man.ac.uk/dataset-designer</ulink></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para>If you are unable to open the URL then this means that you are
+        unable to connect to the openCDMS servers. This is only likely to
+        happen if you are trying to access the NHS system but don't have an
+        NHS network connection. In this case you must find a computer
+        connected to the NHS network, so contact your local IT support. If you
+        are trying to access one of the systems hosted on the public internet
+        then there may be a problem with your computer's network
+        configuration; again you need to contact your local IT support.</para>
+
+        <para>If you have not installed the openCDMS CA root certificate, a
+        dialog box will pop-up warning you that the remote site’s identity
+        cannot be trusted. Click on "Yes". The software will then download
+        onto your computer and you will see a "Java Loading" splash screen
+        (the exact appearance of which depends on your JRE version).</para>
+
+        <figure>
+          <title>Security Alert dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_410dd400.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <figure>
+          <title>Java Loading</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_mce0e611.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If you get an error at this point you may need to configure the
+        proxy settings for Java WebStart - see <xref
+        linkend="installwebstartproxy" /></para>
+
+        <para>You should see a progress bar which updates as the software is
+        downloaded to your computer. When it has finished you will be asked if
+        you would like to create Desktop Shortcuts - a clickable icon on your
+        desktop that will allow you to launch the software without using a web
+        browser. We recommend you click "Yes" to create the desktop shortcut;
+        if you click "No" you will have to always start the software by
+        entering the URL in your web browser.</para>
+
+        <figure>
+          <title>Create shortcuts dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_7f3bd8fd.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The application will then launch and present you with the login
+        screen.</para>
+      </section>
+
+      <section id="installlogin">
+        <title>Logging in</title>
+
+        <para>Use your openCDMS username and password (see <xref
+        linkend="installusername" />) to log in. If you are unable to login
+        (and you are certain you are entering the correct username and
+        password!) then it is likely that some additional configuration is
+        required, see <xref linkend="proxysettings" />.</para>
+
+        <figure>
+          <title>Login dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/logindialog.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="install_find_proxy_settings">
+        <title>Finding your proxy server settings</title>
+
+        <para>The next two sections are all to do with configuring your
+        proxy-server settings, but before we can do that we need to find out
+        what they are!</para>
+
+        <para>What is a proxy server? Basically it is a computer that acts as
+        an intermediary between your computer and the wider network; and if it
+        is not configured properly you will not be able to access other
+        networked computers (such as the openCDMS servers).</para>
+
+        <para>To find out your proxy settings you have two options:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Ask your IT support team or a colleague.</para>
+          </listitem>
+
+          <listitem>
+            <para>Try to find them out yourself, which will be described
+            below.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Open Internet Explorer and click on the "Tools" menu. Select
+        "Internet Options...". In the "Internet Options" window select the
+        "Connections" tab, then click on the "LAN Settings" button</para>
+
+        <figure>
+          <title>LAN Settings Dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_mf530e3d.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>If you use a proxy server, then either the "Use automatic
+        configuration script" or "Use a proxy server for your LAN…" boxes will
+        be ticked . If none of the boxes in the LAN Settings dialog is ticked
+        then you don’t use a proxy server.</para>
+
+        <para>If "Use a proxy server for your LAN…" is ticked simply note down
+        the Address and Port specified in the dialog</para>
+
+        <para>If "Use automatic configuration script" is ticked it is slightly
+        more complicated so might be worth contacting your local IT support
+        for assistance. But the procedure for finding the Address of your
+        proxy server is as follows:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Copy and paste the URL of the proxy configuration script
+            into the Address bar of Internet Explorer. Choose to save the
+            file.</para>
+          </listitem>
+
+          <listitem>
+            <para>Open the file in Notepad or Wordpad, scroll through it and
+            look for a line like this (where each X below represents a number
+            from 0 to 999):</para>
+
+            <programlisting>else
+    return “PROXY X.X.X.X”;</programlisting>
+          </listitem>
+
+          <listitem>
+            <para>Note down the X.X.X.X - this is the proxy Address. The Port
+            will be 80.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title id="proxysettings">Configuring proxy settings for openCDMS
+        applications</title>
+
+        <para>Depending upon your location you may need to configure openCDMS
+        applications to use a proxy server so that they may communicate with
+        the openCDMS servers. When you login for the first time the software
+        shoudl tell you if you need to configure a proxy server, in which case
+        you need to follow the steps int he rest of this section.</para>
+
+        <para>First, you need to find out what your proxy server settings are,
+        which is detailed in <xref linkend="install_find_proxy_settings" />.
+        Once you know what your proxy settings are, continue as below.
+        Alternatively, if you have a colleague who is already using openCDMS
+        successfuly you may use their proxy settings by exporting the settings
+        from their computer then importing them into yours; see <xref
+        linkend="importexportproxy" /> for more details.</para>
+
+        <para>On the login screen, press the "Settings…" button, the
+        Application Settings dialog will be displayed.</para>
+
+        <figure>
+          <title>Application Settings dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_m68a4bf0d.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Click the Edit button adjacent to "Proxy server settings" - the
+        "Change Proxy Settings" dialog will be shown.</para>
+
+        <figure>
+          <title>Change Proxy Settings dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGridUserGuide_html_mb1b3005.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>When you open the Proxy Settings dialog for the first time the
+        only setting is "&lt;Direct connection&gt;" (i.e. no proxy server
+        used) and this is shown as being used by the green tick next to it. To
+        add your proxy server follow these steps:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Click the Add button - the Proxy Setting dialog is
+            displayed.</para>
+
+            <figure>
+              <title>Proxy Setting Dialog</title>
+
+              <screenshot>
+                <screeninfo></screeninfo>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/install_add_proxy.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+
+          <listitem>
+            <para>Enter a Name for the proxy setting; it doesn't matter what
+            this is but if you have more than one proxy setting defined they
+            must have unique names.</para>
+          </listitem>
+
+          <listitem>
+            <para>Enter the Proxy Server Address and the Proxy Server Port
+            Number that you noted down earlier. Leave Proxy Authentication
+            Method as NONE.</para>
+          </listitem>
+
+          <listitem>
+            <para>Press the "Test" button. This will use the entered proxy
+            settings to attempt to connect to the openCDMS servers. A message
+            will be displayed telling you if this was successful or not. If
+            the test is successful tick the Default checkbox (so that this
+            proxy setting is used) then click the OK button to save the
+            settings.</para>
+          </listitem>
+
+          <listitem>
+            <para>If the test was unsuccessful check the Address and Port you
+            have entered to make sure they are correct. If they are, you may
+            need to use proxy authentication.</para>
+          </listitem>
+
+          <listitem>
+            <para>Select the Proxy Authentication Method to be WINDOWS.</para>
+          </listitem>
+
+          <listitem>
+            <para>Enter your Windows Domain. If you don’t know what your
+            Windows Domain is there are several ways to find out:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Ask your local IT support.</para>
+              </listitem>
+
+              <listitem>
+                <para>Press Ctrl-Alt-Delete. A dialog called "Windows
+                Security" will open. In the "Login Information" section it
+                will say "&lt;Your Name&gt; is logged on as
+                &lt;Domain&gt;\&lt;Username&gt;". Note down what the Domain is
+                then press Cancel.</para>
+              </listitem>
+
+              <listitem>
+                <para>Open the Windows Control Panel, and select "User
+                Accounts" (see below).</para>
+
+                <figure>
+                  <title>Control Panel</title>
+
+                  <screenshot>
+                    <screeninfo></screeninfo>
+
+                    <mediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/PsyGridUserGuide_html_m7e58a8fe.jpg" />
+                      </imageobject>
+                    </mediaobject>
+                  </screenshot>
+                </figure>
+
+                <para>You will see the domain listed next to your user
+                name…</para>
+
+                <figure>
+                  <title>User Accounts</title>
+
+                  <screenshot>
+                    <screeninfo></screeninfo>
+
+                    <mediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/PsyGridUserGuide_html_m1d9a4fec.jpg" />
+                      </imageobject>
+                    </mediaobject>
+                  </screenshot>
+                </figure>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+
+          <listitem>
+            <para>Press the Test button again. You will be presented with a
+            dialog called Enter Proxy Credentials. In here you need to enter
+            the username and password that you use to login to your computer,
+            <emphasis role="italics">not your openCDMS username and
+            password</emphasis>.</para>
+
+            <figure>
+              <title>Enter Proxy Credentials</title>
+
+              <screenshot>
+                <screeninfo></screeninfo>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/enterproxycredentials.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+
+          <listitem>
+            <para>If the test is successful tick the Default checkbox and
+            click OK. Note that when you try to login to openCDMS the Enter
+            Proxy Credentials dialog will be shown after you enter your
+            openCDMS username and password and click Login. Again, you must
+            enter your Windows username and password here.</para>
+          </listitem>
+
+          <listitem>
+            <para>If the test is unsuccessful please contact your local IT
+            support or <link linkend="support">openCDMS Support</link> for
+            further assistance.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Assuming that the test was successful, you should now see your
+        proxy configuration in the Change Proxy Settings dialog, and it should
+        have the green tick against it, signifying that it is the default
+        setting - if it is not ticked select it in the list, click Edit then
+        tick the Default checkbox in the Proxy Setting dialog before clicking
+        OK.</para>
+
+        <para>When you are happy with your settings click OK to save your
+        settings and apply them. Clicking Cancel will abandon all changes made
+        to the proxy settings.</para>
+
+        <section id="importexportproxy">
+          <title>Importing and Exporting Proxy Settings</title>
+
+          <para>Importing and exporting proxy settings allows a working proxy
+          configuration to be used by multiple users, simplifying
+          configuration. First, export the settings by clicking the Export
+          button; you will be asked to specify a file to save the settings to.
+          The exported settings can then be distributed to new users (by
+          attaching to an email, putting them on a memory stick etc). To
+          import the settings click the Import button and select the file
+          containing the relevant settings. Any existing settings will be
+          overwritten and the imported settings will be displayed in the
+          Change Proxy Settings dialog. Click OK to save and apply the
+          improted settings.</para>
+        </section>
+      </section>
+
+      <section id="installwebstartproxy">
+        <title>Configuring Java WebStart's proxy settings</title>
+
+        <para>Occasionally you may need to configure the proxy settings of
+        Java WebStart in order to be able to download and install the openCDMS
+        software. You will need to do this if you get an error after clicking
+        on the link for the openCDMS software in your web browser. You will
+        then see the Java splash screen :</para>
+
+        <figure>
+          <title>Java Spash Screen</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_20ac747.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Then you will get an error message:</para>
+
+        <figure>
+          <title>Webstart Error Message</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_m7a06dd81.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>So, if you see this error, perform the following steps.</para>
+
+        <para>First, find out your proxy settings (see <xref
+        linkend="install_find_proxy_settings" />).</para>
+
+        <para>Once you have your proxy settings click the Windows "Start" menu
+        and select "Run..."</para>
+
+        <figure>
+          <title>Windows Start menu</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_m807f54f.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Type "javaws -viewer" (without the quotes) into the Run dialog
+        and click OK.</para>
+
+        <figure>
+          <title>Run dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_778c3545.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>The "Java Cache Viewer" will be launched. Just click "Close",
+        and the “Java Control Panel” should now be the active window.</para>
+
+        <figure>
+          <title>Java Control Panel</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_m3d516369.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <para>Click the "Network Settings..." button. The "Network Settings"
+        dialog will be opened, which is very similar to the dialog from
+        Internet Explorer that we saw in earlier.</para>
+
+        <figure>
+          <title>Java WebStart Network Settings</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/WebstartProxy_html_cc01559.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+
+        <itemizedlist>
+          <listitem>
+            <para>If in Step 1 "Use automatic configuration script" was
+            ticked, select "Use automatic proxy configuration script" and
+            enter the Address noted earlier into "Script location"</para>
+          </listitem>
+
+          <listitem>
+            <para>If in Step 1 "Use a proxy server..." was ticked, select "Use
+            proxy server" and enter the Address and Port into the relevant
+            boxes.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Click "OK" to close the "Network Settings" dialog, then click
+        "Apply" in the "Java Control Panel". Now try to download/install the
+        openCDMS software again. Hopefully it will now work.</para>
+
+        <section id="installwsproxydoesntwork">
+          <title>What if it still doesn't work?</title>
+
+          <para>When I was doing this myself I had problems when using the
+          “Automatic proxy configuration script” option for the Java WebStart
+          proxy. If your Internet Explorer settings are for a Proxy
+          Configuration Script, and using this for the Java WebStart proxy
+          still does not fix the problem try the following:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Copy and paste the URL of the proxy configuration script
+              into the Address bar of Internet Explorer. Choose to save the
+              file. Then open the file in Notepad or Wordpad, scroll through
+              it and look for a line like this (where each X below represents
+              a number from 0 to 999):</para>
+
+              <programlisting>else
+    return “PROXY X.X.X.X”;</programlisting>
+            </listitem>
+
+            <listitem>
+              <para>Now go through Section 2 above again, but in the "Network
+              Settings" dialog select "Use proxy server" and enter the X.X.X.X
+              numbers here. Enter 80 for "Port".</para>
+            </listitem>
+
+            <listitem>
+              <para>Click OK, then Apply, then try to download/install the
+              openCDMS software again.</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section id="installwsproxycontact">
+          <title>Who can I contact to get further help?</title>
+
+          <para>We suggest that you contact your local IT support team in the
+          first instance. This document will hopefully give them all the
+          information that they require to configure the Proxy for Java
+          WebStart.</para>
+
+          <para>Failing that, or if your IT support need more info, contact
+          <link linkend="support">openCDMS Support</link>.</para>
+        </section>
+      </section>
+
+      <section id="installtroubleshooting">
+        <title>Troubleshooting Installation</title>
+
+        <section id="installnojava">
+          <title>Java not installed or enabled in your web browser</title>
+
+          <para>If you see the following dialog box in Internet Explorer after
+          entering the URL of the openCDMS software that you are trying to
+          install.</para>
+
+          <figure>
+            <title>Java not installed dialog</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_m3c13d077.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>This means that either Java is not installed on enabled on
+          your browser. Please contact <link linkend="support">PsyGrid
+          Support</link>.</para>
+        </section>
+
+        <section id="installwrongjava">
+          <title>Wrong Java version installed</title>
+
+          <para>If you see the following message during installation, click on
+          details</para>
+
+          <figure>
+            <title>Wrong java version installed (1)</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_262d1e20.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+
+          <para>This usually means you have the wrong version of Java
+          installed. Please contact either <link linkend="support">openCDMS
+          Support</link> or your local NHS IT support. You need the Java
+          Virtual Machine version of 1.5 (5.0) or higher. See <xref
+          linkend="installconfiguring" /> for details of how to check if you
+          have Java installed</para>
+
+          <figure>
+            <title>Wrong java version installed (2)</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGridUserGuide_html_m1e9fdb2b.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </section>
+      </section>
+
+      <section>
+        <title>Using different computers and/or logins</title>
+
+        <para>If you intend to work from more than one computer then the
+        openCDMS software will have to be installed on all computers that you
+        use.</para>
+
+        <para>Also, note that the openCDMS software applications store data on
+        your computer's hard-drive between sessions. This is particularly
+        pertinent for openCDMS Collect where data that has been entered but
+        not committed to the central database is stored (encrypted) on your
+        hard-drive. Therefore if you do some work using one computer, log off,
+        then move to a different computer and logon there, any data stored on
+        the hard-drive of the first computer <emphasis role="italics">will not
+        be available to you</emphasis>.</para>
+
+        <para>Furthermore, the location on your computer's hard-drive where
+        data is stored between sessions is dependent on the username that you
+        use to login to the computer. If you use different computer logins
+        then data from sessions where another login was used will not be
+        available to you. This is particularly important to note when you
+        share your computer with other users, who may have left the machine
+        logged in with another username. If in doubt, log out then log back in
+        again using your own username.</para>
+
+        <para>We recommend that, if at all possible, you always use openCDMS
+        software using the <emphasis role="bold">same computer</emphasis>, and
+        you always login to that computer with the <emphasis role="bold">same
+        username</emphasis>. This will minimize the chances of any data going
+        'missing'. If this is not possible then please contact <link
+        linkend="support">openCDMS Support</link> for advice pertinent to your
+        exact situation.</para>
+      </section>
+    </section>
+
+    <section id="installremove">
+      <title>Uninstallation</title>
+
+      <para>You may want to remove the openCDMS software from your computer if
+      you are no longer using it, or if you want to make sure that you have
+      the latest version installed (the software should update automatically
+      when a new version is deployed but occasionally this does not
+      happen).</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Select "Run..." from the Windows Start menu.</para>
+        </listitem>
+
+        <listitem>
+          <para>Type "javaws -viewer" (without the quotes) into the Run dialog
+          and click OK.</para>
+
+          <figure>
+            <title>Run dialog</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/WebstartProxy_html_778c3545.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </listitem>
+
+        <listitem>
+          <para>The Java Cache Viewer will be displayed. In the "Show:"
+          drop-down list select "Applications" to make sure that only
+          applications are displayed in the list.</para>
+
+          <figure>
+            <title>Java Cache Viewer</title>
+
+            <screenshot>
+              <screeninfo></screeninfo>
+
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/javacacheviewer.jpg" />
+                </imageobject>
+              </mediaobject>
+            </screenshot>
+          </figure>
+        </listitem>
+
+        <listitem>
+          <para>Locate the application that you wish to uninstall, right click
+          on it and select Delete.</para>
+        </listitem>
+
+        <listitem>
+          <para>If you wish to now re-install the software just follow the
+          steps in <xref linkend="installdownload" /> in the same way as when
+          the software was installed originally</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Note that uninstalling an application in this way does not remove
+      from your computers hard-drive any files that the application uses to
+      store data between sessions. This is an advanced topic and if you
+      require to do this please contact <link linkend="support">openCDMS
+      Support</link> for assistance.</para>
+    </section>
+
+    <section id="reinstall">
+      <title>Re-installation</title>
+
+      <para>It has been reported by some users that openCDMS applications
+      sometimes go "missing" i.e. double-clicking on a desktop icon gives an
+      error. To re-install the application follow these steps:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Follow the steps detailed in <xref linkend="installremove" />
+          up until viewing the list of applications in the Java Cache
+          Viewer.</para>
+        </listitem>
+
+        <listitem>
+          <para>The application you were trying to start will not appear in
+          this list. Close the Java Cache Viewer.</para>
+        </listitem>
+
+        <listitem>
+          <para>You should now see a window Java Control Panel. In the General
+          tab, Temporary Internet Files section click Settings...</para>
+        </listitem>
+
+        <listitem>
+          <para>The click Delete Files... Leave both checkboxes checked and
+          click OK.</para>
+        </listitem>
+
+        <listitem>
+          <para>You should now be able to re-install the openCDMS application
+          by entering the relevant URL in your web browser.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+</chapter>

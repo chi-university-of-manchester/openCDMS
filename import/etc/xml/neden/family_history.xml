@@ -1,0 +1,556 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="5">
+        <description>Family History</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="7" column="2"/>
+            	<mapping source="7" column="3"/>
+            	<mapping source="7" column="4"/>
+            	<mapping source="60" column="2"/>
+            	<mapping source="60" column="3"/>
+            	<mapping source="60" column="4"/>
+            	<mapping source="61" column="2"/>
+            	<mapping source="61" column="3"/>
+            	<mapping source="61" column="4"/>
+            	<mapping source="62" column="2"/>
+            	<mapping source="62" column="3"/>
+            	<mapping source="62" column="4"/>
+            	<mapping source="63" column="2"/>
+            	<mapping source="63" column="3"/>
+            	<mapping source="63" column="4"/>
+            	<mapping source="64" column="2"/>
+            	<mapping source="64" column="3"/>
+            	<mapping source="64" column="4"/>
+            	<mapping source="65" column="2"/>
+            	<mapping source="65" column="3"/>
+            	<mapping source="65" column="4"/>
+            	<mapping source="66" column="2"/>
+            	<mapping source="66" column="3"/>
+            	<mapping source="66" column="4"/>
+            	<mapping source="67" column="2"/>
+            	<mapping source="67" column="3"/>
+            	<mapping source="67" column="4"/>
+            	<mapping source="68" column="2"/>
+            	<mapping source="68" column="3"/>
+            	<mapping source="68" column="4"/>
+            </emptydoc>
+            <interviewer source="7" column="4"/>
+            <interviewdate source="7" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="true" index="0">
+                	<instances>
+                		<instance index="0">
+                			<emptyinst>
+                				<mapping source="7" column="2"/>
+                				<mapping source="7" column="3"/>
+                				<mapping source="7" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="1">
+                			<emptyinst>
+                				<mapping source="60" column="2"/>
+                				<mapping source="60" column="3"/>
+                				<mapping source="60" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="2">
+                			<emptyinst>
+                				<mapping source="61" column="2"/>
+                				<mapping source="61" column="3"/>
+                				<mapping source="61" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="3">
+                			<emptyinst>
+                				<mapping source="62" column="2"/>
+                				<mapping source="62" column="3"/>
+                				<mapping source="62" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="4">
+                			<emptyinst>
+                				<mapping source="63" column="2"/>
+                				<mapping source="63" column="3"/>
+                				<mapping source="63" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="5">
+                			<emptyinst>
+                				<mapping source="64" column="2"/>
+                				<mapping source="64" column="3"/>
+                				<mapping source="64" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="6">
+                			<emptyinst>
+                				<mapping source="65" column="2"/>
+                				<mapping source="65" column="3"/>
+                				<mapping source="65" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="7">
+                			<emptyinst>
+                				<mapping source="66" column="2"/>
+                				<mapping source="66" column="3"/>
+                				<mapping source="66" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="8">
+                			<emptyinst>
+                				<mapping source="67" column="2"/>
+                				<mapping source="67" column="3"/>
+                				<mapping source="67" column="4"/>
+               				</emptyinst>
+            			</instance>
+                		<instance index="9">
+                			<emptyinst>
+                				<mapping source="68" column="2"/>
+                				<mapping source="68" column="3"/>
+                				<mapping source="68" column="4"/>
+               				</emptyinst>
+            			</instance>
+           			</instances>
+                    <basicentry index="0">
+                        <description>Relative</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mother</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Father</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Brother or sister</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Grandparent (mother's side)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Grandparent (father's side)</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Aunt or uncle (mother's side)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Aunt or uncle (father's side)</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Cousin (mother's side)</description>
+                                <input special="false">8</input>
+                                <output>7</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 9. Cousin (father's side)</description>
+                                <input special="false">9</input>
+                                <output>8</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="5" occurrence="0"/>
+                        <mapping source="60" column="5" occurrence="1"/>
+                        <mapping source="61" column="5" occurrence="2"/>
+                        <mapping source="62" column="5" occurrence="3"/>
+                        <mapping source="63" column="5" occurrence="4"/>
+                        <mapping source="64" column="5" occurrence="5"/>
+                        <mapping source="65" column="5" occurrence="6"/>
+                        <mapping source="66" column="5" occurrence="7"/>
+                        <mapping source="67" column="5" occurrence="8"/>
+                        <mapping source="68" column="5" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>Presumed Nature of Illness</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Illness, diagnosis unknown</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Schizophrenia</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Bi-polar</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Depressive illness</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Unspecified psychosis</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Other (specify)</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="6" occurrence="0"/>
+                        <mapping source="60" column="6" occurrence="1"/>
+                        <mapping source="61" column="6" occurrence="2"/>
+                        <mapping source="62" column="6" occurrence="3"/>
+                        <mapping source="63" column="6" occurrence="4"/>
+                        <mapping source="64" column="6" occurrence="5"/>
+                        <mapping source="65" column="6" occurrence="6"/>
+                        <mapping source="66" column="6" occurrence="7"/>
+                        <mapping source="67" column="6" occurrence="8"/>
+                        <mapping source="68" column="6" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Details</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translation of null to std code Data not known</description>
+                        		<input special="false"></input>
+                        		<output>0</output>
+                        	</translation>
+                        </translations>
+                        <mapping source="7" column="7" occurrence="0"/>
+                        <mapping source="60" column="7" occurrence="1"/>
+                        <mapping source="61" column="7" occurrence="2"/>
+                        <mapping source="62" column="7" occurrence="3"/>
+                        <mapping source="63" column="7" occurrence="4"/>
+                        <mapping source="64" column="7" occurrence="5"/>
+                        <mapping source="65" column="7" occurrence="6"/>
+                        <mapping source="66" column="7" occurrence="7"/>
+                        <mapping source="67" column="7" occurrence="8"/>
+                        <mapping source="68" column="7" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Contact with Mental Health Services</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Never received care</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Not currently receiving care, but has previously received care</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Currently receiving care</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code Data not known</description>
+                                <input special="false">999</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="8" occurrence="0"/>
+                        <mapping source="60" column="8" occurrence="1"/>
+                        <mapping source="61" column="8" occurrence="2"/>
+                        <mapping source="62" column="8" occurrence="3"/>
+                        <mapping source="63" column="8" occurrence="4"/>
+                        <mapping source="64" column="8" occurrence="5"/>
+                        <mapping source="65" column="8" occurrence="6"/>
+                        <mapping source="66" column="8" occurrence="7"/>
+                        <mapping source="67" column="8" occurrence="8"/>
+                        <mapping source="68" column="8" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Specify team seen, if known</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translation of null to std code Data not known</description>
+                        		<input special="false"></input>
+                        		<output>0</output>
+                        	</translation>
+                        </translations>
+                        <mapping source="7" column="9" occurrence="0"/>
+                        <mapping source="60" column="9" occurrence="1"/>
+                        <mapping source="61" column="9" occurrence="2"/>
+                        <mapping source="62" column="9" occurrence="3"/>
+                        <mapping source="63" column="9" occurrence="4"/>
+                        <mapping source="64" column="9" occurrence="5"/>
+                        <mapping source="65" column="9" occurrence="6"/>
+                        <mapping source="66" column="9" occurrence="7"/>
+                        <mapping source="67" column="9" occurrence="8"/>
+                        <mapping source="68" column="9" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Type of Care Received</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. None</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Outpatients appointments only</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Assertive outreach/ Home treatment</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code Data not known</description>
+                                <input special="false">999</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="10" occurrence="0"/>
+                        <mapping source="60" column="10" occurrence="1"/>
+                        <mapping source="61" column="10" occurrence="2"/>
+                        <mapping source="62" column="10" occurrence="3"/>
+                        <mapping source="63" column="10" occurrence="4"/>
+                        <mapping source="64" column="10" occurrence="5"/>
+                        <mapping source="65" column="10" occurrence="6"/>
+                        <mapping source="66" column="10" occurrence="7"/>
+                        <mapping source="67" column="10" occurrence="8"/>
+                        <mapping source="68" column="10" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Admissions</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code Data not known</description>
+                                <input special="false">999</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data unable to be captured</description>
+                                <input special="false"></input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="11" occurrence="0"/>
+                        <mapping source="60" column="11" occurrence="1"/>
+                        <mapping source="61" column="11" occurrence="2"/>
+                        <mapping source="62" column="11" occurrence="3"/>
+                        <mapping source="63" column="11" occurrence="4"/>
+                        <mapping source="64" column="11" occurrence="5"/>
+                        <mapping source="65" column="11" occurrence="6"/>
+                        <mapping source="66" column="11" occurrence="7"/>
+                        <mapping source="67" column="11" occurrence="8"/>
+                        <mapping source="68" column="11" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>No of times hospitalised</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Not applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="12" occurrence="0"/>
+                        <mapping source="60" column="12" occurrence="1"/>
+                        <mapping source="61" column="12" occurrence="2"/>
+                        <mapping source="62" column="12" occurrence="3"/>
+                        <mapping source="63" column="12" occurrence="4"/>
+                        <mapping source="64" column="12" occurrence="5"/>
+                        <mapping source="65" column="12" occurrence="6"/>
+                        <mapping source="66" column="12" occurrence="7"/>
+                        <mapping source="67" column="12" occurrence="8"/>
+                        <mapping source="68" column="12" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Year of last admission</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Not applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="13" occurrence="0"/>
+                        <mapping source="60" column="13" occurrence="1"/>
+                        <mapping source="61" column="13" occurrence="2"/>
+                        <mapping source="62" column="13" occurrence="3"/>
+                        <mapping source="63" column="13" occurrence="4"/>
+                        <mapping source="64" column="13" occurrence="5"/>
+                        <mapping source="65" column="13" occurrence="6"/>
+                        <mapping source="66" column="13" occurrence="7"/>
+                        <mapping source="67" column="13" occurrence="8"/>
+                        <mapping source="68" column="13" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Reason for last admission</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Not applicable</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for null to std code Data not known</description>
+                                <input special="false"></input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="14" occurrence="0"/>
+                        <mapping source="60" column="14" occurrence="1"/>
+                        <mapping source="61" column="14" occurrence="2"/>
+                        <mapping source="62" column="14" occurrence="3"/>
+                        <mapping source="63" column="14" occurrence="4"/>
+                        <mapping source="64" column="14" occurrence="5"/>
+                        <mapping source="65" column="14" occurrence="6"/>
+                        <mapping source="66" column="14" occurrence="7"/>
+                        <mapping source="67" column="14" occurrence="8"/>
+                        <mapping source="68" column="14" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Yes, unknown</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Anti-psychotic</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Other</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="15" occurrence="0"/>
+                        <mapping source="60" column="15" occurrence="1"/>
+                        <mapping source="61" column="15" occurrence="2"/>
+                        <mapping source="62" column="15" occurrence="3"/>
+                        <mapping source="63" column="15" occurrence="4"/>
+                        <mapping source="64" column="15" occurrence="5"/>
+                        <mapping source="65" column="15" occurrence="6"/>
+                        <mapping source="66" column="15" occurrence="7"/>
+                        <mapping source="67" column="15" occurrence="8"/>
+                        <mapping source="68" column="15" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Was the client aware of this relative's illness?</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Unaware of relative's illness</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Aware of relative's illness but had little contact with them </description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Aware of relative's illness and had some contact with them during their illness</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Had regular contact with their relative during their illness</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Visited their relative on a Mental Health ward</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to std code Data not known</description>
+                                <input special="false">999</input>
+                                <output>0</output>
+                            </translation>
+                        </translations>
+                        <mapping source="7" column="16" occurrence="0"/>
+                        <mapping source="60" column="16" occurrence="1"/>
+                        <mapping source="61" column="16" occurrence="2"/>
+                        <mapping source="62" column="16" occurrence="3"/>
+                        <mapping source="63" column="16" occurrence="4"/>
+                        <mapping source="64" column="16" occurrence="5"/>
+                        <mapping source="65" column="16" occurrence="6"/>
+                        <mapping source="66" column="16" occurrence="7"/>
+                        <mapping source="67" column="16" occurrence="8"/>
+                        <mapping source="68" column="16" occurrence="9"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

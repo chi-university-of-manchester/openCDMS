@@ -1,0 +1,565 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- Ant build script for PsyGrid Electronic Screening Log -->
+<project name="PsyGrid Electronic Screening Log" basedir="." default="all">
+
+	<description>PsyGrid Electronic Screening Log Ant build file</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+	<property file="../psygrid-build/versions.properties" />
+
+	<!-- Set global properties for the build -->
+	<property file="build.properties" />
+
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="java.src" value="${basedir}/src"/>
+	<property name="java.classes" value="${basedir}/build/classes"/>
+	<property name="gen.dir" value="${basedir}/build/gen"/>
+	<property name="wsdl.dir" value="${basedir}/build/wsdl"/>
+	<property name="doc.dir" value="${basedir}/build/doc"/>
+	<property name="test.src" value="${basedir}/test"/>
+	<property name="test.classes" value="${basedir}/build/test/classes"/>
+	<property name="test.output" value="${basedir}/build/test/output"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib"/>
+	<property name="common.lib.client" value="${basedir}/../psygrid-common/lib/client"/>
+	<property name="common.dist.dir" value="${basedir}/../psygrid-common/dist"/>
+	<property name="esl.dist.dir" value="${basedir}/../electronic-screening-log/dist"/>
+	<property name="tmp.dir"	value="${basedir}/build/tmp"/>
+
+	<property name="common.src.dir" value="${basedir}/../psygrid-common/src"/>
+	<property name="meds.dist.dir" value="${basedir}/../meds-distribution/dist"/>
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib" />
+	<property name="common.dist.dir" value="${basedir}/../psygrid-common/dist"/>
+	<property name="randomization.dist.dir" value="${basedir}/../randomization/dist"/>
+
+	<path id="compile.class.path">
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.dist.dir}">
+			<include name="common-client_*.jar"/>
+		</fileset>
+		<fileset dir="${meds.dist.dir}">
+			<include name="*meds-client_*.jar"/>
+		</fileset>
+		<fileset dir="../security/dist">
+			<include name="psygrid-security*.jar" />
+		</fileset>
+		<fileset dir="${randomization.dist.dir}">
+			<include name="randomization-client_*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="tests.classpath">
+		<path refid="compile.class.path" />
+		<pathelement location="${java.classes}" />
+		<pathelement location="${test.classes}" />
+	</path>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${java.classes}"/>
+		<mkdir dir="${test.classes}"/>
+		<mkdir dir="${test.output}"/>
+		<mkdir dir="${wsdl.dir}"/>
+		<mkdir dir="${gen.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/sql"/>
+		<mkdir dir="${tmp.dir}"/>
+
+		<taskdef name="axis-java2wsdl" classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="axis-wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="xdoclet" classname="org.xdoclet.ant.XDocletTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+	</target>
+
+	<target name="clean-eclipse" if="eclipse.running" description="Clean up for Eclipse">
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite" />
+	</target>
+
+	<target name="clean" depends="clean-eclipse" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${dist.dir}"/>
+		</delete>
+	</target>
+
+	<target name="compile" depends="init" description="Compile java source files">
+		<javac target="1.5" source="1.5" destdir="${java.classes}" classpathref="compile.class.path" debug="true">
+			<src path="${java.src}" />
+			<src path="${gen.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="compile-tests" depends="compile" description="Compile test classes">
+		<javac target="1.5" source="1.5" destdir="${test.classes}" classpathref="tests.classpath" debug="true">
+			<src path="${test.src}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+	<target  name="run-tests" description="run tests using testng" depends="compile-tests">
+	      <testng classpathref="tests.classpath" outputdir="${test.output}" verbose="2" haltonfailure="true" >
+	         <classfileset dir="${test.classes}" includes="**/*.class"/>
+	      </testng>
+	</target>
+
+
+	<target name="xdoclet2" depends="compile" description="Generate Hibernate mapping and config files using XDoclet2">
+		<xdoclet>
+
+			<!-- the files that will be parsed for Hibernate XDoclet tags. -->
+			<fileset dir="${java.src}">
+				<include name="**/model/hibernate/*.java" />
+				<include name="**/scheduling/hibernate/*.java" />
+			</fileset>
+			<fileset dir="${common.src.dir}/org/psygrid/common/email">
+						<include name="QueuedEmail.java" />
+						<include name="Email.java"/>
+			</fileset>
+
+			<!-- generate the Hibernate mapping files -->
+			<component
+				classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+				destdir="${java.classes}"
+				version="${hibernate.version}"
+			/>
+
+			<!-- generate the Hibernate configuration file -->
+			<component
+				classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin"
+				destdir="${java.classes}"
+				version="${hibernate.version}"
+				jdbcdriver="${database.driver}"
+            	dialect="${database.dialect}"
+				jdbcurl="${database.url}${database.schema.esl}"
+				jdbcusername="${database.user}"
+				jdbcpassword="${database.password}" />
+		</xdoclet>
+	</target>
+
+	<target name="do-drop-schema" if="do.drop.schema" description="Drop the database schema">
+		<sql
+			driver="${database.driver}"
+			url="${database.url}${database.schema.esl}"
+			userid="${database.user}"
+			password="${database.password}"
+			classpathref="compile.class.path"
+        	src="${dist.dir}/sql/drop-${database.provider}.sql" />
+	</target>
+
+	<target name="drop-schema" description="Drop the database schema, if the property for exporting the schema is set to true">
+		<echo message="schema.export=${schema.export}" />
+		<condition property="do.drop.schema">
+			<and>
+				<equals arg1="${schema.export}" arg2="true" />
+				<available file="${dist.dir}/sql/drop-${database.provider}.sql" />
+			</and>
+		</condition>
+		<antcall target="do-drop-schema" />
+	</target>
+
+	<target name="generateschema" depends="xdoclet2, eclipse-refresh" description="Generate database schema">
+
+		<!-- run the export to the database (if export=true) -->
+		<hibernatetool destdir="${build.dir}" classpath="${java.classes}" >
+			<configuration configurationfile="${java.classes}/hibernate.cfg.xml" />
+			<hbm2ddl export="${schema.export}" drop="false" />
+		</hibernatetool>
+
+		<!-- generate the "drop" SQL script, containing drop statements only -->
+		<hibernatetool destdir="${build.dir}" classpath="${java.classes}">
+			<configuration configurationfile="${java.classes}/hibernate.cfg.xml" />
+			<hbm2ddl export="false" drop="true" create="false" outputfilename="drop.sql" />
+		</hibernatetool>
+
+		<!-- generate the "create" SQL script, containing no drop statements -->
+		<hibernatetool destdir="${build.dir}" classpath="${java.classes}">
+			<configuration configurationfile="${java.classes}/hibernate.cfg.xml" />
+			<hbm2ddl export="false" drop="false" create="true" outputfilename="create.sql" />
+		</hibernatetool>
+
+		<!-- copy the drop and create scripts to files with provider specific names -->
+		<copy file="${build.dir}/drop.sql" tofile="${dist.dir}/sql/drop-${database.provider}.sql" />
+		<copy file="${build.dir}/create.sql" tofile="${dist.dir}/sql/create-${database.provider}.sql" />
+	</target>
+
+	<target name="prepare-datasource" depends="drop-schema, generateschema, generate-application-context-xml" />
+
+	<target name="javadoc" description="Generate JavaDocs">
+		<javadoc packagenames="org.psygrid.*" sourcepath="${java.src}" defaultexcludes="yes" destdir="${doc.dir}" author="true" link="http://java.sun.com/j2se/1.5.0/docs/api/" />
+	</target>
+
+	<target name="build" depends="compile, configure-security, generate-esl-properties" description="Build jars etc">
+
+		<jar destfile="${dist.dir}/esl-client_${esl.version}.jar" basedir="${java.classes}">
+			<include name="org/psygrid/esl/model/**/*.class" />
+			<include name="org/psygrid/esl/*.class" />
+			<include name="org/psygrid/esl/services/*.class" />
+			<exclude name="org/psygrid/esl/services/*SoapBindingImpl.class" />
+			<include name="org/psygrid/esl/services/client/*.class" />
+			<include name="org/psygrid/esl/util/*.class" />
+			<include name="org/psygrid/esl/randomise/*.class" />
+		</jar>
+
+		<!-- What's this for
+		<jar destfile="${dist.dir}/esl-server_${esl.version}.jar"
+    			basedir="${build.dir}">
+			<include name="org/psygrid/esl/services/SecureSoapBindingImpl.class"/>
+		</jar>
+		-->
+		
+		<!-- Jar for using services directly from the web application -->
+		<jar destfile="${dist.dir}/esl-server_${esl.version}.jar">
+			<fileset dir="${java.classes}">
+				<include name="**/*.class"/>
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+			<fileset dir="${build.dir}">
+				<include name="paqc.properties"/>
+				<include name="aaclient.properties"/>
+				<include name="esl.properties"/>
+			</fileset>
+			<zipfileset dir="${build.dir}" prefix="esl">
+				<include name="servicesContext.xml"/>
+			</zipfileset>
+		</jar>
+
+
+		<war destfile="${dist.dir}/esl.war" webxml="${etc.dir}/web.xml">
+			<lib dir="../security/dist">
+				<include name="psygrid-security*.jar" />
+			</lib>
+			<lib dir="${randomization.dist.dir}">
+				<include name="randomization-client_*.jar"/>
+			</lib>
+			<lib dir="${meds.dist.dir}">
+				<include name="meds-client_*.jar"/>
+			</lib>
+			<lib dir="${common.dist.dir}">
+				<include name="common-client_*.jar"/>
+			</lib>
+			<classes dir="${java.classes}">
+				<exclude name="org/psygrid/data/utils/*.class"/>
+				<exclude name="org/psygrid/esl/old/**/*.class" />
+				<exclude name="org/psygrid/esl/services/client/**/*.class" />
+			</classes>
+			<classes dir="${java.src}">
+				<include name="**/*.xml" />
+			</classes>
+			<classes dir="${wsdl.dir}">
+				<include name="*.wsdl" />
+			</classes>
+			<classes dir="${build.dir}">
+				<!--
+                    <include name="*.jks"/>
+                -->
+				<include name="paqc.properties" />
+				<include name="aaclient.properties" />
+				<include name="esl.properties" />
+			</classes>
+			<classes dir="${etc.dir}">
+				<include name="log4j.xml" />
+			</classes>
+			<classes file="${etc.dir}/rebel.xml"/>
+			<webinf dir="${gen.dir}">
+				<include name="server-config.wsdd" />
+			</webinf>
+			<webinf dir="${build.dir}">
+				<include name="servicesContext.xml"/>
+				<include name="jobsContext.xml"/>
+				<include name="applicationContext.xml"/>
+			</webinf>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+	</target>
+
+	<target name="build-standalone" depends="compile" description="Build jars etc">
+
+		<jar destfile="${dist.dir}/esl-client_${esl.version}.jar" basedir="${build.dir}">
+			<include name="org/psygrid/esl/model/**/*.class" />
+			<include name="org/psygrid/esl/*.class" />
+			<include name="org/psygrid/esl/services/*.class" />
+			<exclude name="org/psygrid/esl/services/EslSoapBindingImpl.class" />
+			<include name="org/psygrid/esl/services/client/*.class" />
+			<include name="org/psygrid/esl/util/*.class" />
+			<include name="org/psygrid/esl/randomise/*.class" />
+		</jar>
+
+		<war destfile="${dist.dir}/esl.war" webxml="${etc.dir}/web.xml">
+			<lib dir="${common.lib.dir}">
+				<include name="*.jar" />
+				<exclude name="db2cc*.jar" />
+				<exclude name="mysql-connector*.jar" />
+				<exclude name="postgresql*.jar" />
+			</lib>
+			<lib dir="../security/dist">
+				<include name="psygrid-security_1-0.jar" />
+			</lib>
+			<lib dir="${randomization.dist.dir}">
+				<include name="${psygrid.randomization.jar}"/>
+			</lib>
+			<lib dir="${common.dist.dir}">
+				<include name="${psygrid.common.jar}"/>
+			</lib>
+			<classes dir="${build.dir}">
+				<exclude name="**/*.sql" />
+				<exclude name="org/psygrid/esl/old/**/*.class" />
+				<exclude name="org/psygrid/esl/services/client/**/*.class" />
+			</classes>
+			<classes dir="${java.src}">
+				<include name="**/*.xml" />
+			</classes>
+			<classes dir="${wsdl.dir}/wsdl">
+				<include name="*.wsdl" />
+			</classes>
+			<classes dir="${build.dir}">
+				<include name="*.jks" />
+				<include name="paqc.properties" />
+				<include name="aaclient.properties" />
+			</classes>
+			<classes dir="${etc.dir}">
+				<include name="../psygrid-common/etc/log4j.xml" />
+			</classes>
+			<webinf dir="${gen.dir}">
+				<include name="server-config.wsdd" />
+			</webinf>
+			<webinf dir="${build.dir}">
+				<include name="servicesContext.xml"/>
+				<include name="jobsContext.xml"/>
+				<include name="applicationContext.xml" />
+			</webinf>
+		</war>
+	</target>
+
+	<target name="compile-subset" depends="init" description="Compile a subset of the java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${java.classes}" classpathref="compile.class.path" debug="true">
+			<src path="${java.src}" />
+			<src path="${common.src.dir}" />
+			<include name="**/*.java" />
+			<exclude name="org/psygrid/esl/services/client/*.java" />
+			<exclude name="org/psygrid/esl/utils/*.java" />
+		</javac>
+	</target>
+
+	<target name="export-wsdl" depends="compile-subset" description="Generate WSDL">
+
+		<!-- web-service -->
+		<axis-java2wsdl classpath="${java.classes}"
+			classname="org.psygrid.esl.services.Esl"
+        	style="rpc"
+        	namespace="urn:services.esl.psygrid.org"
+        	location="${esl.url}/esl/services/esl"
+	        output="${wsdl.dir}/esl.wsdl"
+        	extraclasses="org.psygrid.esl.model.dto.Role
+        				  org.psygrid.esl.model.dto.Strata
+        				  org.psygrid.esl.model.dto.Address
+        				  org.psygrid.common.email.EmailDTO
+        				  org.psygrid.esl.util.Pair
+        				  org.psygrid.esl.randomise.EmailType
+						  org.psygrid.esl.model.hibernate.Site
+						  org.psygrid.esl.model.hibernate.CustomEmailInfo"
+        />
+	</target>
+
+	<target name="eclipse-refresh" if="eclipse.running" description="Refresh eclipse before running wsdl2java">
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite" />
+	</target>
+
+	<target name="export-java" depends="export-wsdl, eclipse-refresh" description="Generate java and wsdd from wsdl">
+
+		<!-- Esl web-service -->
+		<axis-wsdl2java
+        	deployscope="Application"
+        	output="${gen.dir}"
+        	serverside="true"
+        	skeletondeploy="false"
+        	url="${wsdl.dir}/esl.wsdl"
+        	verbose="true"
+        	debug="true"
+        />
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/esl/services/deploy.wsdd" tofile="${gen.dir}/org/psygrid/esl/services/deploy-esl.wsdd" />
+		<move file="${gen.dir}/org/psygrid/esl/services/undeploy.wsdd" tofile="${gen.dir}/org/psygrid/esl/services/undeploy-esl.wsdd" />
+
+		<!-- delete the generated files that we already have versions of -->
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}">
+				<include name="**/Esl.java"/>
+				<include name="**/*SoapBindingImpl.java"/>
+				<include name="**/*Fault.java"/>
+				<include name="**/*Exception.java"/>
+				<include name="**/EmailDTO.java"/>
+			</fileset>
+		</delete>
+
+		<!-- delete generated JavaBeans -->
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}/org/psygrid/esl/model"/>
+			<fileset dir="${gen.dir}/org/psygrid/esl/util"/>
+			<fileset dir="${gen.dir}/org/psygrid/esl/randomise"/>
+		</delete>
+
+		<!-- generate server-config.wsdd -->
+		<java
+			classname="org.apache.axis.utils.Admin"
+			fork="true"
+			failonerror="true"
+			classpathref="compile.class.path"
+			dir="${gen.dir}">
+			<arg value="server" />
+			<arg file="${gen.dir}/org/psygrid/esl/services/deploy-esl.wsdd" />
+			<classpath>
+				<path refid="compile.class.path" />
+				<pathelement location="${java.classes}" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="generate-application-context-xml">
+		<copy todir="${build.dir}" overwrite="true">
+			<fileset dir="${etc.dir}/templates">
+				<include name="*Context.xml"/>
+			</fileset>
+		</copy>
+		<replace dir="${build.dir}" propertyFile="build.properties" includes="*Context.xml">
+			<replacefilter token="@username@" value="${database.user}" />
+			<replacefilter token="@password@" value="${database.password}" />
+			<replacefilter token="@driver@" value="${database.driver}" />
+			<replacefilter token="@db_url@" value="${database.url.server}" />
+			<replacefilter token="@db_schema@" value="${database.schema.esl}" />
+			<replacefilter token="@dialect@" value="${database.dialect}" />
+			<replacefilter token="@mailServer@" value="${mail.server}" />
+			<replacefilter token="@accessController@" value="${access.controller.class}" />
+			<replacefilter token="@sendmails@" value="${mail.send}" />
+			<replacefilter token="@systemAddress@" value="${mail.system.address}" />
+			<replacefilter token="@smsURL@" value="${sms.url}" />
+			<replacefilter token="@smsUsername@" value="${sms.username}" />
+			<replacefilter token="@smsPassword@" value="${sms.password}" />
+			<replacefilter token="@sendSMSs@" value="${sms.send}" />
+			<replacefilter token="@smsEmailLog@" value="${sms.email.logs}" />
+			<replacefilter token="@proxy@" value="${proxy}" />
+			<replacefilter token="@proxyPort@" value="${proxy.port}" />
+			<replacefilter token="@proxyAuthType@" value="${proxy.authtype}" />
+			<replacefilter token="@proxyRealm@" value="${proxy.realm}" />
+			<replacefilter token="@proxyWindowsDomain@" value="${proxy.windows.domain}" />
+			<replacefilter token="@proxyUsername@" value="${proxy.username}" />
+			<replacefilter token="@proxyPassword@" value="${proxy.password}" />
+		</replace>
+	</target>
+
+	<target name="configure-security">
+		<copy file="${etc.dir}/templates/aaclient.properties" tofile="${build.dir}/aaclient.properties" overwrite="true" />
+		<replace file="${build.dir}/aaclient.properties" propertyFile="build.properties">
+			<replacefilter token="@trustStoreLocation@" value="${org.psygrid.security.server.trustStoreLocation}" />
+			<replacefilter token="@keyStoreLocation@" value="${org.psygrid.security.server.keyStoreLocation}" />
+			<replacefilter token="@trustStorePassword@" value="${org.psygrid.security.server.trustStorePassword}" />
+			<replacefilter token="@keyStorePassword@" value="${org.psygrid.security.server.keyStorePassword}" />
+			<replacefilter token="@serviceURL@" value="${security.url}" />
+			<replacefilter token="@ldapDirectoryURL@" value="${security.ldap.url}" />
+		</replace>
+		<copy file="${etc.dir}/templates/paqc.properties" tofile="${build.dir}/paqc.properties" overwrite="true" />
+		<replace file="${build.dir}/paqc.properties" propertyFile="build.properties">
+			<replacefilter token="@trustStoreLocation@" value="${org.psygrid.security.server.trustStoreLocation}" />
+			<replacefilter token="@keyStoreLocation@" value="${org.psygrid.security.server.keyStoreLocation}" />
+			<replacefilter token="@trustStorePassword@" value="${org.psygrid.security.server.trustStorePassword}" />
+			<replacefilter token="@keyStorePassword@" value="${org.psygrid.security.server.keyStorePassword}" />
+			<replacefilter token="@serviceURL@" value="${security.url}" />
+		</replace>
+	</target>
+
+	<!-- Grab the shorthash code of the current git commit or 0000000 if unable to run git -->
+	<target name="git-revision">
+
+		<!-- The git command is different on unix-like and windows OSes  -->
+		<condition property="git.command" value="git.cmd" else="git">
+	   		<os family="windows" />
+	  	</condition>
+
+		<exec executable="${git.command}" outputproperty="git.shorthash" errorproperty="git.error">
+			<arg value="log"/>
+			<arg value="--pretty=format:%h"/>
+			<arg value="-n"/>
+			<arg value="1"/>
+	    </exec>
+
+		<!-- If there were errors grabbing the git shorthash set git.revision it to 0000000 -->
+		<condition property="git.revision" value="${git.shorthash}" else="0000000">
+			<length string="${git.error}" trim="yes" length="0" when="equal"/>
+		</condition>
+
+		<echo message="Git revision = ${git.revision}"/>
+
+	</target>
+
+
+	<target name="generate-esl-properties" depends="git-revision">
+
+		<property name="esl.revision" value="${git.revision}"/>
+
+		<copy file="${etc.dir}/templates/esl.properties" tofile="${build.dir}/esl.properties" overwrite="true" />
+		<replace file="${build.dir}/esl.properties" propertyFile="build.properties">
+			<replacefilter token="@version@" value="${esl.version}" />
+			<replacefilter token="@revision@" value="${esl.revision}" />
+		</replace>
+
+	</target>
+
+	<target name="deploy" depends="build">
+		<copy file="${dist.dir}/esl.war" todir="/opt/tomcat/webapps" />
+	</target>
+
+	<!--
+	<target name="part1" depends="clean, init, compile-subset" />
+
+	<target name="part2" depends="export-java, prepare-datasource, build" />
+	-->
+
+	<target name="all-noschema" depends="clean, export-java, generate-application-context-xml, build" />
+
+	<target name="all-standalone" depends="clean, export-java, prepare-datasource, build-standalone" />
+
+	<target name="all" depends="clean, init, export-java, prepare-datasource, build" />
+
+
+</project>

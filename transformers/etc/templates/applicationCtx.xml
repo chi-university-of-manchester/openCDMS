@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- This applicationContext is for running the unit tests only.
+	 The deployment applicationContext definition can be found
+	 under the repository/etc folder -->
+
+<beans>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"><value>@driver@</value></property>
+        <property name="url"><value>@db_url@@db_schema@</value></property>
+        <property name="username"><value>@username@</value></property>
+        <property name="password"><value>@password@</value></property>
+    </bean>
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>org/psygrid/transformers/impl/postcode/Persistent.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">@dialect@</prop>
+        	</props>
+        </property>
+    </bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	     <property name="sessionFactory">
+             <ref local="sessionFactory"/>
+         </property>
+    </bean>
+    
+    <bean id="myPostcodeDAO" class="org.psygrid.transformers.impl.postcode.PostCodeDAOImpl">
+    	<property name="sessionFactory">
+        	<ref local="sessionFactory"/>
+    	</property>
+	</bean>
+    
+	<bean id="postcodeDAOService"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="myPostcodeDAO"/>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<prop key="*">PROPAGATION_REQUIRED</prop>
+	    	</props>
+	  	</property>
+	</bean>
+
+	<bean id="opcritTransformer"
+		class="org.psygrid.transformers.impl.external.OpcritTransformerImpl">
+		<property name="urlLocation" value="http://localhost:81/cgi-bin/opcrit/rateopcrit.py" />
+	</bean>
+
+	<bean id="drnNephropathyTransformer"
+		class="org.psygrid.transformers.impl.external.DrnNephropathyTransformerImpl">
+	</bean>
+
+</beans>

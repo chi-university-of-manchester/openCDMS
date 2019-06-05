@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="login"
+	targetNamespace="http://www.psygrid.org/xml/security/authentication/service"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:apachesoap="http://xml.apache.org/xml-soap"
+	xmlns:tns="http://www.psygrid.org/xml/security/authentication/service"
+	xmlns:impl="http://www.psygrid.org/xml/security/authentication/service"
+	xmlns:intf="http://www.psygrid.org/xml/security/authentication/service"
+	xmlns:types="http://www.psygrid.org/xml/security/authentication/service/types"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+	<types>
+		<xsd:schema
+			targetNamespace="http://www.psygrid.org/xml/security/authentication/service/types"
+			elementFormDefault="qualified" attributeFormDefault="qualified"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="InputFault" type="xsd:string" />
+			<xsd:element name="ProcessingFault" type="xsd:string" />
+			<xsd:element name="NotAuthorisedFault" type="xsd:string" />
+			<xsd:element name="AccountLockedFault" type="xsd:string" />
+			<xsd:element name="AccountDormantFault" type="xsd:string" />
+			<xsd:complexType name="passwordType">
+				<xsd:sequence>
+					<element name="password" type="xsd:short"
+						minOccurs="1" maxOccurs="unbounded">
+					</element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</types>
+
+	<wsdl:message name="NotAuthorisedFaultMessage">
+		<part name="FaultDiagnostic" element="types:NotAuthorisedFault" />
+	</wsdl:message>
+
+	<wsdl:message name="InputFaultMessage">
+		<part name="FaultDiagnostic" element="types:InputFault" />
+	</wsdl:message>
+
+	<wsdl:message name="ProcessingFaultMessage">
+		<part name="FaultDiagnostic" element="types:ProcessingFault" />
+	</wsdl:message>
+	
+	<wsdl:message name="AccountLockedFaultMessage">
+		<part name="FaultDiagnostic" element="types:AccountLockedFault" />
+	</wsdl:message>
+
+	<wsdl:message name="AccountDormantFaultMessage">
+		<part name="FaultDiagnostic" element="types:AccountDormantFault" />
+	</wsdl:message>
+	
+	
+	<wsdl:message name="loginRequest">
+		<wsdl:part name="username" type="xsd:string" />
+		<wsdl:part name="passwd" type="types:passwordType" />
+	</wsdl:message>
+
+	<wsdl:message name="loginResponse">
+		<wsdl:part name="loginReturn" type="xsd:string" />
+	</wsdl:message>
+	
+	<wsdl:message name="getTimeAtServerRequest">
+	</wsdl:message>
+
+	<wsdl:message name="getTimeAtServerResponse">
+		<wsdl:part name="serverTime" type="xsd:date" />
+	</wsdl:message>
+	
+	<wsdl:message name="getVersionRequest">
+		</wsdl:message>
+	<wsdl:message name="getVersionResponse">
+		<wsdl:part name="version" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:portType name="LoginServicePortType">
+		<wsdl:operation name="getTimeAtServer">
+			<wsdl:input message="impl:getTimeAtServerRequest"
+				name="getTimeAtServerRequest" />
+			<wsdl:output message="impl:getTimeAtServerResponse"
+				name="getTimeAtServerResponse" />
+			<fault name="ProcessingFault"
+				message="intf:ProcessingFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="login"
+			parameterOrder="username passwd">
+			<wsdl:input message="impl:loginRequest"
+				name="loginRequest" />
+			<wsdl:output message="impl:loginResponse"
+				name="loginResponse" />
+			<fault name="NotAuthorisedFault"
+				message="intf:NotAuthorisedFaultMessage" />
+			<fault name="ProcessingFault"
+				message="intf:ProcessingFaultMessage" />
+			<fault name="AccountLockedFault"
+				message="intf:AccountLockedFaultMessage" />
+			<fault name="AccountDormantFault"
+				message="intf:AccountDormantFaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="getVersion">
+			<wsdl:input message="impl:getVersionRequest" name="getVersionRequest"/>
+			<wsdl:output message="impl:getVersionResponse" name="getVersionResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="LoginServicePortTypeSOAPBinding"
+		type="impl:LoginServicePortType">
+		<wsdlsoap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="login">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="loginRequest">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="loginResponse">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:output>
+			<fault name="NotAuthorisedFault">
+				<wsdlsoap:fault
+					namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+					use="literal" name="NotAuthorisedFault" />
+			</fault>
+			<fault name="ProcessingFault">
+				<wsdlsoap:fault
+					namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+			<fault name="AccountLockedFault">
+				<wsdlsoap:fault
+					namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+					use="literal" name="AccountLockedFault" />
+			</fault>
+			<fault name="AccountDormantFault">
+				<wsdlsoap:fault
+					namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+					use="literal" name="AccountDormantFault" />
+			</fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTimeAtServer">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTimeAtServerRequest">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="getTimeAtServerResponse">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:output>
+			<fault name="ProcessingFault">
+				<wsdlsoap:fault
+					namespace="http://www.psygrid.org/xml/security/secure-service-example/service"
+					use="literal" name="ProcessingFault" />
+			</fault>
+		</wsdl:operation>
+		<wsdl:operation name="getVersion">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getVersionRequest">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:input>
+			<wsdl:output name="getVersionResponse">
+				<wsdlsoap:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:axis" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="login">
+		<wsdl:port binding="impl:LoginServicePortTypeSOAPBinding"
+			name="LoginServicePortTypeSOAPPort">
+			<wsdlsoap:address location="@login@" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

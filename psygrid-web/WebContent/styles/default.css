@@ -1,0 +1,302 @@
+/*
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body
+{
+margin: 0;
+padding: 0;
+font: 69% "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+color: Black;
+background-color: #fff;
+}
+
+div#main
+{
+width: 750px;
+margin: 20px auto 0px 10px;
+padding: 5px 5px 5px 5px;
+border: 1px solid #8cacbb; /*#999;*/
+}
+
+div#banner
+{
+color: #000;
+background-color: #fff;
+background-image: url(/psygrid/images/opencdmslogo.png);
+background-repeat: no-repeat;
+/*border-bottom: 1px solid #8cacbb;*/
+height: 100px;
+}
+
+div#info
+{
+position: relative;
+float: right;	
+}
+
+div#info ul
+{
+	list-style-type: none;
+	padding-right: 10px;
+}
+
+div#container
+{
+}
+
+div#navigation
+{
+float: left;
+width: 150px;
+margin: 23px 15px 50px 5px;
+padding: 15px 10px 15px 10px;
+border: 1px solid #8cacbb;
+font-size: 0.75em;
+}
+
+div#navigation ul
+{
+list-style-type: none;
+padding: 0;
+margin: 0; 
+}
+
+div#navigation ul li 
+{
+margin-top: 4px;
+background-position: center;
+}
+
+div#navigation ul li a
+{
+display: block;
+width: 140px;
+padding: 3px 3px 3px 3px;
+text-decoration: none;
+color: #000;
+border: 1px solid #8cacbb;
+}
+
+div#navigation ul li ul li
+{
+margin-top: 4px;
+margin-left: 15px;
+background-position: center;
+}
+
+div#navigation ul li ul li a
+{
+display: block;
+width: 125px;
+padding: 3px 3px 3px 3px;
+text-decoration: none;
+color: #000;
+border: 1px solid #8cacbb;
+}
+
+div#navigation ul li a:hover
+{
+background-color: #dee7ec;
+}
+
+div#navigation ul li a:active
+{
+background-color: #dee7ec;
+}
+
+div#content
+{
+margin-left: 195px;
+margin-right: 10px;
+margin-bottom:20px;
+padding-top: 10px;
+line-height: 150%;
+font-size: 110%;
+}
+
+div#content h1
+{
+font-size: 2.2em;
+color: #036;
+margin: 0px 0px 10px 0px;
+padding-top: 1em;
+padding-bottom: 5px;
+font-weight: normal;
+border-bottom: 1px solid #8cacbb;
+}
+
+div#content h2
+{
+font-size: 1.8em;
+color: #036;
+padding-top: 10px;
+padding-bottom: 5px;
+font-weight: normal;
+}
+
+div#content h3
+{
+font-size: 1.4em;
+color: #036;
+padding-top: 6px;
+padding-bottom: 3px;
+font-weight: normal;
+}
+
+div#content p
+{
+padding-right: 5px;
+}
+
+#cleardiv
+{
+clear: both;
+height: 1em;
+}
+
+div#footer
+{
+clear: both;
+border-top: 1px solid #8cacbb;
+text-align: right;
+}
+
+div#footer div#help
+{
+float: left;
+padding: .5em 1em;
+}
+
+div#footer div#help p
+{
+padding: 0;
+margin: 0;
+}
+
+div#footer div#copyright
+{
+padding: .5em 1em;
+}
+
+div#footer div#copyright ul
+{
+padding: 0;
+margin: 0;
+list-style-type: none;
+}
+
+div#footer div#copyright ul li
+{
+display: inline;
+margin-right: 1em;
+}
+
+div#login
+{
+width: 60%;
+margin-left: auto;
+margin-right: auto;
+border: none;
+}
+
+div#login div#banner
+{
+	background-position: center;
+	border-bottom: none;
+}
+
+div#login-form
+{
+	text-align: center;
+}
+
+a:link
+{
+color: #036;
+}
+
+a:visited
+{
+color: #066;
+}
+
+a:hover ,a:active
+{
+color: #fff;
+background-color: #036;
+}
+
+table tr th
+{
+font-weight: bold;
+text-align: left;
+padding-right: 20px;
+}
+
+table tr td
+{
+text-align: left;
+padding-right: 20px;
+}
+
+.error
+{
+font-style: italic;
+color: red;
+}
+
+.message
+{
+font-style: italic;
+}
+
+table.esl
+{
+border-width: 2px;
+border-spacing: 0px;
+border-style: solid;
+border-color: black;
+border-collapse: collapse;
+background-color: white;
+}
+
+table.esl tr th
+{
+background-color: #DFDDDD;
+font-weight: bold;
+text-align: center;
+border-width: 1px;
+border-style: solid;
+border-color: black;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 2px;
+padding-bottom: 2px;
+}
+
+table.esl tr td
+{
+border-width: 1px;
+border-style: solid;
+border-color: black;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 2px;
+padding-bottom: 2px;
+}

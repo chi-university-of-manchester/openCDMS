@@ -1,0 +1,113 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- Ant build script for PsyGrid import -->
+<project name="PsyGrid Import" basedir="." default="all">
+
+	<description>PsyGrid Import Ant build file</description>
+
+	<property file="build.properties" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="etc.dir" value="${basedir}/etc" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="gen.dir" value="${basedir}/gen" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="dist.dir" value="${basedir}/dist" />
+
+	<path id="compile.class.path">
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+		<fileset dir="../security/dist">
+			<include name="psygrid-security_*.jar" />
+		</fileset>
+		<fileset dir="../repository/dist">
+			<include name="repository-client_*.jar" />
+		</fileset>
+		<fileset dir="../electronic-screening-log/dist">
+			<include name="esl-client_*.jar" />
+		</fileset>
+		<fileset dir="../psygrid-data-collection/dist">
+			<include name="psygrid-data-client_*.jar" />
+		</fileset>
+		<fileset dir="../psygrid-common/dist">
+			<include name="common-client_*.jar"/>
+		</fileset>
+		<fileset dir="../psygrid-common/lib/client">
+			<include name="jeval-0.9.2.jar" />
+			<include name="binding-1.1.jar" />
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+
+	<path id="jaxb.class.path">
+		<fileset dir="${common.lib.dir}/excludes">
+			<include name="jaxb-xjc.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}/client">
+			<include name="jaxb-api.jar" />
+			<include name="jaxb-impl.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="activation.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${gen.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${gen.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+
+	<target name="compile" depends="init">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}" />
+			<src path="${gen.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="build" depends="compile" description="Build jars etc">
+        	<jar destfile="${dist.dir}/import_${import.version}.jar">
+			<fileset dir="${build.dir}">
+				<include name="org/psygrid/dataimport/**/*.class" />
+				<include name="org/psygrid/utility/*.class" />
+			</fileset>
+			<fileset dir="${src.dir}">
+				<include name="org/psygrid/dataimport/**/*.properties" />
+			</fileset>
+	        </jar>
+   	</target>
+
+	<target name="all" depends="clean, init, build" />
+
+</project>

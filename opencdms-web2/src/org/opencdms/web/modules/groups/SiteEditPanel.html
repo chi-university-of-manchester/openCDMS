@@ -1,0 +1,64 @@
+<!--
+Copyright (c) 2006-2009, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+		<h3 wicket:id="panelTitle">New/Edit Site</h3>
+		<div wicket:id="feedback"></div>
+		<form wicket:id="form" id="editsite">
+			<fieldset id="sitedetails" >
+				<legend>Site Details</legend>
+				<label for="groupName">Centre</label><span id="groupName" wicket:id="groupName"></span><br/>
+				<label for="siteName">Site Name</label><input id="siteName" type="text" wicket:id="siteName"/><br/>
+				<label for="siteID">Site ID</label><input id="siteID" type="text" wicket:id="siteId"/><br/>
+				<label for="geogcode">Geographic Code</label><input id="geogcode" type="text" wicket:id="geographicCode"/><br/>
+           	</fieldset>
+			<fieldset id="consultants">
+				<legend>Consultants</legend>
+				<label for="consultant-name">New Consultant</label><input id="consultant-name" type="text" wicket:id="newConsultantName"/><input type="submit" value="Add" wicket:id="addConsultant"/>
+				<table cellspacing="0" class="summarytable">
+				    <thead>
+					    <tr>
+					      <th>Consultant</th>
+					      <th>Action</th>
+					    </tr>
+			  		</thead>
+				    <tbody>
+				       <tr wicket:id="consultants">
+						 <td><span wicket:id="consultant">my name</span></td>
+						 <td><a wicket:id="delete" href="#">delete</a></td>
+				       </tr>
+				    </tbody>
+				</table>
+           	</fieldset>
+			<input type="submit" value="Save"/>
+			<input wicket:id="delete" type="submit" value="Delete"/>
+			<input wicket:id="cancel" type="submit" value="Cancel"/>
+		</form>
+		<br />
+	</wicket:panel>
+</body>
+</html>

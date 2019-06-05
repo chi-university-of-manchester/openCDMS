@@ -1,0 +1,146 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<project name="PsyGrid All" basedir="." default="unified">
+
+	<description>PsyGrid multi-project build file</description>
+
+	<!-- Set common properties for the build -->
+
+	<!-- ignore ant's own classpath during builds -->
+	<property name="build.sysclasspath"  value="ignore"/>
+
+	<property name="psygrid-doc.dir"  value="../psygrid-doc"/>
+    <property name="common.dir"  value="../psygrid-common"/>
+	<property name="security.dir"  value="../security"/>
+	<property name="transformers.dir"  value="../transformers"/>
+	<property name="repository.dir"  value="../repository"/>
+	<property name="cocoa.dir"  value="../psygrid-data-collection"/>
+	<property name="datasets.dir"  value="../outlook-dataset"/>
+	<property name="esl.dir"	value="../electronic-screening-log"/>
+	<property name="randomization.dir"	value="../randomization"/>
+	<property name="pgweb.dir"	value="../psygrid-web"/>
+	<property name="securitymanager.dir" value="../psygrid-securitymanager"/>
+	<property name="elementlib.dir" value="../data-element-library"/>
+	<property name="datasetdesigner.dir" value="../dataset-designer"/>
+	<property name="opencdmsweb.dir"	value="../opencdms-web2"/>
+	<property name="import.dir" 		value="../import"/>
+	<property name="meds-dist.dir"		value="../meds-distribution"/>
+
+	<property file="common.build.properties" />
+	<property file="unified.build.properties" />
+    <property file="versions.properties" />
+	
+	<target name="init" description="Initialization for the build">
+		<tstamp />
+	</target>
+
+	<target name="clean" description="Clean up all sub-projects">
+      	<ant antfile="${psygrid-doc.dir}/build.xml" dir="${psygrid-doc.dir}" target="clean" inheritAll="false">
+        	<property file="common.build.properties" />
+        </ant>
+		<ant antfile="${import.dir}/build.xml" dir="${import.dir}" target="clean" inheritAll="false">
+		    <property file="common.build.properties" />
+		</ant>
+      	<ant antfile="${common.dir}/build.xml" dir="${common.dir}" target="clean" inheritAll="false">
+        	<property file="common.build.properties" />
+        </ant>
+		<ant antfile="${security.dir}/build.xml" dir="${security.dir}" target="reset" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${transformers.dir}/build.xml" dir="${transformers.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${cocoa.dir}/build.xml" dir="${cocoa.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${datasets.dir}/build.xml" dir="${datasets.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${esl.dir}/build.xml" dir="${esl.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${pgweb.dir}/build.xml" dir="${pgweb.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${securitymanager.dir}/build.xml" dir="${securitymanager.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${common.dir}/build.xml" dir="${common.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${datasetdesigner.dir}/build.xml" dir="${datasetdesigner.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<ant antfile="${opencdmsweb.dir}/build.xml" dir="${opencdmsweb.dir}" target="clean" inheritAll="false">
+			<property file="common.build.properties" />
+		</ant>
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="build"/>
+		</delete>
+	</target>
+
+	<target name="unified" depends="init" description="Build for auto-install">
+		<antcall target="prepare-unified" />
+		<antcall target="subprojects" />
+	</target>
+
+	<target name="prepare-unified" description="preparations for an auto-install build">
+	</target>
+
+	<target name="subprojects" description="build all subprojects">
+        <ant antfile="${psygrid-doc.dir}/build.xml" dir="${psygrid-doc.dir}" target="all"/>
+        <ant antfile="${common.dir}/build.xml" dir="${common.dir}" target="all"/>
+		<ant antfile="${security.dir}/build.xml" dir="${security.dir}" target="all"/>
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part1" />
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part2" />
+		<ant antfile="${transformers.dir}/build.xml" dir="${transformers.dir}" target="all" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part1" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part2" />
+		<ant antfile="${esl.dir}/build.xml" dir="${esl.dir}" target="all" />
+		<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="all" />
+		<ant antfile="${cocoa.dir}/build.xml" dir="${cocoa.dir}" target="all-notests" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part1" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part2" />
+	   <!-- <ant antfile="${datasets.dir}/build.xml" dir="${datasets.dir}" target="all" /> -->
+		<ant antfile="${pgweb.dir}/build.xml" dir="${pgweb.dir}" target="all" />
+		<ant antfile="${securitymanager.dir}/build.xml" dir="${securitymanager.dir}" target="all" />
+		<ant antfile="${import.dir}/build.xml" dir="${import.dir}" target="all" />
+		<ant antfile="${datasetdesigner.dir}/build.xml" dir="${datasetdesigner.dir}" target="all" />
+		<ant antfile="${opencdmsweb.dir}/build.xml" dir="${opencdmsweb.dir}" target="all" />
+	</target>
+
+	<target name="repository" description="repository">
+		<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="part1" />
+		<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="part2" />
+	</target>
+
+</project>

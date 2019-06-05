@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+    
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!-- 
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/ESL"/>
+    </bean>
+    -->
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    					  destroy-method="close">
+    	<property name="driverClassName"><value>com.mysql.jdbc.Driver</value></property>
+        <property name="url"><value>jdbc:mysql://localhost:3306/esl</value></property>
+        <property name="username"><value>opencdms</value></property>
+        <property name="password"><value>cherry</value></property>
+        <property name="initialSize"><value>5</value></property>
+        <property name="maxActive"><value>20</value></property>
+        <property name="maxIdle"><value>10</value></property>
+        <property name="maxWait"><value>10000</value></property>
+    </bean>
+    
+     
+  	<bean id="entityInterceptor" class="org.psygrid.esl.dao.hibernate.EntityInterceptor">
+		<property name="auditSessionFactory">
+			<ref local="auditSessionFactory"/>
+		</property>
+	</bean>
+	
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+        	<ref local="dataSource"/>
+        </property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/org/psygrid/esl/model/hibernate/Persistent.hbm.xml</value>
+				<value>classpath:/org/psygrid/common/email/QueuedEmail.hbm.xml</value>
+                <value>classpath:/org/psygrid/common/email/Email.hbm.xml</value>
+			</list>
+		</property>
+        <property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+        	</props>
+        </property>
+        <property name="entityInterceptor">
+        	<ref local="entityInterceptor"/>
+        </property>
+    </bean>
+    
+    <!--  This is a separate session factory used for auditing by EntityInterceptor.java
+          See http://www.hibernate.org/318.html -->
+	<bean id="auditSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/org/psygrid/esl/model/hibernate/Persistent.hbm.xml</value>
+				<value>classpath:/org/psygrid/common/email/QueuedEmail.hbm.xml</value>
+                <value>classpath:/org/psygrid/common/email/Email.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+			</props>
+		</property>
+	</bean>    
+
+	<bean id="eslDAO" class="org.psygrid.esl.dao.hibernate.EslDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+ 		<property name="emailUtil"   ref="emailUtil"/>
+		<property name="emailFromAddress" value="virtual@opencdms.org"/>
+		<property name="emailToAddress" value="virtual@opencdms.org"/>
+		<!-- Provide the names of the Roles who are to be emailed about changes
+			to Subjects -->
+		<property name="rolesToEmail">
+			<list>
+                <value>TreatmentAdministrator</value>
+                <value>ClinicalResearchOfficer</value>
+                <value>ClinicalResearchManager</value>
+            </list>
+        </property>
+	</bean>
+
+   <bean id="randomiser"
+    	class="org.psygrid.esl.randomise.RemoteRandomiser" >
+    	<property name="dao" ref="eslDAO" />
+		<property name="toAddress"   value="virtual@opencdms.org"/>
+		<property name="fromAddress" value="virtual@opencdms.org"/>
+		<property name="emailUtil"   ref="emailUtil"/>
+    	<!-- <property name="url" value="https://atisha.smb.man.ac.uk/randomization/services/randomization" />-->    	
+   	</bean>
+
+<!--  	<bean id="accessController" class="org.psygrid.security.accesscontrol.AccessEnforcementFunction" /> -->
+	<!--  Use a mock of the accessController for testing purposes -->
+	<bean id="accessController" class="org.mockito.Mockito" factory-method="mock">
+    	<constructor-arg value="org.psygrid.security.accesscontrol.IAccessEnforcementFunction" /> 
+	</bean>
+	
+	<bean id="eslAuditLogger" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="org.psygrid.logging.AuditLogger"></constructor-arg>
+	</bean>
+	
+	<bean id="eslServiceImpl" class="org.psygrid.esl.services.EslServiceImpl" >
+		<property name="dao" ref="eslDAO"/>
+		<property name="randomiser" ref="randomiser"/>
+		<property name="accessControl" ref="accessController"/>
+		<property name="logHelper" ref="eslAuditLogger"></property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	     <property name="sessionFactory">
+             <ref local="sessionFactory"/>
+         </property>
+    </bean>
+
+    <bean id="serviceInterceptor" class="org.psygrid.esl.services.ServiceInterceptor"/>
+
+	<bean id="eslService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="eslServiceImpl"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="serviceInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<!-- 
+	      			Rollback on all exceptions thrown from a service.
+	      			We should really declare the required checked exceptions explicitly.
+	      		 -->
+	      		<prop key="*">PROPAGATION_REQUIRED, -java.lang.Exception</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+	<bean id="factory" class="org.psygrid.esl.model.hibernate.HibernateFactory" />
+
+<!-- 	 <bean id="emailUtil" class="org.psygrid.esl.util.EmailUtil">
+	 	<property name="aaqc" ref="aaqcWrapper" /> 
+	 </bean> -->
+	 <!-- Use a mock EmailUtil for testing -->
+	 <bean id="emailUtil" class="org.mockito.Mockito" factory-method="mock">
+	 	<constructor-arg value="org.psygrid.esl.util.EmailUtil" /> 
+	 </bean>
+
+ 	 <bean id="aaqcWrapper" class="org.psygrid.esl.util.AAQCWrapper">
+		<property name="properties">
+			<value>aaclient.properties</value>
+		</property>
+	</bean> 
+
+	<bean id="mailSender" class="org.psygrid.common.email.PsyGridMailSenderImpl">
+		<property name="host"><value>localhost</value></property>
+	</bean>
+	
+	
+ 	<bean name="queuedEmailsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.common.email.QueuedEmailsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+	 			<entry key="sendEmails" value="false"/>
+				<entry key="emailDAO"     value-ref="eslDAO" />
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="systemAddress" value="virtual@opencdms.org"/>
+				</map>
+		</property>
+	</bean> 
+	
+	<!-- Setup the remote SMS sending service -->
+	<bean id="smsHTTPSettings" class="org.psygrid.common.sms.SMSSettings">
+		<property name="serviceURL" value="https://www.kapow.co.uk/scripts/"/> 
+		<property name="serviceUsername" value="psygrid"/>
+		<property name="servicePassword" value="173913"/>
+		
+		<!-- This only needs to be set if connecting via a proxy -->
+		<property name="proxy" value=""/>
+		<property name="proxyPort" value=""/>
+		<!-- The auth type to use (empty or one of WINDOWS, BASIC, DIGEST) -->
+		<property name="proxyAuthType" value="${proxy.authtype}"/>
+		<property name="proxyWindowsDomain" value="${proxy.windows.domain}"/>
+		<property name="proxyRealm" value="${proxy.realm}"/>
+		<property name="proxyUsername" value="${proxy.username}"/>
+		<property name="proxyPassword" value="${proxy.password}"/>
+	</bean>
+	
+	<bean id="smsSender" class="org.psygrid.common.sms.PsyGridSMSSenderImpl">
+		<property name="settings" ref="smsHTTPSettings" />
+	</bean>
+		
+	<bean name="queuedSMSsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.esl.scheduling.QueuedSMSsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+	 			<entry key="sendSMSs" value="false"/>
+				<entry key="eslDAO"     value-ref="eslDAO" />
+				<entry key="sender" value-ref="smsSender" />
+				</map>
+		</property>
+	</bean> 
+	
+	<bean name="checkSMSAccountJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.esl.scheduling.CheckSMSAccountJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<!-- Send out system email to provide account info -->
+				<entry key="sendEmail" value="false"/>
+				<entry key="emailAddress" value="virtual@opencdms.org"/>
+				<entry key="sender" value-ref="smsSender" />
+				<entry key="mailSender" value-ref="mailSender" />
+				<entry key="dao"     value-ref="eslDAO" />
+				</map>
+		</property>
+	</bean> 
+	
+	<bean id="queuedEmailsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="queuedEmailsJob"/>
+		<!-- run every 20 minutes -->
+		<property name="cronExpression" value="0 0/5 * * * ?"/>
+	</bean>
+	
+		<bean id="queuedSMSsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="queuedSMSsJob"/>
+		<!-- run every 20 minutes -->
+		<property name="cronExpression" value="0 0/5 * * * ?"/>
+	</bean>
+	
+		<bean id="checkSMSAccountTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="checkSMSAccountJob"/>
+		<!-- run every day at 11:50pm to check logs for SMS sent on current day --> 
+ 		<property name="cronExpression" value="0 50 23 * * ?"/>
+<!--  testing only		<property name="cronExpression" value="0 0/40 * * * ?"/> -->
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="queuedEmailsTrigger"/>
+				<ref bean="queuedSMSsTrigger"/>
+				<ref bean="checkSMSAccountTrigger"/>
+			</list>
+		</property>
+	</bean>
+</beans>

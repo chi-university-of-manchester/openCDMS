@@ -1,0 +1,524 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="3">
+        <description>Insight Scale</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="2" column="2"/>
+            	<mapping source="2" column="3"/>
+            	<mapping source="2" column="4"/>
+            </emptydoc>
+            <interviewer source="2" column="4"/>
+            <interviewdate source="2" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>Some of the symptoms were made by my mind</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>I am mentally well</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>I do not need medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>My stay in hospital was necessary</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to standard code N/A</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>The doctor is right in prescribing medication for me</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>I do not need to be seen by a doctor or psychiatrist</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>If someone said I had a nervous or mental illness then they would be right</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="11"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>None of the unusual things I experienced are due to an illness</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="2" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Awareness of symptoms</description>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Awareness of illness</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Need for treatment</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Total</description>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="2" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="37" column="2"/>
+            	<mapping source="37" column="3"/>
+            	<mapping source="37" column="4"/>
+            </emptydoc>
+            <interviewer source="37" column="4"/>
+            <interviewdate source="37" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="0">
+                        <description>Some of the symptoms were made by my mind</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="5"/>
+                    </basicentry>
+                    <basicentry index="1">
+                        <description>I am mentally well</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="6"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>I do not need medication</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="7"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>My stay in hospital was necessary</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 999 to standard code N/A</description>
+                                <input special="false">999</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="8"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>The doctor is right in prescribing medication for me</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>I do not need to be seen by a doctor or psychiatrist</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="10"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>If someone said I had a nervous or mental illness then they would be right</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Agree</description>
+                                <input special="false">2</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Disagree</description>
+                                <input special="false">0</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="11"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>None of the unusual things I experienced are due to an illness</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Agree</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Disagree</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Unsure</description>
+                                <input special="false">1</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to standard code N/A</description>
+                                <input special="false">666</input>
+                                <output>1</output>
+                            </translation>
+                        </translations>
+                        <mapping source="37" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Awareness of symptoms</description>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Awareness of illness</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Need for treatment</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Total</description>
+                    </basicentry>
+                    <basicentry index="14">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="37" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

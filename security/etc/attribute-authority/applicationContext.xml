@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+    
+	<!-- Load properties from external properties files.
+	     This is how it should be done.
+	  -->
+	<bean id="placeholderConfig"
+      class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  		<property name="location" value="classpath:aa.properties"/>
+	</bean>
+	    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    					  destroy-method="close">
+    	<property name="driverClassName"><value>@driver@</value></property>
+        <property name="url"><value>@db_url@@db_schema@</value></property>
+        <property name="username"><value>@username@</value></property>
+        <property name="password"><value>@password@</value></property>
+        <property name="initialSize"><value>5</value></property>
+        <property name="maxActive"><value>20</value></property>
+        <property name="maxIdle"><value>10</value></property>
+        <property name="maxWait"><value>10000</value></property>
+		<property name="testOnBorrow"><value>true</value></property>
+		<property name="validationQuery"><value>SELECT 1</value></property>
+    </bean>
+    
+    <bean id="myInterceptor" class="org.psygrid.security.attributeauthority.dao.hibernate.DAOInterceptor"/>
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>
+					org/psygrid/security/attributeauthority/model/hibernate/Persistent.hbm.xml
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+        	<props>
+            	<prop key="hibernate.dialect">@dialect@</prop>
+        	</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="userDAO"
+		class="org.psygrid.security.attributeauthority.dao.hibernate.UserDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="projectDAO"
+		class="org.psygrid.security.attributeauthority.dao.hibernate.ProjectDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+		<bean id="groupDAO"
+		class="org.psygrid.security.attributeauthority.dao.hibernate.GroupDAOHibernate">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="userDAOService"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="userDAO"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="myInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<prop key="*">PROPAGATION_REQUIRED, -org.psygrid.security.attributeauthority.dao.DAOException</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+    <bean id="projectDAOService"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="projectDAO"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="myInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<prop key="*">PROPAGATION_REQUIRED, -org.psygrid.esl.dao.DAOException</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+	<bean id="groupDAOService"
+	      class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	  	<property name="target" ref="groupDAO"/>
+    	<property name="preInterceptors">
+      		<list>
+        		<ref local="myInterceptor"/>
+      		</list>
+    	</property>
+	  	<property name="transactionAttributes">
+	    	<props>
+	      		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	      		<prop key="*">PROPAGATION_REQUIRED, -org.psygrid.security.attributeauthority.dao.DAOException</prop>
+	    	</props>
+	  	</property>
+	</bean>
+	
+	<bean id="hibernateFactory"
+		class="org.psygrid.security.attributeauthority.model.hibernate.HibernateFactory" />
+		
+	<bean id="ldapHelper" class="org.psygrid.security.attributeauthority.LDAPHelper">
+		<property name="ldapDir" value="${org.psygrid.security.attributeauthority.ldapDirectoryURL}"/>
+		<property name="ldapRoot" value="${org.psygrid.security.attributeauthority.ldapRoot}"/>
+		<property name="ldapRootPassword" value="${org.psygrid.security.attributeauthority.ldapRootPassword}"/>
+		<property name="ldapBaseDN" value="${org.psygrid.security.attributeauthority.ldapBaseDN}"/>
+		<property name="ldapUserBaseDN" value="${org.psygrid.security.attributeauthority.ldapUserBaseDN}"/>
+		<property name="ldapPasswordHash" value="${org.psygrid.security.attributeauthority.ldapPasswordHash}"/>
+		<property name="ldapVendor" value="${org.psygrid.security.attributeauthority.ldapVendor}"/>
+		<property name="ldapUseTLS" value="${org.psygrid.security.attributeauthority.ldapUseTLS}"/>
+	</bean>		
+		
+	<!--  This is used directly by web apps - bypassing the web services.
+		  This service is non-transactional for now - as the transactions boundaries 
+		  on the DAOs - for the moment.
+	 -->
+	<bean id="attributeAuthorityService"
+		class="org.psygrid.security.attributeauthority.AttributeAuthorityServiceImpl">
+		<property name="userDAO" ref="userDAOService"/>
+		<property name="projectDAO" ref="projectDAOService"/>
+		<property name="ldapHelper" ref="ldapHelper"/>
+	</bean>
+				
+		
+</beans>

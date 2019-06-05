@@ -1,0 +1,96 @@
+
+<project name="pmd" default="pmd" >
+  
+  <description>
+    Runs pmd on system.
+    For more information about pmd, goto http://pmd.sourceforge.net
+  </description>
+
+  <import file="build.xml" />
+
+  <property name="pmd.install.dir" location="${common.dir}/lib/excludes/pmd" />
+
+  <property name="pmd.rulesets.file" location="${pmd.install.dir}/rulesets/favorites.xml"/>
+
+  <property name="pmd.output.dir" location="build/pmd" />
+
+  <property name="pmd.failonerror" value="false" />
+
+  <target name="pmd.tool" description="Runs PMD over the source code to check for problems.">
+
+    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
+      <classpath>
+        <fileset dir="${pmd.install.dir}" includes="*.jar" />
+      </classpath>
+    </taskdef>
+
+    <!-- Run PMD -->
+    <mkdir dir="${pmd.output.dir}" />
+    <pmd rulesetfiles="${pmd.rulesets.file}"
+         shortFilenames="true"
+         targetjdk="1.5"
+         failuresPropertyName="pmd.failure.count"
+         failonerror="${pmd.failonerror}"
+         failOnRuleViolation="${pmd.failonerror}">
+      <formatter type="xml" toFile="${pmd.output.dir}/pmd.xml" />
+	  <auxClasspath>
+		<pathelement location="${common.dir}/build/classes" />
+		<pathelement location="${security.dir}/build" />
+		<pathelement location="${transformers.dir}/build" />
+		<pathelement location="${repository.dir}/build/classes" />
+		<pathelement location="${cocoa.dir}/build/classes" />
+		<pathelement location="${esl.dir}/build/classes" />
+		<pathelement location="${randomization.dir}/build" />
+		<pathelement location="${pgweb.dir}/build" />
+		<pathelement location="${securitymanager.dir}/build/classes" />
+		<pathelement location="${elementlib.dir}/build" />
+		<pathelement location="${datasetdesigner.dir}/build/classes" />
+		<pathelement location="${opencdmsweb.dir}/build" />
+		<pathelement location="${import.dir}/build" />
+		<pathelement location="${meds-dist.dir}/build" />
+	  	<fileset dir="${common.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${opencdmsweb.dir}/WebContent/WEB-INF/lib">
+				<include name="wicket*.jar" />
+			</fileset>
+			<fileset dir="${repository.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${security.dir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+	  </auxClasspath>
+      <fileset dir="..">
+		<include name="repository/src/**/*.java" />
+      	<include name="psygrid-common/src/**/*.java" />
+		<include name="security/src/**/*.java" />
+		<include name="transformers/src/**/*.java" />
+		<include name="psygrid-data-collection/src/**/*.java" />
+		<include name="electronic-screening-log/src/**/*.java" />
+		<include name="randomization/src/**/*.java" />
+		<include name="psygrid-web/src/**/*.java" />
+		<include name="psygrid-securitymanager/src/**/*.java" />
+		<include name="data-element-library/src/**/*.java" />
+		<include name="dataset-designer/src/**/*.java" />
+		<include name="opencdms-web2/src/**/*.java" />
+		<include name="import/src/**/*.java" />
+		<include name="meds-distribution/src/**/*.java" />
+      </fileset>
+    </pmd>
+    <!-- Provide a value for this property if it hasn't gotten one by the pmd task already. -->
+    <property name="pmd.failure.count" value="0"/>
+    <echo message="PMD found ${pmd.failure.count} problem(s)." />
+
+  </target>
+
+  <target name="pmd.report"
+          description="Generates HTML reports on the PMD output.">
+    <xslt in="${pmd.output.dir}/pmd.xml"
+          style="${pmd.install.dir}/xslt/pmd-report-per-class.xslt"
+          out="${pmd.output.dir}/pmd-report-per-class.html" />
+  </target>
+
+  <target name="pmd" depends="pmd.tool, pmd.report" description="Runs the PMD tool, report" />
+
+</project>

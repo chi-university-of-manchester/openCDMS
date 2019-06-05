@@ -1,0 +1,60 @@
+
+<project name="cpd" default="cpd" >
+  
+  <description>
+    Runs cpd - copy-paste detector on the source.
+    For more information about cpd, goto http://pmd.sourceforge.net/cpd.html
+  	Usage: ant -f cpd.build.xml
+  </description>
+
+  <import file="build.xml" />
+
+  <property name="cpd.install.dir" location="${common.dir}/lib/excludes/pmd" />
+
+  <property name="cpd.output.dir" location="build/cpd" />
+
+  <property name="cpd.failonerror" value="false" />
+
+  <target name="cpd.tool" description="Runs CPD over the source code.">
+
+    <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
+      <classpath>
+        <fileset dir="${cpd.install.dir}" includes="*.jar" />
+      </classpath>
+    </taskdef>
+  	
+    <!-- Run CPD -->
+    <mkdir dir="${cpd.output.dir}" />
+    <cpd minimumTokenCount="100" outputFile="${cpd.output.dir}/cpd.xml" format="xml" encoding="utf-8">
+    	  <fileset dir="..">
+    			<include name="repository/src/**/*.java" />
+    	      	<include name="psygrid-common/src/**/*.java" />
+    			<include name="security/src/**/*.java" />
+    			<include name="transformers/src/**/*.java" />
+    			<include name="psygrid-data-collection/src/**/*.java" />
+    			<include name="electronic-screening-log/src/**/*.java" />
+    			<include name="randomization/src/**/*.java" />
+    			<include name="psygrid-web/src/**/*.java" />
+    			<include name="psygrid-securitymanager/src/**/*.java" />
+    			<include name="data-element-library/src/**/*.java" />
+    			<include name="dataset-designer/src/**/*.java" />
+    			<include name="opencdms-web2/src/**/*.java" />
+    			<include name="import/src/**/*.java" />
+    			<include name="meds-distribution/src/**/*.java" />
+    	      </fileset>
+     </cpd>
+
+  </target>
+
+  <target name="cpd.report"
+          description="Generates HTML reports on the CPD output.">
+    <xslt in="${cpd.output.dir}/cpd.xml"
+          style="${cpd.install.dir}/xslt/cpdhtml.xslt"
+          out="${cpd.output.dir}/cpd-report.html" />
+  </target>
+
+  <target name="cpd" depends="cpd.tool, cpd.report" description="Runs the CPD tool, report" />
+
+</project>
+
+

@@ -1,0 +1,45 @@
+<!--
+Copyright (c) 2006-2009, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+    
+	<wicket:panel>
+		<h3>Administer Centres</h3>
+		<div wicket:id="feedback"></div>
+		<p>You may use this page to edit centres and sites for your projects.</p>
+		<p>Please note that existing centre codes may not be edited, and their sites may not be deleted.</p>		
+		<p>Please also note that currently groups in studies that use the randomiser may not be administered using this page.</p>
+		<a wicket:id="add" href="#">add centre</a>
+		<table cellspacing="0" class="summarytable">
+		    <thead>
+			    <tr>
+			      <th>project</th>
+			      <th>centre name</th>
+			      <th>centre code</th>
+			      <th>action</th>
+			    </tr>
+	  		</thead>
+		    <tbody>
+		       <tr wicket:id="groups">
+				 <td><span wicket:id="datasetName">my name</span></td>
+				 <td><span wicket:id="groupName">my longName</span></td>
+				 <td><span wicket:id="groupCode">my name</span></td>
+				 <td><a wicket:id="edit" href="#">edit</a></td>
+		       </tr>
+		    </tbody>
+		</table>
+	</wicket:panel>

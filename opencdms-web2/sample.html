@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Dynamic Drive: CSS Fixed Layout #2.1- (Fixed-Fixed)</title>
+<style type="text/css">
+
+body
+{
+margin: 0;
+padding: 0;
+font: 80% "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+color: Black;
+background-color: #fff;
+}
+
+div#maincontainer{
+width: 1000px; /*Width of main container*/
+margin: 0 auto; /*Center container on page*/
+}
+
+div#header{
+color: #000;
+background-color: #fff;
+background-image: url(http://psygrid.smb.man.ac.uk/psygrid/images/opencdmslogo.png);
+background-repeat: no-repeat;
+height: 80px;
+}
+
+div#info
+{
+position: relative;
+float: right;	
+}
+
+div#info ul
+{
+list-style-type: none;
+padding-right: 10px;
+}
+
+div#menu1
+{
+height:25px;
+}
+
+div#menu1 ul
+{
+padding: 3px 0;
+margin-left: 0;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+}
+
+div#menu1 ul li
+{
+display: inline;
+margin: 0;
+}
+
+div#menu1 ul li a
+{
+text-decoration: none;
+padding: 5px 10px;
+border: none;
+color: black;
+background: #dddddd;
+}
+
+div#menu1 ul li.selected a
+{
+background-color: #999999;
+}
+
+
+div#menu2 {
+background-color: #999999;
+height: 25px;
+}
+
+div#menu2 ul
+{
+padding: 0;
+margin: 0;
+font: 12px Verdana;
+list-style-type: none;
+display: block;
+}
+
+div#menu2 ul li
+{
+display: inline;
+}
+
+div#menu2 ul li a
+{
+border-right: 1px solid #dddddd;
+padding: 5px 10px;
+display: block;
+float: left;
+text-decoration: none;
+color: black;
+}
+
+
+div#content
+{
+float: left;
+width: 100%;
+padding-top:10px;
+padding-bottom:10px;
+}
+
+div#footer
+{
+clear: both;
+border-top: 1px solid #dddddd;
+text-align: right;
+}
+
+div#footer div#help
+{
+float: left;
+padding: .5em 1em;
+}
+
+div#footer div#help p
+{
+padding: 0;
+margin: 0;
+}
+
+div#footer div#copyright
+{
+padding: .5em 1em;
+}
+
+div#footer div#copyright ul
+{
+padding: 0;
+margin: 0;
+list-style-type: none;
+}
+
+div#footer div#copyright ul li
+{
+display: inline;
+margin-right: 1em;
+}
+
+
+</style>
+
+<script type="text/javascript">
+/*** Temporary text filler function. Remove when deploying template. ***/
+var gibberish=["This is just some filler text", "Welcome to Dynamic Drive CSS Library", "Demo content nothing to read here"]
+function filltext(words){
+for (var i=0; i<words; i++)
+document.write(gibberish[Math.floor(Math.random()*3)]+" ")
+}
+</script>
+
+</head>
+<body>
+<div id="maincontainer">
+
+    <div id="header">
+        <div id="info">
+            <ul>
+                <li>Username: Rob</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="menubar">
+        <div id="menu1">
+            <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Export</a></li>
+            <li class="selected"><a href="#">Register</a></li>
+            <li><a href="#">Audit</a></li>
+            <li><a href="#">Query</a></li>
+            <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+        <div id="menu2">
+            <ul>
+            <li><a href="#">Details by name</a></li>
+            <li><a href="#">Details by number</a></li>
+            <li><a href="#">Arm by name</a></li>
+            <li><a href="#">Arm by number</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="content">
+        <b>Content Column: <em>Fixed</em></b> <script type="text/javascript">filltext(45)</script>
+    </div>
+
+    <div id="footer">
+        <div id="help">
+            <p><a target="_blank" href="http://www.psygrid.org/psygrid/documents/help/ch06.html">Help</a></p>
+        </div>
+        <div id="copyright">
+            <ul>
+                <li>&copy; Copyright 2008 University of Manchester</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

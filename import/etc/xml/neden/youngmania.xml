@@ -1,0 +1,1291 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="2">
+        <description>The Young Mania Scale</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="30" column="2"/>
+            	<mapping source="30" column="3"/>
+            	<mapping source="30" column="4"/>
+            </emptydoc>
+            <interviewer source="30" column="4"/>
+            <interviewdate source="30" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Elevated Mood</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased on questioning</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective elevation; optimistic, self-confident; cheerful; appropriate to content</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Elevated, inappropriate to content; humorous</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Euphoric; inappropriate laughter; singing</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Increased Motor Activity - Energy</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Subjectively increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Animated; gestures increased</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Excessive energy; hyperactive at times; restless (can be calmed)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Motor excitement; continuous hyperactivity (cannot be calmed)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Sexual Interest</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal; not increased</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective increase on questioning</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Spontaneous sexual content; elaborates on sexual matters; hypersexual by self report</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Overt sexual acts (towards patients, staff or interviewer)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Sleep</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Reports no decrease in sleep</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Sleeping less than normal amount by up to one hour</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sleeping less than normal by more than one hour</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Reports decreased need for sleep</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies needing sleep</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Irritability</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Subjectively increased</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Irritable at times during the interview; recent episodes of anger or annoyance on ward/in community</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Frequently irritable during interview; short curt throughout</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Hostile, uncooperative; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Speech (Rate and Amount)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No increase</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Feels talkative</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Increased rate or amount at times; verbose at times</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Push; consistently increased rate and amount, difficult to interpret</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Pressured; uninterruptible; continuous speech</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Language - Thought Disorder</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Circumstantial; mild distractibility; quick thoughts</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Distractible; loses goal of thought; changes topics frequently; racing thoughts</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Flight of ideas; tangentially; difficult to follow; rhyming echolalia</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Content</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Questionable plans, new interests</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Special project(s); hyper religious</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Grandiose or paranoid ideas; ideas of reference</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Delusions; hallucinations</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Disruptive Aggressive Behaviour</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent; Co-operative</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sarcastic; loud at times; guarded</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Demanding; Threats on ward/at home</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Threatens interviewer; shouting; interview difficult</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Assaultive; destructive; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Appearance</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Appropriate dress and grooming</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minimally unkempt</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Poorly groomed; moderately dishevelled; overdressed</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Dishevelled; partly clothed; garish make-up</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Completely unkempt; decorated; bizarre garb</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="14"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Insight</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Present; admits illness; agrees with need for treatment</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Possibly ill</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Admits behaviour change, but denies illness</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Admits possible change in behaviour, but denies illness</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies any behaviour change</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="30" column="15"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Total Score</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="30" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>6 Months</description>
+            <emptydoc>
+            	<mapping source="31" column="2"/>
+            	<mapping source="31" column="3"/>
+            	<mapping source="31" column="4"/>
+            </emptydoc>
+            <interviewer source="31" column="4"/>
+            <interviewdate source="31" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Elevated Mood</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased on questioning</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective elevation; optimistic, self-confident; cheerful; appropriate to content</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Elevated, inappropriate to content; humorous</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Euphoric; inappropriate laughter; singing</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Increased Motor Activity - Energy</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Subjectively increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Animated; gestures increased</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Excessive energy; hyperactive at times; restless (can be calmed)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Motor excitement; continuous hyperactivity (cannot be calmed)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Sexual Interest</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal; not increased</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective increase on questioning</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Spontaneous sexual content; elaborates on sexual matters; hypersexual by self report</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Overt sexual acts (towards patients, staff or interviewer)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Sleep</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Reports no decrease in sleep</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Sleeping less than normal amount by up to one hour</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sleeping less than normal by more than one hour</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Reports decreased need for sleep</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies needing sleep</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Irritability</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Subjectively increased</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Irritable at times during the interview; recent episodes of anger or annoyance on ward/in community</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Frequently irritable during interview; short curt throughout</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Hostile, uncooperative; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Speech (Rate and Amount)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No increase</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Feels talkative</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Increased rate or amount at times; verbose at times</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Push; consistently increased rate and amount, difficult to interpret</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Pressured; uninterruptible; continuous speech</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Language - Thought Disorder</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Circumstantial; mild distractibility; quick thoughts</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Distractible; loses goal of thought; changes topics frequently; racing thoughts</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Flight of ideas; tangentially; difficult to follow; rhyming echolalia</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Content</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Questionable plans, new interests</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Special project(s); hyper religious</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Grandiose or paranoid ideas; ideas of reference</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Delusions; hallucinations</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Disruptive Aggressive Behaviour</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent; Co-operative</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sarcastic; loud at times; guarded</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Demanding; Threats on ward/at home</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Threatens interviewer; shouting; interview difficult</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Assaultive; destructive; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Appearance</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Appropriate dress and grooming</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minimally unkempt</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Poorly groomed; moderately dishevelled; overdressed</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Dishevelled; partly clothed; garish make-up</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Completely unkempt; decorated; bizarre garb</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="14"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Insight</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Present; admits illness; agrees with need for treatment</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Possibly ill</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Admits behaviour change, but denies illness</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Admits possible change in behaviour, but denies illness</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies any behaviour change</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="31" column="15"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Total Score</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="31" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="2">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="36" column="2"/>
+            	<mapping source="36" column="3"/>
+            	<mapping source="36" column="4"/>
+            </emptydoc>
+            <interviewer source="36" column="4"/>
+            <interviewdate source="36" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="1">
+                        <description>Elevated Mood</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased on questioning</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective elevation; optimistic, self-confident; cheerful; appropriate to content</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Elevated, inappropriate to content; humorous</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Euphoric; inappropriate laughter; singing</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Increased Motor Activity - Energy</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Subjectively increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Animated; gestures increased</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Excessive energy; hyperactive at times; restless (can be calmed)</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Motor excitement; continuous hyperactivity (cannot be calmed)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Sexual Interest</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal; not increased</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Mildly or possibly increased</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Definite subjective increase on questioning</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Spontaneous sexual content; elaborates on sexual matters; hypersexual by self report</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Overt sexual acts (towards patients, staff or interviewer)</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Sleep</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Reports no decrease in sleep</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Sleeping less than normal amount by up to one hour</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sleeping less than normal by more than one hour</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Reports decreased need for sleep</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies needing sleep</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Irritability</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Subjectively increased</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Irritable at times during the interview; recent episodes of anger or annoyance on ward/in community</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Frequently irritable during interview; short curt throughout</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Hostile, uncooperative; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Speech (Rate and Amount)</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. No increase</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Feels talkative</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Increased rate or amount at times; verbose at times</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Push; consistently increased rate and amount, difficult to interpret</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Pressured; uninterruptible; continuous speech</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Language - Thought Disorder</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Circumstantial; mild distractibility; quick thoughts</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Distractible; loses goal of thought; changes topics frequently; racing thoughts</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Flight of ideas; tangentially; difficult to follow; rhyming echolalia</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Content</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Normal</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Questionable plans, new interests</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Special project(s); hyper religious</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Grandiose or paranoid ideas; ideas of reference</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Delusions; hallucinations</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Disruptive Aggressive Behaviour</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Absent; Co-operative</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Sarcastic; loud at times; guarded</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Demanding; Threats on ward/at home</description>
+                                <input special="false">4</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Threatens interviewer; shouting; interview difficult</description>
+                                <input special="false">6</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 8. Assaultive; destructive; interview impossible</description>
+                                <input special="false">8</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Appearance</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Appropriate dress and grooming</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Minimally unkempt</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Poorly groomed; moderately dishevelled; overdressed</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Dishevelled; partly clothed; garish make-up</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Completely unkempt; decorated; bizarre garb</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="14"/>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Insight</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 0. Present; admits illness; agrees with need for treatment</description>
+                                <input special="false">0</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Possibly ill</description>
+                                <input special="false">1</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Admits behaviour change, but denies illness</description>
+                                <input special="false">2</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Admits possible change in behaviour, but denies illness</description>
+                                <input special="false">3</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Denies any behaviour change</description>
+                                <input special="false">4</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code 999 data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="36" column="15"/>
+                    </basicentry>
+                    <basicentry index="12">
+                        <description>Total Score</description>
+                    </basicentry>
+                    <basicentry index="13">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="36" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

@@ -1,0 +1,2311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<chapter id="dsd">
+  <title>openCDMS Create</title>
+
+  <para>openCDMS Create facilitates the design and configuration of studies
+  (datasets) to be used for data collection with openCDMS Collect. This guide
+  describes how to quickly set up a study and the features and settings
+  available within the openCDMS Create application.</para>
+
+  <section id="dsdwizardterminology">
+    <title>Wizard Set-up</title>
+
+    <para>A wizard feature for quick creation of studies. Use the 'Next' and
+    'Back' buttons to navigate through the wizard. The 'Finish' button will
+    create the new study and the 'Cancel' button will dismiss the wizard
+    without creating a study.</para>
+
+    <section id="dsdwizardpageone">
+      <title>Wizard Page One - Study Identifiers and Properties</title>
+
+      <para>The initial wizard page for configuring a study. The 'Next' button
+      will not be enabled (clickable) until a Study Name nad Study Code have
+      been entered.</para>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_wizard1.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <section id="dsdwizardstudyname">
+        <title>Study name</title>
+
+        <para>A short name for the study should be entered in this field (e.g.
+        Outlook or National Eden). This is used (in conjunction with the study
+        code) to uniquely identify the study. If you enter a name for the
+        study that already exists in the database (i.e. a name that represents
+        another study that has been saved either by you or by another user),
+        an error dialog will be produced when you click 'Next' and you will
+        not be allowed to proceed. New studies must have a unique name and
+        study code.</para>
+      </section>
+
+      <section id="dsdwizardstudycode">
+        <title>Study code</title>
+
+        <para>A short code for the study (e.g. OLK or NEDEN). This is used for
+        study identifiers (e.g. OLK/001001-1 might identify the first
+        participant in the Outlook study in the Manchester centre). The code
+        is always used for display purposes in the various openCDMS
+        applications. The study code is used (in conjunction with the study
+        name) to uniquely identify the study. If you enter a code for the
+        study that already exists in the database (i.e. a code that represents
+        another study that has been saved either by you or by another user),
+        an error dialog will be produced when you click 'Next' and you will
+        not be allowed to proceed. New studies must have a unique name and
+        study code.</para>
+      </section>
+
+      <section id="dsdwizardstudydescription">
+        <title>Study Description</title>
+
+        <para>A short overview of the study aims (e.g. "A study to track a
+        large, representative cohort of individuals with first episode
+        psychosis").</para>
+      </section>
+
+      <section id="dsdwizardstudyscope">
+        <title>Study scope</title>
+
+        <para>Describes the geographical scope of the study - either a single
+        centre study or a multi-centre study. Note: this option is not
+        available to studies without preconfigured centres.</para>
+      </section>
+
+      <section id="dsdwizardstudycentre">
+        <title>Study centre</title>
+
+        <para>Set the name of the single-centre for the study here. Note: the
+        option is not available to studies without preconfigured
+        centres.</para>
+      </section>
+
+      <section id="dsdwizarduserandomisation">
+        <title>Use randomisation</title>
+
+        <para>An on/off flag for setting whether the study is to be randomised
+        or not. If selected, randomisation settings must be completed before
+        the study can be successfully saved to the database. For more
+        information on randomisation settings, see the section on
+        Randomization below.</para>
+      </section>
+    </section>
+
+    <section id="dsdwizardstudystages">
+      <title>Wizard Page - Study Stages</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_wizard2.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>This is the second page of the study wizard and requires entries
+      to define the time stages in the study for which documents must be
+      completed (e.g. Screening, Baseline, Day 1, Day 7 etc.) Clicking the
+      'Add' button produces a dialog that requires a name for the new Study
+      Stage (e.g. 'Screening'). When 'ok' is clicked in this dialog, the study
+      stage is added to the study and is displayed in the list of configured
+      Study Stages in the list.</para>
+
+      <section id="dsdwizardreorderstudystages">
+        <title>Reorder Study Stages</title>
+
+        <para>Select a study stage in the list and then use the up and down
+        arrow keys to change the order of study stages for the study. This is
+        a useful option if an error is made in the original addition of
+        studies (e.g. 'Day 7' is added before 'Day 2').</para>
+      </section>
+    </section>
+
+    <section id="dsdwizardstudyprocedures">
+      <title>Documents</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_wizard3.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>A list of all possible documents that must be completed for the
+      study (e.g. Medical History, Vital Signs). A document represents a form
+      or assessment that must be completed for the study.</para>
+
+      <section id="dsdwizardreorderstudyprocedures">
+        <title>Reorder documents</title>
+
+        <para>Select a document in the list and then use the up and down arrow
+        keys to change the order of documents for the study. The reordering
+        functions similarly to the reordering of study stages described
+        above.</para>
+      </section>
+    </section>
+
+    <section id="dsdwizardvisitschedule">
+      <title>StudySchedule</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_wizard4.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>This wizard page that displays a grid for describing which
+      documents should be completed at which stages in the study. Click on a
+      square in the grid to select or deselect. It is possible to assign a
+      document to more than one than one stage. Each document must be assigned
+      to at least one stage.</para>
+    </section>
+  </section>
+
+  <section id="dsdmenus">
+    <title>Menus</title>
+
+    <para>This section provides a description of top level menu options
+    availabe in openCDMS Create.</para>
+
+    <section id="dsdfilemenu">
+      <title>File Menu</title>
+
+      <para>This menu contains the major operations for opening, closing
+      saving and creating a new studies and documents.</para>
+
+      <section>
+        <title>New Study Wizard</title>
+
+        <para>This option launches the new study wizard (as described in the
+        previous section).</para>
+      </section>
+
+      <section>
+        <title>Open</title>
+
+        <para>The allows a study to be opened either from a file location
+        (local or network) or from the openCDMS database. Selecting this
+        option opens a new window from which the destination of the file or
+        saved study can be chosen. Options exists within this window to choose
+        from either the Database or from the File System. Files can be
+        selected for opening either by double-clicking on them in the window
+        or clicking once and then selecting the 'Open' button. Similarly in
+        the database view, studies can be opened by double-clicking on them or
+        by clicking once and then selecting the 'Open' button.</para>
+      </section>
+
+      <section>
+        <title>Open Library View</title>
+
+        <para>This launches the Library view. For more details on how to use
+        the Library, please see the next chapter.</para>
+      </section>
+
+      <section>
+        <title>Close</title>
+
+        <para>This removes the current study from the active view. If the
+        study has been edited since it was last saved, close will produce a
+        dialog prompting to save changes.</para>
+      </section>
+
+      <section>
+        <title>Save (to File or to Database)</title>
+
+        <para>This saves the currently open study to either a file location or
+        to the database (depending on the location from which the file was
+        last saved or opened from). The parenthetical comment indicates the
+        destination to which the study will be saved. Details of the success
+        or failure of this operation will be viewable in the status
+        bar.</para>
+      </section>
+
+      <section>
+        <title>Save As</title>
+
+        <para>This allows the currently open study to be saved to either a
+        file location or to the database. Selecting this menu item produces a
+        new window where the desired saved destination can be chosen.</para>
+      </section>
+
+      <section>
+        <title>Publish</title>
+
+        <para>This publishes the study to the database. Publishing a study to
+        the database is the final step in the study design process and it
+        should only be done after the study has been validated (using the
+        Preview option). After publishing a study, it will no longer be
+        possible to save the study to the database. Effectively, publishing
+        locks the study in the database and indicates that it is now ready for
+        data collection process to commence. If you wish to store a copy of
+        the study to the database but you do not want this to be final version
+        to be released then you should use the 'Save' menu item described
+        above.</para>
+      </section>
+
+      <section>
+        <title>Patch Live Study</title>
+
+        <para>This menu item patches a live, published study to the database
+        and should be used with caution. Patching changes cannot be undone.
+        This is the option to use to update a live study (e.g. to add a new
+        document to the study).</para>
+      </section>
+
+      <section>
+        <title>Preview</title>
+
+        <para>Preview launches the currently open study in openCDMS Collect.
+        This allows you try out your study design and verify that you have
+        configured everything correctly before saving it to the database. It
+        is recommended that studies are regularly previewed in Collect to
+        ensure that they conform to the study requirements.</para>
+      </section>
+
+      <section>
+        <title>Properties</title>
+
+        <para>This displays the basic properties for the currently open study.
+        Properties such as study name, study code and study description are
+        viewable and configurable from here.</para>
+      </section>
+
+      <section>
+        <title>Exit</title>
+
+        <para>This causes the application to quit. You will be asked to
+        confirm this step to ensure that you do not exit accidentally.</para>
+      </section>
+    </section>
+
+    <section id="dsdstudymenu">
+      <title>Study Menu</title>
+
+      <para>This menu contains the major operations for managing attributes
+      associated with study design. It contains the options to create and edit
+      units, validation rules, transformers, study stages, consent, centres,
+      statuses, reports and randomisation.</para>
+
+      <section>
+        <title>New Document</title>
+
+        <para>This creates a new document in the currently open study. This
+        menu item is only enabled when a study is already open.</para>
+      </section>
+
+      <section>
+        <title>Manage Units</title>
+
+        <para>This permits the creation and management of units to be used
+        with the study. Units are managed on a per-study basis and can be
+        assigned to individual entries using the individual entry
+        configuration dialogs.</para>
+      </section>
+
+      <section>
+        <title>Manage Transformers</title>
+
+        <para>This permits the creation and management of transformers to be
+        used with the study. Transformers are managed on a per-study basis and
+        can be assigned to individual entries using the individual entry
+        configuration dialogs.</para>
+      </section>
+
+      <section>
+        <title>Manage Validation Rules</title>
+
+        <para>This permits the creation and management of validation rules to
+        be used with the study. Validation rules are managed on a per-study
+        basis and can be assigned to individual entries using the individual
+        entry configuration dialogs.</para>
+      </section>
+
+      <section>
+        <title>Validate Study</title>
+
+        <para>The study should be validated before it is saved to the
+        database. A validation operation will display which components have
+        been successfully completed and which ones remaining before a study is
+        in a fit state to save to the database.</para>
+      </section>
+
+      <section>
+        <title>Manage Study Schedule</title>
+
+        <para>This allows management of the documents and the stages to which
+        they have been assigned. A dialog is produced that displays the stages
+        and documents. Assignments can be edited by clicking in the table
+        checkboxes.</para>
+      </section>
+
+      <section>
+        <title>Reorder Documents</title>
+
+        <para>This option allows the reordering of the doucments in the open
+        study. Documents can be moved up or down by selecting the item in the
+        list and clicking on the arrow buttons.</para>
+      </section>
+
+      <section>
+        <title>Manage Centres</title>
+
+        <para>This allows management of the centres for the study. Centres and
+        sites can be added, edited and removed using this menu option.</para>
+      </section>
+
+      <section>
+        <title>Manage Statuses</title>
+
+        <para>This allows management of the statuses for the study. Statuses
+        can be added, edited and removed using this menu option.</para>
+      </section>
+
+      <section>
+        <title>Manage Study Stages</title>
+
+        <para>This allows management of the study stages. Within this option
+        is also possible to reorder the study stages by selecting the stage in
+        the list and using the arrow buttons to move it up and down. The
+        manual configuration of study stages available in this menu item is
+        typically for advanced users to manipulate the default study stage
+        settings. It is not recommended that novice users change these
+        settings.</para>
+
+        <para id="dsddocgroupvalidatepanel">Study Stage Validation: The icon
+        here indicates if the document groups passes validation (a green check
+        indicates success; a red X indicates failure). For validation to
+        succeed, both study stages and study stasuses must be sensibly
+        configued. Two checks are performed. Firstly, validation ensures that
+        all update statuses for document groups are a valid transition from at
+        least one of the allowed record statuses for the study stage.
+        Secondly, all prerequisite groups must occur before the study stage
+        for which they have been configured. Hovering the mouse over the cross
+        icon will present a tooltip detailing the validation failures.</para>
+      </section>
+
+      <section>
+        <title>Manage Reports</title>
+
+        <para>This allows specification of the required reports for the
+        studies.</para>
+      </section>
+
+      <section>
+        <title>Manage Participant Register</title>
+
+        <para>This produces a dialog where custom fields may be added to the
+        participant register. See the section on the participant register for
+        more information.</para>
+      </section>
+
+      <section>
+        <title>Manage Randomiser</title>
+
+        <para>This produces a dialog where the randomisation settings for the
+        study must be completed. See the section on randomisation for more
+        information on the required settings.</para>
+      </section>
+    </section>
+
+    <section id="dsdhelpmenu">
+      <title>Help Menu</title>
+
+      <para>This menu contains the options to view the contents of the help
+      manual and an about dialog to display basic properties of the
+      study.</para>
+
+      <section>
+        <title>Help</title>
+
+        <para>This option displays the help manual for openCDMS Create.</para>
+      </section>
+
+      <section>
+        <title>About</title>
+
+        <para>About shows the basic version numbers and details about openCDMS
+        Create.</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="dsdoverview">
+    <title>Main Design Window Overview</title>
+
+    <para>The OpenCDMS Create application comprises three main sections that
+    are viewable in the main design window.</para>
+
+    <figure>
+      <title>Study Designer main window</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_m18108329.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <section id="dsddatasettree">
+      <title>Tree Views</title>
+
+      <para>On the leftmost pane of the main window, there are two tree views.
+      When a study is opened or newly created, it appears in the tree views
+      here. For names in the tree that are longer than the visible area, a
+      tooltip is provided. A scrollbar is provided when study documents or
+      entries extend beyond the visible portion of the tree. It is also
+      possible to expand or contract the tree display area horizontally by
+      clicking on the dividing scrollbar and dragging it to the left or
+      right.</para>
+
+      <section>
+        <title>Design View</title>
+
+        <para>The first view is the Design View. This is the most commonly
+        used view and it shows all the documents and entries for the study.
+        Double-clicking on a document or entry will open it in the document
+        panel. Right-clicking on the study will provide functionality to
+        create a new document in the study and to display the basic properties
+        of the study. (For right-click operations relevant to the Library, see
+        the section on the Library below.)</para>
+      </section>
+
+      <section>
+        <title>Schedule View</title>
+
+        <para>The second view is the Schedule View. This view shows how
+        documents have been configured for particular stages in the study.
+        There are no double-click operations supported in this view. To change
+        the allocation of documents to study stages, you should use the Manage
+        Study Schedule option in the Study Menu. It is not possible to
+        manipulate documents and entries from this view; use the design view
+        for viewing and editing individual documents and entries.</para>
+      </section>
+    </section>
+
+    <section id="dsddocpanel">
+      <title>The Document Panel</title>
+
+      <para>The document panel is the central component of the main openCDMS
+      Create window. Documents can be viewed and edited in this view. Multiple
+      documents may be opened (by double-clicking on them in the study tree)
+      and will be displayed in the document panel in unique tabs. Entries can
+      be dragged from the Entry Panel (on the right hand side of the screen)
+      and dropped into the Document Panel to add new entries to the document.
+      Right-click within the document panel on entries provided functionality
+      such as the ability to copy and paste entries, to edit the entries and
+      reorder the entries within the document (by moving them up and down).
+      When a document is opened, it is rendered similarly to how it will
+      appear in the openCDMS Collect application with a sections view on the
+      top of the panel and the entries displayed below.</para>
+    </section>
+
+    <section id="dsdentrypanel">
+      <title>The Entry Panel</title>
+
+      <para>The Entry Panel is the rightmost component of the main openCDMS
+      Create window. Entries are displayed as icons - for new users, hovering
+      the mouse over individual entries will provide a tooltip detailing the
+      type of entry the icons represent. Entries can be added to documents to
+      dragging the icon into the document to the position required. When an
+      entry is added to a document, the configuration dialog for that entry
+      will be opened automatically.</para>
+
+      <section id="dsdecrfpagedescription">
+        <title>Text</title>
+
+        <para>Use this entry type to create a non-editable textual
+        description. This is a useful entry to use if you wish to provide a
+        short description of the section or document. Drag the icon onto the
+        main document panel to add it.</para>
+      </section>
+
+      <section id="dsdtextentry">
+        <title>Text Entry</title>
+
+        <para>Use this entry to create a question with a text-based response.
+        You will prompted to choose between a single-line text entry (for
+        questions requiring a short response) or a multi-line text entry (for
+        questions requiring a longer response). Drag the icon onto the main
+        document panel to add it.</para>
+      </section>
+
+      <section id="dsdoptionentry">
+        <title>Option Entry</title>
+
+        <para>Use this entry to create a question with multiple pre-defined
+        responses. This is the appropriate entry type to use if you wish to
+        give users the ability to select the appropriate answer from multiple
+        options and can be presented either in as a drop-down box or as a
+        list. Drag the icon onto the main document panel to add it.</para>
+      </section>
+
+      <section id="dsdnumericentry">
+        <title>Numeric Entry</title>
+
+        <para>Use this entry to create a question that requires a numeric
+        response. You will be prompted to choose between an integer entry and
+        a basic numeric entry. An integer entry is an entry that requires a
+        positive or negative whole number to be input by the user (i.e
+        automatic validation will take place to ensure the input number is a
+        positive or negative whole number). A basic numeric entry places no
+        restriction on the numeric value entered (although you can restrict
+        user input using a validation rule; see the section on validation
+        rules below). Drag the icon onto the main document panel to add
+        it.</para>
+      </section>
+
+      <section id="dsddateentry">
+        <title>Date Entry</title>
+
+        <para>Use this entry to create a question the requires a date response
+        (e.g. Date of birth). Using this option will provide the user with the
+        option to enter a date either by typing in a date in the required
+        format or by selecting the date from a drop-down calendar panel. Drag
+        the icon onto the main document panel to add it.</para>
+      </section>
+
+      <section id="dsdbooleanentry">
+        <title>Check Boxes</title>
+
+        <para>Use this type of entry to create a question that requires a
+        simple yes or no response. Using this option will provide the user
+        with the a single check box that can be selected or deselected.</para>
+      </section>
+
+      <section id="dsdtableentry">
+        <title>Table Entry</title>
+
+        <para>Use this entry to create a question that requires responses in
+        tabular format. The table entry combines a number of basic entry types
+        detailed above and presents these as one table. Entry choices
+        available include a text entry, number entry, option entry and date
+        entry. These entries must be added to the table in the order with
+        which they are to appear in the table (i.e. from left to right).
+        Additionally, is possible to add a Fixed Label Entry. The Fixed Label
+        Entry is a special type of entry only for use with the table entry and
+        it is used to provide row labels for the table. if the Fixed Label
+        entry is used, it will not be possible for the user to add additional
+        rows to the table but instead they will be required to complete each
+        of the the entries for each label. The Fixed Label will always assume
+        the rightmost position in the table because it is used as a row
+        label.</para>
+      </section>
+
+      <section id="dsdderivedentry">
+        <title>Calculated Entry</title>
+
+        <para>Use this entry to automatically calculate a values based on
+        responses to preceding questions. You will be asked to choose between
+        a calculated entry and an 'external calculated entry'. Calculated
+        entries are useful for performing predefined calculations on specific
+        entries (e.g. for summing up the responses to the previous entries in
+        the sections). An 'external calculated entry' requires that you have a
+        web service in place to perform specific calculations. Drag the icon
+        onto the main document panel to add it.</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="dsddocconfiguration">
+    <title>Configuration of Documents</title>
+
+    <section id="dsddocconfigprops">
+      <title>Document Properties</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_docconfig.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <section id="dsddocconfigname">
+        <title>Name</title>
+
+        <para>Enter a name for the document. This should be a short name for
+        the document that is displayed to the user in openCDMS Collect.</para>
+      </section>
+
+      <section id="dsddocconfigdescription">
+        <title>Description</title>
+
+        <para>Enter a description for the document. This is an optional field
+        used to give extra information to the user in openCDMS Collect.</para>
+      </section>
+
+      <section id="dsddocumentconfigpermissions">
+        <title>Document Permissions</title>
+
+        <para>This is displays the permissions given to the document. It shows
+        who can see or edit the document. Click on the 'view/edit' button for
+        more detailed information.</para>
+      </section>
+
+      <section id="dsddocumentconfigstages">
+        <title>Select stages for the Document</title>
+
+        <para>This is displays the study stages that the document will appear
+        in.</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="dsddocsections">
+    <title>Document Sections</title>
+
+    <para>Sections are used to divide an document into logical segments.
+    Sections are used for display and navigation purposes. By default, a 'Main
+    Section' is created. To create new sections or edit existing ones,
+    right-click on the 'Manage Sections' button in the main document
+    view.</para>
+
+    <figure>
+      <title>Section Edit Dialog</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/dsd_sectioneditdialog.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Again the name and display text fields must be completed. The
+    section description section is optional. <emphasis role="bold">Note: The
+    'Multiple Sections Allowed' field should only be checked if the document
+    requires that dynamic sections can be added. Usually, this field will be
+    left unchecked</emphasis>. When you are satisfied with your entries, click
+    'OK'.</para>
+  </section>
+
+  <section id="dsdentryconfiguration">
+    <title>Configuration of Entries</title>
+
+    <section id="dsdentryconfigbasicprops">
+      <title>Basic Entries Properties</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_textentry.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <section id="dsdentryconfigname">
+        <title>Name</title>
+
+        <para>Enter a name for the entry. This should be a short name for the
+        entry that can be used to reference it within other configuration
+        options (e.g. option dependencies, values for derived entries etc.)
+        The primary function of the 'name' field is for configuring the study
+        and it will not be displayed to the user in openCDMS Collect.</para>
+      </section>
+
+      <section id="dsdentryconfigdisplaytext">
+        <title>Display Text</title>
+
+        <para>Enter a name for the entry. This is the name of the entry that
+        will be displayed to the user.</para>
+      </section>
+
+      <section id="dsdentryconfignumber">
+        <title>Number</title>
+
+        <para>This is the label that will appear to the user before the entry
+        name. Typically, numbered labels such as 1, 2, 3, might be entered
+        here to identify the entries in the document sequentially.</para>
+      </section>
+
+      <section id="dsdentryconfigentrystatus">
+        <title>Entry Status</title>
+
+        <para>This field determines which status the entry will be in -
+        MANDATORY: the field must be completed by the user; OPTIONAL: the
+        field may or not be completed by the user; DISABLED: the field will be
+        ineditable (greyed out) to the user (typically this is used when the
+        entry is controlled by option dependencies.)</para>
+      </section>
+
+      <section id="dsdentryconfigpermissions">
+        <title>Entry Permissions</title>
+
+        <para>This displays the permissions given to the entry. It shows who
+        can see or edit the response to the entry. Click on the 'view/edit'
+        button for more detailed information about the current entry.</para>
+      </section>
+
+      <section id="dsdentryconfighelptext">
+        <title>Help Text</title>
+
+        <para>This field allows a text entry for providing information to the
+        user about how to respond to this entry.</para>
+      </section>
+
+      <section id="dsdentryconfigstandardcodes">
+        <title>Disable Missing Codes</title>
+
+        <para>This checkbox determines whether the missing codes will be
+        displayed for this entry or not (missing codes include for example
+        'Not Applicable' and 'Data unable to be captured'). This box should be
+        checked if you want the user to be forced to enter a value for the
+        question or to choose from a predefined list of configured
+        options.</para>
+      </section>
+
+      <section id="dsdentryconfigfontstyle" label="" lang="" os="">
+        <title>Font Style</title>
+
+        <para>Select the font style of the displayed text. (Header: large,
+        bold text.) This is particularly useful for displaying headers within
+        a document.</para>
+      </section>
+
+      <section id="dsdentryconfigshowoptioncodes">
+        <title>Show Option Codes</title>
+
+        <para>For an option, selecting this checkbox will make the option
+        codes visible (option codes are configurable during the creation of
+        options.) Option codes are typically numbered labels for the
+        individual options.</para>
+      </section>
+
+      <section id="dsdentryconfigshowoptiondropdown">
+        <title>Use drop-down selection box</title>
+
+        <para>Display the options as a drop-down box rather than as a
+        selectable list of radio buttons.</para>
+      </section>
+
+      <section id="dsdentryconfigelementpatchingaction">
+        <title>Element Patching Action</title>
+
+        <para>If this is a published study and a new entry has been added,
+        this option must be configured. A drop-down selection box is presented
+        to allow users to choose between the "Reject existing elements" and
+        "Accept existing documents". These options describes the action that
+        will be taken to udpate existing documents that are already part of
+        existing records (i.e. those documents that have been completed by
+        users of openCMDS Collect). Setting the action here to be "Reject
+        existing documents" will cause all existing documents to be
+        automatically set to the rejected state and will therefore require
+        that the user fills out the new entry manually. Selecting "Accept
+        existing documents" will enter a default missing code "Not Applicable"
+        and will therefore not require manual changes by the user. By defaut,
+        this option is selected.</para>
+      </section>
+
+      <section id="dsdoptiondependencies">
+        <title>Option Dependencies</title>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Option Dependencies</emphasis>For some
+            entries, you may wish to define a dependency between this entry
+            and another entry. For example, a question on pregnancy may be
+            enabled/disabled by the participant's gender. To create this kind
+            of dependency. First create the entry on which the question
+            depends. In this case we create the gender question. To create an
+            option entry, we complete the basic entry properties as before.
+            Additionally we create options for the entry as follows:</para>
+
+            <figure>
+              <title>Configure Option Entry dialog</title>
+
+              <screenshot>
+                <screeninfo></screeninfo>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_af0be6a.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+
+            <para>Click the "Add" button to create a new option and fill in
+            the required fields. Repeat this process for all required options.
+            In this case, we just create 'Male' and 'Female'.</para>
+
+            <figure>
+              <title>Add Option dialog</title>
+
+              <screenshot>
+                <screeninfo></screeninfo>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_21a82136.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+
+            <para>Next we create the pregnancy option entry. In the same way
+            as before we create the options 'Yes' and 'No'. This time, however
+            we set the Entry Status of the option entry to 'DISABLED'. This
+            means the option entry will initially be greyed out and will not
+            require the user to enter a value for it. Now we click the 'Option
+            Dependencies' tab and define a dependency.</para>
+
+            <para>Here, we assign the option 'Gender-female' and set the
+            Status to 'MANDATORY'. This ensure that if the option 'Female' is
+            selected by the user, the pregnancy question will be mandatory and
+            must be completed.</para>
+
+            <figure>
+              <title>Configure Entry - Option Dependencies</title>
+
+              <screenshot>
+                <screeninfo></screeninfo>
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_1c1e0086.jpg" />
+                  </imageobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section id="dsdmanageunits">
+      <title>Manage Units</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_confunits.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>Provides the capability for adding, removing and changing the
+      units for the study. To add a unit, click the 'add' button a
+      configuration dialog for creating a new unit will be provided. For
+      editing a unit, select the unit in the list and a configuration dialog
+      will be produced. Similarly, to remove a unit, select the unit in the
+      list and click 'Remove'. A description of the configuration options for
+      creating and editing units is described below. The 'Ok' button will save
+      the configured units. 'Cancel' will exit from the units management
+      window and will not save the changes. 'Apply' will instantly save any
+      changes made to the units to the study; this is a useful option if you
+      wish to define base units within a single units management
+      session.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdunitsabbr">Abbreviation: Provide a short abbreviation
+          of the unit (e.g. "mg", "kg").</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdunitsdescription">Description: Provide a textual
+          description of the units (e.g. "milligrams", 'kilograms").</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdunitsbaseunit">Base Unit: This can be used to convert
+          any value having this unit to the units of the base unit by
+          multiplying the value by the factor.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdunitsfactor">Factor: The factor used to convert a value
+          having this unit to the units of the base unit by
+          multiplication.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="dsdmanagevalidationrules">
+      <title>Manage Validation Rules</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_confvalidationrule.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>Provides the capability for adding, removing and changing the
+      validation rules for the study. Use the add, edit and remove buttons to
+      manage validation rules. Adding, editing, removing, saving and canceling
+      operations available in this dialog function like the operations
+      described for units above. The 'View Tests' button is used within the
+      Library mode and is described the Element Library section. A short
+      overview of the general fields for validation rules is now provided
+      before a more in-depth description of specific fields for particular
+      kinds of validation rules.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdvalruledescription">Description: Provide a short
+          description of the validation rule e.g. Number &gt; 0 and &lt;
+          5.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdvalrulemessage">Message: Provide a description that
+          will be displayed to the user when the rule is violated. e.g. The
+          number must be greater than 0 and less than 5.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdvalruletype">Type: Select the type of validation rule
+          depending on the kind of contraints you wish to apply, a numeric
+          range, a date range etc.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section id="dsdvalruletextrule">
+        <title>Type of Rules</title>
+
+        <para id="dsdvalruletext">Text Validation Rule : Use this kind of rule
+        to restrict a textual entry to a particular pattern and/or
+        length.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruletextlowerlimit">Lower Limit: the minimum
+            number of letters the response must contain</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruletextupperlimit">Upper Limit: the maximum
+            number of letter the response must contain</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruletextpattern">Patterm: A regex expression to
+            use for constraining the entry.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruletextpatterndetails">Pattern Details: A short
+            summary description of the pattern.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para id="dsdvalruleinteger">Integer Validation Rule : Use this kind
+        of rule to set acceptable ranges on an integer entry. (An integer is a
+        positive or negative whole number e.g. -1, -2, 1, 2, 3).</para>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruleintegerlowerlimit">Lower Limit: the minimum
+            integer that can be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruleintegerupperlimit">Upper Limit: the maximum
+            integer that can be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para id="dsdvalrulenumber">Number Validation Rule : Use this kind of
+        rule to set acceptable ranges on a number entry.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalrulenumberlowerlimit">Lower Limit: the minimum
+            number that can be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalrulenumberupperlimit">Upper Limit: the maximum
+            number that can be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Date Validation Rule : Use this kind of rule to constrain a date
+        entry to particular values.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruledateabslowerlimit">Absolute Lower Limit: The
+            minimum date that may be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruleabsupperlimit">Absolute Upper Limit: The
+            maximum date that may be entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruledaterellowerlimit">Relative Lower Limit: The
+            range from today that specifies the minimum date that can be
+            entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruledaterellowerlimitunits">Relative Lower Limit
+            Units: The timeframe used in conjuction with the value entered in
+            the 'relative lower limit'.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruledaterelupperlimit">Relative Upper Limit: The
+            range from today that specifies the maximum date that can be
+            entered.</para>
+          </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+          <listitem>
+            <para id="dsdvalruledaterelupperlimitunits">Relative Upper Limit
+            Units: The timeframe used in conjuction with the value entered in
+            the 'relative upper limit'.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section id="dsdmanagetransformers">
+      <title>Manage Transformers</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/dsd_transformers.jpg" />
+        </imageobject>
+      </mediaobject>
+
+      <para>Provides the capability for adding, removing and changing the
+      transformers for the study. The operations to add, edit, remove, ok and
+      cancel function as in the manage units dialog described above. The View
+      Tests button is only relevant in the Element Library view as descibed in
+      the Library documentation.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransformertype">Type of the new transformer: Choose
+          from either the preconfigured transformers or define your
+          own.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransnamespace">Web service namespace: Set the
+          namespace of the web-service that the transformer utilizes to
+          perform data transformation.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransoperation">Web service operation: Set the
+          operation of the web-service that the transformer utilizes to
+          perform data transformation.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransurl">Web service URL: Set the URL of the
+          web-service that the transformer utilizes to perform data
+          transformation.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransresultclass">Result class: Get the name of the
+          sub-class of Value that the result of the transformation will be
+          stored in.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para id="dsdtransviewableoutput">Viewable Output: Set the value of
+          the viewable output flag. If true, the output of the transformation
+          can be viewed by humans; if false the output of the transformation
+          should not be viewed by humans</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section id="dsdcollabediting">
+    <title>Collaborative Study Editing</title>
+
+    <para>Since Release 6.1 of openCDMS Create, it is possible for multiple
+    users to work on a single study design. Using the File-&gt;Open menu it is
+    possible for individual users to access study design files on their local
+    computer or a network drive. It is also possible to access studies in the
+    database. Note: a user must have the correct user privileges in the study
+    to load it from the database. If you want to grant access to another user
+    to view and edit a study in the database, use openCDMS Control to assign
+    the user access to the study. The recommended mode for collaborating on
+    studies is to save intermediate designs to the database and for each user
+    to load the latest version from the database each time and resave the
+    changed version to the database when they are finished working on it. This
+    guarantees that the database always contains the latest version of the
+    study and ensures that openCDMS has full control over managing the study
+    revision and update process. If you wish to collaborate using network
+    files, openCDMS will make a best effort to ensure that files are managed
+    correctly within the application. Due to the variation in underlying
+    operation systems and networks over which openCDMS obviously does not have
+    full control, it is not possible to guarantee that this functionality will
+    be able to work correctly in all situations. Therefore, saving to the
+    database is the recommended method for study collaboration as described
+    above. In the case of accessing a network file that another user already
+    has open, openCDMS will permit access in read-only mode.</para>
+  </section>
+
+  <section id="dsdstudystages">
+    <title>Study Statuses and Valid Next Statuses</title>
+
+    <para>Study statuses and valid next statuses are automatically configured
+    for studies and should only be changed by advanced users.</para>
+
+    <para>Statuses and valid next statuses must be configured for the study. A
+    study has a status that describes in high level terms how a record
+    progresses during its lifetime. For instance, typical statuses might be
+    "Referred", "Consented", "Complete", "Withdrawn", "Deceased", etc. All
+    records in the Dataset will always reference one of the Dataset's
+    statuses. As well as defining the statuses themselves, we define the
+    transitions between them.</para>
+
+    <para>A new status is created using the 'Add' button.</para>
+
+    <figure>
+      <title>New Dataset Configuration Dialog - Statuses and
+      Transitions</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_m7e01c066.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>Each of the fields for a new status should be completed. Status name
+    requires a short entry to describe the status for a record (e.g. Screened,
+    Baseline Completed, Consented). The code field requires a numbered entry
+    (e.g. 0, 1, 2). A generic state must also be assigned to each status: this
+    generic state maps the new status onto a state recognised by openCDMS
+    Collect. It might be desirable to define specific statuses for a given
+    study (e.g. for more fine-grained reporting purposes) but it is necessary
+    to map this new status onto a generic state so that it can be used and
+    recogised by openCDMS Collect. A description of each of the Generic States
+    follows:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>REFERRED - entered study but cannot yet be collected.</para>
+      </listitem>
+
+      <listitem>
+        <para>ACTIVE - in study, data being collected</para>
+      </listitem>
+
+      <listitem>
+        <para>LEFT- left/withdrawn from the study. No more data expected to be
+        collected.</para>
+      </listitem>
+
+      <listitem>
+        <para>COMPLETED - Completed all phases of the study and there is no
+        more data to collect.</para>
+      </listitem>
+
+      <listitem>
+        <para>INACTIVE - Consented into study but later withdrew all
+        consent.</para>
+      </listitem>
+
+      <listitem>
+        <para>INVALID - Record added by mistake or duplicated.</para>
+      </listitem>
+    </itemizedlist>
+
+    <figure>
+      <title>Add status dialog</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_m6234ed4.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>When two of more statuses have been defined, it is possible assign
+    valid next statuses to control the flow of data entry within the
+    application. For example, you may wish to allow transitions from Consent
+    to Referred.</para>
+
+    <para>To do this, ensure that status1 is selected in the drop down box as
+    show above, then select status2 in the 'next valid statuses' box and click
+    the -&gt; button to move the state to the valid next statuses list.
+    Assigned transitions describe the possible flow of a record from one
+    status to another.</para>
+
+    <figure>
+      <screenshot>
+        <screeninfo />
+
+        <mediaobject />
+      </screenshot>
+    </figure>
+  </section>
+
+  <section id="dsdparticipantregister">
+    <title>Participant Register</title>
+
+    <para>The participant register is optionally used by studies to store the
+    identifibale details of study participants e.g. name, address etc. It is
+    also possible to add custom fields to the register that are specific to
+    the study. This is particularly useful if non-standard parameters are
+    required by the study randomizer for stratification (see <xref
+    linkend="dsdrandomisationsection" />).</para>
+
+    <para>The Manage Participant Register dialog allows custom fields to be
+    added to the register. Each custom field is defined by it's name and a set
+    of values which the field may take.</para>
+
+    <figure>
+      <title>Manage Participant Register dialog</title>
+
+      <screenshot>
+        <screeninfo></screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/create_configure_register.jpg" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </section>
+
+  <section id="dsdrandomisationsection">
+    <title>Randomization</title>
+
+    <para>If a study is to be used for a randomised trial, it is necessary to
+    configure the randomisation settings required. To configure randomisation
+    settings, choose Configure Randomiser from the Study menu.</para>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/dsd_randomiser.jpg" />
+      </imageobject>
+    </mediaobject>
+
+    <section id="dsdrandomiserstrata">
+      <title>Strata</title>
+
+      <para>To use the randomiser, it is necessary to define the parameters
+      that are used to define how stratification is performed. For all studies
+      sex and centre will be presented as possible stratification parameters.
+      Additionally, any custom fields defined for the participant register
+      (see <xref linkend="dsdparticipantregister" />) will be shown. At least
+      one stratification parameter must be chosen.</para>
+    </section>
+
+    <section id="dsdrandomisertreatments">
+      <title>Treatments</title>
+
+      <para>To use the randomiser, it is necessary to define the treatment
+      arms that can be assigned. At least two treatment arms must be set. A
+      name and a code for each treatment arm must be set (e.g. Treatment Name:
+      Cognitive Behavioural Therapy, Treatment Code: CBT)</para>
+    </section>
+
+    <section id="dsdrandomiserblocksizes">
+      <title>Block sizes</title>
+
+      <para>Minimum and maximum block sizes must be set for the randomiser.
+      Block sizes must be a mulitple of the number of treatments, and the
+      maximum block size cannot be less than the minimum block size.</para>
+    </section>
+
+    <section id="dsdrandomiseremails">
+      <title>Randomization Emails</title>
+
+      <para>Notification of randomisation decisions can be sent by email to
+      users with the relevant roles. To set which roles receive which email
+      notifications, use the check boxes.</para>
+
+      <para>Notification of RS Decision: This will send an email when the
+      treatment arm has been assigned. It will contain the participant but not
+      the treatment arm.</para>
+
+      <para>Notification of RS Invocation: This will send an email when the
+      randomisation process has begun for a particular study number.</para>
+
+      <para>Notification of RS Treatment: This will send an email containing
+      the study number and the treatment arm to which the participant has been
+      assigned.</para>
+    </section>
+
+    <section id="dsdrandomisertrigger">
+      <title>Randomisation Trigger</title>
+
+      <para>In addition to the randomisation settings required here, it is
+      also necessary to specifiy a document that will trigger the
+      randomisation event. You must select a document from the available list.
+      When the document is completed, the user will be prompted to randomise
+      this participant.</para>
+    </section>
+  </section>
+
+  <section id="dsdreporting">
+    <title>Reporting</title>
+
+    <para>It is possible to assign management reports at study design time. To
+    configure reports, select Configure Reports from the Study menu option on
+    the top menu bar. To assign reports to the study, select them from the
+    left hand list and use the right arrow to associated them with the study.
+    When you are finished, click OK.</para>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/dsd_reports.jpg" />
+      </imageobject>
+    </mediaobject>
+  </section>
+
+  <section id="dsdvalidatestudy">
+    <title>Validate Study</title>
+
+    <para>To perform a basic validation check to see if the necessary
+    components have been completed before saving a study, select 'Validate
+    Study' from the Study Menu option on a study. Components that are
+    successfully completed will display a green tick, components that are
+    incomplete will show a red X. Note: studies must be fit for successful
+    validation before they can be saved or published to the database. Studies
+    that do not validate successfully can be saved to the file system.</para>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/dsd_validatestudy.jpg" />
+      </imageobject>
+    </mediaobject>
+  </section>
+
+  <section id="dsdconfimportmapping">
+    <title>Manage Import Maping</title>
+
+    <para>It is possible to configure a document to enable the importing of
+    data from an external file source (e.g. a csv file). To configure the
+    import mapping for a document, right-click on the document in the design
+    view tree and select 'Manage Import Mapping'. If you wish to use the
+    import mapping feature, you must select the 'Use import mapping' checkbox.
+    If this is not selected, import mappings will not be aplied to the
+    document. The table in this dialog contains a list of all entries in the
+    document. If you wish to associate an entry with an external data source,
+    you must input the appropriate column in the data source into the 'Column'
+    field. Only column numbers can be entered here. Entries with a red
+    background in the column field are ones that cannot be used with the
+    import feature - these include text, derived entries, and composite
+    entries. See the Collect user guide for information on how to import data
+    into the study after you having configured the import and published your
+    study. To try out the import feature before publishing your study, use the
+    "Preview" feature within Create. To use the import mapping feature it is
+    necessary that your import data source complies to the following
+    standards: the first column must contain the identifier of the open
+    participant for whom you wish to import data. No empty columns are allowed
+    in your data source between this identifier column and the first column
+    containing data. The first column containing data (after the identifier
+    column) is column 1.</para>
+  </section>
+
+  <section id="dsdsaving">
+    <title>Autosaving</title>
+
+    <para>Studies are autosaved every few minutes to the user's home Create
+    directory with a file name of the format (Studyname-autosave.xml). Do NOT
+    use this file to work with in the study designer. If you need to recover
+    from an autosaved file, open the file and immediately resave it to a new
+    location with a new name.</para>
+  </section>
+
+  <section id="dsdpatching">
+    <title>Patching</title>
+
+    <para>Patching refers to the process of updating a live, published study.
+    Patching live studies should be done with caution as changes made during
+    patching cannot be undone. There are several possible changes that can be
+    made to a study after it has been published. These will now be described
+    in some detail.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para id="dsdpatchinggroups">Patching Centres and sites: It is
+        possible to add additional centres and sites after the study has been
+        published and then to patch these into the live study. To do this,
+        open the live study and use the Menu -&gt; Manage Centres option. It
+        is not possible to edit or remove existing centres and sites.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingdocuments">Patching Documents: It is possible to
+        add additional documents after the study has been published and then
+        to patch these into the live study. To do this, open the live study
+        use the File -&gt; Open menu, and then use the 'New document' menu
+        item to create new documents for the study. It is also possible to
+        reorder the documents within a study using the 'Reorder Documents'
+        option and also to reconfigure the study stages within which a
+        document exists (see Patching: Study Stages below for more on this.
+        When a document is removed from the study using the patching function,
+        it will no longer be visible within openCDMS Collect or openCDMS
+        Create. However, any existing data that has been entered for this
+        document will be retained in the database and it will be visible in a
+        data export from openCDMS Web.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingentries">Patching Documents: It is possible to
+        add and edit entries to a document after the study has been published
+        and then to patch these into the live study. To do this, open the live
+        study use the File -&gt; Open menu, open the relevant document and
+        then manipulate the entries in the usual way. Note: it is not possible
+        to change the name of the entry after the study has been published.
+        When an entry is removed from the study using the patching function,
+        it will no longer be visible withing openCDMS Collect or openCDMS
+        Create. However, any existing data that has been entered for this
+        document will be retained in the database and it will be visible in a
+        data export from openCDMS Web.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingstudystages">Patching Study Stages: It is
+        possible to add study stages after the study has been published and
+        then to patch these into the live study. To do this, open the live
+        study use the File -&gt; Open menu, and then use the Manage Study
+        Stages menu option from the Sutdy menu to create new study stages.
+        Before patching these into the live study, it is a good idea to use
+        the 'Validate Study' menu item to ensure you have configured these
+        correctly. Study stages cannot be removed from the study using the
+        patching function.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingstudyschedule">Patching Study Schedule: It is
+        possible to modify the study schedule of a live published study. To do
+        this, open the live study and use use the Manage Visit Schedule
+        option. Documents removed from a particular study stage will be locked
+        and no further data entry will be permissible.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingunits">Patching Units: Units may be added to the
+        dataset. In addition, the assignment of units to entries can be
+        changed. Use the Manage Units menu to add units to the study and use
+        the Edit Entry option to modify the unit assignments of a particular
+        entry.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingtransformers">Patching Transformers: Transformers
+        may be added to the dataset. In addition, the assignment of
+        transformers to entries can be changed. Use the Manage
+        Transformersmenu to add transformers to the study and use the Edit
+        Entry option to modify the transfomer assignments of a particular
+        entry.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingvalidationrules">Patching Validation Rules:
+        Validation rules may be added to the dataset. In addition, the
+        assignment of validation rules to entries can be changed. Use the
+        Manage Validation Rules menu to add validation rules to the study and
+        use the Edit Entry option to modify the validation rule assignments of
+        a particular entry.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>When all the required changes have been made to the dataset, then
+    the 'Validate Study' option should be run. This checks that the study is
+    in a valid state and is ready to be published (or patched) to the
+    database. If the study is not valid (indiciated by red X's next to
+    specific checks), then it should be updated to fix any errors reported
+    here. If it validates successfully, then the study can be patched to the
+    database. Afther study has been successfully validated, the preview option
+    should be run to examine the updates to the study in openCDMS Collect. To
+    use the preview function, go to File -&gt; Preview and test out the
+    changes to the study in preview mode of Collect. If you are not satisfied
+    with all your changes, simply exit the preview, make the required changes
+    in openCDMS Create and run the Validate Study and Preview options again.
+    If you are satisified with the changes to the study and how they appear in
+    openCDMS Collect, then you are ready to proceed to patch the study to the
+    database. The study can then be patched to the database using the File
+    -&gt; Patch option. On successful patching to the database, a success
+    message dialog will be displayed and the status bar at the bottom of the
+    main window will be updated to show the time and date that the study has
+    been patched.</para>
+
+    <para>Because patching a live study impacts several openCDMS modules and
+    because changes cannot be undone, users are strongly advised to adhere to
+    all the steps in the following patching procedure detailed below.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para id="dsdpatchinguserscommit">Instruct all users to commit their
+        data (including offline data). Do not proceed until this step has been
+        completed by all users.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingbackup">The live system must be backed up just
+        prior to patching. Contact Support if you have any queries about
+        this.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchinglivetest">An exact copy of the live study should
+        be published on the test system.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingsaverecords">Create and save a number of records
+        and documents in Collect. Ensure that this includes a combination of
+        documents that will be changed during patching and documents that will
+        not be changed.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchontest">Patch the study on the test
+        system.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchopencollect">Open Collect on the test system
+        and ensure all data previously saved has been handled
+        correctly.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchcreatenewdocs">Create new documents in
+        Collect (including a combination of documents that have been saved
+        previously and some that haven’t).</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchlivestudyonlivesystem1">If all the previous
+        steps are successful, then the study is ready to be patched on the
+        live system. Patch the study using Create.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchlivestudyonlivesystem2">Test the patch on the
+        live system by opening Collect and selecting a few patched documents
+        and verifying that they have been handled correctly.</para>
+      </listitem>
+
+      <listitem>
+        <para id="dsdpatchingpatchlivestudyonlivesystem3">Instruct all users to
+        login, close any open documents and records. Then they must use the
+        Rebuild local caches option. (This is necessary to rebuild caches for
+        statuses that might have changed - e.g. rejected docs).</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="dsdconcepts">
+    <title>Glossary</title>
+
+    <section id="dsdconceptsdataset">
+      <title>Study</title>
+
+      <para>A study within openCDMS represents the contents of the
+      project/study/trial including the documents and their attributes and the
+      properties necessary for the study to integrate with other openCDMS
+      products for data entry and user managerment (ie. openCDMS Collect and
+      openCDMS Control).</para>
+    </section>
+
+    <section id="dsdconceptsdocument">
+      <title>Document</title>
+
+      <para>An document contains participant data and is part of a record. For
+      example, PANSS and Baseline Audit Form are documents. Each document can
+      be completed independently of other documents.</para>
+    </section>
+
+    <section id="dsdconceptssection">
+      <title>Section</title>
+
+      <para>A section is a part of a document. Long documents are divided into
+      sections.</para>
+    </section>
+
+    <section id="dsdconceptsentry">
+      <title>Entry</title>
+
+      <para>An entry is a particular field within a document that describes
+      how the data should be entered and processed. Entries contain basic
+      properties like name and help text for the entry and also more complex
+      properties such as dependencies on other entries, validation rules and
+      transformers. Specific properties of entries are details further
+      below.</para>
+    </section>
+
+    <section id="dsdconceptsgroup">
+      <title>Centre</title>
+
+      <para>A centre represents a high-level geographical region within which
+      the study will take place (e.g. North West-Lancashire Care Trust). A
+      specification of centres depends on the particular study and its
+      geographical reach. A centre contains one or more sites. The centre is
+      composed of the hub and the trust codes, and identifies where the
+      participant has been recruited.</para>
+    </section>
+
+    <section id="dsdconceptssite">
+      <title>Site</title>
+
+      <para>Sites are contained within centres and describe a localised
+      setting within which data will be entered and maintained (e.g.
+      Springfield University Hospital). A specification of sites depends on
+      the particular study and its geographical reach.</para>
+    </section>
+
+    <section id="dsdconceptsdocgroups">
+      <title>Study Stages</title>
+
+      <para>A study stage contains all document occurrences for grouping sets
+      of document. In a longitudinal study, typical study stages might include
+      baseline, 6 months, 12 months.</para>
+    </section>
+
+    <section id="dsdconceptstransformers">
+      <title>Transformers</title>
+
+      <para>Where potentially identifiable data is entered into the database
+      it is transformed such that it cannot be recovered. To preserve
+      anonymity, entries may be designed to transform all participant's
+      initials, postcodes and NHS numbers.</para>
+    </section>
+
+    <section id="dsdconceptsunits">
+      <title>Units</title>
+
+      <para>A unit is a precisely specified quantity in terms of which the
+      magnitude of other quantities of the same kind can be stated (e.g. mg,
+      days, weeks).</para>
+    </section>
+
+    <section id="dsdconceptsvalidationrules">
+      <title>Validation Rules</title>
+
+      <para>Validation rules specify particular constraints on the values that
+      may be entered for particular entries within a study (e.g. validation
+      rules may be set to ensure a date value entered is not set to a future
+      date).</para>
+    </section>
+
+    <section id="dsdconceptsroles">
+      <title>Roles</title>
+
+      <para>Roles are specified to define secure access control and
+      permissions for users of the openCDMS study.</para>
+    </section>
+
+    <section id="dsdconceptsstatus">
+      <title>Status</title>
+
+      <para>A status describes a particular state that a document occurrence
+      may occupy. The status refers to the position of the record in the
+      lifecycle of the project. In conjunction with state transitions,
+      statuses are used to control the flow of data entry.</para>
+    </section>
+
+    <section id="dsdconceptsstatetransitions">
+      <title>State Transitions</title>
+
+      <para>State transitions are used to control the flow of data entry (e.g.
+      it may be desirable to ensure that data entry is completed for all
+      documents in baseline before entry of data for the 6 month stage is
+      completed). State transitions describe the allowed progressions over the
+      lifetime of a record.</para>
+    </section>
+
+    <section id="dsdconceptsconsentform">
+      <title>Consent Form</title>
+
+      <para>A consent form describes a set of questions that must be completed
+      before access to data entry for documents may be granted.</para>
+    </section>
+
+    <section id="dsdconceptsrepository">
+      <title>Database</title>
+
+      <para>The database is the secure central database that is used for
+      long-term storage of the participant assessment data.</para>
+    </section>
+  </section>
+
+  <section id="dsddel">
+    <title>Library</title>
+
+    <para></para>
+
+    <section id="dsddeloverview">
+      <title>Overview</title>
+
+      <para>The library has been designed to facilitate the reuse of common
+      data elements and to provide a community resource for the storing,
+      browsing and extraction of these elements.</para>
+
+      <para>This will help researchers standardise studies, by allowing them
+      to use predefined documents or create documents containing predefined
+      elements during study design. This provides flexibility in designing
+      studies while also allowing consistency across studies and improving
+      quality through validation of elements (see <link
+      linkend="dsddelelementapproval"> element approval</link>).</para>
+    </section>
+
+    <section id="dsddelelements">
+      <title>Elements explained</title>
+
+      <para>The library stores a collection of reuseable elements. An element
+      can be an document, a part of an document, such as a question or
+      description (collectively known as entries), or a validation rule, which
+      is used to restrict the answers to questions.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Document</emphasis>: An document held by
+          the library is a reusable electronic clinical research form (or
+          questionnaire) and contains other elements (such as entries and
+          validation rules).</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Entry</emphasis>: An entry is an element
+          within an document. For example, a description (narrative), a
+          question or collection of questions. The elements can be of
+          different types, such as 'text entry', 'numeric entry' or 'date
+          entry'. These types are the same types that you can add to an
+          document within the openCDMS Create.</para>
+
+          <para>Some entries are known as 'compound elements' as they depend
+          on other entries. An example of a compound element is a derived
+          entry, which references other entries used to complete the
+          calculation specified within that entry's definition. As a result,
+          importing a derived entry (or any other compound entry) also imports
+          the elements upon which it depends.</para>
+
+          <para>Derived entries can have one or more tests associated with
+          them in order to verify that the calculation performed by the entry
+          is correct. A derived entry with tests can only be approved when all
+          the tests are run successfully.</para>
+
+          <para>An entry can be held by the library on its own or as part of
+          an document, in both cases the entry can be reused within another
+          document inside or outside of the library.</para>
+
+          <para>The library is populated with generic elements that are likely
+          to be reused across multiple forms, such as sex, gender, age,
+          ethnicity, etc.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Validation Rule</emphasis>: A validation
+          rule is used to restrict the potential answers to entries and so is
+          typically associated with one or more entries. A validation rule
+          associated with an entry is automatically added to the library when
+          the entry is submitted, although it can also be submitted
+          independently if required.</para>
+
+          <para>To verify the validation rule works as expected it can have
+          one or more tests associated with it. A validation rule with tests
+          can only be approved when all the tests are run successfully.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="dsddelsavingstudyelements">
+      <title>Saving elements from a study</title>
+
+      <para>An element can be added to the library in two ways.</para>
+
+      <para>1. By using the <link linkend="dsddelview">library view</link> to
+      create a new element.</para>
+
+      <para>2. By adding an existing element from a study. It is possible to
+      add documents to the library by right-clicking on the document in the
+      study tree and selecting 'save to library'. Note: it is only possible to
+      add new elements in this way, existing library elements must be edited
+      using the <link linkend="dsddelview">library view</link>.</para>
+    </section>
+
+    <section id="dsddelimportingelements">
+      <title>Importing elements into a study</title>
+
+      <para>In order to use or edit an element from the library it first needs
+      to be imported into the revelant local study. Elements can only be
+      edited by importing them into the <link linkend="dsddelopenview">
+      library view</link>.</para>
+
+      <section id="dsddelsearchelements">
+        <title>Searching for elements</title>
+
+        <para>There are two ways to launch the search facility within the
+        openCDMS Create, from the left hand side tree view, or from the main
+        menu when in the library view.</para>
+
+        <para>To search for documents, using the tree view right-click on a
+        study or the library view icon and select the option from the menu. To
+        search for entries right-click on an document and select the option
+        from the menu.</para>
+
+        <para>Alternatively, when the library view is open, from the main menu
+        select the relevent search option from the 'Library' menu.</para>
+
+        <para>The 'Search' dialog will then launch. You can search for
+        elements in the library by name using the 'search text' field, or by
+        leaving the field blank to find all elements of the selected type. As
+        shown in <xref linkend="searchdialogimg">
+             Figure 
+          </xref>, the dialog allows you to select the 'Search Type'. This
+        specifies how your search should match the element names in the
+        database. Your choices are 'begins with', 'ends with', 'contains', or
+        'exactly matches'. For example, if you wanted to see all the elements
+        whose name begins with 'A', you would type 'A' as your search text,
+        and specify 'begins with' as your 'Search Type'.</para>
+
+        <para>If you know you are after a particular kind of element (e.g.
+        date entry), you can restrict your search so that only date elements
+        will be returned. You do this by specifying the 'Element Type'. The
+        search you have specified is summarised in plain English at the top of
+        the dialog in the 'Current Search' field.</para>
+
+        <para>The 'advanced' tab allows you to further restrict the search by
+        a particular document, element status (i.e to select only pending or
+        approved elements) and/or by current revision. The current revision
+        refers to the most recent version of an element as stored by the
+        library.</para>
+
+        <para>Once you have specified your search, press the 'Search'
+        button.</para>
+
+        <figure id="searchdialogimg">
+          <title>Library search dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_searchdialog.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="dsddelsearchbrowse">
+        <title>Browsing the results</title>
+
+        <para>The 'Search Results' panel (see <xref linkend="searchdialogimg">
+             Figure 
+          </xref>) shows you the elements that matched your search criteria.
+        The 'Results' field indicates how many matches there were. If there
+        were numerous matches, only a limited number will be specified
+        initially. You can use the 'More' button to retrieve more of the
+        search results.</para>
+
+        <para>The top table shows you the results summary, listing the element
+        name, current revision level, and also the element type (e.g.
+        document, text entry or date entry, etc). By clicking on one of the
+        result rows, it is possible to see even more information about that
+        particular element in the 'Revision History' table below it.</para>
+
+        <para>The Revision History table shows the complete history of the
+        highlighted element, by displaying the past revisions. It displays who
+        modified it, when it was modified and a description of the reason for
+        revision.</para>
+      </section>
+
+      <section id="dsddelsearchpreview">
+        <title>Previewing an Element</title>
+
+        <para>The preview feature is to help you decide whether you would like
+        to import the element. To preview an element, select the desired
+        revision level from within the 'Revision History' table (or if none is
+        selected the most recent revision is shown by default) and then press
+        the 'View' button at the bottom of the dialog. For an document the
+        document itself will be displayed in a new window. For other elements
+        a dialog window will display the element's properties, allowing you to
+        inspect the element details.</para>
+      </section>
+    </section>
+
+    <section id="dsddelview">
+      <title>The Library View</title>
+
+      <para>Manipulation of elements in the library is done inside the library
+      view within the openCDMS Create. Elements can only be created or edited
+      within the library view.</para>
+
+      <section id="dsddelopenview">
+        <title>Opening the Library View</title>
+
+        <para>The library view is opened by selecting 'File' -&gt; 'Open
+        Library View'</para>
+
+        <figure id="dsddelopenviewimg">
+          <title>Opening the Library View</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_openlibraryview.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="dsddelcreatingelements">
+        <title>Creating elements</title>
+
+        <para>To create a new document right click on the Library view icon
+        within the left-hand tree and select 'New document'. You will then be
+        prompted to enter a name for the document and it will then appear in
+        the left-hand tree. The document can then be opened and entries added
+        in the normal way. Entries cannot currently be created outside of a
+        document.</para>
+
+        <para>In the library view derived entries can have tests to verify
+        their correct functioning. Tests can be viewed or added by
+        right-clicking on a derived entry, selecting 'Edit' and then choosing
+        the 'Test Cases' tab. Click on the 'Add' button to create a new
+        test.</para>
+
+        <para>To create a new validation rule select 'Library' -&gt; 'Manage
+        Validation Rules' and create a rule in the normal way. In the library
+        view validation rules can have tests added to verify the correct
+        function of the rule. To create a test simply select a validation rule
+        within the 'Manage Validation Rule' dialog and click on the 'Create
+        Tests' button.</para>
+      </section>
+
+      <section id="dsddelsubmittingelements">
+        <title>Submitting elements</title>
+
+        <para>Once documents or validation rules have been created within the
+        library view they can be submitted to the library. They can be
+        submitted at any time and once submitted they will be marked as
+        'pending'. Any element marked as pending cannot be added to another
+        element (for example a validation rule cannot be attached to an entry)
+        and cannot be used within a study until it has been approved.</para>
+
+        <para>To submit an element, either go to the menu and select 'Library'
+        -&gt; 'Save documents(or Validation Rules) to Library' or in the
+        left-hand tree right click on the Library and select 'Save documents
+        to Library'. A submission dialog will then appear (see <xref
+            linkend="dsddelsubmitimg">
+             here 
+          </xref>).</para>
+
+        <para>The submission dialog shows you the elements that are currently
+        eligible for submission to the library. All of those that are new (not
+        yet entered into the library) are marked with a 'Submission Type' of
+        'New Submission' and all edited elements are marked with a 'Submission
+        Type' of 'Revision'.</para>
+
+        <para>First, you need to enter some comments that summarise the
+        purpose of the element or the edits that have been made. Then select
+        the element from the list and press the 'Submit' button. While it is
+        possible to submit more than one element at once, it may be best to
+        make multiple submissions and submit only elements that the comment
+        relates to each time.</para>
+
+        <para>It is worth noting that, if you have added a compound element
+        that has subordinate entries, such as a derived entry or an entry with
+        a validation rule, that the parent entry and all of its subordinates
+        will be submitted to the element library.</para>
+
+        <figure id="dsddelsubmitimg">
+          <title>Element Submission Dialog</title>
+
+          <screenshot>
+            <screeninfo></screeninfo>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_submit_elements.jpg" />
+              </imageobject>
+            </mediaobject>
+          </screenshot>
+        </figure>
+      </section>
+
+      <section id="dsddeleditingelements">
+        <title>Editing elements</title>
+
+        <para>To make a change to one of the elements in the library, first
+        import the element and then change the element using the normal 'edit'
+        dialogs.</para>
+
+        <para>You can then submit the revision in the same manner as you would
+        submit a new element. A subsequent library search will reveal that the
+        element's revision number has been incremented. Note that all previous
+        revisions of the element have been preserved.</para>
+
+        <para>Elements can have many revisions and only the latest revision
+        can be edited. If you have imported an older revision, or if a
+        revision has become out of date, simply delete the element and import
+        the latest version. The library search dialog will only show the
+        latest revision of an element by default, so this should not normally
+        be an issue (see <link linkend="dsddelupdatingelements"> 'Updating
+        Elements' </link> for more detailed information).</para>
+
+        <para>You will notice that editing an entry will also mark a parent
+        entry and/or document as being edited. Note that this is not the case
+        with validation rules, when they are edited any entries using that
+        rule will not automatically be updated instead they will continue to
+        use the previous revision of the validation rule. To update the entry
+        you will need to add the new validation rule once it has been
+        approved.</para>
+      </section>
+
+      <section id="dsddelupdatingelements">
+        <title>Updating Elements</title>
+
+        <para>Every time an element is saved to the library a new revision is
+        created. Each revision records the state of the element at a
+        particular point in time. All revisions to an element are stored. This
+        means that elements you have imported locally may become out of date
+        as they are edited by other people and new revisions are created. To
+        keep you informed of any changes, each time you login or use the
+        'Check for Updates' function in the library or study menu, the library
+        is checked for any updates to your locally held elements.</para>
+
+        <para>If any updates are found, a dialog window will appear asking if
+        you would like to replace your elements with the latest revision from
+        the library. Pressing 'Update' will update those elements you select.
+        Selecting 'Ignore' will make no changes to the elements, but be aware
+        that you will no longer be able to submit changes to those elements to
+        the library. If you opt to ignore any changes, you will not be
+        prompted about updates for those elements again in future.</para>
+      </section>
+
+      <section id="dsddelelementapproval">
+        <title>Element Approval</title>
+
+        <para>When elements are first submitted to the library, or if they are
+        saved back after being edited at any point, they have a status of
+        'pending'. This means that they cannot be added to another element,
+        for example a pending entry cannot be added to a new document and a
+        pending validation rule cannot be added to an entry. Pending elements
+        also cannot be added to a study. Elements must be approved by a data
+        curator first.</para>
+
+        <para>Approving elements is done in a similar way to the submission of
+        elements. documents can be approved by right-clicking on the document
+        or the library view icon and selecting the approve menu option.
+        Documents can then be selected and approved. Entries cannot be
+        approved individually.</para>
+
+        <para>Approval of validation rules can be done by selecting 'Library'
+        -&gt; 'View/Approve Validation Rules'. In the dialog window that
+        appears, highlight a validation rule and click the 'Test &amp;
+        Approve' button. A validation rule can only be approved once all tests
+        have been run successfully.</para>
+      </section>
+
+      <section id="dsddellibraryviewtree">
+        <title>Library View Icons explained</title>
+
+        <para>The icons in the left-hand tree used in the library view look
+        slightly different to the icons used when creating studies. This is a
+        quick explanation of those icons.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_doc_new.jpg" />
+                </imageobject>
+              </inlinemediaobject> <emphasis role="bold"> New
+            elements</emphasis>: The element has been newly created and is
+            eligible for inclusion in the library.</para>
+          </listitem>
+
+          <listitem>
+            <para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_doc_del.jpg" />
+                </imageobject>
+              </inlinemediaobject> <emphasis role="bold"> Library
+            element</emphasis>: The element has been imported from the library
+            and has no local edits.</para>
+          </listitem>
+
+          <listitem>
+            <para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/PsyGrid Dataset Designer User Guidev3_html_doc_del_edited.jpg" />
+                </imageobject>
+              </inlinemediaobject> <emphasis role="bold"> Edited library
+            element</emphasis>: The element has been imported from the library
+            and has been edited locally.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section id="dsdentryconfigdel">
+      <title>Library Information Dialog</title>
+
+      <para>The element properties dialog for each element from the library
+      has an extra 'Library Info' section. This displays some additional
+      information held by the library about the element. Each field in this
+      section is explained in detail below.</para>
+
+      <section id="dsddelconfigdelelementid">
+        <title>Element Id</title>
+
+        <para>Every element is uniquely identified by an identifier. Each new
+        version of an element will have a slightly different
+        identifier.</para>
+
+        <para>The identifier reflects the authority the element belongs to,
+        the element type and its revision number.</para>
+      </section>
+
+      <section id="dsddelconfigdeldatemodified">
+        <title>Date Modified</title>
+
+        <para>The date the element was last modified within the library. This
+        can be the date of creation, the date of approval, or date of the last
+        edit submitted to the library.</para>
+      </section>
+
+      <section id="dsddelconfigdelauthority">
+        <title>Authority</title>
+
+        <para>The authority specifies the 'owner' of this resource. The owner
+        will be one of a few organisations. For example, the prepopulated
+        library comprises elements with the 'org.openCDMS' authority. As
+        additional organisations begin to add elements to the library, other
+        authority identifiers will be added for use.</para>
+      </section>
+
+      <section id="dsddelconfigdelperson">
+        <title>Person</title>
+
+        <para>This identifies the person who created the element.</para>
+      </section>
+
+      <section id="dsddelconfigdelstatus">
+        <title>Status</title>
+
+        <para>The status of the element within the library. Can be one of
+        either 'approved' or 'pending'.</para>
+      </section>
+
+      <section id="dsddelconfigdelcomment">
+        <title>Comment</title>
+
+        <para>This is added by openCDMS Create to display the local status or
+        to indicate whether any local changes have been made to the
+        element.</para>
+
+        <para>The different messages that may appear, along with a short
+        explanation, are as follows:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">"This element has been
+            edited"</emphasis>: The element has been checked out from the
+            library and has local changes.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">"This element can be added to the
+            library"</emphasis>: The element is not from the library but is
+            eligible for submission.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">"You do not have permission to edit
+            this element"</emphasis>: The element has been checked out of the
+            library but cannot be edited because the current user has
+            insufficient security privileges.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">"This element is out of date and
+            cannot be edited"</emphasis>: The element has been checked out of
+            the library but cannot be edited because it is not the most recent
+            version of the element. Only the newest version of an element can
+            be edited.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">"This element has been marked as not
+            editable"</emphasis>: The element has been checked out of the
+            library but cannot be edited. This is normally because the current
+            user is has insufficient security privileges to be able to edit
+            elements or because the element has been checked out
+            already.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+  </section>
+</chapter>

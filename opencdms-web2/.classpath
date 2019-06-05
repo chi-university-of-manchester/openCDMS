@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/security"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/axis.jar" sourcepath="/Users/jda/axis-src/axis-1_3/src"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/opensaml-1.0.1.jar" sourcepath="/Users/jda/PsyGrid/software/opensaml_1.0.1/opensaml/java"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/acegi-security-1.0.3.jar" sourcepath="/psygrid-common/lib/source/acegi-security-1.0.3-src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/spring.jar" sourcepath="/psygrid-common/lib/source/spring-src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/excludes/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/repository"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psygrid-common"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-log4j12-1.5.6.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/electronic-screening-log"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-1.4.12.jar" sourcepath="wicket/wicket.zip"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-auth-roles-1.4.12.jar" sourcepath="wicket/wicket-auth-roles.zip"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-datetime-1.4.12.jar" sourcepath="wicket/wicket-datetime.zip"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-extensions-1.4.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-ioc-1.4.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-spring-1.4.12.jar" sourcepath="wicket/wicket-spring.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/meds-distribution"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wicket-source-1.4.0.7.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,59 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+		<form wicket:id="selectStudyForm">
+			<div class="label">Study:</div>
+			<select wicket:id="study">
+				<option>Study 1</option>
+				<option>Study 2</option>
+			</select>
+		</form>
+		
+		<form wicket:id="myQueriesForm">
+			<div wicket:id="queriesContainer1">
+				<div wicket:id="queriesContainer2">
+					<h2>My Queries</h2>
+					<div wicket:id="selectQueryContainer" style="width: 800px;max-height:200px;overflow: auto">
+				        <table>
+				        <tr wicket:id="queryList">
+				        	<td><strong><span wicket:id="name" /></strong></td>
+				        	<td style="width: 400px"><em><span wicket:id="description" /></em></td>
+				        	<td><input type="submit" wicket:id="view" value="View/Edit" /></td>
+				        </tr>
+				        </table>
+					</div>
+					<div wicket:id="noQueriesContainer">
+						<p><em>You do not have any saved queries.</em></p>
+					</div>
+				</div>
+			</div>
+		</form>
+						
+	</wicket:panel>
+</body>
+</html>

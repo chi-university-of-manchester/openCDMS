@@ -1,0 +1,218 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="PsyGrid Web" basedir="." default="all">
+
+	<description>PsyGrid Electronic Screening Log - Web App</description>
+	<!-- Set global properties for the build -->
+	<property file="build.properties"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="gen.dir" value="${basedir}/generated/"/>
+	<property name="doc.dir" value="${basedir}/doc/"/>
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib"/>
+	<property name="webinf.dir" value = "${basedir}/WebContent/WEB-INF"/>
+	<property name="webinfclasses.dir" value = "${webinf.dir}/classes"/>
+	<property name="webinflib.dir" value = "${webinf.dir}/lib"/>
+	<property name="common.dist.dir" value="${basedir}/../psygrid-common/dist"/>
+
+	<path id="compile.class.path">
+		<fileset dir="${webinflib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="../psygrid-common/dist">
+			<include name="common-client_*.jar" />
+		</fileset>
+		<fileset dir="../security/dist">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="../repository/dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean" description="Clean up">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${doc.dir}"/>
+			<fileset dir="${dist.dir}"/>
+		</delete>
+		<delete failonerror="false">
+			<fileset dir="${webinflib.dir}">
+				<include name="psygrid-security_*.jar"/>
+				<include name="repository-client_*.jar"/>
+				<include name="common-client_*.jar"/>
+				<include name="esl-client_*.jar"/>
+			</fileset>
+			<fileset dir="${webinfclasses.dir}">
+				<include name="aaclient.properties"/>
+				<include name="paclient.properties"/>
+			</fileset>
+			<fileset dir="${webinf.dir}">
+				<include name="applicationContext.xml"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+
+	<target name="compile" description="Compile java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="configure-application-context">
+		<copy file="${etc.dir}/templates/applicationContext.xml"
+			  tofile="${webinf.dir}/applicationContext.xml"
+			  overwrite="true"/>
+		<copy file="${etc.dir}/templates/messages.properties"
+					  tofile="${webinfclasses.dir}/messages.properties"
+					  overwrite="true"/>
+		<replace file="${webinf.dir}/applicationContext.xml"
+						 propertyFile="build.properties">
+			<replacefilter
+					    token="@ldapDirectoryURL@"
+					    value="${security.ldap.url}"/>
+			<replacefilter
+						    token="@ldapUserBase@"
+						    value="${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+			<replacefilter
+						    token="@ldapRoot@"
+						    value="${org.psygrid.security.authentication.ldap.root}"/>
+			<replacefilter
+						    token="@ldapRootPassword@"
+						    value="${org.psygrid.security.authentication.ldap.root.password}"/>
+			<replacefilter
+			    			token="@ldapPasswordHash@"
+			    			value="${org.psygrid.security.authentication.ldap.passwordHash}"/>
+		</replace>
+	</target>
+
+	<target name="configure-security">
+		<copy file="${etc.dir}/templates/aaclient.properties"
+			  tofile="${webinfclasses.dir}/aaclient.properties"
+			  overwrite="true"/>
+		<replace file="${webinfclasses.dir}/aaclient.properties"
+						 propertyFile="build.properties">
+			<replacefilter
+					    token="@trustStoreLocation@"
+					    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+					    token="@keyStoreLocation@"
+					    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+					    token="@trustStorePassword@"
+					    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+					    token="@keyStorePassword@"
+					    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+					    token="@serviceURL@"
+					    value="${security.url}"/>
+			<replacefilter
+					    token="@ldapDirectoryURL@"
+					    value="${security.ldap.url}"/>
+		</replace>
+		<copy file="${etc.dir}/templates/paclient.properties"
+			  tofile="${webinfclasses.dir}/paclient.properties"
+			  overwrite="true"/>
+		<replace file="${webinfclasses.dir}/paclient.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@trustStoreLocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@keyStoreLocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@trustStorePassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@keyStorePassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@serviceURL@"
+			    value="${security.url}"/>
+		</replace>
+	</target>
+
+	<target name="configure">
+		<antcall target="configure-application-context" />
+		<antcall target="configure-security" />
+	</target>
+
+	<target name="copy-jars" description="Copy jars from other PsyGrid projects">
+		<copy todir="${webinflib.dir}" overwrite="true">
+			<fileset dir="../security/dist">
+				<include name="psygrid-security_*.jar"/>
+			</fileset>
+			<fileset dir="../psygrid-common/dist">
+				<include name="common-client_*.jar"/>
+			</fileset>
+			<fileset dir="../repository/dist">
+				<include name="repository-client_*.jar"/>
+			</fileset>
+			<fileset dir="../electronic-screening-log/dist">
+				<include name="esl-client_*.jar"/>
+			</fileset>
+			<fileset dir="../psygrid-common/lib/client">
+				<include name="binding-1.1.jar"/>
+			</fileset>
+			<fileset dir="../randomization/dist">
+				<include name="randomization-client_*.jar"/>
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="war" depends="compile" description="Create a deployable war">
+		<war destfile="${dist.dir}/psygrid.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent/">
+				<exclude name="**/jstl.jar"/>
+				<exclude name="**/standard.jar"/>
+			</fileset>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="opencdmslogo.png" />
+			</fileset>
+			<classes dir="${build.dir}"/>
+		</war>
+	</target>
+
+	<target name="all">
+		<antcall target="init" />
+		<antcall target="copy-jars" />
+		<antcall target="compile" />
+		<antcall target="configure" />
+		<antcall target="war" />
+	</target>
+
+</project>
+

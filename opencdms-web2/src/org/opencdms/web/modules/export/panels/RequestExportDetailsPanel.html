@@ -1,0 +1,77 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+	
+		<div wicket:id="entriesContainer">
+			<div class="label">Documents/Entries:</div>
+			<div style="width: 800px;max-height:300px;overflow: auto" wicket:id="entries"> 
+			</div>
+			<div wicket:id="entriesFeedback"></div>
+			<br />
+		</div>
+		
+		<div wicket:id="docStatusesContainer">
+			<div class="label">Document Status:</div>
+		    <div style="width: 800px;max-height:200px;overflow: auto" wicket:id="docStatuses">
+		        <input type="checkbox">status 1</input>
+		        <input type="checkbox">status 2</input>
+		    </div>
+		    <div wicket:id="docStatusesFeedback"></div>
+		    <br />
+		</div>
+		
+		<div wicket:id="participantRegisterContainer">
+			<div class="label">Participant Register:</div>
+			<input type="checkbox" wicket:id="participantRegister"></input>
+			<br />
+			<br />
+		</div>
+
+		<div wicket:id="formatContainer">
+			<div class="label">Format:</div>
+			<select wicket:id="format">
+				<option>Format 1</option>
+				<option>Format 2</option>
+			</select>
+		    <div wicket:id="formatFeedback"></div>
+			<br />
+		</div>
+
+		<div wicket:id="codesOrValuesContainer">
+			<div class="label">Codes/Values:</div>
+			<select wicket:id="codesOrValues">
+				<option>Codes/Values 1</option>
+				<option>Codes/Values 2</option>
+			</select>
+		    <div wicket:id="codesOrValuesFeedback"></div>
+			<br />
+		</div>
+		
+	</wicket:panel>
+</body>
+</html>

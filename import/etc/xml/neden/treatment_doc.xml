@@ -1,0 +1,410 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="22">
+        <description>Treatment Documentation</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="25" column="2"/>
+            	<mapping source="25" column="3"/>
+            	<mapping source="25" column="4"/>
+            	<mapping source="26" column="2"/>
+            	<mapping source="26" column="3"/>
+            	<mapping source="26" column="4"/>
+            	<mapping source="27" column="2"/>
+            	<mapping source="27" column="3"/>
+            	<mapping source="27" column="4"/>
+            	<mapping source="53" column="2"/>
+            	<mapping source="53" column="3"/>
+            	<mapping source="53" column="4"/>
+            	<mapping source="54" column="2"/>
+            	<mapping source="54" column="3"/>
+            	<mapping source="54" column="4"/>
+            	<mapping source="55" column="2"/>
+            	<mapping source="55" column="3"/>
+            	<mapping source="55" column="4"/>
+            	<mapping source="56" column="2"/>
+            	<mapping source="56" column="3"/>
+            	<mapping source="56" column="4"/>
+            	<mapping source="57" column="2"/>
+            	<mapping source="57" column="3"/>
+            	<mapping source="57" column="4"/>
+            	<mapping source="58" column="2"/>
+            	<mapping source="58" column="3"/>
+            	<mapping source="58" column="4"/>
+            	<mapping source="59" column="2"/>
+            	<mapping source="59" column="3"/>
+            	<mapping source="59" column="4"/>
+            </emptydoc>
+            <interviewer source="25" column="4"/>
+            <interviewdate source="25" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence multipleRuntime="false" index="0">
+                    <basicentry index="0">
+                        <description>Date of programme entry</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="25" column="5"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+            <section index="1">
+                <sectionoccurrence multipleRuntime="true" index="0">
+                	<instances>
+                		<instance index="0">
+                			<emptyinst>
+				            	<mapping source="25" column="2"/>
+				            	<mapping source="25" column="3"/>
+				            	<mapping source="25" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="1">
+                			<emptyinst>
+				            	<mapping source="26" column="2"/>
+				            	<mapping source="26" column="3"/>
+				            	<mapping source="26" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="2">
+                			<emptyinst>
+				            	<mapping source="27" column="2"/>
+				            	<mapping source="27" column="3"/>
+				            	<mapping source="27" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="3">
+                			<emptyinst>
+				            	<mapping source="53" column="2"/>
+				            	<mapping source="53" column="3"/>
+				            	<mapping source="53" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="4">
+                			<emptyinst>
+				            	<mapping source="54" column="2"/>
+				            	<mapping source="54" column="3"/>
+				            	<mapping source="54" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="5">
+                			<emptyinst>
+				            	<mapping source="55" column="2"/>
+				            	<mapping source="55" column="3"/>
+				            	<mapping source="55" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="6">
+                			<emptyinst>
+				            	<mapping source="56" column="2"/>
+				            	<mapping source="56" column="3"/>
+				            	<mapping source="56" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="7">
+                			<emptyinst>
+				            	<mapping source="57" column="2"/>
+				            	<mapping source="57" column="3"/>
+				            	<mapping source="57" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="8">
+                			<emptyinst>
+				            	<mapping source="58" column="2"/>
+				            	<mapping source="58" column="3"/>
+				            	<mapping source="58" column="4"/>
+			            	</emptyinst>
+                		</instance>
+                		<instance index="9">
+                			<emptyinst>
+				            	<mapping source="59" column="2"/>
+				            	<mapping source="59" column="3"/>
+				            	<mapping source="59" column="4"/>
+			            	</emptyinst>
+                		</instance>
+               		</instances>
+                    <basicentry index="1">
+                        <description>Treatment Mode</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Monitoring</description>
+                                <input special="false">1</input>
+                                <input special="false">Monitoring</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Individual / Psychological Counselling</description>
+                                <input special="false">2</input>
+                                <input special="false">Individual/Psychological Counselling</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Family Work</description>
+                                <input special="false">3</input>
+                                <input special="false">Family Work</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Group Therapy</description>
+                                <input special="false">4</input>
+                                <input special="false">Group Therapy</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Psycho-educational / Skills training</description>
+                                <input special="false">5</input>
+                                <input special="false">Psycho-educational / Skills training</input>
+                                <input special="false">Psycho-Educational/Skill Training</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Medication</description>
+                                <input special="false">6</input>
+                                <input special="false">Medication (State Type/Dose)</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Other (specify)</description>
+                                <input special="false">7</input>
+                                <input special="false">Other</input>
+                                <input special="false">Relapse Prevention</input>
+                                <input special="false">Other (describe)</input>
+                                <output>6</output>
+                            </translation>
+                        </translations>
+                        <mapping source="25" column="6" occurrence="0">
+                        	<otherText source="25" column="7"/>
+                        </mapping>
+                        <mapping source="26" column="6" occurrence="1">
+                        	<otherText source="25" column="7"/>
+                        </mapping>
+                        <mapping source="27" column="6" occurrence="2">
+                        	<otherText source="25" column="7"/>
+                        </mapping>
+                        <mapping source="53" column="6" occurrence="3">
+                        	<otherText source="53" column="7"/>
+                        </mapping>
+                        <mapping source="54" column="6" occurrence="4">
+                        	<otherText source="54" column="7"/>
+                        </mapping>
+                        <mapping source="55" column="6" occurrence="5">
+                        	<otherText source="55" column="7"/>
+                        </mapping>
+                        <mapping source="56" column="6" occurrence="6">
+                        	<otherText source="56" column="7"/>
+                        </mapping>
+                        <mapping source="57" column="6" occurrence="7">
+                        	<otherText source="57" column="7"/>
+                        </mapping>
+                        <mapping source="58" column="6" occurrence="8">
+                        	<otherText source="58" column="7"/>
+                        </mapping>
+                        <mapping source="59" column="6" occurrence="9">
+                        	<otherText source="59" column="7"/>
+                        </mapping>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Model Used</description>
+                        <mapping source="25" column="8" occurrence="0"/>
+                        <mapping source="26" column="8" occurrence="1"/>
+                        <mapping source="27" column="8" occurrence="2"/>
+                        <mapping source="53" column="8" occurrence="3"/>
+                        <mapping source="54" column="8" occurrence="4"/>
+                        <mapping source="55" column="8" occurrence="5"/>
+                        <mapping source="56" column="8" occurrence="6"/>
+                        <mapping source="57" column="8" occurrence="7"/>
+                        <mapping source="58" column="8" occurrence="8"/>
+                        <mapping source="59" column="8" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Tasks Problems</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate null to std code 970 Not Applicable</description>
+                        		<input special="false"></input>
+                        		<output>1</output>
+                        	</translation>
+                       	</translations>
+                        <mapping source="25" column="9" occurrence="0"/>
+                        <mapping source="26" column="9" occurrence="1"/>
+                        <mapping source="27" column="9" occurrence="2"/>
+                        <mapping source="53" column="9" occurrence="3"/>
+                        <mapping source="54" column="9" occurrence="4"/>
+                        <mapping source="55" column="9" occurrence="5"/>
+                        <mapping source="56" column="9" occurrence="6"/>
+                        <mapping source="57" column="9" occurrence="7"/>
+                        <mapping source="58" column="9" occurrence="8"/>
+                        <mapping source="59" column="9" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Treatment Start Date</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 06/06/1866 to std code 960. Data not known</description>
+                        		<input special="false">06/06/1866</input>
+                        		<output>0</output>
+                        	</translation>
+                        	<translation standardCode="true">
+                        		<description>Translate 09/09/1899 to std code 970. Not applicable</description>
+                        		<input special="false">09/09/1899</input>
+                        		<output>1</output>
+                        	</translation>
+                        </translations>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="25" column="10" occurrence="0"/>
+                        <mapping source="26" column="10" occurrence="1"/>
+                        <mapping source="27" column="10" occurrence="2"/>
+                        <mapping source="53" column="10" occurrence="3"/>
+                        <mapping source="54" column="10" occurrence="4"/>
+                        <mapping source="55" column="10" occurrence="5"/>
+                        <mapping source="56" column="10" occurrence="6"/>
+                        <mapping source="57" column="10" occurrence="7"/>
+                        <mapping source="58" column="10" occurrence="8"/>
+                        <mapping source="59" column="10" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Treatment End Date</description>
+                        <translations>
+                        	<translation standardCode="true">
+                        		<description>Translate 06/06/1866 to std code 960. Data not known</description>
+                        		<input special="false">06/06/1866</input>
+                        		<output>0</output>
+                        	</translation>
+                        	<translation standardCode="true">
+                        		<description>Translate 09/09/1899 to std code 970. Not applicable</description>
+                        		<input special="false">09/09/1899</input>
+                        		<output>1</output>
+                        	</translation>
+                        </translations>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                       	</formats>
+                        <mapping source="25" column="11" occurrence="0"/>
+                        <mapping source="26" column="11" occurrence="1"/>
+                        <mapping source="27" column="11" occurrence="2"/>
+                        <mapping source="53" column="11" occurrence="3"/>
+                        <mapping source="54" column="11" occurrence="4"/>
+                        <mapping source="55" column="11" occurrence="5"/>
+                        <mapping source="56" column="11" occurrence="6"/>
+                        <mapping source="57" column="11" occurrence="7"/>
+                        <mapping source="58" column="11" occurrence="8"/>
+                        <mapping source="59" column="11" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Medication Type (if applicable)</description>
+                        <constant value="1" standardCode="true" occurrence="0"/>
+                        <constant value="1" standardCode="true" occurrence="1"/>
+                        <constant value="1" standardCode="true" occurrence="2"/>
+                        <constant value="1" standardCode="true" occurrence="3"/>
+                        <constant value="1" standardCode="true" occurrence="4"/>
+                        <constant value="1" standardCode="true" occurrence="5"/>
+                        <constant value="1" standardCode="true" occurrence="6"/>
+                        <constant value="1" standardCode="true" occurrence="7"/>
+                        <constant value="1" standardCode="true" occurrence="8"/>
+                        <constant value="1" standardCode="true" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Medication Dose (if applicable)</description>
+                        <constant value="1" standardCode="true" occurrence="0"/>
+                        <constant value="1" standardCode="true" occurrence="1"/>
+                        <constant value="1" standardCode="true" occurrence="2"/>
+                        <constant value="1" standardCode="true" occurrence="3"/>
+                        <constant value="1" standardCode="true" occurrence="4"/>
+                        <constant value="1" standardCode="true" occurrence="5"/>
+                        <constant value="1" standardCode="true" occurrence="6"/>
+                        <constant value="1" standardCode="true" occurrence="7"/>
+                        <constant value="1" standardCode="true" occurrence="8"/>
+                        <constant value="1" standardCode="true" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Treatment compliance</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. Complete refusal</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. Partial refusal (e.g. refused depot) or accepts only minimal dose</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. Accepts only because compulsory, or very reluctant/requires persuasion, or questions need often (e.g. once every two days)</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 4. Occasional reluctance (e.g. questions need once a week)</description>
+                                <input special="false">4</input>
+                                <output>3</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 5. Passive acceptance</description>
+                                <input special="false">5</input>
+                                <output>4</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 6. Moderate participation, some knowledge and interest in medication and no prompting required</description>
+                                <input special="false">6</input>
+                                <output>5</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 7. Active participation, readily accepts, and shows some responsibility for regimen</description>
+                                <input special="false">7</input>
+                                <output>6</output>
+                            </translation>
+                        </translations>
+                        <mapping source="25" column="12" occurrence="0"/>
+                        <mapping source="26" column="12" occurrence="1"/>
+                        <mapping source="27" column="12" occurrence="2"/>
+                        <mapping source="53" column="12" occurrence="3"/>
+                        <mapping source="54" column="12" occurrence="4"/>
+                        <mapping source="55" column="12" occurrence="5"/>
+                        <mapping source="56" column="12" occurrence="6"/>
+                        <mapping source="57" column="12" occurrence="7"/>
+                        <mapping source="58" column="12" occurrence="8"/>
+                        <mapping source="59" column="12" occurrence="9"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Notes</description>
+                        <constant value="1" standardCode="true" occurrence="0"/>
+                        <constant value="1" standardCode="true" occurrence="1"/>
+                        <constant value="1" standardCode="true" occurrence="2"/>
+                        <constant value="1" standardCode="true" occurrence="3"/>
+                        <constant value="1" standardCode="true" occurrence="4"/>
+                        <constant value="1" standardCode="true" occurrence="5"/>
+                        <constant value="1" standardCode="true" occurrence="6"/>
+                        <constant value="1" standardCode="true" occurrence="7"/>
+                        <constant value="1" standardCode="true" occurrence="8"/>
+                        <constant value="1" standardCode="true" occurrence="9"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

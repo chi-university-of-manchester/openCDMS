@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/hibernate3.jar" sourcepath="/psygrid-common/lib/source/hibernate-src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/spring.jar" sourcepath="/psygrid-common/lib/source/spring-src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/axis.jar" sourcepath="/Users/jda/axis-src/axis-1_3/src"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/mail.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/security"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psygrid-common"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/opensaml-1.0.1.jar" sourcepath="/Users/jda/PsyGrid/software/opensaml_1.0.1/opensaml/java"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/excludes/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/javacsv.jar" sourcepath="/psygrid-common/lib/source/javacsv-src.zip"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/lib/quartz-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/security/dist/psygrid-security_1.9.6.jar"/>
+	<classpathentry kind="lib" path="/psygrid-common/dist/common-client_1.9.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

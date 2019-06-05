@@ -1,0 +1,54 @@
+<!--
+Copyright (c) 2006-2009, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+	<wicket:panel>
+		<h3 wicket:id="panelTitle">New/Edit Centre</h3>
+		<div wicket:id="feedback"></div>
+		<form wicket:id="form">
+			<fieldset id="centredetails">
+				<legend>Centre Details</legend>
+				<label for="study">Project</label><select id="study" wicket:id="study"/><br/>
+				<label for="name">Centre name</label><input id="name" type="text" wicket:id="longName"/><br/>
+				<label for="centre-id">Centre ID</label><input id="centre-id" type="text" wicket:id="name"/><br/>
+           	</fieldset>
+		
+			<fieldset>
+				<legend>Sites</legend>
+				<a wicket:id="addSite" href="#">add site</a>
+				<table cellspacing="0" class="summarytable">
+				    <thead>
+					    <tr>
+					      <th>Site Name</th>
+					      <th>Site Code</th>
+					      <th>Action</th>
+					    </tr>
+			  		</thead>
+				    <tbody>
+				       <tr wicket:id="sites">
+						 <td><span wicket:id="siteName">my siteName</span></td>
+						 <td><span wicket:id="siteId">my siteId</span></td>
+						 <td><a wicket:id="edit" href="#">edit</a></td>
+				       </tr>
+				    </tbody>
+				</table>
+           	</fieldset>
+
+			<input type="submit" value="Save"/>
+			<input wicket:id="cancel" type="submit" value="Cancel"/>
+		</form>
+	</wicket:panel>

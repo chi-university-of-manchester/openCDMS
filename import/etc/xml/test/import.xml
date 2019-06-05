@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<import project="IPT1">
+    <sources>
+        <csvsource>
+            <id>0</id>
+            <primary>false</primary>
+            <identifiercolumn>0</identifiercolumn>
+            <filename>Baseline_Global_Assessment_of_Functioning.csv</filename>
+            <headerrows>0</headerrows>
+        </csvsource>
+        <csvsource>
+            <id>1</id>
+            <primary>true</primary>
+            <identifiercolumn>0</identifiercolumn>
+            <filename>Consent.csv</filename>
+            <headerrows>4</headerrows>
+        </csvsource>
+    </sources>
+    <consentformgroups>
+        <description>Holds all consent form groups</description>
+        <consentformgroup index="0">
+            <description>Main Consent Form</description>
+            <primaryconsentform index="0">
+                <description>Has the participant agreed to take part in the study?</description>
+                <mapping source="0" column="0"/>
+            </primaryconsentform>
+        </consentformgroup>
+    </consentformgroups>
+    <schedulestartdate>
+        <format>dd/MM/yyyy</format>
+        <mapping source="1" column="0"/>
+    </schedulestartdate>
+    <documents>
+        <document>Document.xml</document>
+    </documents>
+</import>

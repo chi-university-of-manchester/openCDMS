@@ -1,0 +1,94 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+		<form wicket:id="queryForm">
+		
+			<div wicket:id="projectAndGroups"></div>
+		
+			<div wicket:id="operatorContainer1" class="pad-bottom">
+				<div wicket:id="operatorContainer2">
+					<div class="label">Operator:</div>
+					<div style="width: 800px;max-height:200px;overflow: auto" wicket:id="operator">
+		        		<input type="radio">Operator 1</input>
+		        		<input type="radio">Operator 2</input>
+					</div>
+				</div>
+			</div>
+	
+			<div wicket:id="statementsContainer1" class="pad-bottom">
+				<div wicket:id="statementsContainer2">
+					<div class="label">Statements:</div>
+					<input wicket:id="addStatement" type="submit" value="Add Statement"/>
+					<br />
+				</div>
+			</div>
+			<div wicket:id="statementsTable">
+				<div wicket:id="statements" class="pad-bottom">
+					<div class="label">
+						<em>Statement <span wicket:id="index" /></em><br />
+						<input wicket:id="remove" type="submit" value="Remove" /><br />
+					</div>
+					<div wicket:id="statementInner" style="width: 800px;max-height:200px;overflow: auto">
+						<select wicket:id="document"></select><br />
+						<select wicket:id="entry"></select><br />
+						<select wicket:id="operator"></select><br />
+						<span wicket:id="valuesContainer">
+							<input type="text" wicket:id="textValue" />
+							<input type="text" wicket:id="doubleValue" />
+							<input type="text" wicket:id="integerValue" />
+							<select wicket:id="optionValue"></select>
+							<span wicket:id="dateValue"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div wicket:id="statementsFeedback"></div>
+						
+			<div wicket:id="queryNameContainer1" class="pad-bottom">
+				<div wicket:id="queryNameContainer2">
+					<div class="label">Query Name:</div>
+					<input wicket:id="queryName" type="text" />
+					<div wicket:id="queryNameFeedback"></div>
+					<div class="label">Description:</div>
+					<textarea wicket:id="queryDescription"></textarea>
+					<div wicket:id="queryDescriptionFeedback"></div>
+				</div>
+			</div>
+
+			<div wicket:id="submitContainer1" class="pad-bottom">
+				<div wicket:id="submitContainer2">
+					<div class="label"></div>
+					<div><input type="submit" value="Submit" wicket:id="submit" /></div>
+				</div>
+			</div>
+			
+		</form>
+	</wicket:panel>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<Context path="/repository" docBase="repository" debug="1" reloadable="true" crossContext="true">
+
+ 	<Resource 
+ 		name="jdbc/Repository" 
+ 		auth="Container" 
+ 		scope="Shareable" 
+ 		type="javax.sql.DataSource"
+ 		initialSize="5"
+ 		maxActive="20" 
+ 		maxIdle="10" 
+ 		maxWait="10000"
+		username="@username@" 
+		password="@password@"
+		driverClassName="@driver@"
+		url="@db_url@@db_schema@?autoReconnect=true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		logAbandoned="true"/>
+	
+</Context>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<beans>
+
+	<!-- This config file defines the scheduled jobs to run in the repository -->
+
+	<!-- Scheduling needs to be configured in one place - not modular :( -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="reminderTrigger"/>
+				<ref bean="reportTrigger"/>
+				<ref bean="monthlySummaryTrigger"/>
+				<ref bean="exportTrigger"/>
+				<ref bean="importTrigger"/>
+				<ref bean="clinTouchTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+	**********************************************************************
+	*  Core Repository                                                   *
+	**********************************************************************
+	-->
+
+	<bean name="reminderJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.repository.scheduling.ReminderJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="repositoryService" value-ref="repositoryService"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="@sendmails@"/>
+				<entry key="sysAdminEmail" value="@systemAddress@"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="reminderTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="reminderJob"/>
+		<!-- run every morning at 1 AM -->
+		<property name="cronExpression" value="0 0 1 * * ?"/>
+	</bean>
+
+	<bean name="monthlySummaryJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.repository.scheduling.MonthlySummaryJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="repositoryService" value-ref="repositoryService"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="@sendmails@"/>
+				<entry key="sysAdminEmail" value="@systemAddress@"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="monthlySummaryTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="monthlySummaryJob"/>
+		<!-- run first day of each Month at 1:40 AM -->
+		<property name="cronExpression" value="0 40 1 1 * ?"/>
+	</bean>
+
+
+	<!--
+	**********************************************************************
+	*  Exporting                                                         *
+	**********************************************************************
+	-->
+
+	<bean name="exportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.export.scheduling.ExportJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="exportService" value-ref="exportService"/>
+				<entry key="queryService" value-ref="queryService"/>
+				<entry key="repositoryService" value-ref="repositoryService"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="@sendmails@"/>
+				<entry key="sysAdminEmail" value="@systemAddress@"/>
+				<entry key="exportFilePath" value="@exportFilePath@"/>
+				<entry key="aaqc" value-ref="aaqcWrapper"/>
+				<entry key="exportWebUrl" value="@exportWebUrl@"/>
+				<entry key="exportXSDLocation" value="@exportXSDLocation@"/>
+				<entry key="servletContext"><ref bean="servletContext"/></entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="exportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="exportJob"/>
+		<!-- run every minute -->
+		<property name="cronExpression" value="0 0/1 * * * ?"/>
+	</bean>
+
+	<!--
+	**********************************************************************
+	*  Importing                                                         *
+	**********************************************************************
+ 	-->
+
+	<bean name="importJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.importing.ImportJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="importService" value-ref="importService"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="importTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="importJob"/>
+		<!-- run every 5 minutes between 0600 and 2355 -->
+  		<property name="cronExpression" value="0 0/2 6-23 * * ?"/>
+	</bean>
+
+	<!-- End Importing -->
+
+
+	<!--
+	**********************************************************************
+	*  Reporting                                                         *
+	**********************************************************************
+	-->
+
+	<bean name="reportJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.reporting.scheduling.ReportsJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mailSender" value-ref="mailSender"/>
+				<entry key="repositoryService" value-ref="repositoryService"/>
+				<entry key="reportsService" value-ref="reportsService"/>
+				<!-- This property must be set to true for mails to actually be sent
+					 If false, mails will just be put in the system logs for debug purposes -->
+				<entry key="sendMails" value="@sendmails@"/>
+				<entry key="sysAdminEmail" value="@systemAddress@"/>
+				<entry key="reportUser" value="@reportUser@"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="reportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="reportJob"/>
+		<!-- run every Monday at 1:20 AM -->
+		<property name="cronExpression" value="0 20 1 ? * MON"/>
+	</bean>
+
+
+	<!--
+	**********************************************************************
+	*  ClinTouch	                                                     *
+	**********************************************************************
+	-->
+
+	<bean name="clinTouchJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="org.psygrid.data.clintouch.scheduling.ClinTouchJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="clinTouchService" value-ref="clinTouchService"/>
+				<entry key="clinTouchEnabled" value="@clinTouchEnabled@"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="clinTouchTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="clinTouchJob"/>
+		<!-- run every 5 minutes -->
+		<property name="cronExpression" value="0 0/5 6-23 * * ?"/>
+	</bean>
+</beans>

@@ -1,0 +1,423 @@
+/*
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body
+{
+margin: 0;
+padding: 0;
+font: 80% "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+color: Black;
+background-color: #fff;
+}
+
+div#maincontainer{
+width: 1000px; /*Width of main container*/
+margin: 0 auto; /*Center container on page*/
+}
+
+div#header{
+color: #000;
+background-color: #fff;
+background-image: url(/opencdms/images/opencdmslogo.png);
+background-repeat: no-repeat;
+height: 80px;
+}
+
+div#info
+{
+position: relative;
+float: right;	
+}
+
+div#info ul
+{
+list-style-type: none;
+padding-right: 10px;
+}
+
+div#menu1
+{
+height:25px;
+}
+
+div#menu1 ul
+{
+padding: 3px 0;
+margin-left: 0;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+}
+
+div#menu1 ul li
+{
+display: inline;
+margin: 0;
+}
+
+div#menu1 ul li a
+{
+text-decoration: none;
+padding: 5px 10px;
+border: none;
+color: black;
+background: #dddddd;
+}
+
+div#menu1 ul li.selected a
+{
+background-color: #999999;
+}
+
+
+div#menu2 {
+background-color: #999999;
+height: 25px;
+}
+
+div#menu2 ul
+{
+padding: 0;
+margin: 0;
+font: 12px Verdana;
+list-style-type: none;
+display: block;
+}
+
+div#menu2 ul li
+{
+display: inline;
+}
+
+div#menu2 ul li a
+{
+border-right: 1px solid #dddddd;
+padding: 5px 10px;
+display: block;
+float: left;
+text-decoration: none;
+color: black;
+}
+
+
+div.content
+{
+float: left;
+width: 100%;
+min-height: 500px;
+height:auto !important;
+height:500px; 
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+div#footer
+{
+clear: both;
+border-top: 1px solid #dddddd;
+text-align: right;
+}
+
+div#footer div#help
+{
+float: left;
+padding: .5em 1em;
+}
+
+div#footer div#help p
+{
+padding: 0;
+margin: 0;
+}
+
+div#footer div#copyright
+{
+padding: .5em 1em;
+}
+
+div#footer div#copyright ul
+{
+padding: 0;
+margin: 0;
+list-style-type: none;
+}
+
+div#footer div#copyright ul li
+{
+display: inline;
+margin-right: 1em;
+}
+
+form.login
+{
+margin-top: 25px;
+margin-left: 100px;
+}
+
+form.login label
+{
+float: left; 
+width: 120px;
+}
+
+form.login input.button
+{
+margin-left: 120px;
+}
+
+form.login div.input
+{
+margin-bottom: 3px;
+}
+
+form.login a
+{
+	margin-left: 120px;
+}
+
+form.request-password-reset  {
+	width: 600px; 
+}
+
+form.request-password-reset label {
+        display: block;
+        width: 300px;
+        float: left;
+        margin-bottom: 10px;
+}
+
+form.request-password-reset input {
+        display: block;
+        width: 150px;
+        float: left;
+        margin-bottom: 10px;
+}
+
+form.request-password-reset #submit {
+        margin-left: 350px;	
+        width: auto;
+}
+
+
+form.request-password-reset img {
+	display: block; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+form.request-password-reset  br {
+        clear: left;
+}
+
+
+form.password-reset  {
+	width: 600px; 
+}
+
+form.password-reset label{
+        display: block;
+        width: 120px;
+        float: left;
+        text-align: right;
+        padding-right: 20px;	
+		margin-bottom: 10px;
+}
+
+form.password-reset input {
+        display: block;
+        width: 200px;
+        float: left;
+        margin-bottom: 10px;
+}
+
+form.password-reset #submit {
+        margin-left: 140px;	
+        width: auto;
+}
+
+form.password-reset  br {
+        clear: left;
+}
+
+
+ul.feedbackPanel
+{
+list-style-type: none;
+margin-left: 0px;
+padding-left: 0px;
+font-style: italic;
+color: red;
+}
+
+div.progress
+{
+position: absolute;
+z-index: 50;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+filter: alpha(opacity=80);
+-moz-opacity: 0.8;
+opacity: 0.8;
+background-color: #999;
+}
+
+div.progress iframe
+{
+display:none;/*sorry for IE5*/ 
+display/**/:block;/*sorry for IE5*/
+position:absolute;/*must have*/
+top:0;/*must have*/
+left:0;/*must have*/
+z-index:-1;/*must have*/
+filter:mask();/*must have*/
+width:3000px;/*must have for any big value*/
+height:3000px;/*must have for any big value*/
+}
+
+div.progress img
+{
+position: absolute;
+left: 50%;
+top: 50%;
+margin-top: -10px; /* make this half your image/element height */
+margin-left: -110px; /* make this half your image/element width */
+}
+
+div.label
+{
+display: block;
+float: left;
+width: 150px;
+}
+
+div.pad-bottom
+{
+padding-bottom: 10px;
+}
+
+select.query
+{
+width:200px;
+}
+
+table tr th
+{
+text-align: left;
+padding-right: 20px;
+}
+
+table tr td
+{
+text-align: left;
+padding-right: 20px;
+}
+
+.summarytable
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+.summarytable td, .summarytable th 
+{
+font-size:1em;
+border:1px solid #98bf21;
+padding:3px 7px 2px 7px;
+}
+
+.summarytable th 
+{
+font-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#ffffff;
+}
+
+.summarytable tr.alt td 
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+
+fieldset#centredetails label {
+        display: block;
+        width: 120px;
+        float: left;
+        text-align: right;
+        padding-right: 20px;	
+		margin-bottom: 10px;
+		clear:left;
+}
+
+fieldset#centredetails input {
+        display: block;
+        float: left;
+        width: 250px;
+		margin-bottom: 10px;
+}
+
+fieldset#centredetails select {
+        display: block;
+        float: left;
+        width: 200px;
+		margin-bottom: 10px;
+}
+
+fieldset#sitedetails label {
+        display: block;
+        width: 120px;
+        float: left;
+        text-align: right;
+        padding-right: 20px;	
+		margin-bottom: 10px;
+		clear:left;
+}
+
+fieldset#sitedetails input {
+        display: block;
+        float: left;
+        width: 250px;
+		margin-bottom: 10px;
+}
+
+fieldset#sitedetails #groupName {
+        display: block;
+        float: left;
+		margin-bottom: 10px;
+}
+
+fieldset#consultants label {
+        width: 120px;
+        text-align: right;
+        padding-right: 20px;	
+		margin-bottom: 10px;
+}
+
+fieldset#consultants #consultant-name {
+        width: 250px;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		padding-right: 20px;	
+}

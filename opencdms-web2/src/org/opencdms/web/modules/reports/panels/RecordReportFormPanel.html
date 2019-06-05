@@ -1,0 +1,86 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:wicket="http://wicket.sourceforge.net/" 
+	xml:lang="en" 
+	lang="en">  
+<body>
+	<wicket:panel>
+		<form wicket:id="reportForm">
+		
+			<div>
+			<div class="label">Study:</div>
+			<select wicket:id="study">
+				<option>Study 1</option>
+				<option>Study 2</option>
+			</select>
+			</div>
+			<br />
+			
+			<div wicket:id="reportContainer1">
+				<div wicket:id="reportContainer2">
+					<div class="label">Report:</div>
+					<select wicket:id="report">
+						<option>Report 1</option>
+						<option>Report 2</option>
+					</select>
+					<div wicket:id="reportFeedback"></div>
+			    </div>
+			</div>
+			<br />
+	
+			<div wicket:id="identifierContainer1">
+				<div wicket:id="identifierContainer2">
+					<div class="label">Participant Identifier:</div>
+					<select wicket:id="identifier">
+						<option>Identifier 1</option>
+						<option>Identifier 2</option>
+					</select>
+					<div wicket:id="identifierFeedback"></div>
+			    </div>
+			</div>
+			<br />
+	
+			<div wicket:id="formatContainer1">
+				<div wicket:id="formatContainer2">
+					<div class="label">Format:</div>
+					<select wicket:id="format">
+						<option>Format 1</option>
+						<option>Format 2</option>
+					</select>
+					<div wicket:id="formatFeedback"></div>
+			    </div>
+			</div>
+			<br />
+
+			<div wicket:id="submitContainer1">
+				<div wicket:id="submitContainer2">
+					<div class="label"></div>
+					<div><input type="submit" value="Submit" wicket:id="submit" /></div>
+				</div>
+			</div>
+			
+		</form> 
+	</wicket:panel>
+</body>
+</html>

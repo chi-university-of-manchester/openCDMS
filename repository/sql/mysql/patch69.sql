@@ -1,0 +1,1 @@
+alter table t_ukcrn_summ_charts add c_study_entry_point varchar(255);

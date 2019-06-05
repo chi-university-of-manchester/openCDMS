@@ -1,0 +1,173 @@
+<project name="integration-tests" default="integration-tests">
+
+	<description>
+		WARNING: This script will delete data on the server.
+		Runs integration tests.
+		This script expects to see mysql, ldap and tomcat servers already running.
+		Usage: ant -f integration-tests.build.xml
+	</description>
+
+  	<import file="build.xml"/>
+
+	<!-- As a safeguard only connect to the localhost database url - instead of the one from unified.build.properties -->
+  	<property name="localhost.database.url" value="jdbc:mysql://localhost:3306/"/>
+
+  	<property name="integration-tests.haltonfailure" value="false"/>
+
+  	<property name="tomcat.dir" value="${tomcat.location}/apache-tomcat-5.5.27"/>
+
+	<path id="jdbc.class.path">
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="drop-databases" description="Drops all the opencdms databases on the server" >
+	  <sql onerror="continue" driver="${database.driver}" url="${localhost.database.url}" userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path" >
+	  	drop database ${database.schema.repository};
+	  	drop database ${database.schema.aa};
+		drop database ${database.schema.pa};
+		drop database ${database.schema.randomization};
+		drop database ${database.schema.esl};
+		drop database ${database.schema.data_element_library};
+		drop database ${database.schema.meds_dist};
+		drop database ${database.schema.postcode};
+	  </sql>
+	</target>
+
+	<target name="create-databases" description="Creates all the opencdms databases on the server" >
+	  <sql driver="${database.driver}" url="${localhost.database.url}" userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path" >
+	  	create database ${database.schema.repository};
+	  	create database ${database.schema.aa};
+		create database ${database.schema.pa};
+		create database ${database.schema.randomization};
+		create database ${database.schema.esl};
+		create database ${database.schema.data_element_library};
+		create database ${database.schema.meds_dist};
+		create database ${database.schema.postcode};
+	  </sql>
+	</target>
+
+	<target name="create-tables" description="Create the tables for the opencdms databases and add initial data." >
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.repository}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path" >
+		  	<transaction src="${repository.dir}/dist/sql/create-${database.provider}.sql" />
+		  	<transaction src="${repository.dir}/sql/commission-db.sql" />
+		  </sql>
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.aa}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${security.dir}/dist/sql/aa-create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.pa}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${security.dir}/dist/sql/pa-create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.randomization}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${randomization.dir}/dist/sql/create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.esl}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${esl.dir}/dist/sql/create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.data_element_library}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${elementlib.dir}/dist/sql/create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.meds_dist}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${meds-dist.dir}/dist/sql/create-${database.provider}.sql" />
+		  <sql driver="${database.driver}" url="${localhost.database.url}${database.schema.postcode}"
+		  	userid="${database.user}" password="${database.password}" classpathref="jdbc.class.path"
+		  	src="${transformers.dir}/dist/sql/create-${database.provider}.sql" />
+	</target>
+
+	<target name="reset-ldap" description="Remove the Jenkins users from the LDAP" >
+		<exec executable="ldapdelete">
+		    <arg value="-v"/>
+		    <arg value="-c"/>
+		    <arg value="-x"/>
+		    <arg value="-D"/>
+			<arg value="${org.psygrid.security.authentication.ldap.root}"/>
+		    <arg value="-w"/>
+		    <arg value="${org.psygrid.security.authentication.ldap.root.password}"/>
+		    <arg value="CN=Test CPM,${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+		    <arg value="CN=Test User,${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+		    <arg value="CN=Export User,${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+		    <arg value="CN=Report User,${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+		    <arg value="CN=User Manager,${org.psygrid.security.authentication.ldap.userBaseDN}"/>
+		  </exec>
+	</target>
+
+	<target name="reset-databases" description="Resets all the databases and deletes the Jenkins users from the ldap" depends="drop-databases,create-databases,create-tables,reset-ldap" >
+	</target>
+
+	<target name="deploy-apps" description="Deploys the opencdms applications to a running tomcat server">
+
+		<!-- Stop Tomcat - the brute force approach -->
+		<exec osfamily="windows" dir="${tomcat.dir}/bin" executable="cmd"><arg value="/c"/><arg value="shutdown.bat"/></exec>
+		<exec osfamily="unix" dir="${tomcat.dir}/bin" executable="./shutdown.sh"/>
+
+
+		<!-- Clean out the old apps -->
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${tomcat.dir}/webapps" includes="**/*" excludes="ROOT/**/*"/>
+			<fileset dir="${tomcat.dir}/mutual-auth-webapps" includes="**/*" excludes="ROOT/**/*"/>
+			<fileset dir="${tomcat.dir}/server-auth-webapps" includes="**/*" excludes="ROOT/**/*"/>
+			<fileset dir="${tomcat.dir}/logs" includes="**/*"/>
+		</delete>
+
+		<!-- Deploy the new apps -->
+		<copy todir="${tomcat.dir}/mutual-auth-webapps" flatten="true" >
+		    <fileset dir=".."  >
+		    	<include name="repository/dist/repository.war" />
+		    	<include name="security/dist/*.war" />
+		    	<include name="data-element-library/dist/del.war" />
+		    	<include name="electronic-screening-log/dist/esl.war" />
+		    	<include name="randomization/dist/randomization.war" />
+    			<include name="transformers/dist/transformers.war" />
+		    </fileset>
+		</copy>
+		<copy todir="${tomcat.dir}/server-auth-webapps" flatten="true" >
+		    <fileset dir=".."  >
+		    	<include name="opencdms-web2/dist/opencdms.war" />
+		    	<include name="psygrid-web/dist/psygrid.war" />
+		    </fileset>
+		</copy>
+		<copy todir="${tomcat.dir}/webapps" flatten="true" >
+		    <fileset dir=".."  >
+		    	<include name="dataset-designer/dist/dataset-designer.war" />
+		    	<include name="psygrid-data-collection/dist/psygrid-data-client.war" />
+		    	<include name="psygrid-securitymanager/dist/psygrid-securitymanager.war" />
+		    </fileset>
+		</copy>
+
+		<!-- Start Tomcat -->
+		<exec osfamily="windows" dir="${tomcat.dir}/bin" executable="cmd" spawn="true" ><arg value="/c"/><arg value="startup.bat"/></exec>
+		<exec osfamily="unix" dir="${tomcat.dir}/bin" executable="./startup.sh"/>
+
+		<!-- Wait for tomcat to start -->
+		<sleep seconds="30"/>
+	</target>
+
+  <target name="integration-tests" depends="drop-databases,create-databases,create-tables,reset-ldap,deploy-apps" description="Resets the server databases and runs integration tests for all sub-projects" >
+	<ant antfile="${repository.dir}/build.xml" dir="${repository.dir}" target="integration-tests" />
+  	<!--
+        <ant antfile="${psygrid-doc.dir}/build.xml" dir="${psygrid-doc.dir}" target="all"/>
+		<ant antfile="${security.dir}/build.xml" dir="${security.dir}" target="all"/>
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part1" />
+		<ant antfile="${meds-dist.dir}/build.xml" dir="${meds-dist.dir}" target="part2" />
+		<ant antfile="${transformers.dir}/build.xml" dir="${transformers.dir}" target="all" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part1" />
+		<ant antfile="${randomization.dir}/build.xml" dir="${randomization.dir}" target="part2" />
+		<ant antfile="${esl.dir}/build.xml" dir="${esl.dir}" target="all" />
+		<ant antfile="${cocoa.dir}/build.xml" dir="${cocoa.dir}" target="all-notests" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part1" />
+        <ant antfile="${elementlib.dir}/build.xml" dir="${elementlib.dir}" target="part2" />
+		<ant antfile="${pgweb.dir}/build.xml" dir="${pgweb.dir}" target="all" />
+		<ant antfile="${securitymanager.dir}/build.xml" dir="${securitymanager.dir}" target="all" />
+		<ant antfile="${import.dir}/build.xml" dir="${import.dir}" target="all" />
+		<ant antfile="${datasetdesigner.dir}/build.xml" dir="${datasetdesigner.dir}" target="all" />
+		<ant antfile="${opencdmsweb.dir}/build.xml" dir="${opencdmsweb.dir}" target="all" />
+	-->
+  </target>
+
+</project>
+
+
+

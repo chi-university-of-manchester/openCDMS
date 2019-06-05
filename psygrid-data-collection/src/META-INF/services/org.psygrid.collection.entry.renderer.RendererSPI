@@ -1,0 +1,12 @@
+org.psygrid.collection.entry.renderer.OptionRendererSPI
+org.psygrid.collection.entry.renderer.DoubleRendererSPI
+org.psygrid.collection.entry.renderer.TextRendererSPI
+org.psygrid.collection.entry.renderer.IntegerRendererSPI
+org.psygrid.collection.entry.renderer.BooleanRendererSPI
+org.psygrid.collection.entry.renderer.DateRendererSPI
+org.psygrid.collection.entry.renderer.CompositeOptionRendererSPI
+org.psygrid.collection.entry.renderer.CompositeRendererSPI
+org.psygrid.collection.entry.renderer.DerivedRendererSPI
+org.psygrid.collection.entry.renderer.NarrativeRendererSPI
+org.psygrid.collection.entry.renderer.LongTextRendererSPI
+org.psygrid.collection.entry.renderer.ExternalDerivedRendererSPI

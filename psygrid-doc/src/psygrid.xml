@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"../docbook-dtd/docbookx.dtd" [
+<!ENTITY install SYSTEM "install.xml">
+<!ENTITY cocoa SYSTEM "cocoa.xml">
+<!ENTITY security SYSTEM "security.xml">
+<!ENTITY dsd SYSTEM "dsd.xml">
+<!ENTITY web SYSTEM "web.xml">
+]>
+
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+  <book>
+  <title>openCDMS</title>
+
+  <bookinfo>
+    <date>01-Apr-2008</date>
+
+    <copyright>
+      <year>2008</year>
+
+      <holder>University of Manchester</holder>
+    </copyright>
+
+    <author>
+      <surname>Ainsworth</surname>
+
+      <firstname>John</firstname>
+
+      <email>john.ainsworth@manchester.ac.uk</email>
+    </author>
+
+    <author>
+      <surname>Harper</surname>
+
+      <firstname>Rob</firstname>
+
+      <email>robert.s.harper@manchester.ac.uk</email>
+    </author>
+
+    <author>
+      <surname>Bridges</surname>
+
+      <firstname>Lucy</firstname>
+
+      <email>lucy.bridges@manchester.ac.uk</email>
+    </author>
+
+    <author>
+      <surname>Whelan</surname>
+
+      <firstname>Pauline</firstname>
+
+      <email>pauline.whelan@manchester.ac.uk</email>
+    </author>
+
+    <author>
+      <surname>Vance</surname>
+
+      <firstname>Bill</firstname>
+
+      <email>william.vance@manchester.ac.uk</email>
+    </author>
+  </bookinfo>
+
+  <chapter id="intro">
+    <title>Introduction</title>
+
+    <para>The openCDMS system provides a suite of software for designing,
+    managing and running clinical data capture and clinical trial
+    management.</para>
+
+    <para>The components that are described in this user guide are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>openCDMS Collect - data collection</para>
+      </listitem>
+
+      <listitem>
+        <para>openCDMS Control - user management</para>
+      </listitem>
+
+      <listitem>
+        <para>openCDMS Create - study design </para>
+      </listitem>
+
+      <listitem>
+        <para>openCDMS Web - browser based application for report generation,
+        data export and client personal details management for trials.</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  
+     &install;
+	
+	  &cocoa;
+	
+	  &security;
+	
+	  &dsd;
+	  
+	  &web;
+	  
+  <chapter>
+    <title id="support">Support</title>
+
+    <para>There are multiple ways to contact the IT support team.</para>
+
+    <para><emphasis role="italics">Please note that for MHRN users the first
+    point of contact for support should be their Hub e-Science
+    Officer</emphasis>. </para>
+
+    <section id="supportemail">
+      <title>E-mail</title>
+
+      <para>Send an email to support@psygrid.org</para>
+    </section>
+
+    <section id="supportphone">
+      <title>Phone</title>
+
+      <para>Call the helpdesk on 0161 275 5164.</para>
+    </section>
+
+    <section id="supportpwdchange">
+      <title>Password change</title>
+
+      <para>If you think your password has been compromised, then you must
+      request a new one. See <xref linkend="usingcocoachangepwd" /> for
+      details on how to change your password. Alternatively call the openCDMS
+      helpdesk on 0161 275 5164, who will reset you password.</para>
+    </section>
+
+    <section id="supportlostpwd">
+      <title>Lost Password</title>
+
+      <para>If you have forgotten your password, then the openCDMS system
+      administrator can reset it for you. Please note that any data that has
+      been entered and not committed will be lost after your password has been
+      reset.</para>
+    </section>
+    
+    <section id="securepassword">
+      <title>Choosing a secure password</title>
+
+      <para>Google provide the following advice for choosing a secure password
+      (from <ulink
+      url="https://www.google.com/accounts/PasswordHelp">https://www.google.com/accounts/PasswordHelp</ulink>)</para>
+
+      <para><emphasis role="bold">Tips for creating a secure
+      password:</emphasis></para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Include punctuation marks and/or numbers.</para>
+        </listitem>
+
+        <listitem>
+          <para>Mix capital and lowercase letters.</para>
+        </listitem>
+
+        <listitem>
+          <para>Include similar looking substitutions, such as the number zero
+          for the letter 'O' or '$' for the letter 'S'.</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a unique acronym.</para>
+        </listitem>
+
+        <listitem>
+          <para>Include phonetic replacements, such as 'Luv 2 Laf' for 'Love
+          to Laugh'.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><emphasis role="bold">Things to avoid:</emphasis></para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Don't use a password that is listed as an example of how to
+          pick a good password.</para>
+        </listitem>
+
+        <listitem>
+          <para>Don't use a password that contains personal information (name,
+          birth date, etc.)</para>
+        </listitem>
+
+        <listitem>
+          <para>Don't use words or acronyms that can be found in a
+          dictionary.</para>
+        </listitem>
+
+        <listitem>
+          <para>Don't use keyboard patterns (asdf) or sequential numbers
+          (1234).</para>
+        </listitem>
+
+        <listitem>
+          <para>Don't make your password all numbers, uppercase letters or
+          lowercase letters.</para>
+        </listitem>
+
+        <listitem>
+          <para>Don't use repeating characters (aa11).</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><emphasis role="bold">Tips for keeping your password
+      secure:</emphasis></para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Never tell your password to anyone (this includes significant
+          others, roommates, parrots, etc.).</para>
+        </listitem>
+
+        <listitem>
+          <para>Never write your password down.</para>
+        </listitem>
+
+        <listitem>
+          <para>Never send your password by email.</para>
+        </listitem>
+
+        <listitem>
+          <para>Periodically test your current password and change it to a new
+          one.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+  </chapter>
+</book>

@@ -1,0 +1,278 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="8">
+        <description>Health Questionnaire - EQ-5D Record</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="4" column="2"/>
+            	<mapping source="4" column="3"/>
+            	<mapping source="4" column="4"/>
+            </emptydoc>
+            <interviewer source="4" column="4"/>
+            <interviewdate source="4" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Mobility</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problem in walking about</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems with walking about</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am confined to bed</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="4" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Self-care</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problems with self-care</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems washing and dressing myself</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am unable to wash or dress myself</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="4" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Usual Activities</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problem with performing my usual activities</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems with performing my usual activities</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am unable to perform my usual activities</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="4" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Pain/Discomfort</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no pain or discomfort</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have moderate pain or discomfort</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I have extreme pain or discomfort</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="4" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Anxiety/Depression</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I am not anxious or depressed</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I am moderately anxious or depressed</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am extremely anxious or depressed</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="4" column="9"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Health Thermometer</description>
+                        <mapping source="4" column="10"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="39" column="2"/>
+            	<mapping source="39" column="3"/>
+            	<mapping source="39" column="4"/>
+            </emptydoc>
+            <interviewer source="39" column="4"/>
+            <interviewdate source="39" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Mobility</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problem in walking about</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems with walking about</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am confined to bed</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="39" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Self-care</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problems with self-care</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems washing and dressing myself</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am unable to wash or dress myself</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="39" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Usual Activities</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no problem with performing my usual activities</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have some problems with performing my usual activities</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am unable to perform my usual activities</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="39" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Pain/Discomfort</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I have no pain or discomfort</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I have moderate pain or discomfort</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I have extreme pain or discomfort</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="39" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Anxiety/Depression</description>
+                        <translations>
+                            <translation standardCode="false">
+                                <description>Translation for option 1. I am not anxious or depressed</description>
+                                <input special="false">1</input>
+                                <output>0</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 2. I am moderately anxious or depressed</description>
+                                <input special="false">2</input>
+                                <output>1</output>
+                            </translation>
+                            <translation standardCode="false">
+                                <description>Translation for option 3. I am extremely anxious or depressed</description>
+                                <input special="false">3</input>
+                                <output>2</output>
+                            </translation>
+                        </translations>
+                        <mapping source="39" column="9"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Health Thermometer</description>
+                        <mapping source="39" column="10"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>

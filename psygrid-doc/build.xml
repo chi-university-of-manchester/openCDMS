@@ -1,0 +1,168 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project name="psygrid-doc" default="all" basedir=".">
+
+	<!-- Set global properties for the build -->
+	<property file="build.properties"/>
+
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="xsl.dir" value="${basedir}/docbook-xsl-1.73.2"/>
+	<property name="gen.dir" value="${basedir}/gen"/>
+	<property name="gen.jh.dir" value="${gen.dir}/javahelp"/>
+	<property name="gen.pdf.dir" value="${gen.dir}/pdf"/>
+	<property name="gen.html.dir" value="${gen.dir}/html"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="jh.dir" value="${basedir}/jh2.0"/>
+	<property name="fop.home" value="${basedir}/fop-0.94"/>
+
+	<taskdef name="fop" 
+	         classname="org.apache.fop.tools.anttasks.Fop">
+	  <classpath>
+	    <fileset dir="${fop.home}/lib">
+	      <include name="*.jar"/>
+	    </fileset>
+	    <fileset dir="${fop.home}/build">
+	      <include name="fop.jar"/>
+	      <include name="fop-hyph.jar" />
+	    </fileset>
+	  </classpath>
+	</taskdef>
+	
+	<path id="saxon.class.path">
+	    <fileset dir="${lib.dir}">
+	      	<include name="saxon.jar"/>
+	    </fileset>
+	</path>
+
+	<target name="docbook2javahelp" depends="clean-jh, init">
+		<java fork="yes" classname="com.icl.saxon.StyleSheet" dir="." classpathref="saxon.class.path">
+			<arg value="src/psygrid.xml"/>
+			<arg value="${xsl.dir}/javahelp/javahelp.xsl"/>
+		</java>
+		<!-- Outputting to a specified directory doesn't work 
+			 (well, I can't get it to work anyway!) so now we have to move
+			 all the output to where we really want it... -->
+		<move todir="${gen.dir}/javahelp/org/psygrid/doc">
+		    <fileset dir="${basedir}">
+			      <include name="*.html"/>
+			      <include name="jhelp*.*"/>
+		    </fileset>
+		</move>
+		<!-- and we also need to copy all the images over too -->
+		<copy todir="${gen.dir}/javahelp/org/psygrid/doc/images">
+			<fileset dir="src/images" />
+		</copy>
+		<!-- generate the search index -->
+		<java fork="yes" jar="${jh.dir}/javahelp/bin/jhindexer.jar">
+			<arg value="-db"/>
+			<arg value="gen/javahelp/org/psygrid/doc/JavaHelpSearch"/>
+			<arg value="-c"/>
+			<arg value="search.cfg"/>
+			<arg value="gen/javahelp/org/psygrid/doc"/>
+			<classpath>
+				<pathelement location="${jh.dir}/javahelp/bin/jhindexer.jar"/>
+	        </classpath>
+		</java>
+	</target>
+	
+	<target name="docbook2html" depends="clean-html, init">
+		<java fork="yes" classname="com.icl.saxon.StyleSheet" dir="." classpathref="saxon.class.path">
+			<arg value="src/psygrid.xml"/>
+			<arg value="${xsl.dir}/html/chunk.xsl"/>
+		</java>
+		<!-- Outputting to a specified directory doesn't work 
+			 (well, I can't get it to work anyway!) so now we have to move
+			 all the output to where we really want it... -->
+		<move todir="${gen.html.dir}">
+		    <fileset dir="${basedir}">
+			      <include name="*.html"/>
+			      <include name="jhelp*.*"/>
+		    </fileset>
+		</move>
+		<!-- and we also need to copy all the images over too -->
+		<copy todir="${gen.html.dir}/images">
+			<fileset dir="src/images" />
+		</copy>
+	</target>
+	
+	<target name="docbook2pdf" depends="clean-pdf, init">
+		<!-- Step 1 - transform DocBook to XML FO -->
+		<java fork="yes" classname="com.icl.saxon.StyleSheet" dir="." classpathref="saxon.class.path">
+			<arg value="-o"/>
+			<arg value="${gen.pdf.dir}/psygrid-fo.xml"/>
+			<arg value="src/psygrid.xml"/>
+			<arg value="${xsl.dir}/fo/docbook.xsl"/>
+		</java>
+		<!-- copy all the images over too -->
+		<copy todir="${gen.pdf.dir}/images">
+			<fileset dir="src/images" />
+		</copy>
+		<!-- Step 2 - transform XML FO to PDF -->
+		<fop format="application/pdf" 
+	        fofile="${gen.pdf.dir}/psygrid-fo.xml"
+	        outfile="${gen.pdf.dir}/psygrid.pdf" 
+			basedir="${gen.pdf.dir}" />
+	</target>
+	
+	<target name="build">
+		<jar destfile="${dist.dir}/psygrid-doc_${doc.version}.jar"
+			 basedir="${gen.jh.dir}">
+			<include name="org/psygrid/doc/**/*"/>
+		</jar>
+	</target>
+
+	<target name="init" description="Initialization for the build">
+		<tstamp/>
+		<mkdir dir="${gen.dir}"/>
+		<mkdir dir="${gen.jh.dir}"/>
+		<mkdir dir="${gen.pdf.dir}"/>
+		<mkdir dir="${gen.html.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+	
+	<target name="clean-jh">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${gen.jh.dir}"/>
+		</delete>
+	</target>
+
+	<target name="clean-pdf">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${gen.pdf.dir}"/>
+		</delete>
+	</target>
+
+	<target name="clean-html">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${gen.html.dir}"/>
+		</delete>
+	</target>
+
+	<target name="clean">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${gen.dir}"/>
+		</delete>
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${dist.dir}"/>
+		</delete>
+	</target>
+
+	<target name="all" depends="docbook2javahelp, docbook2html, docbook2pdf, build" />
+	
+</project>

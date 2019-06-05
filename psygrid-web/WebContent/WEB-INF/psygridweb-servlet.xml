@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!-- Application context definition for "springapp" DispatcherServlet. -->
+<beans>
+
+	<bean id="aaqc" class="org.psygrid.security.attributeauthority.client.AAQueryClient">
+		<constructor-arg index="0" value="aaclient.properties"/>
+	</bean>
+
+	<bean id="paqc" class="org.psygrid.security.policyauthority.client.PAQueryClient">
+		<constructor-arg index="0" value="paclient.properties"/>
+	</bean>
+
+    <!--  Controller for the index page -->
+    <bean id="indexController" class="org.psygrid.web.controllers.IndexController">
+    	<constructor-arg index="0" ref="aaqc"/>
+    </bean>
+    
+    <bean id="notAuthorisedController" class="org.psygrid.web.controllers.NotAuthorisedController" />
+
+    <bean id="errorController" class="org.psygrid.web.controllers.ErrorController" />
+
+    <bean id="changePasswordController" class="org.psygrid.web.controllers.ChangePasswordController" >
+        <property name="sessionForm"><value>false</value></property>
+        <property name="commandName"><value>password</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.Password</value></property>
+        <property name="formView"><value>changepwd</value></property>
+        <property name="successView"><value>index</value></property>
+        <property name="validator"><ref bean="changePasswordValidator"/></property>
+        <property name="aaqc"><ref bean="aaqc"/></property>
+    </bean>
+    
+    <bean id="changePasswordValidator" class="org.psygrid.web.controllers.ChangePasswordValidator" />
+
+    <bean id="reportController" class="org.psygrid.web.controllers.reporting.ReportController" />
+		
+	<bean id="reportGenerationController" class="org.psygrid.web.controllers.reporting.ReportGenerationController">
+	  <property name="sessionForm"><value>true</value></property> 
+      <property name="commandName"><value>report</value></property>
+      <property name="commandClass"><value>org.psygrid.web.forms.TrendsReport</value></property>
+	  <property name="validator"><ref bean="reportValidator"/></property>
+	</bean>
+	
+	<bean id="recordReportGenerationController" class="org.psygrid.web.controllers.reporting.RecordReportGenerationController">
+	  <property name="sessionForm"><value>true</value></property> 
+      <property name="commandName"><value>report</value></property>
+      <property name="commandClass"><value>org.psygrid.web.forms.RecordReport</value></property>
+	  <property name="validator"><ref bean="reportValidator"/></property>
+	</bean>
+	
+	<bean id="mgmtReportGenerationController" class="org.psygrid.web.controllers.reporting.MgmtReportGenerationController">
+	  <property name="sessionForm"><value>true</value></property> 
+      <property name="commandName"><value>report</value></property>
+      <property name="commandClass"><value>org.psygrid.web.forms.ManagementReport</value></property>
+	  <property name="validator"><ref bean="reportValidator"/></property>
+	</bean>
+	
+    <bean id="reportValidator" class="org.psygrid.web.controllers.reporting.ReportValidator" />
+
+	<bean id="exportMainController" class="org.psygrid.web.controllers.export.ExportMainController" />
+
+    <bean id="requestExportController" class="org.psygrid.web.controllers.export.RequestExportController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="commandName"><value>export</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.ExportRequest</value></property>
+    </bean>
+
+    <bean id="exportStatusController" class="org.psygrid.web.controllers.export.ExportStatusController" />
+
+    <bean id="downloadExportController" class="org.psygrid.web.controllers.export.DownloadExportController" />
+
+    <bean id="cancelExportController" class="org.psygrid.web.controllers.export.CancelExportController" />
+
+	<!-- ESLWeb controllers -->
+	<bean id="eslwebIndexController" class="org.psygrid.web.controllers.eslweb.EslWebIndexController" >
+		<constructor-arg index="0" ref="paqc"/>
+        <property name="sessionForm"><value>false</value></property>
+        <property name="commandName"><value>pg</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.ProjectGroup</value></property>
+        <property name="formView"><value>eslselectproject</value></property>
+    </bean>
+	
+    <bean id="studyCodeByPersonalDetailsController" class="org.psygrid.web.controllers.eslweb.StudyCodeByPersonalDetailsController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="commandName"><value>personalDetails</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.PersonalDetails</value></property>
+    </bean>
+
+    <bean id="personalDetailsByStudyCodeController" class="org.psygrid.web.controllers.eslweb.PersonalDetailsByStudyCodeController" >
+        <property name="sessionForm"><value>true</value></property>
+        <property name="commandName"><value>personalDetails</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.PersonalDetails</value></property>
+    </bean>
+
+	<bean id="treatmentArmStatisticsController" class="org.psygrid.web.controllers.eslweb.TreatmentArmStatisticsController" />
+
+	<bean id="emergencyBreakInController" class="org.psygrid.web.controllers.eslweb.EmergencyBreakInController" />
+
+    <bean id="treatmentArmByStudyCodeController" class="org.psygrid.web.controllers.eslweb.TreatmentArmByStudyCodeController" >
+        <property name="sessionForm"><value>false</value></property>
+        <property name="commandName"><value>personalDetails</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.PersonalDetails</value></property>
+        <property name="formView"><value>bystudycode</value></property>
+    </bean>
+
+    <bean id="treatmentArmByPersonalDetailsController" class="org.psygrid.web.controllers.eslweb.TreatmentArmByPersonalDetailsController" >
+        <property name="sessionForm"><value>false</value></property>
+        <property name="commandName"><value>personalDetails</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.PersonalDetails</value></property>
+        <property name="formView"><value>bypersonaldetails</value></property>
+    </bean>
+
+	<bean id="auditController" class="org.psygrid.web.controllers.audit.AuditController" >
+	    <property name="sessionForm"><value>true</value></property>
+        <property name="commandName"><value>audit</value></property>
+        <property name="commandClass"><value>org.psygrid.web.forms.Audit</value></property>
+        <property name="aaqc"><ref bean="aaqc"/></property>
+    </bean>
+	
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/secure/changepwd.html">changePasswordController</prop>
+                <prop key="/secure/index.html">indexController</prop>
+                <prop key="/secure/notauthorised.html">notAuthorisedController</prop>
+                <prop key="/secure/error.html">errorController</prop>
+                <prop key="/secure/export/index.html">exportMainController</prop>
+                <prop key="/secure/export/request.html">requestExportController</prop>
+                <prop key="/secure/export/status.html">exportStatusController</prop>
+                <prop key="/secure/export/download.html">downloadExportController</prop>
+                <prop key="/secure/export/cancel.html">cancelExportController</prop>
+                <prop key="/secure/report.html">reportController</prop>
+                <prop key="/secure/reports/trendsreport.html">reportGenerationController</prop>
+                <prop key="/secure/reports/recordreport.html">recordReportGenerationController</prop>
+                <prop key="/secure/reports/managementreport.html">mgmtReportGenerationController</prop>
+                <prop key="/secure/eslweb/index.html">eslwebIndexController</prop>
+                <prop key="/secure/eslweb/studyCodeByPersonalDetails.html">studyCodeByPersonalDetailsController</prop>
+                <prop key="/secure/eslweb/personalDetailsByStudyCode.html">personalDetailsByStudyCodeController</prop>
+                <prop key="/secure/eslweb/treatmentArmStatistics.html">treatmentArmStatisticsController</prop>
+                <prop key="/secure/eslweb/emergencyBreakIn.html">emergencyBreakInController</prop>
+                <prop key="/secure/eslweb/treatmentArmByStudyCode.html">treatmentArmByStudyCodeController</prop>
+                <prop key="/secure/eslweb/treatmentArmByPersonalDetails.html">treatmentArmByPersonalDetailsController</prop>
+                <prop key="/secure/audit/index.html">auditController</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!-- properties file used to store the list of error messages thrown by form validation -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	   <property name="basename"><value>messages</value></property>
+	</bean>
+
+    <bean id="viewResolverOne" class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="location"><value>WEB-INF/views.xml</value></property>
+        <property name="order"><value>1</value></property>
+    </bean>
+
+    <bean id="viewResolverTwo" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"><value>org.springframework.web.servlet.view.JstlView</value></property>
+        <property name="prefix"><value>/WEB-INF/jsp/</value></property>
+        <property name="suffix"><value>.jsp</value></property>
+    </bean>
+    
+</beans>

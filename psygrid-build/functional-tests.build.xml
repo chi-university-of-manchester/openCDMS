@@ -1,0 +1,140 @@
+<project name="functional-tests" default="functional-tests">
+
+	<description>
+		WARNING: This script will delete data on the server.
+		Runs functional tests using Jubula.
+		This script expects to see mysql, ldap and tomcat servers already running.
+		Usage: ant -f functional-tests.build.xml
+	</description>
+
+  	<import file="build.xml"/>
+  	<import file="integration-tests.build.xml"/>
+
+	<property name="jubula.install.dir" value="c:\Program Files (x86)\jubula_5.2.00266"/>
+	<property name="jubula.workspace.dir" value="C:\\Program Files (x86)\\jubula_5.2.00266\\jubula\\workspace"/>
+	<property name="jubula.project" value="openCDMS"/>
+	<property name="jubula.project.version" value="1.0"/>
+	<property name="jubula.test.job" value="openCDMS"/>
+	<property name="autagent.host" value="localhost"/>
+	<property name="autagent.port" value="60000"/>
+	<property name="jubula.db.scheme" value="Default Embedded (H2)"/>
+	<property name="jubula.db.user" value="sa"/>
+	<property name="jubula.db.pwd" value=""/>
+	<property name="jubula.data.dir" value="./tests"/>
+	<property name="jubula.results.dir" value="./build/jubula"/>
+	<property name="jubula.testexec" value="${jubula.install.dir}\jubula\testexec.exe"/>
+	<property name="jubula.dbtool" value="${jubula.install.dir}\jubula\dbtool.exe"/>
+	<property name="jubula.autrun" value="${jubula.install.dir}\server\autrun.exe"/>
+	<property name="jubula.autagent" value="${jubula.install.dir}\server\autagent.exe"/>
+	<property name="jubula.stopautagent" value="${jubula.install.dir}\server\stopautagent.exe"/>
+
+  	<property name="functional-tests.haltonfailure" value="false"/>
+
+	<target name="unzip-apps"  description="Unzip the standalone launchers for Control, Create and Collect.">
+
+		<unzip src="../psygrid-securitymanager/dist/control-standalone.zip"
+				dest="../psygrid-securitymanager/dist" />
+
+		<unzip src="../dataset-designer/dist/create-standalone.zip"
+				dest="../dataset-designer/dist" />
+
+		<unzip src="../psygrid-data-collection/dist/collect-standalone.zip"
+				dest="../psygrid-data-collection/dist" />
+	</target>
+
+	<target name="import-test-project" description="Import an xml Jubula project file into the local database">
+		 <!-- Delete the existing project - if any -->
+		<exec executable="${jubula.dbtool}">
+			<arg line='-delete ${jubula.project} ${jubula.project.version} -keepsummary '/>
+			<arg line='-data "${jubula.workspace.dir}" '/>
+			<arg line='-dbscheme "${jubula.db.scheme}" '/>
+			<arg line='-dbuser ${jubula.db.user} '/>
+			<arg value="-dbpw" />
+			<arg value='""' />
+		</exec>
+		 <!-- Import the project xml -->
+		<exec executable="${jubula.dbtool}" failonerror="true">
+			<arg line='-import ./test/${jubula.project}_${jubula.project.version}.xml '/>
+			<arg line='-data "${jubula.workspace.dir}" '/>
+			<arg line='-dbscheme "${jubula.db.scheme}" '/>
+			<arg line='-dbuser ${jubula.db.user} '/>
+			<arg value="-dbpw" />
+			<arg value='""' />
+		</exec>
+	</target>
+
+	<target name="start-aut-agent" description="Start a local jubula autagent">
+		<exec  executable="${jubula.stopautagent}">
+		</exec>
+		<exec  executable="${jubula.autagent}" spawn="true">
+			<arg line="-p 60000"/>
+		</exec>
+		<!-- Wait for AUT agent to start  -->
+		<sleep seconds="30"/>
+	</target>
+
+	<target name="ditch-psygrid-folder" description="Deletes the current user's .psygrid folder from their home directory">
+		<delete failonerror="false" includeEmptyDirs="true">
+					<fileset dir="${user.home}/.psygrid"/>
+		</delete>
+	</target>
+
+	<!--
+    <property environment="env"/>
+    <exec ... >
+      <env key="PATH" path="${env.PATH}:${basedir}/bin"/>
+    </exec>
+	-->
+
+	<target name="start-auts" description="Start stand-alone Control, Create and Collect" depends="unzip-apps,ditch-psygrid-folder">
+		<property name="root.folder" location=".."/>
+		<exec executable="${jubula.autrun}" spawn="true">
+			<arg line='-w "${root.folder}\psygrid-securitymanager\dist\control\" '/>
+			<arg line='-a localhost -p 60000 '/>
+			<arg line='-swing -k en_UK -i Control_autrun '/>
+			<arg line='-e "${root.folder}\psygrid-securitymanager\dist\control\launcher.bat"'/>
+		</exec>
+		<exec executable="${jubula.autrun}" spawn="true">
+			<arg line='-w "${root.folder}\dataset-designer\dist\create\" '/>
+			<arg line='-a localhost -p 60000 '/>
+			<arg line='-swing -k en_UK -i Create_autrun '/>
+			<arg line='-e "${root.folder}\dataset-designer\dist\create\launcher.bat"'/>
+		</exec>
+		<exec executable="${jubula.autrun}" spawn="true">
+			<arg line='-w "${root.folder}\psygrid-data-collection\dist\collect\" '/>
+			<arg line='-a localhost -p 60000 '/>
+			<arg line='-swing -k en_UK -i Collect_autrun '/>
+			<arg line='-e "${root.folder}\psygrid-data-collection\dist\collect\launcher.bat"'/>
+		</exec>
+		<!-- Wait for AUTs to start  -->
+		<sleep seconds="20"/>
+	</target>
+
+
+	<target name="jubula-testexec" description="Launch Jubula textexec to drive the client apps" >
+
+		<mkdir dir="${jubula.results.dir}" />
+
+		<exec executable="${jubula.testexec}" failonerror="true">
+			<env key="TEST_UDV_KEYSTORE_LOCATION" file="${keystore.location}" />
+			<env key="TEST_UDV_KEYSTORE_PASSWORD" value="${keystore.pass}" />
+			<env key="TEST_UDV_TEST_PASSWORD" value="${keystore.pass}" />
+			<env key="TEST_UDV_TEST_STUDY" file=".\test\TestStudy.xml" />
+			<arg line='-project ${jubula.project} -version ${jubula.project.version} -testjob ${jubula.test.job}'/>
+			<arg line='-server ${autagent.host} -port ${autagent.port} '/>
+			<arg line='-datadir ${jubula.data.dir} -resultdir ${jubula.results.dir} '/>
+			<arg line='-data "${jubula.workspace.dir}" '/>
+			<arg line='-language en_GB -dbscheme "${jubula.db.scheme}" '/>
+			<arg line='-dbuser ${jubula.db.user} '/>
+			<arg value="-dbpw" />
+			<arg value='""' />
+		</exec>
+	</target>
+
+	<target name="functional-tests" depends="reset-databases,deploy-apps,start-aut-agent,import-test-project,start-auts,jubula-testexec" description="Resets the server databases, and runs functional tests using Jubula" >
+	</target>
+
+</project>
+
+
+

@@ -1,0 +1,23 @@
+
+# /
+/.settings
+/bin
+/build
+/dist
+/doc
+
+# /WebContent/WEB-INF/
+/WebContent/WEB-INF/classes
+/WebContent/WEB-INF/applicationContext.xml
+
+# /WebContent/WEB-INF/lib/
+/WebContent/WEB-INF/lib/binding-1.1.jar
+/WebContent/WEB-INF/lib/psygrid-security_0.9.5.jar
+/WebContent/WEB-INF/lib/repository-client_0.9.7.jar
+/WebContent/WEB-INF/lib/esl-client_1.0.0.jar
+/WebContent/WEB-INF/lib/common-client_0.0.1.jar
+/WebContent/WEB-INF/lib/common-client_*.jar
+/WebContent/WEB-INF/lib/esl-client_*.jar
+/WebContent/WEB-INF/lib/psygrid-security_*.jar
+/WebContent/WEB-INF/lib/repository-client_*.jar
+/WebContent/WEB-INF/lib/randomization-client_*.jar

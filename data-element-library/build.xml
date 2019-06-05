@@ -1,0 +1,990 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!-- Ant build script for PsyGrid data element library -->
+<project name="PsyGrid Data Element Library" basedir="." default="all">
+
+	<description>PsyGrid Data Element Library Ant build file</description>
+
+	<property file="../psygrid-build/common.build.properties" />
+	<property file="../psygrid-build/unified.build.properties" />
+    <property file="../psygrid-build/versions.properties" />
+
+	<!-- Set global properties for the build -->
+	<property file="build.properties"/>
+
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="etc.dir" value="${basedir}/etc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="dist.dir" value="${basedir}/dist/"/>
+	<property name="gen.dir" value="${basedir}/gen/"/>
+	<property name="doc.dir" value="${basedir}/doc/"/>
+	<property name="common.lib.dir" value="${basedir}/../psygrid-common/lib"/>
+	<property name="common.lib.client" value="${basedir}/../psygrid-common/lib/client"/>
+	<property name="esl.dist.dir" value="${basedir}/../electronic-screening-log/dist"/>
+	<property name="common.dist.dir" value="${basedir}/../psygrid-common/dist"/>
+	<property name="repository.src.dir" value="${basedir}/../repository/src"/>
+	<property name="tmp.dir"	value="${basedir}/tmp"/>
+	<property name="rand.dist.dir" value="${basedir}/../randomization/dist"/>
+	<property name="meds.dist.dir" value="${basedir}/../meds-distribution/dist"/>
+
+	<path id="compile.class.path">
+		<fileset dir="../repository/lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${common.lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+		<fileset dir="${common.dist.dir}">
+				<include name="common-client_*.jar" />
+		</fileset>
+		<fileset dir="../security/dist">
+			<include name="psygrid-security*.jar" />
+		</fileset>
+		<fileset dir="../repository/dist/">
+			<include name="repository-client*.jar" />
+		</fileset>
+		<fileset dir="${esl.dist.dir}">
+				<include name="esl-client_*.jar"/>
+		</fileset>
+		<fileset dir="${rand.dist.dir}">
+				<include name="randomization-client_*.jar"/>
+		</fileset>
+		<fileset dir="${meds.dist.dir}">
+				<include name="meds-client_*.jar"/>
+		</fileset>
+	</path>
+
+
+	<target name="init" description="Initialization for the build">
+
+		<taskdef
+			name="axis-java2wsdl"
+			classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<taskdef
+			name="axis-wsdl2java"
+			classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask">
+			<classpath refid="compile.class.path" />
+		</taskdef>
+
+	   	<taskdef
+			name="xdoclet"
+	       	classname="org.xdoclet.ant.XDocletTask">
+	       	<classpath refid="compile.class.path" />
+	   	</taskdef>
+
+		<taskdef
+			name="hibernatetool"
+			classname="org.hibernate.tool.ant.HibernateToolTask">
+	 		<classpath refid="compile.class.path" />
+		</taskdef>
+
+		<tstamp/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${gen.dir}"/>
+		<mkdir dir="${etc.dir}/wsdl"/>
+		<mkdir dir="${doc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/sql"/>
+		<mkdir dir="${tmp.dir}"/>
+	</target>
+
+	<target name="clean-eclipse" if="eclipse.running" description="Clean up for Eclipse">
+		<delete failonerror="false">
+			<fileset dir="${src.dir}"
+					 includes="**/*.cfg.xml **/*.hbm.xml"
+			/>
+		</delete>
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+	<target name="clean" depends="clean-eclipse" description="Clean up">
+
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${doc.dir}"/>
+			<fileset dir="${gen.dir}/org"/>
+			<fileset dir="${tmp.dir}"/>
+		</delete>
+		<delete failonerror="false">
+			<fileset dir="${dist.dir}">
+				<include name="*.jar"/>
+				<include name="*.war"/>
+			</fileset>
+		</delete>
+		<delete file="${dist.dir}/del.war"/>
+		<delete file="${dist.dir}/*.jar"/>
+		<delete file="${dist.dir}/sql/*.sql"/>
+		<delete file="${etc.dir}/applicationContext.xml"/>
+		<delete file="${etc.dir}/context.xml"/>
+		<delete file="${src.dir}/applicationCtx.xml"/>
+		<delete file="${test.dir}/applicationContext.xml"/>
+		<delete file="${etc.dir}/wsdl/del.wsdl"/>
+		<delete file="${etc.dir}/security/aaclient.properties"/>
+		<delete file="${etc.dir}/security/paqc.properties"/>
+		<delete file="${gen.dir}/server-config.wsdd"/>
+
+	</target>
+
+	<target name="compile" depends="init" description="Compile java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}"/>
+			<src path="${gen.dir}"/>
+			<include name="**/*.java"/>
+  		</javac>
+	</target>
+
+
+ 	<target name="xdoclet2" description="Generate Hibernate mapping and config files using XDoclet2">
+
+		<!-- copy MultipleVariableTest.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/MultipleVariableTest.java"
+			tofile="${tmp.dir}/MultipleVariableTest.java"
+			overwrite="true"/>
+
+		<!-- replace the xdoclet tags with element library hibernate mappings -->
+		<replace file="${tmp.dir}/MultipleVariableTest.java">
+			<replacetoken>@DEL_REP_MULTIVARTEST_TABLE_TAG@</replacetoken>
+		<replacevalue><![CDATA[* @hibernate.joined-subclass table="t_multivar_test"
+ * @hibernate.joined-subclass-key column="c_id"]]></replacevalue>
+		</replace>
+
+		<replace file="${tmp.dir}/MultipleVariableTest.java">
+			<replacetoken>@DEL_REP_MULTIVARTEST_TESTCASES_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.list cascade="all"
+	* @hibernate.one-to-many class="org.psygrid.data.model.hibernate.MultipleVariableTestCase"
+	* @hibernate.key column="c_testcase_id" not-null="false"
+	* @hibernate.list-index column="c_index"]]></replacevalue>
+		</replace>
+
+		<!-- copy MultipleVariableTestCase.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/MultipleVariableTestCase.java"
+			tofile="${tmp.dir}/MultipleVariableTestCase.java"
+			overwrite="true"/>
+
+		<!-- replace the xdoclet tags with element library hibernate mappings -->
+		<replace file="${tmp.dir}/MultipleVariableTestCase.java">
+			<replacetoken>@DEL_REP_MULTIVARTESTCASE_TABLE_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.joined-subclass table="t_multivar_testcase"
+	 * @hibernate.joined-subclass-key column="c_id"]]></replacevalue>
+		</replace>
+
+		<replace file="${tmp.dir}/MultipleVariableTestCase.java">
+			<replacetoken>@DEL_REP_MULTIVARTESTCASE_INPUTMAP_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.map cascade="all"
+     *                table="t_test_variables"
+     * @hibernate.key column="c_variable_id"
+     * @hibernate.map-key column="c_variable_name" type="string"
+     * @hibernate.many-to-many column="c_input_value"
+     *                         class="org.psygrid.data.model.hibernate.Value"]]></replacevalue>
+			<replacefilter token="@DEL_REP_MULTIVARTESTCASE_RESPONSE_TAG@" value="@hibernate.property column=&quot;valid_response&quot;"/>
+		</replace>
+
+		<!-- copy SingleVariableTest.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/SingleVariableTest.java"
+			tofile="${tmp.dir}/SingleVariableTest.java"
+			overwrite="true"/>
+
+		<!-- replace the xdoclet tags with element library hibernate mappings -->
+		<replace file="${tmp.dir}/SingleVariableTest.java">
+			<replacetoken>@DEL_REP_SINGLEVARTEST_TABLE_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.joined-subclass table="t_singlevar_test"
+	 * @hibernate.joined-subclass-key column="c_id"]]></replacevalue>
+		</replace>
+
+		<replace file="${tmp.dir}/SingleVariableTest.java">
+			<replacetoken>@DEL_REP_SINGLEVARTEST_TESTCASES_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.list cascade="all"
+	* @hibernate.one-to-many class="org.psygrid.data.model.hibernate.SingleVariableTestCase"
+	* @hibernate.key column="c_test_id" not-null="false"
+	* @hibernate.list-index column="c_index"]]></replacevalue>
+		</replace>
+
+		<!-- copy SingleVariableTestCase.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/SingleVariableTestCase.java"
+			tofile="${tmp.dir}/SingleVariableTestCase.java"
+			overwrite="true"/>
+
+		<!-- replace the xdoclet tags with element library hibernate mappings -->
+		<replace file="${tmp.dir}/SingleVariableTestCase.java">
+			<replacetoken>@DEL_REP_SINGLEVARTESTCASE_TABLE_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.joined-subclass table="t_singlevar_testcase"
+	 * @hibernate.joined-subclass-key column="c_id"]]></replacevalue>
+		</replace>
+		<replace file="${tmp.dir}/SingleVariableTestCase.java">
+			<replacetoken>@DEL_REP_SINGLEVARTESTCASE_TESTINPUT_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.many-to-one class="org.psygrid.data.model.hibernate.Value"
+     *                        column="c_inputvalue_id"
+     *                        not-null="true"
+     *                        cascade="all"]]></replacevalue>
+			<replacefilter token="@DEL_REP_SINGLEVARTESTCASE_CORRECTOUTPUT_TAG@" value="@hibernate.property column=&quot;c_correct_output&quot;"/>
+		</replace>
+
+		<!-- copy Persistent.java to a temporary directory so that xdoclet mapping can be added -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/Persistent.java"
+			tofile="${tmp.dir}/Persistent.java"
+			overwrite="true"/>
+
+		<!-- add the appropriate xdoclet tag, replacing the @dynamic_xdoclet_id_generator@ token -->
+		<replace file="${tmp.dir}/Persistent.java">
+			<replacetoken>@dynamic_xdoclet_id_generator@</replacetoken>
+			<replacevalue><![CDATA[generator-class="org.hibernate.id.enhanced.SequenceStyleGenerator"
+	 * @hibernate.generator-param name="force_table_use" value="true"]]></replacevalue>
+		</replace>
+
+		<!-- copy DerivedEntry.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/DerivedEntry.java"
+			tofile="${tmp.dir}/DerivedEntry.java"
+			overwrite="true"/>
+
+		<!-- add the xdoclet tag, replacing the @DEL_REP_DERIVEDENTRY_TESTID_SWITCH@ token -->
+		<replace file="${tmp.dir}/DerivedEntry.java">
+			<replacetoken>@DEL_REP_DERIVEDENTRY_TESTID_SWITCH@</replacetoken>
+		<replacevalue><![CDATA[* @hibernate.many-to-one class="org.psygrid.data.model.hibernate.MultipleVariableTest"
+	*                        cascade="all"
+	*                        column="c_test_id"
+	*                        not-null="false"]]></replacevalue>
+		</replace>
+
+		<!-- copy ExternalDerivedEntry.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/ExternalDerivedEntry.java"
+			tofile="${tmp.dir}/ExternalDerivedEntry.java"
+			overwrite="true"/>
+
+		<!-- add the xdoclet tag, replacing the @DEL_REP_EXTERNAL_DERIVEDENTRY_TESTID_SWITCH@ token -->
+		<replace file="${tmp.dir}/ExternalDerivedEntry.java">
+			<replacetoken>@DEL_REP_EXTERNAL_DERIVEDENTRY_TESTID_SWITCH@</replacetoken>
+		<replacevalue><![CDATA[* @hibernate.many-to-one class="org.psygrid.data.model.hibernate.MultipleVariableTest"
+	*                        cascade="all"
+	*                        column="c_test_id"
+	*                        not-null="false"]]></replacevalue>
+		</replace>
+
+
+		<!-- copy Element.java to a temporary directory so that xdoclet mapping can be added -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/Element.java"
+			tofile="${tmp.dir}/Element.java"
+			overwrite="true"/>
+
+		<!-- add the xdoclet tag, replacing the @dynamic_xdoclet@ token -->
+		<replace file="${tmp.dir}/Element.java">
+			<replacetoken>@dynamic_xdoclet_elementRelationship@</replacetoken>
+		<replacevalue><![CDATA[* @hibernate.list cascade="all"
+	* @hibernate.one-to-many class="org.psygrid.data.model.hibernate.ElementRelationship"
+	* @hibernate.key column="c_relationship_id" not-null="false"
+	* @hibernate.list-index column="c_index"]]></replacevalue>
+		</replace>
+
+		<replace file="${tmp.dir}/Element.java">
+			<replacetoken>@DEL_REP_ELEMENT_TO_METADATA_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.list cascade="all"
+	 * @hibernate.one-to-many class="org.psygrid.data.model.hibernate.ElementMetaData"
+	 * @hibernate.key column = "c_element_id"
+	 * 						not-null="false"
+	 * @hibernate.list-index column="c_index"]]></replacevalue>
+			<replacefilter token="@DEL_REP_ELEMENT_TO_HEADREV_TAG@" value="@hibernate.property column=&quot;c_is_head_revision&quot;"/>
+			<replacefilter token="@DEL_REP_ELEMENT_TO_STATUS_TAG@" value="@hibernate.property column=&quot;c_elem_status&quot;"/>
+			<replacefilter token="@DEL_REP_ELEMENT_TO_SUBMISSIONCONTEXT_TAG@" value="@hibernate.property column=&quot;c_submission_context&quot;"/>
+		</replace>
+
+ 		<!-- copy DataSet.java to a temp directory so that the schema can be changed -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/DataSet.java"
+			tofile="${tmp.dir}/DataSet.java"
+			overwrite="true"/>
+
+ 		<!-- change DataSet schema so that the bi-directional relationship between unit and dataset is optional -->
+		<replace file="${tmp.dir}/DataSet.java">
+			<replacefilter token="@DEL_REP_UNIT_SWITCH@" value="false" />
+			<replacefilter token="@DEL_REP_TRANSFORMER_SWITCH@" value="false" />
+		</replace>
+
+		<!-- copy Document.java to a temporary directory so that xdoclet mapping can be added -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/Document.java"
+			tofile="${tmp.dir}/Document.java"
+			overwrite="true"/>
+
+   		<!-- replace @DEL_REP_DOC_TO_DOCOCC_SWITCH@ with 'false'. -->
+   		<replace file="${tmp.dir}/Document.java">
+   			<replacefilter token="@DEL_REP_DOC_TO_DOCOCC_SWITCH@" value="false" />
+		</replace>
+
+   		<!-- copy DocumentOccurrence.java to a temporary directory so that the xdoclet mapping can be modified -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/DocumentOccurrence.java"
+			tofile="${tmp.dir}/DocumentOccurrence.java"
+			overwrite="true"/>
+
+   		<!-- replace @DEL_DOCOCC_TO_DOC_SWITCH@ with 'false'. -->
+   		<replace file="${tmp.dir}/DocumentOccurrence.java">
+   			<replacefilter token="@DEL_DOCOCC_TO_DOC_SWITCH@" value="false" />
+   		</replace>
+
+		<!-- copy ElementMetaData.java to a temp directory so that the xdoclet mapping can be modified.
+			Note that this class is only persisted for the element library, and NOT the repository. -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/ElementMetaData.java"
+			tofile="${tmp.dir}/ElementMetaData.java"
+			overwrite="true"/>
+
+		<!-- replace xdoclet tags in ElementMetaData in order to enable the mapping for the elem library. -->
+   		<replace file="${tmp.dir}/ElementMetaData.java">
+			<replacetoken>@DEL_REP_METADATA_TABLE_TAG@</replacetoken>
+		<replacevalue><![CDATA[ * @hibernate.joined-subclass table="t_element_metadata"
+ 	* @hibernate.joined-subclass-key column="c_id"]]></replacevalue>
+ 			<replacefilter token="@DEL_REP_METADATA_ACTIVITY_DESCRIPTION_TAG@" value="@hibernate.property column=&quot;c_activity_description&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_DATE_TAG@" value="@hibernate.property column=&quot;c_date&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_LSID_TAG@" value="@hibernate.property column=&quot;c_lsid&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_STATUS_TAG@" value="@hibernate.property column=&quot;c_element_status&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_REGISTRAR_TAG@" value="@hibernate.property column=&quot;c_registrar&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_REPLACEDBY_TAG@" value="@hibernate.property column=&quot;c_replaced_by&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_TERMINOLOGYREF_TAG@" value="@hibernate.property column=&quot;c_terminological_ref&quot;" />
+			<replacefilter token="@DEL_REP_METADATA_WHO_TAG@" value="@hibernate.property column=&quot;c_who&quot;" />
+   		</replace>
+
+		<!-- copy ValidationRule.java to a temp directory so that the xdoclet mapping can be modified. -->
+		<copy file="${repository.src.dir}/org/psygrid/data/model/hibernate/ValidationRule.java"
+			tofile="${tmp.dir}/ValidationRule.java"
+			overwrite="true"/>
+
+		<!-- replace xdoclet tags in ValidationRule in order to enable the mapping for the elem library. -->
+   		<replace file="${tmp.dir}/ValidationRule.java">
+			<replacetoken>@DEL_REP_VALIDATIONRULE_TO_METADATA_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.list cascade="all"
+	 * @hibernate.one-to-many class="org.psygrid.data.model.hibernate.ElementMetaData"
+	 * @hibernate.key column = "c_element_val_id"
+	 * 						not-null="false"
+	 * @hibernate.list-index column="c_index"]]></replacevalue>
+		</replace>
+
+		<!-- add the xdoclet tag, replacing the @dynamic_xdoclet@ token -->
+		<replace file="${tmp.dir}/ValidationRule.java">
+			<replacetoken>@dynamic_xdoclet_elementRelationship@</replacetoken>
+		<replacevalue><![CDATA[* @hibernate.list cascade="all"
+	* @hibernate.one-to-many class="org.psygrid.data.model.hibernate.ElementRelationship"
+	* @hibernate.key column="c_val_relationship_id" not-null="false"
+	* @hibernate.list-index column="c_index"]]></replacevalue>
+		</replace>
+
+		<replace file="${tmp.dir}/ValidationRule.java">
+			<replacetoken>@DEL_REP_VALIDATIONRULE_TEST_TAG@</replacetoken>
+		<replacevalue><![CDATA[@hibernate.many-to-one class="org.psygrid.data.model.hibernate.SingleVariableTest"
+	*                        cascade="all"
+	*                        column="c_test_id"
+	*                        not-null="false"]]></replacevalue>
+
+			<replacefilter token="@DEL_REP_VALIDATIONRULE_STATUS_TAG@" value="@hibernate.property column=&quot;c_elem_status&quot;" />
+			<replacefilter token="@DEL_REP_VALIDATIONRULE_HEADREV_TAG@" value="@hibernate.property column=&quot;c_is_head_revision&quot;" />
+			<replacefilter token="@DEL_REP_VALIDATIONRULE_SUBMISSION_CONTEXT_TAG@" value="@hibernate.property column=&quot;c_submission_context&quot;"/>
+   		</replace>
+
+  		<xdoclet>
+	        <!-- the files that will be parsed from the repository for Hibernate XDoclet tags. -->
+	    	<fileset dir="../repository/src">
+	            <include name="**/model/hibernate/*.java"/>
+	    		<exclude name="**/model/hibernate/DocumentImportFeature.java"/>
+	    		<exclude name="**/model/hibernate/Element.java"/>
+	    		<exclude name="**/model/hibernate/DataSet.java"/>
+	    		<exclude name="**/model/hibernate/DocumentOccurrence.java"/>
+	    		<exclude name="**/model/hibernate/Document.java"/>
+				<exclude name="**/model/hibernate/Persistent.java"/>
+				<exclude name="**/model/hibernate/DerivedEntry.java"/>
+				<exclude name="**/model/hibernate/ElementMetaData.java"/>
+				<exclude name="**/model/hibernate/ValidationRule.java"/>
+				<exclude name="**/model/hibernate/ExternalDerivedEntry.java"/>
+				<exclude name="**/model/hibernate/MultipleVariableTest.java"/>
+				<exclude name="**/model/hibernate/MultipleVariableTestCase.java"/>
+				<exclude name="**/model/hibernate/SingleVariableTest.java"/>
+				<exclude name="**/model/hibernate/SingleVariableTestCase.java"/>
+	        </fileset>
+
+	        <!-- the files that will be parsed for Hibernate XDoclet tags. -->
+	    	<fileset dir="${src.dir}">
+	            <include name="**/model/hibernate/*.java"/>
+	        </fileset>
+
+  			<!-- this is the location of the xdoclet-amended Element.java file -->
+	    	<fileset dir="${tmp.dir}">
+	            <include name="*.java"/>
+	        </fileset>
+
+	        <!-- generate the Hibernate mapping files -->
+	        <component
+	            classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+	            destdir="${build.dir}"
+	            version="${hibernate.version}"
+	        />
+
+	    	<!-- generate the Hibernate configuration file -->
+	    	<component
+	    		classname="org.xdoclet.plugin.hibernate.HibernateConfigPlugin"
+	    	 	destdir="${build.dir}"
+	    		version="${hibernate.version}"
+	    		jdbcdriver="${database.driver}"
+	    		dialect="${database.dialect}"
+	    		jdbcurl="${database.url}${database.schema.data_element_library}"
+	    		jdbcusername="${database.user}"
+	    		jdbcpassword="${database.password}"
+	    	/>
+
+	  </xdoclet>
+
+ 		<!-- now remove the temporarily-amended Element.java file - it's not needed anymore.-->
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${tmp.dir}"/>
+		</delete>
+
+ 	</target>
+
+	<target name="do-drop-schema" if="do.drop.schema" description="Drop the database schema">
+		<sql
+		    driver="${database.driver}"
+		    url="${database.url}${database.schema.data_element_library}"
+		    userid="${database.user}"
+		    password="${database.password}"
+			classpathref="compile.class.path"
+			src="${dist.dir}/sql/drop-${database.provider}.sql"/>
+	</target>
+
+	<target name="drop-schema"
+		 	description="Drop the database schema, if the property for exporting the schema is set to true" >
+		<echo message="schema.export=${schema.export}"/>
+		<condition property="do.drop.schema">
+			<and>
+				<equals arg1="${schema.export}" arg2="true"/>
+				<available file="${dist.dir}/sql/drop-${database.provider}.sql"/>
+			</and>
+		</condition>
+		<antcall target="do-drop-schema"/>
+	</target>
+
+	<target name="generateschema" depends="xdoclet2" description="Generate database schema">
+
+		<!-- run the export to the database for data_element_library (if export=true) -->
+		<hibernatetool destdir="${build.dir}">
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="${schema.export}"
+					 drop="false"/>
+		</hibernatetool>
+
+
+			<!-- generate the "drop" SQL script, containing drop statements only -->
+		<hibernatetool destdir="${build.dir}">
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="true"
+					 create="false"
+					 outputfilename="drop.sql"/>
+	  	</hibernatetool>
+
+		<!-- generate the "create" SQL script, containing no drop statements -->
+		<hibernatetool destdir="${build.dir}">
+			<configuration configurationfile="${build.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="false"
+					 drop="false"
+					 create="true"
+					 outputfilename="create.sql"/>
+	  	</hibernatetool>
+
+		<copy todir="${src.dir}">
+			<fileset dir="${build.dir}">
+				<include name="**/*.cfg.xml"/>
+				</fileset>
+		</copy>
+		<copy todir="${src.dir}/${del.hibernate.package}">
+			<fileset dir="${build.dir}/${del.hibernate.package}">
+				<include name="**/*.hbm.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- copy the drop and create scripts to files with provider specific names -->
+		<copy file="${build.dir}/drop.sql" tofile="${dist.dir}/sql/drop-${database.provider}.sql"/>
+		<copy file="${build.dir}/create.sql" tofile="${dist.dir}/sql/create-${database.provider}.sql"/>
+
+	</target>
+
+
+
+	<target name="prepare-datasource"
+		   depends="drop-schema,
+					generateschema,
+					generate-all-xml"/>
+
+	<target name="javadoc" description="Generate JavaDocs">
+		<javadoc packagenames="org.psygrid.*"
+				 sourcepath="${src.dir}"
+				 defaultexcludes="yes"
+				 destdir="${doc.dir}"
+				 author="true"
+			     link="http://java.sun.com/j2se/1.5.0/docs/api/"
+		/>
+	</target>
+
+	<target name="build" depends="compile, configure-security" description="Build jars etc">
+
+		<jar destfile="${dist.dir}/del-client_${del.version}.jar"
+			basedir="${build.dir}">
+			<include name="org/psygrid/data/*.class"/>
+			<include name="org/psygrid/data/dao/*.class"/>
+			<include name="org/psygrid/data/client/DataElementClient.class"/>
+			<include name="org/psygrid/data/model/*.class"/>
+			<include name="org/psygrid/data/model/dto/*.class"/>
+			<include name="org/psygrid/data/model/hibernate/*.class"/>
+		</jar>
+
+		<jar destfile="${dist.dir}/del-server_${del.version}.jar"
+			basedir="${build.dir}">
+			<include name="org/psygrid/data/SecureSoapBindingImpl.class"/>
+		</jar>
+
+		<war
+			destfile="${dist.dir}/del.war"
+			webxml="${etc.dir}/web.xml">
+			<lib dir="${lib.dir}">
+				<include name="*.jar"/>
+			</lib>
+			<lib dir="${common.dist.dir}">
+					<include name="common-client_*.jar"/>
+			</lib>
+			<lib dir="../security/dist">
+				<include name="psygrid-security*.jar"/>
+			</lib>
+			<lib dir="${common.lib.dir}/client">
+				<include name="jeval*.jar"/>
+			</lib>
+			<lib dir="${esl.dist.dir}">
+					<include name="esl-client_*.jar"/>
+			</lib>
+			<lib dir="../repository/dist">
+				<include name="repository-client*.jar"/>
+			</lib>
+			<lib dir="${common.lib.client}">
+				<include name="jeval*.jar"/>
+			</lib>
+			<classes dir="${build.dir}">
+				<exclude name="**/*.sql"/>
+				<exclude name="org/psygrid/data/old/**/*.class"/>
+				<exclude name="org/psygrid/data/utils/*.class"/>
+				<exclude name="org/psygrid/data/client/**/*.class"/>
+				<exclude name="applicationCtx.xml"/>
+			</classes>
+			<classes dir="${src.dir}">
+				<include name="**/*.xml"/>
+				<exclude name="applicationCtx.xml"/>
+			</classes>
+			<classes dir="${etc.dir}/wsdl">
+				<include name="*.wsdl"/>
+			</classes>
+			<classes dir="${etc.dir}/security">
+				<include name="paqc.properties"/>
+				<include name="aaclient.properties"/>
+			</classes>
+			<classes dir="${etc.dir}">
+				<include name="log4j.xml"/>
+			</classes>
+			<webinf dir="${gen.dir}">
+				<include name="server-config.wsdd"/>
+			</webinf>
+			<webinf dir="${etc.dir}">
+				<include name="applicationContext.xml"/>
+			</webinf>
+			<fileset dir="../psygrid-common/etc/tomcat">
+				<include name="notfound.html" />
+				<include name="error.html" />
+				<include name="opencdmslogo.png" />
+			</fileset>
+		</war>
+
+	</target>
+
+	<target name="build-standalone" depends="compile" description="Build jars etc">
+
+		<jar destfile="${dist.dir}/del-client_${del.version}.jar"
+			basedir="${build.dir}">
+			<include name="org/psygrid/data/model/**/*.class"/>
+			<include name="org/psygrid/data/*.class"/>
+			<exclude name="org/psygrid/data/RepositorySoapBindingImpl.class"/>
+			<include name="org/psygrid/data/client/*.class"/>
+		</jar>
+
+		<war
+			destfile="${dist.dir}/del.war"
+			webxml="${etc.dir}/web.xml">
+			<lib dir="${lib.dir}">
+				<include name="*.jar"/>
+			</lib>
+			<lib dir="${common.lib.dir}">
+				<include name="*.jar"/>
+				<exclude name="db2cc*.jar"/>
+				<exclude name="mysql-connector-java-3.1.10-bin.jar"/>
+				<exclude name="mysql-connector-java-3.1.10-bin.jar"/>
+				<exclude name="postgresql-8.0-312.jdbc3.jar"/>
+			</lib>
+			<lib dir="${common.lib.dir}/client">
+				<include name="jeval*.jar"/>
+			</lib>
+			<lib dir="${common.dist.dir}">
+					<include name="common-client_*.jar"/>
+			</lib>
+			<lib dir="../security/dist">
+				<include name="psygrid-security_*.jar"/>
+			</lib>
+			<lib dir="${esl.dist.dir}">
+					<include name="esl-client_*.jar"/>
+			</lib>
+			<classes dir="${build.dir}">
+				<exclude name="**/*.sql"/>
+				<exclude name="org/psygrid/data/old/**/*.class"/>
+				<exclude name="org/psygrid/data/utils/**/*.class"/>
+				<exclude name="org/psygrid/data/client/**/*.class"/>
+			</classes>
+			<classes dir="${src.dir}">
+				<include name="**/*.xml"/>
+				<excluDataSetde name="applicationCtx.xml"/>
+			</classes>
+			<classes dir="${etc.dir}/wsdl">
+				<include name="*.wsdl"/>
+			</classes>
+			<classes dir="${etc.dir}/security">
+				<include name="*.jks"/>
+				<include name="paqc.properties"/>
+				<include name="aaclient.properties"/>
+			</classes>
+			<classes dir="${etc.dir}">
+				<include name="../psygrid-common/etc/log4j.xml"/>
+			</classes>
+			<webinf dir="${etc.dir}/wsdl">
+				<include name="server-config.wsdd"/>
+			</webinf>
+			<webinf dir="${etc.dir}">
+				<include name="applicationContext.xml"/>
+			</webinf>
+			<!--
+			<metainf dir="${etc.dir}">
+				<include name="context.xml"/>
+			</metainf>
+			-->
+		</war>
+
+	</target>
+
+	<target name="compile-subset" depends="init" description="Compile a subset of the java source files">
+		<javac target="1.5" source="1.5" sourcepath="" destdir="${build.dir}" classpathref="compile.class.path" debug="true">
+			<src path="${src.dir}"/>
+			<src path="${repository.src.dir}"/>
+			<include name="**/*.java"/>
+			<exclude name="org/psygrid/data/client/*.java"/>
+			<exclude name="org/psygrid/data/importing/client/*.java"/>
+			<!--<exclude name="${repository.src.dir}/org/psygrid/data/client/*.java"/>-->
+			<!--<exclude name="${repository.src.dir}/org/psygrid/data/utils/*.java"/>-->
+  		</javac>
+	</target>
+
+	<target name="export-wsdl" depends="compile-subset" description="Generate WSDL">
+
+		<!-- data_element web-service -->
+		<axis-java2wsdl
+			classname="org.psygrid.data.DataElement"
+			style="rpc"
+			namespace="urn:data.psygrid.org"
+			location="${del.url}/del/services/dataElement"
+			output="${etc.dir}/wsdl/del.wsdl"
+			extraclasses="org.psygrid.data.model.dto.BooleanEntryDTO
+							org.psygrid.data.model.dto.BooleanValueDTO
+							org.psygrid.data.model.dto.ComponentDTO
+							org.psygrid.data.model.dto.CompositeEntryDTO
+							  org.psygrid.data.model.dto.CompositeResponseDTO
+							  org.psygrid.data.model.dto.DateEntryDTO
+							  org.psygrid.data.model.dto.DateValidationRuleDTO
+							  org.psygrid.data.model.dto.DateValueDTO
+							  org.psygrid.data.model.dto.DerivedEntryDTO
+							  org.psygrid.data.model.dto.DocumentDTO
+							 org.psygrid.data.model.dto.IntegerEntryDTO
+							  org.psygrid.data.model.dto.IntegerValueDTO
+						  	  org.psygrid.data.model.dto.IntegerValidationRuleDTO
+							  org.psygrid.data.model.dto.LongTextEntryDTO
+							  org.psygrid.data.model.dto.LongTextValueDTO
+							  org.psygrid.data.model.dto.NarrativeEntryDTO
+							 org.psygrid.data.model.dto.NumericEntryDTO
+							  org.psygrid.data.model.dto.NumericValidationRuleDTO
+							  org.psygrid.data.model.dto.NumericValueDTO
+							  org.psygrid.data.model.dto.OptionEntryDTO
+							  org.psygrid.data.model.dto.OptionDTO
+							  org.psygrid.data.model.dto.OptionDependentDTO
+							  org.psygrid.data.model.dto.OptionValueDTO
+							  org.psygrid.data.model.dto.ResponseDTO
+							  org.psygrid.data.model.dto.TextEntryDTO
+							  org.psygrid.data.model.dto.TextValidationRuleDTO
+							  org.psygrid.data.model.dto.TextValueDTO
+							  org.psygrid.data.model.dto.ExternalDerivedEntryDTO
+							  org.psygrid.data.model.dto.TransformerDTO
+							  org.psygrid.data.model.dto.ElementRelationshipDTO
+							  org.psygrid.data.model.dto.DerivedEntryElementRelationship
+							  org.psygrid.data.model.dto.DocumentEntryElementRelationship
+							  org.psygrid.data.model.dto.OptionDependentElementRelationship
+							  org.psygrid.data.model.dto.ElementMetaDataDTO
+							  org.psygrid.data.model.dto.ElementHistoryItemDTO
+							  org.psygrid.data.model.hibernate.AdminInfo
+							  org.psygrid.data.model.dto.DELQueryObject
+							  org.psygrid.data.model.dto.ElementStatusContainer
+							  org.psygrid.data.model.dto.CompositeEntryElementRelationship
+							  org.psygrid.data.model.dto.DataSetElement
+							  org.psygrid.data.model.dto.DocumentElement
+							  org.psygrid.data.model.dto.DataElementContainerDTO
+							  org.psygrid.data.model.dto.AdminInfo
+							  org.psygrid.data.model.ElementFactory"
+		/>
+	</target>
+
+	<target name="eclipse-refresh" if="eclipse.running" description="Refresh eclipse before running wsdl2java">
+		<eclipse.refreshLocal resource="${eclipse.project}/src" depth="infinite"/>
+	</target>
+
+	<target name="export-java" depends="export-wsdl, eclipse-refresh" description="Generate java and wsdd from wsdl">
+
+		<!-- data_element web-service -->
+		<axis-wsdl2java
+			deployscope="Application"
+			output="${gen.dir}"
+			serverside="true"
+			skeletondeploy="false"
+			url="${etc.dir}/wsdl/del.wsdl"
+			verbose="true"
+			debug="true"
+		/>
+
+		<!-- move deploy.wsdd and undeploy.wsdd so that they don't get overwritten -->
+		<move file="${gen.dir}/org/psygrid/data/deploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/data/deploy-del.wsdd"
+		/>
+		<move file="${gen.dir}/org/psygrid/data/undeploy.wsdd"
+			  tofile="${gen.dir}/org/psygrid/data/undeploy-del.wsdd"
+		/>
+
+
+		<!-- delete the generated files that we already have versions of -->
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}">
+				<include name="**/DataElement.java"/>
+				<include name="**/*SoapBindingImpl.java"/>
+				<include name="**/*Fault.java"/>
+				<include name="**/*Exception.java"/>
+			</fileset>
+		</delete>
+
+		<!-- delete generated JavaBeans -->
+		<delete includeemptydirs="true">
+			<fileset dir="${gen.dir}/org/psygrid/data/model"/>
+		</delete>
+
+		<!-- generate server-config.wsdd -->
+		<java
+		  	classname="org.apache.axis.utils.Admin"
+		  	fork="true"
+		  	failonerror="true"
+		  	classpathref="compile.class.path"
+		  	dir="${gen.dir}">
+		   	<arg value="server" />
+			<arg file="${gen.dir}/org/psygrid/data/deploy-del.wsdd" />
+		</java>
+
+	</target>
+
+	<target name="all" depends="clean, init, export-java, prepare-datasource, build"/>
+
+	<target name="part1" depends="clean, init, compile-subset"/>
+
+	<target name="part2" depends="export-java, prepare-datasource, build"/>
+
+	<target name="all-standalone" depends="clean, export-java, prepare-datasource, build-standalone"/>
+
+	<target name="generate-context-xml">
+		<copy file="${etc.dir}/templates/context.xml"
+			  tofile="${etc.dir}/context.xml"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/context.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url.server}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.repository}"/>
+		</replace>
+	</target>
+
+	<target name="generate-application-ctx-xml">
+		<copy file="${etc.dir}/templates/applicationCtx.xml"
+			  tofile="${build.dir}/applicationCtx.xml"
+			  overwrite="true"/>
+		<replace file="${build.dir}/applicationCtx.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.repository}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+ 			<replacefilter
+                                token="@accessController@"
+                                value="${access.controller.class}"/>
+			 <replacefilter
+                            token="@db_url@"
+                            value="${database.url.server}"/>
+                        <replacefilter
+                            token="@db_dataelement_schema@"
+                            value="${database.schema.data_element_library}"/>
+		</replace>
+		<copy file="${build.dir}/applicationCtx.xml"
+			  tofile="${src.dir}/applicationCtx.xml"
+			  overwrite="true"/>
+		<copy file="${build.dir}/applicationCtx.xml"
+			  tofile="${test.dir}/applicationContext.xml"
+			  overwrite="true"/>
+	</target>
+
+	<target name="generate-application-context-xml">
+		<copy file="${etc.dir}/templates/applicationContext.xml"
+			  tofile="${etc.dir}/applicationContext.xml"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/applicationContext.xml"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@username@"
+			    value="${database.user}"/>
+			<replacefilter
+			    token="@password@"
+			    value="${database.password}"/>
+			<replacefilter
+			    token="@driver@"
+			    value="${database.driver}"/>
+			<replacefilter
+			    token="@db_url@"
+			    value="${database.url.server}"/>
+			<replacefilter
+			    token="@db_dataelement_schema@"
+			    value="${database.schema.data_element_library}"/>
+			<replacefilter
+			    token="@db_schema@"
+			    value="${database.schema.repository}"/>
+			<replacefilter
+			    token="@dialect@"
+			    value="${database.dialect}"/>
+			<replacefilter
+				token="@mailserver@"
+				value="${mail.server}"/>
+			<replacefilter
+				token="@accessController@"
+				value="${access.controller.class}"/>
+			<replacefilter
+				token="@sendmails@"
+				value="${mail.send}"/>
+			<replacefilter
+				token="@systemAddress@"
+				value="${mail.system.address}"/>
+			<replacefilter
+				token="@exportFilePath@"
+				value="${export.directory}"/>
+			<replacefilter
+				token="@exportWebUrl@"
+				value="${export.weburl}"/>
+		</replace>
+	</target>
+
+	<target name="configure-security">
+		<copy file="${etc.dir}/templates/aaclient.properties"
+			  tofile="${etc.dir}/security/aaclient.properties"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/security/aaclient.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@trustStoreLocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@keyStoreLocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@trustStorePassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@keyStorePassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@serviceURL@"
+			    value="${security.url}"/>
+			<replacefilter
+			    token="@ldapDirectoryURL@"
+			    value="${security.ldap.url}"/>
+		</replace>
+		<copy file="${etc.dir}/templates/paqc.properties"
+			  tofile="${etc.dir}/security/paqc.properties"
+			  overwrite="true"/>
+		<replace file="${etc.dir}/security/paqc.properties"
+				 propertyFile="build.properties">
+			<replacefilter
+			    token="@trustStoreLocation@"
+			    value="${org.psygrid.security.server.trustStoreLocation}"/>
+			<replacefilter
+			    token="@keyStoreLocation@"
+			    value="${org.psygrid.security.server.keyStoreLocation}"/>
+			<replacefilter
+			    token="@trustStorePassword@"
+			    value="${org.psygrid.security.server.trustStorePassword}"/>
+			<replacefilter
+			    token="@keyStorePassword@"
+			    value="${org.psygrid.security.server.keyStorePassword}"/>
+			<replacefilter
+			    token="@serviceURL@"
+			    value="${security.url}"/>
+		</replace>
+	</target>
+
+
+	<target name="generate-all-xml" depends="generate-context-xml, generate-application-ctx-xml, generate-application-context-xml"/>
+
+	<target name="all-noschema" depends="clean, export-java, generate-all-xml, build"/>
+
+</project>
+
+
+

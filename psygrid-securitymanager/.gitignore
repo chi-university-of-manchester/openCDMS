@@ -1,0 +1,14 @@
+
+# /
+/dist
+/build
+/bin
+
+# /src/
+/src/client.properties
+
+# /src/org/psygrid/securitymanager/properties/
+/src/org/psygrid/securitymanager/properties/Strings.properties
+/src/org/psygrid/securitymanager/properties/security.properties
+/src/org/psygrid/securitymanager/properties/ldap.properties
+/src/org/psygrid/securitymanager/properties/commons-logging.properties

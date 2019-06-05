@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+        
+	<appender name="RepositoryAppender" class="org.apache.log4j.DailyRollingFileAppender">
+  		<param name="File" value="${catalina.home}/logs/del.log"/>
+  		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+    	</layout>
+  	</appender>
+
+	<logger name="org.psygrid.data" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="RepositoryAppender"/>
+	</logger>
+
+</log4j:configuration>

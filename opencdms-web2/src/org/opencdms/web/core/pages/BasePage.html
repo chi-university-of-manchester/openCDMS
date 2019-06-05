@@ -1,0 +1,73 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title wicket:id="pageTitle">openCDMS</title>
+    <link rel="stylesheet" type="text/css" href="/opencdms/styles/default.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/opencdms/images/favicon.ico" />
+    <script src="/opencdms/scripts/opencdms.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="busy-panel" class="progress" style="display:none">
+<img src="/opencdms/images/activity.gif" />
+<!--[if lte IE 6.5]><iframe></iframe><![endif]-->
+</div>
+<div id="maincontainer">
+
+    <div id="header">
+        <div id="info">
+            <ul>
+                <li wicket:id="infolist"><span wicket:id="value"></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="menubar">
+        <div id="menu1">
+            <ul>
+            <li wicket:id="menu1"><a href="#" wicket:id="menu1link"><span wicket:id="menu1text"></span></a></li>
+            </ul>
+        </div>
+        <div id="menu2">
+            <ul>
+            <li wicket:id="menu2"><a href="#" wicket:id="menu2link"><span wicket:id="menu2text"></span></a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="content" wicket:id="contentPanel">
+    </div>
+
+    <div id="footer">
+        <div id="help">
+            <p><a target="_blank" href="http://www.psygrid.org/psygrid/documents/help/ch06.html">Help</a></p>
+        </div>
+        <div id="copyright">
+            <ul>
+                <li>&copy; Copyright 2009 University of Manchester</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

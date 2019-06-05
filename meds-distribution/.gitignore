@@ -1,0 +1,10 @@
+
+# /
+/build
+/dist
+/gen
+/bin
+
+# /etc/
+/etc/applicationContext.xml
+/etc/wsdl

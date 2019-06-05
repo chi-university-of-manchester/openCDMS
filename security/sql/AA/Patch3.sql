@@ -1,0 +1,1 @@
+alter table t_login_record add c_credential varchar(3200);

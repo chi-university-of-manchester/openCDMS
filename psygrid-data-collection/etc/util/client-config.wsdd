@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+     This file contains deployment tags for logging SOAP requests on the client side.
+     It is intended for use only in debugging SOAP messages.
+     To use it place this file in the client classpath e.g. in the ./gen subdirectory of the client project when running in Eclipse.     
+ -->
+
+
+
+<!-- 
+	Logs all client SOAP messages to an axis.log file in the current working directory.
+    When running the client inside Eclipse this is the working directory of the Eclipse project - probably the project folder
+-->
+
+<deployment
+xmlns="http://xml.apache.org/axis/wsdd/"
+xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+<handler name="log" type="java:org.apache.axis.handlers.LogHandler"/>
+
+<globalConfiguration>
+<requestFlow>
+<handler type="log"/>
+</requestFlow>
+<responseFlow>
+<handler type="log"/>
+</responseFlow>
+</globalConfiguration>
+
+<transport name="http" pivot="java:org.apache.axis.transport.http.HTTPSender"/>
+
+</deployment> 
+
+
+<!--  Alternative: This uses a handler to log SOAP message to separate timestamped files.
+      See org.psygrid.collection.entry.utils.SOAPLogUtil.java
+
+<deployment name="defaultClientConfig"
+            xmlns="http://xml.apache.org/axis/wsdd/"
+            xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+<handler name="log" type="java:org.psygrid.collection.entry.utils.SOAPLogUtil"/>
+ <globalConfiguration>
+   <parameter name="disablePrettyXML" value="true"/>
+   <parameter name="enableNamespacePrefixOptimization" value="false"/>
+	<requestFlow> 
+	<handler type="log"/> 
+	</requestFlow>
+	<responseFlow>
+	<handler type="log"/> 
+	</responseFlow>
+ </globalConfiguration>
+ <transport name="http" pivot="java:org.apache.axis.transport.http.HTTPSender"/>
+ <transport name="local" pivot="java:org.apache.axis.transport.local.LocalSender"/>
+ <transport name="java" pivot="java:org.apache.axis.transport.java.JavaSender"/>
+</deployment>
+
+-->

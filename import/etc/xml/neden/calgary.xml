@@ -1,0 +1,258 @@
+<!--
+Copyright (c) 2006-2008, The University of Manchester, UK.
+
+This file is part of PsyGrid.
+
+PsyGrid is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as 
+published by the Free Software Foundation, either version 3 of 
+the License, or (at your option) any later version.
+
+PsyGrid is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public 
+License along with PsyGrid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<importdoc>
+    <document index="4">
+        <description>Calgary Depression Scale Record</description>
+        <occurrence index="0">
+            <description>Baseline</description>
+            <emptydoc>
+            	<mapping source="3" column="2"/>
+            	<mapping source="3" column="3"/>
+            	<mapping source="3" column="4"/>
+            </emptydoc>
+            <interviewer source="3" column="4"/>
+            <interviewdate source="3" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Depression</description>
+                        <mapping source="3" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Hopelessness</description>
+                        <mapping source="3" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Self depreciation</description>
+                        <mapping source="3" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Guilt ideas of reference</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="3" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Pathological guilt</description>
+                        <mapping source="3" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Morning depression</description>
+                        <mapping source="3" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Early awakening</description>
+                        <mapping source="3" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Suicide</description>
+                        <mapping source="3" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Observed depression</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="3" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Total score</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="3" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="1">
+            <description>6 Months</description>
+            <emptydoc>
+            	<mapping source="33" column="2"/>
+            	<mapping source="33" column="3"/>
+            	<mapping source="33" column="4"/>
+            </emptydoc>
+            <interviewer source="33" column="4"/>
+            <interviewdate source="33" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Depression</description>
+                        <mapping source="33" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Hopelessness</description>
+                        <mapping source="33" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Self depreciation</description>
+                        <mapping source="33" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Guilt ideas of reference</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="33" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Pathological guilt</description>
+                        <mapping source="33" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Morning depression</description>
+                        <mapping source="33" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Early awakening</description>
+                        <mapping source="33" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Suicide</description>
+                        <mapping source="33" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Observed depression</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="33" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Total score</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="33" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+        <occurrence index="2">
+            <description>12 Months</description>
+            <emptydoc>
+            	<mapping source="35" column="2"/>
+            	<mapping source="35" column="3"/>
+            	<mapping source="35" column="4"/>
+            </emptydoc>
+            <interviewer source="35" column="4"/>
+            <interviewdate source="35" column="2">
+            	<formats>
+            		<format>dd/MM/yyyy HH:mm:ss</format>
+           		</formats>
+            </interviewdate>
+            <section index="0">
+                <sectionoccurrence index="0" multipleRuntime="false">
+                    <basicentry index="1">
+                        <description>Depression</description>
+                        <mapping source="35" column="5"/>
+                    </basicentry>
+                    <basicentry index="2">
+                        <description>Hopelessness</description>
+                        <mapping source="35" column="6"/>
+                    </basicentry>
+                    <basicentry index="3">
+                        <description>Self depreciation</description>
+                        <mapping source="35" column="7"/>
+                    </basicentry>
+                    <basicentry index="4">
+                        <description>Guilt ideas of reference</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="35" column="8"/>
+                    </basicentry>
+                    <basicentry index="5">
+                        <description>Pathological guilt</description>
+                        <mapping source="35" column="9"/>
+                    </basicentry>
+                    <basicentry index="6">
+                        <description>Morning depression</description>
+                        <mapping source="35" column="10"/>
+                    </basicentry>
+                    <basicentry index="7">
+                        <description>Early awakening</description>
+                        <mapping source="35" column="11"/>
+                    </basicentry>
+                    <basicentry index="8">
+                        <description>Suicide</description>
+                        <mapping source="35" column="12"/>
+                    </basicentry>
+                    <basicentry index="9">
+                        <description>Observed depression</description>
+                        <translations>
+                            <translation standardCode="true">
+                                <description>Translation for 666 to std code Data unable to be captured</description>
+                                <input special="false">666</input>
+                                <output>3</output>
+                            </translation>
+                        </translations>
+                        <mapping source="35" column="13"/>
+                    </basicentry>
+                    <basicentry index="10">
+                        <description>Total score</description>
+                    </basicentry>
+                    <basicentry index="11">
+                        <description>Date of assessment</description>
+                        <formats>
+                        	<format>dd/MM/yyyy</format>
+                        </formats>
+                        <mapping source="35" column="3"/>
+                    </basicentry>
+                </sectionoccurrence>
+            </section>
+        </occurrence>
+    </document>
+</importdoc>
